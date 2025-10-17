@@ -1,4 +1,4 @@
-# 🧾 Projektskizze – StudyQuest
+#Projektskizze – StudyQuest
 
 ---
 
@@ -35,7 +35,7 @@ Michael Steer (Scrum Master)
 
 ---
 
-## 📄 Changelog
+##Changelog
 
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
@@ -45,7 +45,7 @@ Michael Steer (Scrum Master)
 
 ---
 
-## 👥 Distribution List
+##Distribution List
 
 | **Name**          | **Rolle**             | **Kommentar / Zuständigkeit**                 |
 |--------------------|-----------------------|-----------------------------------------------|
@@ -65,10 +65,14 @@ Michael Steer (Scrum Master)
 Projektmitglieder:
 ------------------
 -Michael Steer
+
 -Luke Engehardt
+
 -Giuliana Carrano
+
 -Paul Strasser
-Roman Faber
+
+-Roman Faber
 
 
 ## 1. Projektidee
