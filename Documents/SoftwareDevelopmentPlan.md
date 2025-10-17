@@ -12,3 +12,6 @@ We need to determine what rewards can be gained through exp,
 
 
 QoL / addition for later: Ask for help to solve tasks, avatar to outfit with him with gear gained from exp, unlock boss encounter (approaching exams) with probe klausuren, give a 90 min time limit. Perhaps use ChatGPT API key to ask it to generate alike exams
+
+Vorgehensmodell: Scrum
+Sprint 1, 17.10.2025-8.11.2025: distribution of tasks, finalizing project vision, first steps to learn javascript
