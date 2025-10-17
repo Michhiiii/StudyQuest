@@ -3,11 +3,11 @@
 
 Projektmitglieder:
 ------------------
-- Scrum Master: Michael Steer
-- Product Owner: Luke Engehardt
-- Developer: Giuliana Carrano
-- Developer: Paul Strasser
-- Developer: Roman Faber
+-Michael Steer
+-Luke Engehardt
+-Giuliana Carrano
+-Paul Strasser
+Roman Faber
 
 
 ## 1. Projektidee
@@ -42,6 +42,10 @@ Zusätzlich integriert die Webapplikation eine Notenverwaltung, um Lernaktivitä
 | **Tester / Qualitätssicherung** | Überprüft Funktionalität, Usability und Qualität |
 | **UX/UI-Designer (intern)** | Sorgt für eine intuitive und motivierende Benutzeroberfläche |
 
+## Glossar
+- **Gamification:** Einsatz spieltypischer Elemente in einem nicht-spielerischen Kontext, um Motivation und Engagement zu erhöhen.
+- **XP (Erfahrungspunkte):** Punkte, die für abgeschlossene Lernaktivitäten vergeben werden und den Fortschritt visualisieren.
+- **Mockup:** Prototypische Darstellung der App-Oberfläche ohne vollständige Funktionalität.
 
 ## 6. Abhängigkeiten
 -----------------
@@ -74,10 +78,9 @@ Zusätzlich integriert die Webapplikation eine Notenverwaltung, um Lernaktivitä
 ------------------------
 - Lasten- und Pflichtenheft  
 - UML-Diagramme (Use Case, Klassendiagramm, Sequenzdiagramm)  
-- Architekturkonzept (3-Schichten-Webarchitektur)  
-- Kostenschätzung (Planning Poker, COCOMO, Bottom-Up)  
+- Architekturkonzept (3-Schichten-Webarchitektur)   
 - Testkonzept (Unit-, Integrations-, Systemtests)  
-- Optional: UI-Mockup oder Prototyp  
+- UI-Mockup oder Prototyp  
 
 ## 10. Fazit
 ---------
