@@ -11,3 +11,5 @@ Gamification:
 Belohnungen: 10 quests = eine cola beim automaten
 
 QoL: Frage fenster wo Studenten melden können sie haben probleme mit einer quest, andere studenten können exp erhalten wenn sie helfen das zu erklären - Kann encounter genannt werden
+
+Vlt fun to have: Avatar erstellen lassen, exp kann "gear" freischalten um ihn auszufitten, hat keinen einfluss, ist einfach des spaßes halber
