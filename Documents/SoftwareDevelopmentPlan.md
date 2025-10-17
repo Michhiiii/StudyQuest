@@ -9,3 +9,5 @@ Gamification:
 
 
 Belohnungen: 10 quests = eine cola beim automaten
+
+QoL: Frage fenster wo Studenten melden können sie haben probleme mit einer quest, andere studenten können exp erhalten wenn sie helfen das zu erklären - Kann encounter genannt werden
