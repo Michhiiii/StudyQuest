@@ -94,6 +94,9 @@ Feedback durch Stakeholder; Product Backlog wird aktualisiert.
 Team reflektiert Zusammenarbeit, Tools und Prozess.  
 Verbesserungsmaßnahmen werden für den nächsten Sprint festgehalten.
 
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/79182342-22c0-4750-915d-b629a3f015a1" />
+
 ---
 
 ## 3. Teamzusammensetzung
