@@ -1,10 +1,5 @@
 # StudyQuest
 
- <div class="Marquee-box">
-   <marquee class="MyMarquee" id="my_marquee" direction="left" behavior="1" scrollamount="6">
-     <div>peace leute was geht ab</div>
-   </marquee>
- </div>
 
 
 
