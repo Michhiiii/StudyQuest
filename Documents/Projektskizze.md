@@ -39,8 +39,8 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
-| 1.0          | 17.10.2025  | G. Carrano        | Erstfassung der Projektskizze erstellt      |
-| 1.1          |             |                   | Änderungen nach Review durch Team           |
+| 1.0          | 17.10.2025  | M. Steer          | Erstfassung der Projektskizze erstellt      |
+| 1.1          |             | M. Steer          | Änderungen nach Review durch Team           |
 | 1.2          |             |                   | Finalversion zur Abgabe vorbereitet         |
 
 ---
