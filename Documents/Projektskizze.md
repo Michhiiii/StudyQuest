@@ -1,3 +1,64 @@
+# 🧾 Projektskizze – StudyQuest
+
+---
+
+**Titel des Dokuments:**  
+Projektskizze – StudyQuest
+
+**Projektname:**  
+StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App
+
+**Modul:**  
+Software Engineering I – Praxis
+
+**Projektzeitraum:**  
+Wintersemester 2025 / 2026
+
+**Version:**  
+1.0
+
+**Datum:**  
+17. Oktober 2025
+
+**Author:innen:**  
+- Michael Steer (Scrum Master)  
+- Luke Engehardt (Product Owner)  
+- Giuliana Carrano (Developer)  
+- Paul Strasser (Developer)  
+- Roman Faber (Developer)
+
+**Betreuer / Prüfer:**  
+Sascha Wanninger
+
+**Freigabe durch autorisierte Person:**  
+Michael Steer (Scrum Master)
+
+---
+
+## 📄 Changelog
+
+| **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
+|--------------|-------------|-------------------|---------------------------------------------|
+| 1.0          | 17.10.2025  | G. Carrano        | Erstfassung der Projektskizze erstellt      |
+| 1.1          |             |                   | Änderungen nach Review durch Team           |
+| 1.2          |             |                   | Finalversion zur Abgabe vorbereitet         |
+
+---
+
+## 👥 Distribution List
+
+| **Name**          | **Rolle**             | **Kommentar / Zuständigkeit**                 |
+|--------------------|-----------------------|-----------------------------------------------|
+| Sascha Wanninger   | Prüfer / Betreuer     | Bewertung im Rahmen des Moduls                |
+| Michael Steer      | Scrum Master          | Koordination & Freigabe                       |
+| Luke Engehardt     | Product Owner         | Anforderungen & Dokumentation                 |
+| Giuliana Carrano   | Developer             | Projektskizze, Dokumentation                  |
+| Paul Strasser      | Developer             | Technische Dokumentation                      |
+| Roman Faber        | Developer             | Architektur & UML                             |
+
+---
+
+© 2025 StudyQuest Project Team – DHBW Ravensburg
 # Projektskizze: StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App
 ===========================================================================
 
