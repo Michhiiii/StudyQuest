@@ -35,7 +35,7 @@ Michael Steer (Scrum Master)
 
 ---
 
-##Changelog
+## Changelog
 
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
@@ -45,7 +45,7 @@ Michael Steer (Scrum Master)
 
 ---
 
-##Distribution List
+## Distribution List
 
 | **Name**          | **Rolle**             | **Kommentar / Zuständigkeit**                 |
 |--------------------|-----------------------|-----------------------------------------------|
