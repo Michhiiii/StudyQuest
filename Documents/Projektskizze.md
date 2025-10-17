@@ -1,30 +1,30 @@
-Projektskizze: StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App
+# Projektskizze: StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App
 ===========================================================================
 
 Projektmitglieder:
 ------------------
-- Name 1: Michael Steer
-- Name 2: Giuliana Carrano
-- Name 3: Luke Engehardt
-- Name 4: Paul Strasser
-- Name 5: Roman Faber
+- Scrum Master: Michael Steer
+- Product Owner: Luke Engehardt
+- Developer: Giuliana Carrano
+- Developer: Paul Strasser
+- Developer: Roman Faber
 
 
-1. Projektidee
+## 1. Projektidee
 --------------
 „StudyQuest“ ist eine Lernapplikation, die Studierende durch **Gamification** zum regelmäßigen Lernen motivieren und gleichzeitig bei der **Organisation ihrer Studienleistungen** unterstützt.  
-Die App läuft im **Web-Browser** und ist somit plattformunabhängig (Mac, Windows, Linux).  
-Spielerische Elemente wie **Level, Quests, Erfahrungspunkte (XP) und Belohnungen** visualisieren Lernfortschritte.  
-Zusätzlich integriert die App eine **Notenverwaltung**, um Lernaktivität und Studienleistungen in einem System zu verknüpfen.
+Die App läuft im Web-Browser und ist somit plattformunabhängig (Mac, Windows, Linux).  
+Spielerische Elemente wie Level, Quests, Erfahrungspunkte und Belohnungen** visualisieren Lernfortschritte.  
+Zusätzlich integriert die Webapplikation eine Notenverwaltung, um Lernaktivität und Studienleistungen in einem System zu verknüpfen.
 
-2. Projektziele
+## 2. Projektziele
 ---------------
 - Lernfortschritt spielerisch darstellen und Motivation fördern  
 - Verwaltung von Noten und Studienleistungen ermöglichen  
 - Alle relevanten Software-Engineering-Prozesse dokumentieren: Analyse, Design, Architektur, Test, Projektplanung  
 - Prototypisch oder als Mockup eine Web-App umsetzen, ohne vollständige Implementierung  
 
-3. Stakeholder
+## 3. Stakeholder
 --------------
 ### Primäre Stakeholder
 | Rolle | Beschreibung |
@@ -42,15 +42,8 @@ Zusätzlich integriert die App eine **Notenverwaltung**, um Lernaktivität und S
 | **Tester / Qualitätssicherung** | Überprüft Funktionalität, Usability und Qualität |
 | **UX/UI-Designer (intern)** | Sorgt für eine intuitive und motivierende Benutzeroberfläche |
 
-6. Team & Rollen
-----------------
-| Rolle | Aufgabenbereich |
-|--------|-----------------|
-| Projektleiter | Planung, Koordination, Dokumentation |
-| Architekt/Entwickler | Systemdesign, UML, Datenmodellierung |
-| Tester/Qualitätsmanager | Testkonzept, Reviews, CI-Strategie |
 
-7. Abhängigkeiten
+## 6. Abhängigkeiten
 -----------------
 - Abhängigkeit von Webbrowsern (Chrome, Edge, Firefox, Safari)  
 - Internetverbindung erforderlich für Online-Funktionen (optional bei Prototyp)  
@@ -58,16 +51,16 @@ Zusätzlich integriert die App eine **Notenverwaltung**, um Lernaktivität und S
 - Zeitplan abhängig von Verfügbarkeit der Teammitglieder  
 - Verwendung gemeinsamer Entwicklungsumgebung (z. B. Visual Studio Code, Node.js)  
 
-8. Randbedingungen
+## 7. Randbedingungen
 ------------------
-- Projektzeitraum: zwei Semester  
+- Projektzeitraum: zwei Trimester  
 - Teamgröße: 5 Personen  
-- Fokus auf **Prozess und Dokumentation**, nicht vollständige Implementierung  
+- Fokus auf Prozess und Dokumentation, keine vollständige Implementierung  
 - Einhaltung der im Modul „Software Engineering“ geforderten Vorgehensmodelle und Standards  
 - Nutzung kostenloser Tools und Open-Source-Komponenten  
 - Datenschutz: Keine echten Personendaten im Prototyp  
 
-9. Auswirkungen auf Stakeholder
+## 8. Auswirkungen auf Stakeholder
 -------------------------------
 | Stakeholder | Positive Auswirkungen | Negative / mögliche Risiken |
 |--------------|----------------------|-----------------------------|
@@ -77,7 +70,7 @@ Zusätzlich integriert die App eine **Notenverwaltung**, um Lernaktivität und S
 | **Dozent:innen** | Möglichkeit, Lernfortschritt der Studierenden besser einzuschätzen | Keine direkte Integration in Uni-Systeme |
 | **Systemadministrator** | Klare Struktur, einfache Wartung durch Web-Technologien | Zusätzliche Wartungsaufgaben bei realem Einsatz |
 
-10. Erwartete Ergebnisse
+## 9. Erwartete Ergebnisse
 ------------------------
 - Lasten- und Pflichtenheft  
 - UML-Diagramme (Use Case, Klassendiagramm, Sequenzdiagramm)  
@@ -86,7 +79,7 @@ Zusätzlich integriert die App eine **Notenverwaltung**, um Lernaktivität und S
 - Testkonzept (Unit-, Integrations-, Systemtests)  
 - Optional: UI-Mockup oder Prototyp  
 
-11. Fazit
+## 10. Fazit
 ---------
-„StudyQuest“ kombiniert **Gamification** mit **Notenverwaltung** und wird als **Web-App** umgesetzt.  
-Das Projekt ist ideal, um die Phasen **Analyse, Design, Implementierung und Test** praxisnah zu demonstrieren, ohne eine vollständige Implementierung schreiben zu müssen.
+„StudyQuest“ kombiniert Gamification mit Notenverwaltung und wird als Web-App umgesetzt.  
+Das Projekt ist ideal, um die Phasen Analyse, Design, Implementierung und Test praxisnah zu demonstrieren, ohne eine vollständige Implementierung schreiben zu müssen.
