@@ -17,7 +17,16 @@
 | **UC15** | **Benutzerkonten administrieren** | Administrator | Admin verwaltet Nutzerkonten (z. B. löschen, sperren, reaktivieren).                     | Admin ist eingeloggt.                             | Kontostatus aktualisiert.                                            |
 
 <div style="display:flex; gap:10px;">
-<img src="https://github.com/user-attachments/assets/509bf1dd-6b28-4138-bb49-66148c6b5e33" width="300">
+<img src="https://github.com/user-attachments/assets/509bf1dd-6b28-4138-bb49-66148c6b5e33" width="1000">
+
+<img src="https://github.com/user-attachments/assets/9024044d-b550-4b84-a728-a638f3b734c2" width="1000">
+
+<img src="https://github.com/user-attachments/assets/fcc19a2f-b4ef-40c7-ada6-9be377d7c66a" width="1000">
+
+<img src="https://github.com/user-attachments/assets/e5f23b96-5775-46c7-ba02-8f70cefdf100" width="1000">
+
+<img src="https://github.com/user-attachments/assets/e3bb5553-fd91-4d9c-8f40-37b75693c14c" width="1000">
+
 
 </div>
 
