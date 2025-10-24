@@ -75,6 +75,10 @@ Das Projekt StudyQuest wird nach dem agilen Vorgehensmodell Scrum durchgeführt.
 
 ## 2. Aktivitätsbeschreibung
 
+<img width="1021" height="897" alt="Unbenanntes Diagramm drawio (2)" src="https://github.com/user-attachments/assets/a6a38d18-1157-460e-8a45-d51bfed92375" />
+
+
+
 ### Sprint Planning
 Product Owner präsentiert priorisierte User Stories.  
 Team schätzt den Aufwand (Planning Poker) und plant die Umsetzung.  
