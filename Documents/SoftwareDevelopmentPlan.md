@@ -121,16 +121,22 @@ Verbesserungsmaßnahmen werden für den nächsten Sprint festgehalten.
 
 ## 5. Meilensteine, Reviews und Dokumente
 
-| Meilenstein                         | Geplantes Datum | Ziel / Ergebnis                                     | Dokument / Artefakt     |
-|------------------------------------|-----------------|-----------------------------------------------------|-------------------------|
-| M1 – Projektskizze abgeschlossen   | 17.10.2025      | Fertigstellung der Projektskizze                    | Projektskizze.md        |
-| M2 – Software Development Plan     | 24.10.2025      | SDP mit Vorgehensmodell, Rollen, Tech-Stack         | SDP.md                  |
-| M3 – Architektur und UML-Diagramme | 15.11.2025      | Use-Case-, Aktivitäts- und Klassendiagramm          | UML.pdf                 |
-| M4 – UI-Mockup/Prototyp            | 05.12.2025      | Navigierbares HTML/CSS/JS-Mockup                    | prototype/              |
-| M5 – Testkonzept und Review        | 10.01.2026      | Testfälle (funktional/usability), Review-Protokoll  | Testkonzept.md          |
-| M6 – Abschluss und Retrospektive   | 31.01.2026      | Abschlussbericht, Lessons Learned                   | Abschlussbericht.md     |
+| Meilenstein | Geplantes Datum | Ziel / Ergebnis | Dokument / Artefakt |
+|--------------|-----------------|------------------|----------------------|
+| **M1 – Projektskizze abgeschlossen** | 17.10.2025 | Fertigstellung der Projektskizze mit Scope, Risiken, Zielen und Stakeholdern | `Projektskizze.md` |
+| **M2 – Software Development Plan** | 24.10.2025 | Definition von Vorgehensmodell (SCRUM), Rollen, Verantwortlichkeiten, Tools und Kommunikationsstruktur | `SDP.md` |
+| **M3 – Analyse & Architekturentwurf** | 21.11.2025 | Erstellung der Anforderungsanalyse, Use-Case- und Aktivitätsdiagramme, Grobdesign und Softwarearchitektur (3-Schichten-Modell) | `UML.pdf` / `Architektur.md` |
+| **M4 – Implementierung Sprint 1 (Grundfunktionen)** | 19.12.2025 | Entwicklung der Kernfunktionen (Login, Benutzerverwaltung, Notenübersicht) mit lauffähigem Prototyp | `prototype/` / `src/` |
+| **M5 – Implementierung Sprint 2 (Gamification & UI)** | 31.01.2026 | Erweiterung um Gamification-Elemente (XP, Level, Quests) und UI-Optimierung | `UI-Mockup/` / `frontend/` |
+| **M6 – Testkonzept & Review** | 10.03.2026 | Erstellung und Durchführung von Testfällen (funktional, usability), Review und Qualitätssicherung | `Testkonzept.md` / `Review-Protokoll.md` |
+| **M7 – Abschluss & Retrospektive** | 31.03.2026 | Abschlussbericht, Lessons Learned, Präsentation und Projektdokumentation | `Abschlussbericht.md` / `Slides.pptx` |
 
 ---
+
+### Hinweise zur Anwendung im SCRUM-Kontext
+- Zwischen den Meilensteinen liegen **Sprints** von ca. 3–4 Wochen Dauer.  
+- Jeder Meilenstein steht für ein **Review-fähiges Inkrement** (z. B. Analyse, Prototyp, getestete Funktion).  
+- Der **Dozent fungiert als Product Owner**, das **Team als Development Team**, ein Mitglied übernimmt die Rolle des **Scrum Masters**.
 
 ## 6. Reviews und Retrospektiven
 
@@ -178,36 +184,6 @@ Pro Dokument: Changelog und Distribution List pflegen.
 **Testen (leichtgewichtig)**  
 - Manuelle Funktions- und Usability-Tests anhand definierter Szenarien  
 - Checklisten für Cross-Browser- und Responsiveness-Tests
-
----
-## 5. Meilensteine, Reviews und zugehörige Dokumente
-
-Im Rahmen des Projekts *StudyQuest* werden mehrere Meilensteine definiert, die den Fortschritt der Entwicklung strukturieren.  
-Jeder Meilenstein wird durch ein Review abgeschlossen, in dem das Team den aktuellen Stand präsentiert und Feedback erhält.  
-Zu jedem Meilenstein entsteht mindestens ein offizielles Dokument, das im Repository abgelegt wird.
-
-| **Meilenstein** | **Geplantes Datum** | **Beschreibung / Ziel** | **Review / Aktivität** | **Dokument / Artefakt** |
-|-----------------|---------------------|--------------------------|------------------------|--------------------------|
-| **M1 – Projektstart & Teamsetup** | 10.10.2025 | Rollenverteilung, Festlegung des Vorgehensmodells, Git-Repository einrichten | Kick-off Meeting, Review der Projektskizze | Teamplan.md, RepoSetup.md |
-| **M2 – Projektskizze abgeschlossen** | 17.10.2025 | Definition der Projektidee, Ziele, Stakeholder, Risiken und Randbedingungen | Projektskizze Review mit Betreuer | Projektskizze.md |
-| **M3 – Software Development Plan (SDP)** | 24.10.2025 | Erstellung des Entwicklungsplans inkl. Vorgehensmodell, Rollen und Meilensteinen | internes Review durch Team, Freigabe durch Scrum Master | SoftwareDevelopmentPlan.md |
-| **M4 – Architektur & UML-Diagramme** | 15.11.2025 | Erarbeitung von Use-Case-, Aktivitäts- und Klassendiagrammen, Festlegung der Systemarchitektur | Architektur-Review | UML_Diagramme.pdf, Architekturkonzept.md |
-| **M5 – UI-Mockup / Prototyp v1** | 05.12.2025 | Erstellung eines klickbaren Prototyps mit HTML, CSS und JavaScript | Sprint Review mit Feedback-Runde | Mockup_v1/ (HTML/CSS/JS-Dateien), ReviewProtokoll_M5.md |
-| **M6 – UI-Mockup / Prototyp v2** | 20.12.2025 | Erweiterung des Mockups um Interaktionen (XP-System, Navigation, Notenübersicht) | Sprint Review, UX-Test mit Feedback | Mockup_v2/, UX_Testbericht.md |
-| **M7 – Testkonzept & Qualitätssicherung** | 10.01.2026 | Erstellung eines Testkonzepts inkl. Testfälle, Checklisten und Evaluationskriterien | Review Teststrategie & Ergebnisse | Testkonzept.md, Testprotokolle/ |
-| **M8 – Abschluss & Retrospektive** | 31.01.2026 | Zusammenfassung aller Ergebnisse, Lessons Learned, Abschlusspräsentation | Abschluss-Review & Retrospektive mit Team und Betreuer | Abschlussbericht.md, Retrospektive.md |
-
----
-
-### Beschreibung der Reviews
-
-- **Kick-off Review (M1):** Vorstellung der Projektidee, Rollenverteilung und Tools.  
-- **Projektskizzen-Review (M2):** Feedback des Betreuers zur Projektbeschreibung und Zieldefinition.  
-- **SDP-Review (M3):** Überprüfung der Vollständigkeit des Software Development Plans.  
-- **Architektur-Review (M4):** Validierung der technischen Struktur und Diagramme.  
-- **Prototyp-Reviews (M5–M6):** Praktische Vorstellung des aktuellen Entwicklungsstands mit Feedbackschleife.  
-- **Test-Review (M7):** Kontrolle der Teststrategie, Vollständigkeit und Nachvollziehbarkeit.  
-- **Abschluss-Review & Retrospektive (M8):** Gemeinsame Bewertung des gesamten Projekts, Identifikation von Verbesserungspotenzialen.
 
 ---
 
