@@ -75,7 +75,8 @@ Das Projekt StudyQuest wird nach dem agilen Vorgehensmodell Scrum durchgeführt.
 
 ## 2. Aktivitätsbeschreibung
 
-<img width="1021" height="897" alt="Unbenanntes Diagramm drawio (2)" src="https://github.com/user-attachments/assets/a6a38d18-1157-460e-8a45-d51bfed92375" />
+
+<img width="1021" height="897" alt="Unbenanntes Diagramm drawio (3)" src="https://github.com/user-attachments/assets/3786e2c5-f508-4635-9d12-893bb589b938" />
 
 
 
