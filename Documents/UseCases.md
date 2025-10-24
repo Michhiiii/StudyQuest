@@ -15,3 +15,12 @@
 | **UC13** | **Quest-Katalog verwalten**                | Administrator | Admin erstellt, bearbeitet oder löscht Quests im System.                                 | Admin ist eingeloggt.                             | Quest-Katalog aktualisiert.                                          |
 | **UC14** | **XP- und Levelregeln konfigurieren**             | Administrator | Admin definiert XP-Werte, Level-Grenzen oder Belohnungslogik.                            | Admin ist eingeloggt.                             | Neue Regeln im System gespeichert.                                   |
 | **UC15** | **Benutzerkonten administrieren** | Administrator | Admin verwaltet Nutzerkonten (z. B. löschen, sperren, reaktivieren).                     | Admin ist eingeloggt.                             | Kontostatus aktualisiert.                                            |
+
+<div style="display:flex; gap:10px;">
+<img src="https://github.com/user-attachments/assets/509bf1dd-6b28-4138-bb49-66148c6b5e33" width="300">
+
+</div>
+
+
+
+
