@@ -136,7 +136,6 @@ Verbesserungsmaßnahmen werden für den nächsten Sprint festgehalten.
 ### Hinweise zur Anwendung im SCRUM-Kontext
 - Zwischen den Meilensteinen liegen **Sprints** von ca. 3–4 Wochen Dauer.  
 - Jeder Meilenstein steht für ein **Review-fähiges Inkrement** (z. B. Analyse, Prototyp, getestete Funktion).  
-- Der **Dozent fungiert als Product Owner**, das **Team als Development Team**, ein Mitglied übernimmt die Rolle des **Scrum Masters**.
 
 ## 6. Reviews und Retrospektiven
 
