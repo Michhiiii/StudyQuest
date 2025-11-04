@@ -16,7 +16,7 @@
 | **UC14** | **XP- und Levelregeln konfigurieren**             | Administrator | Admin definiert XP-Werte, Level-Grenzen oder Belohnungslogik.                            | Admin ist eingeloggt.                             | Neue Regeln im System gespeichert.                                   |
 | **UC15** | **Benutzerkonten administrieren** | Administrator | Admin verwaltet Nutzerkonten (z. B. löschen, sperren, reaktivieren).                     | Admin ist eingeloggt.                             | Kontostatus aktualisiert.                                            |
 
-<div style="display:flex; gap:10px;">
+<div style="display:flex; gap:10px; flex-direction:column;">
 <img src="https://github.com/user-attachments/assets/509bf1dd-6b28-4138-bb49-66148c6b5e33" width="1000">
 
 <img src="https://github.com/user-attachments/assets/9024044d-b550-4b84-a728-a638f3b734c2" width="1000">
@@ -25,10 +25,30 @@
 
 <img src="https://github.com/user-attachments/assets/e5f23b96-5775-46c7-ba02-8f70cefdf100" width="1000">
 
-<img src="https://github.com/user-attachments/assets/e3bb5553-fd91-4d9c-8f40-37b75693c14c" width="1000">
+<img width="1000" alt="UC05 drawio" src="https://github.com/user-attachments/assets/7cefa360-a344-4dda-bd16-33c1b8b09941" />
 
+<img width="1000" alt="UC06" src="https://github.com/user-attachments/assets/8364ba83-5005-4cbf-bf4f-92b318400120" />
+
+<img width="1000" alt="UC07" src="https://github.com/user-attachments/assets/baebc7a8-935a-4f0f-abd8-37f97b50f489" />
+
+<img width="1000" alt="UC08" src="https://github.com/user-attachments/assets/b2c45d4a-92d3-43aa-9990-00e443f6afab" />
+
+<img width="1000" alt="UC09 drawio" src="https://github.com/user-attachments/assets/437c21a9-ff9c-4888-abc0-0dc7fe3c076d" />
+
+<img width="1000" alt="UC10" src="https://github.com/user-attachments/assets/34339292-2bb0-44e2-917c-8febe9ff93ad" />
+
+<img width="1000" alt="UC11" src="https://github.com/user-attachments/assets/d3081090-fbbe-4c6a-985c-353d76da1dcd" />
+
+<img width="1000" alt="UC12" src="https://github.com/user-attachments/assets/56600f48-c95a-445c-8359-8652d43fb38a" />
+
+<img width="1000" alt="UC13" src="https://github.com/user-attachments/assets/a819306d-0bf8-4fcb-bd49-d2f29657fb25" />
+
+<img width="1000" alt="UC14" src="https://github.com/user-attachments/assets/4b760ada-e729-4994-b062-60916e53602d" />
+
+<img width="1000" alt="UC15" src="https://github.com/user-attachments/assets/713f4e59-ef7d-40c0-9e07-c2d1052b0387" />
 
 </div>
+
 
 
 
