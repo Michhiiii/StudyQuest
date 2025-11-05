@@ -1,6 +1,6 @@
 # Requirements – StudyQuest
 
---- 
+---
 
 **Titel des Dokuments:**  
 Requirements – StudyQuest
@@ -26,7 +26,6 @@ Wintersemester 2025 / 2026
 - Giuliana Carrano (Developer)  
 - Paul Strasser (Developer)  
 - Roman Faber (Developer)
-
 
 **Betreuer / Prüfer:**  
 Sascha Wanninger
@@ -145,16 +144,16 @@ UC06-NF4: Reaktionszeit für Start und Stop darf 1 Sekunde nicht überschreiten.
 
 ### Funktionale Anforderungen
 
-UC07-F1: System muss es Nutzern ermöglichen, Noten für Module einzugeben.
-UC07-F2: System muss es Nutzern ermöglichen, bestehende Noten zu bearbeiten.
-UC07-F3: System muss es Nutzern ermöglichen, Noten zu löschen.
-UC07-F4: System muss den Durchschnitt der eingetragenen Noten automatisch berechnen.
-UC07-F5: System muss die Notenübersicht nach Änderungen aktualisieren.
+UC07-F1: System muss es Nutzern ermöglichen, Noten für Module einzugeben.  
+UC07-F2: System muss es Nutzern ermöglichen, bestehende Noten zu bearbeiten.  
+UC07-F3: System muss es Nutzern ermöglichen, Noten zu löschen.  
+UC07-F4: System muss den Durchschnitt der eingetragenen Noten automatisch berechnen.  
+UC07-F5: System muss die Notenübersicht nach Änderungen aktualisieren.  
 
 ### Nicht-funktionale Anforderungen
 
-UC07-NF1: Änderungen an Noten müssen in Echtzeit im Dashboard reflektiert werden.
-UC07-NF2: System muss Datenkonsistenz sicherstellen, d.h. keine fehlerhaften Durchschnittswerte.
+UC07-NF1: Änderungen an Noten müssen in Echtzeit im Dashboard reflektiert werden.  
+UC07-NF2: System muss Datenkonsistenz sicherstellen, d.h. keine fehlerhaften Durchschnittswerte.  
 
 ---
 
@@ -162,16 +161,16 @@ UC07-NF2: System muss Datenkonsistenz sicherstellen, d.h. keine fehlerhaften Dur
 
 ### Funktionale Anforderungen
 
-UC08-F1: System muss es Nutzern ermöglichen, das Dashboard zu öffnen.
-UC08-F2: System muss den aktuellen XP-Stand des Nutzers anzeigen.
-UC08-F3: System muss das Level des Nutzers anzeigen.
-UC08-F4: System muss aktive und abgeschlossene Quests anzeigen.
-UC08-F5: System muss die Notenstatistik des Nutzers anzeigen.
+UC08-F1: System muss es Nutzern ermöglichen, das Dashboard zu öffnen.  
+UC08-F2: System muss den aktuellen XP-Stand des Nutzers anzeigen.  
+UC08-F3: System muss das Level des Nutzers anzeigen.  
+UC08-F4: System muss aktive und abgeschlossene Quests anzeigen.  
+UC08-F5: System muss die Notenstatistik des Nutzers anzeigen.  
 
 ### Nicht-funktionale Anforderungen
 
-UC08-NF1: Dashboard-Daten müssen innerhalb von 2 Sekunden nach Öffnen vollständig geladen sein.
-UC08-NF2: Dashboard muss auf allen unterstützten Browsern korrekt angezeigt werden.
+UC08-NF1: Dashboard-Daten müssen innerhalb von 2 Sekunden nach Öffnen vollständig geladen sein.  
+UC08-NF2: Dashboard muss auf allen unterstützten Browsern korrekt angezeigt werden.  
 
 ---
 
@@ -179,41 +178,35 @@ UC08-NF2: Dashboard muss auf allen unterstützten Browsern korrekt angezeigt wer
 
 ### Funktionale Anforderungen
 
-UC09-F1: System muss es Nutzern ermöglichen, die Benachrichtigungseinstellungen zu öffnen.
-UC09-F2: System muss Lern-Erinnerungen ein- oder ausschalten können.
-UC09-F3: System muss Quest-Benachrichtigungen ein- oder ausschalten können.
-UC09-F4: System muss die Änderungen an den Benachrichtigungseinstellungen speichern.
+UC09-F1: System muss es Nutzern ermöglichen, die Benachrichtigungseinstellungen zu öffnen.  
+UC09-F2: System muss Lern-Erinnerungen ein- oder ausschalten können.  
+UC09-F3: System muss Quest-Benachrichtigungen ein- oder ausschalten können.  
+UC09-F4: System muss die Änderungen an den Benachrichtigungseinstellungen speichern.  
 
 ### Nicht-funktionale Anforderungen
 
-UC09-NF1: Änderungen an Benachrichtigungen müssen sofort wirksam sein.
-UC09-NF2: System muss Benachrichtigungen zuverlässig ausliefern (z. B. Push / E-Mail / Browser-Alert).
+UC09-NF1: Änderungen an Benachrichtigungen müssen sofort wirksam sein.  
+UC09-NF2: System muss Benachrichtigungen zuverlässig ausliefern (z. B. Push / E-Mail / Browser-Alert).  
 
 
 ## UC10 - Noten importieren / exportieren
 ### Funktionale Anforderungen
-UC10-F1: Das System muss den Import von Noten aus einer CSV-Datei ermöglichen.  
-UC10-F2: Das System muss den Export von Noten aus einer CSV-Datei ermöglichen.
-UC10-F3: Das System muss fehlerhafte Dateien erkennen und dem Benutzer eine Fehlermeldung anzeigen.  
-**Beschreibung:**
-Importieren spart Zeit, während Exportieren weitere Bearbeitung erlaubt oder Archivierung.
+UC10-F1: Das System muss den Import von Noten aus einer CSV-Datei ermöglichen.    
+UC10-F2: Das System muss den Export von Noten aus einer CSV-Datei ermöglichen.  
+UC10-F3: Das System muss fehlerhafte Dateien erkennen und dem Benutzer eine Fehlermeldung anzeigen.    
 
 ---
 
 ## UC11 - Achievements / Badges freischalten
 ### Funktionale Anforderungen
-UC11-F1: Das System muss Bedingungen für Badges prüfen (z. B. gelöste Aufgaben, Punkte, Streaks).
-UC11-F2: Das System muss beim Erfüllen der Bedingung das entsprechende Badge freischalten.
-UC11-F3: Der Benutzer muss über das neue Achievement visuell informiert werden (z. B. Popup, Animation).
-UC11-F4: Der Benutzer muss eine Übersicht aller verfügbaren und freigeschalteten Badges sehen können.
-**Beschreibung:**
-Motivationssystem für Verwendung des Systems.a 
+UC11-F1: Das System muss Bedingungen für Badges prüfen (z. B. gelöste Aufgaben, Punkte, Streaks).  
+UC11-F2: Das System muss beim Erfüllen der Bedingung das entsprechende Badge freischalten.  
+UC11-F3: Der Benutzer muss über das neue Achievement visuell informiert werden (z. B. Popup, Animation).  
+UC11-F4: Der Benutzer muss eine Übersicht aller verfügbaren und freigeschalteten Badges sehen können.  
 
 ## UC12 - Leaderboard & Streaks anzeigen
 ### Funktionale Anforderungen
-UC12-F1: Das System muss eine Rangliste aller Benutzer mit Punkten anzeigen.  
-UC12-F2: Das System muss Streaks (aufeinanderfolgende aktive Tage) berechnen und anzeigen.
-UC12-F3: Das System muss die Daten bei Aufruf aktualisieren.
-UC12-F4: Benutzer sollen ihre eigene Position schnell finden (z. B. durch Hervorhebung).
-**Beschreibung:**
-Soll Wettbewerb fördern sowohl tägliche Nutzung motivieren.
+UC12-F1: Das System muss eine Rangliste aller Benutzer mit Punkten anzeigen.    
+UC12-F2: Das System muss Streaks (aufeinanderfolgende aktive Tage) berechnen und anzeigen.  
+UC12-F3: Das System muss die Daten bei Aufruf aktualisieren.  
+UC12-F4: Benutzer sollen ihre eigene Position schnell finden (z. B. durch Hervorhebung).  
