@@ -225,8 +225,8 @@ Michael Steer (Scrum Master)
 * **UC10-F2:** System muss den Export von Noten aus einer CSV-Datei ermöglichen.
 * **UC10-F3:** System muss fehlerhafte Dateien erkennen und dem Benutzer eine Fehlermeldung anzeigen.
 
-**Nicht-funktionale Anforderungen**
-**UC10-NF1:** Der Import/Export-Prozess soll innerhalb von 5 Sekunden abgeschlossen sein.  
+* **Nicht-funktionale Anforderungen**
+* **UC10-NF1:** Der Import/Export-Prozess soll innerhalb von 5 Sekunden abgeschlossen sein.  
 
 ---
 
@@ -239,8 +239,8 @@ Michael Steer (Scrum Master)
 * **UC11-F3:** Benutzer muss über das neue Achievement visuell informiert werden (z. B. Popup, Animation).
 * **UC11-F4:** Benutzer muss eine Übersicht aller verfügbaren und freigeschalteten Badges sehen können.  
 
-**Nicht-funktionale Anforderungen**
-**UC11-NF1:** Das System soll den Badge-Check automatisch nach jeder relevanten Aktion durchführen.
+* **Nicht-funktionale Anforderungen**
+* **UC11-NF1:** Das System soll den Badge-Check automatisch nach jeder relevanten Aktion durchführen.
 ---
 
 ## UC12 – Leaderboard & Streaks anzeigen
@@ -253,8 +253,8 @@ Michael Steer (Scrum Master)
 * **UC12-F4:** Benutzer sollen ihre eigene Position schnell finden (z. B. durch Hervorhebung).
 
 **Nicht-funktionale Anforderungen**
-**UC12-NF1:** Leaderboard soll innerhalb von 3 Sekunden geladen werden.  
-**UC12-NF2:** Die Daten sollen regelmäßig synchronisiert werden.  
+* **UC12-NF1:** Leaderboard soll innerhalb von 3 Sekunden geladen werden.  
+* **UC12-NF2:** Die Daten sollen regelmäßig synchronisiert werden.  
 ---
 
 ## UC13 – Quest Katalog verwalten
