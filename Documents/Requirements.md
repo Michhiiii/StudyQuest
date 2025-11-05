@@ -26,6 +26,7 @@ Wintersemester 2025 / 2026
 - Giuliana Carrano (Developer)  
 - Paul Strasser (Developer)  
 - Roman Faber (Developer)
+- Kelvin (Prankbro)
 
 **Betreuer / Prüfer:**  
 Sascha Wanninger
