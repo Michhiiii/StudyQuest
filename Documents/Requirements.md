@@ -139,3 +139,32 @@ UC06-NF3: Alle Timeraktionen (Start, Pause, Stop) müssen protokolliert werden.
 UC06-NF4: Reaktionszeit für Start und Stop darf 1 Sekunde nicht überschreiten.
 
 ---
+
+
+## UC10 - Noten importieren / exportieren
+### Funktionale Anforderungen
+UC10-F1: Das System muss den Import von Noten aus einer CSV-Datei ermöglichen.  
+UC10-F2: Das System muss den Export von Noten aus einer CSV-Datei ermöglichen.
+UC10-F3: Das System muss fehlerhafte Dateien erkennen und dem Benutzer eine Fehlermeldung anzeigen.  
+**Beschreibung:**
+Importieren spart Zeit, während Exportieren weitere Bearbeitung erlaubt oder Archivierung.
+
+---
+
+## UC11 - Achievements / Badges freischalten
+### Funktionale Anforderungen
+UC11-F1: Das System muss Bedingungen für Badges prüfen (z. B. gelöste Aufgaben, Punkte, Streaks).
+UC11-F2: Das System muss beim Erfüllen der Bedingung das entsprechende Badge freischalten.
+UC11-F3: Der Benutzer muss über das neue Achievement visuell informiert werden (z. B. Popup, Animation).
+UC11-F4: Der Benutzer muss eine Übersicht aller verfügbaren und freigeschalteten Badges sehen können.
+**Beschreibung:**
+Motivationssystem für Verwendung des Systems.
+
+## UC12 - Leaderboard & Streaks anzeigen
+### Funktionale Anforderungen
+UC12-F1: Das System muss eine Rangliste aller Benutzer mit Punkten anzeigen.  
+UC12-F2: Das System muss Streaks (aufeinanderfolgende aktive Tage) berechnen und anzeigen.
+UC12-F3: Das System muss die Daten bei Aufruf aktualisieren.
+UC12-F4: Benutzer sollen ihre eigene Position schnell finden (z. B. durch Hervorhebung).
+**Beschreibung:**
+Soll Wettbewerb fördern sowohl tägliche Nutzung motivieren.
