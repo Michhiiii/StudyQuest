@@ -250,3 +250,10 @@ UC15-F2: System muss das Suchen von Benutzerkonten erlauben.
 UC15-F3: System muss die Kontoeinstellungen anzeigen können.  
 UC15-F4: System muss das Löschen, Sperren oder Reaktivieren von Konten ermöglichen.  
 UC15-F5: System muss den Kontostatus nach Änderungen aktualisieren.  
+
+### Nicht-funktionale Anforderungen
+UC15-NF1: Änderungen am Kontostatus müssen sofort wirksam werden.  
+UC15-NF2: Alle Kontoaktionen müssen protokolliert werden.  
+UC15-NF3: Das System darf pro Anfrage nur einen Kontostatus ändern.  
+UC15-NF4: Zugriff auf die Konto-Administration darf nur autorisierten Admins gestattet sein.  
+
