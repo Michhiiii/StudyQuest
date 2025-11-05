@@ -214,39 +214,39 @@ UC12-F4: Benutzer sollen ihre eigene Position schnell finden (z. B. durch Hervor
 ## UC13 - Quest Katalog verwalten
 
 ### Funktionale Anforderungen
-UC13-F1: System muss Admins das Einloggen ermöglichen.
-UC13-F2: System muss Zugriff auf die Quest-Verwaltung bereitstellen.
-UC13-F3: System muss das Erstellen neuer Quests erlauben.
-UC13-F4: System muss das Bearbeiten bestehender Quests erlauben.
-UC13-F5: System muss das Löschen von Quests ermöglichen.
-UC13-F6: System muss den Quest-Katalog nach Änderungen automatisch aktualisieren.
+UC13-F1: System muss Admins das Einloggen ermöglichen.  
+UC13-F2: System muss Zugriff auf die Quest-Verwaltung bereitstellen.  
+UC13-F3: System muss das Erstellen neuer Quests erlauben.  
+UC13-F4: System muss das Bearbeiten bestehender Quests erlauben.  
+UC13-F5: System muss das Löschen von Quests ermöglichen.  
+UC13-F6: System muss den Quest-Katalog nach Änderungen automatisch aktualisieren.  
 
 ### Nicht-funktionale Anforderungen
-UC13-NF1: Änderungen am Katalog müssen innerhalb von 2 Sekunden sichtbar sein.
-UC13-NF2: Nur eingeloggte Admins dürfen Änderungen am Katalog durchführen.
-UC13-NF3: Alle Änderungen müssen versioniert und nachvollziehbar gespeichert werden.
-UC13-NF4: Das System muss bei gleichzeitigen Bearbeitungen Konflikte korrekt behandeln.
+UC13-NF1: Änderungen am Katalog müssen innerhalb von 2 Sekunden sichtbar sein.  
+UC13-NF2: Nur eingeloggte Admins dürfen Änderungen am Katalog durchführen.  
+UC13-NF3: Alle Änderungen müssen versioniert und nachvollziehbar gespeichert werden.  
+UC13-NF4: Das System muss bei gleichzeitigen Bearbeitungen Konflikte korrekt behandeln.  
 
 ## UC14 - XP- und Levelregeln konfigurieren
 
 ### Funktionale Anforderungen
-UC14-F1: System muss Admins das Einloggen ermöglichen.
-UC14-F2: System muss Zugriff auf die Regelverwaltung bereitstellen.
-UC14-F3: System muss das Ändern von XP- und Levelregeln ermöglichen.
-UC14-F4: System muss geänderte Regeln speichern und aktivieren.
-UC14-F5: System muss sicherstellen, dass neue Regeln sofort für alle Nutzer:innen gelten.
+UC14-F1: System muss Admins das Einloggen ermöglichen.  
+UC14-F2: System muss Zugriff auf die Regelverwaltung bereitstellen.  
+UC14-F3: System muss das Ändern von XP- und Levelregeln ermöglichen.  
+UC14-F4: System muss geänderte Regeln speichern und aktivieren.  
+UC14-F5: System muss sicherstellen, dass neue Regeln sofort für alle Nutzer:innen gelten.  
 
 ### Nicht-funktionale Anforderungen
-UC14-NF1: Änderungen an den Regeln dürfen keine bestehenden Daten inkonsistent machen.
-UC14-NF2: Regeländerungen müssen protokolliert werden.
-UC14-NF3: Das Speichern der Regeln darf maximal 2 Sekunden dauern.
-UC14-NF4: Nur autorisierte Admins dürfen Zugriff auf die Regelkonfiguration haben.
+UC14-NF1: Änderungen an den Regeln dürfen keine bestehenden Daten inkonsistent machen.  
+UC14-NF2: Regeländerungen müssen protokolliert werden.  
+UC14-NF3: Das Speichern der Regeln darf maximal 2 Sekunden dauern.  
+UC14-NF4: Nur autorisierte Admins dürfen Zugriff auf die Regelkonfiguration haben.  
 
 ## UC15 - Benutzerkonten administrieren
 
 ### Funktionale Anforderungen
-UC15-F1: System muss Admins das Einloggen ermöglichen.
-UC15-F2: System muss das Suchen von Benutzerkonten erlauben.
-UC15-F3: System muss die Kontoeinstellungen anzeigen können.
-UC15-F4: System muss das Löschen, Sperren oder Reaktivieren von Konten ermöglichen.
-UC15-F5: System muss den Kontostatus nach Änderungen aktualisieren.
+UC15-F1: System muss Admins das Einloggen ermöglichen.  
+UC15-F2: System muss das Suchen von Benutzerkonten erlauben.  
+UC15-F3: System muss die Kontoeinstellungen anzeigen können.  
+UC15-F4: System muss das Löschen, Sperren oder Reaktivieren von Konten ermöglichen.  
+UC15-F5: System muss den Kontostatus nach Änderungen aktualisieren.  
