@@ -140,6 +140,54 @@ UC06-NF4: Reaktionszeit für Start und Stop darf 1 Sekunde nicht überschreiten.
 
 ---
 
+## UC07 – Noten & Module verwalten
+
+### Funktionale Anforderungen
+
+UC07-F1: System muss es Nutzern ermöglichen, Noten für Module einzugeben.
+UC07-F2: System muss es Nutzern ermöglichen, bestehende Noten zu bearbeiten.
+UC07-F3: System muss es Nutzern ermöglichen, Noten zu löschen.
+UC07-F4: System muss den Durchschnitt der eingetragenen Noten automatisch berechnen.
+UC07-F5: System muss die Notenübersicht nach Änderungen aktualisieren.
+
+### Nicht-funktionale Anforderungen
+
+UC07-NF1: Änderungen an Noten müssen in Echtzeit im Dashboard reflektiert werden.
+UC07-NF2: System muss Datenkonsistenz sicherstellen, d.h. keine fehlerhaften Durchschnittswerte.
+
+---
+
+## UC08 – Fortschritt & Dashboard einsehen
+
+### Funktionale Anforderungen
+
+UC08-F1: System muss es Nutzern ermöglichen, das Dashboard zu öffnen.
+UC08-F2: System muss den aktuellen XP-Stand des Nutzers anzeigen.
+UC08-F3: System muss das Level des Nutzers anzeigen.
+UC08-F4: System muss aktive und abgeschlossene Quests anzeigen.
+UC08-F5: System muss die Notenstatistik des Nutzers anzeigen.
+
+### Nicht-funktionale Anforderungen
+
+UC08-NF1: Dashboard-Daten müssen innerhalb von 2 Sekunden nach Öffnen vollständig geladen sein.
+UC08-NF2: Dashboard muss auf allen unterstützten Browsern korrekt angezeigt werden.
+
+---
+
+## UC09 – Benachrichtigungen & Reminder verwalten
+
+### Funktionale Anforderungen
+
+UC09-F1: System muss es Nutzern ermöglichen, die Benachrichtigungseinstellungen zu öffnen.
+UC09-F2: System muss Lern-Erinnerungen ein- oder ausschalten können.
+UC09-F3: System muss Quest-Benachrichtigungen ein- oder ausschalten können.
+UC09-F4: System muss die Änderungen an den Benachrichtigungseinstellungen speichern.
+
+### Nicht-funktionale Anforderungen
+
+UC09-NF1: Änderungen an Benachrichtigungen müssen sofort wirksam sein.
+UC09-NF2: System muss Benachrichtigungen zuverlässig ausliefern (z. B. Push / E-Mail / Browser-Alert).
+
 
 ## UC10 - Noten importieren / exportieren
 ### Funktionale Anforderungen
