@@ -305,3 +305,31 @@ Michael Steer (Scrum Master)
 * **UC15-F3:** System muss die Kontoeinstellungen anzeigen können.
 * **UC15-F4:** System muss das Löschen, Sperren oder Reaktivieren von Konten ermöglichen.
 * **UC15-F5:** System muss den Kontostatus nach Änderungen aktualisieren.
+
+
+
+
+
+## Dependencies – StudyQuest
+
+| **Von (Use Case)** | **Nach (Use Case)** | **Beschreibung der direkten Verbindung** |
+|--------------------|--------------------|------------------------------------------|
+| **UC01 – Registrieren & Einloggen** | **UC02 – Passwort zurücksetzen** | Passwort zurücksetzen benötigt ein existierendes Nutzerkonto. |
+| **UC04 – Lernquest starten** | **UC05 – Lernquest abschließen** | Eine Quest muss gestartet sein, bevor sie abgeschlossen werden kann. |
+| **UC04 – Lernquest starten** | **UC06 – Lern-Session per Timer tracken** | Timer kann nur während einer aktiven Quest laufen. |
+| **UC05 – Lernquest abschließen** | **UC08 – Fortschritt & Dashboard einsehen** | Questabschluss aktualisiert XP- und Level-Anzeige im Dashboard. |
+| **UC05 – Lernquest abschließen** | **UC11 – Achievements / Badges freischalten** | Questabschluss kann ein Achievement auslösen. |
+| **UC05 – Lernquest abschließen** | **UC12 – Leaderboard & Streaks anzeigen** | Questabschluss beeinflusst die Leaderboard-Position. |
+| **UC06 – Lern-Session per Timer tracken** | **UC05 – Lernquest abschließen** | Beendete Lernsession kann Questabschluss initiieren. |
+| **UC06 – Lern-Session per Timer tracken** | **UC11 – Achievements / Badges freischalten** | Lernzeit kann ein Achievement triggern. |
+| **UC06 – Lern-Session per Timer tracken** | **UC12 – Leaderboard & Streaks anzeigen** | Timer-Streaks wirken sich direkt auf das Leaderboard aus. |
+| **UC07 – Noten & Module verwalten** | **UC08 – Fortschritt & Dashboard einsehen** | Notenübersicht wird im Dashboard dargestellt. |
+| **UC07 – Noten & Module verwalten** | **UC10 – Noten importieren / exportieren** | Import/Export greift direkt auf Notendaten zu. |
+| **UC10 – Noten importieren / exportieren** | **UC07 – Noten & Module verwalten** | Importierte oder exportierte Dateien ändern Notendaten. |
+| **UC11 – Achievements / Badges freischalten** | **UC08 – Fortschritt & Dashboard einsehen** | Freigeschaltete Badges erscheinen im Dashboard. |
+| **UC11 – Achievements / Badges freischalten** | **UC12 – Leaderboard & Streaks anzeigen** | Achievements beeinflussen Leaderboard-Bewertung. |
+| **UC13 – Quest-Katalog verwalten (Admin)** | **UC14 – XP- und Levelregeln konfigurieren (Admin)** | XP-Regeln basieren auf Quest-Struktur aus dem Katalog. |
+| **UC14 – XP- und Levelregeln konfigurieren (Admin)** | **UC05 – Lernquest abschließen (XP & Level-Up)** | XP-Regeln bestimmen XP-Berechnung beim Questabschluss. |
+| **UC14 – XP- und Levelregeln konfigurieren (Admin)** | **UC11 – Achievements / Badges freischalten** | XP-Regeln beeinflussen Badge-Freischaltung. |
+| **UC15 – Benutzerkonten administrieren (Admin)** | **UC13 – Quest-Katalog verwalten (Admin)** | Admins können Quest-Autoren oder -Verwalter managen. |
+| **UC15 – Benutzerkonten administrieren (Admin)** | **UC14 – XP- und Levelregeln konfigurieren (Admin)** | Admins können Berechtigungen oder Änderungen an XP-Regeln durchführen. |
