@@ -158,7 +158,7 @@ UC11-F2: Das System muss beim Erfüllen der Bedingung das entsprechende Badge fr
 UC11-F3: Der Benutzer muss über das neue Achievement visuell informiert werden (z. B. Popup, Animation).
 UC11-F4: Der Benutzer muss eine Übersicht aller verfügbaren und freigeschalteten Badges sehen können.
 **Beschreibung:**
-Motivationssystem für Verwendung des Systems.
+Motivationssystem für Verwendung des Systems.a 
 
 ## UC12 - Leaderboard & Streaks anzeigen
 ### Funktionale Anforderungen
