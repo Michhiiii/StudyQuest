@@ -2,7 +2,7 @@
 
 ## 1. Zweck und Geltungsbereich
 
-Diese Review Procedure beschreibt das strukturierte Vorgehen zur Qualitätssicherung der Projektdokumente im Rahmen des Projekts **„StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App“** (bzw. analoger Projekte).
+Diese Review Procedure beschreibt das strukturierte Vorgehen zur Qualitätssicherung der Projektdokumente.
 
 ---
 
