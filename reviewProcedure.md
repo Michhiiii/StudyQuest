@@ -101,3 +101,6 @@ Bis **24. November 2025**:
 - Bereitstellung einer aktualisierten Version der Dokumente, z. B.  
   `Requirements_Review_v2_2025-11-24.pdf`
 - Optional: Übermittlung der finalen Kommentarliste mit Status und Entscheidungen
+
+---
+© 2025 StudyQuest Project Team – DHBW Ravensburg
