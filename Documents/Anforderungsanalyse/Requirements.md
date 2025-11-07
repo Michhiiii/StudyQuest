@@ -62,250 +62,91 @@ Michael Steer (Scrum Master)
 # Requirements: StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App
 ===========================================================================
 
+# Requirements Specification – StudyQuest  
+### Gamifizierte Lern- und Notenverwaltungs-Web-App  
+
+---
+
 ## UC01 – Registrieren & Einloggen
-
-**Funktionale Anforderungen**
-
-* **UC01-F1:** System muss die Registrierung mit E-Mail und Passwort erlauben.
-* **UC01-F2:** System muss prüfen, ob die E-Mail schon existiert; bei vorhandener E-Mail kein neues Konto anlegen.
-* **UC01-F3:** System muss den Login mit E-Mail und Passwort erlauben.
-* **UC01-F4:** Bei erfolgreichem Login muss das System das Dashboard anzeigen.
-
-**Nicht-funktionale Anforderungen**
-
-* **UC01-NF1:** Passwort darf nicht im Klartext gespeichert werden (gehashter Speicher).
-* **UC01-NF2:** Fehlermeldungen dürfen nicht verraten, ob ein Account existiert („E-Mail oder Passwort falsch“).
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC01-F1 | Funktional | Das System muss die Registrierung von Nutzer:innen mittels E-Mail und Passwort ermöglichen. | Ermöglicht individuellen Zugang und Datenspeicherung. | Neue Registrierung mit gültiger E-Mail und Passwort erzeugt einen Datensatz. | Product Owner | Muss | Entwurf |
+| UC01-F2 | Funktional | Das System muss prüfen, ob eine E-Mail bereits existiert und doppelte Konten verhindern. | Verhindert doppelte Datensätze und Verwirrung. | Registrierung mit existierender E-Mail erzeugt eine Fehlermeldung und kein Konto. | Product Owner | Muss | Entwurf |
+| UC01-F3 | Funktional | Das System muss den Login mit E-Mail und Passwort erlauben. | Benutzer:innen benötigen Zugriff auf ihre Lern- und Notendaten. | Gültige Login-Daten öffnen das Dashboard. | Nutzer:in | Muss | Entwurf |
+| UC01-F4 | Funktional | Nach erfolgreichem Login muss das Dashboard angezeigt werden. | Erhöht Nutzerfreundlichkeit durch direkten Zugang zu Lernfortschritt. | Nach Login wird das personalisierte Dashboard geladen. | Product Owner | Muss | Entwurf |
+| UC01-NF1 | Nicht-funktional | Passwörter dürfen nicht im Klartext gespeichert werden. | Schutz sensibler Benutzerdaten. | Passwort-Hashes (z. B. bcrypt) sind in der Datenbank nachweisbar. | Security Officer | Muss | Entwurf |
+| UC01-NF2 | Nicht-funktional | Fehlermeldungen dürfen keine Information über existierende Accounts preisgeben. | Schutz vor Enumeration-Angriffen. | Einheitliche Fehlermeldung „E-Mail oder Passwort falsch“ wird angezeigt. | Security Officer | Muss | Entwurf |
 
 ---
 
 ## UC02 – Passwort zurücksetzen
-
-**Funktionale Anforderungen**
-
-* **UC02-F1:** System muss über „Passwort vergessen“ eine E-Mail zum Zurücksetzen anfordern lassen.
-* **UC02-F2:** System muss einen zeitlich begrenzten Link/Token generieren und an die angegebene E-Mail senden.
-* **UC02-F3:** Über den Link muss der/die Nutzer:in ein neues Passwort setzen können.
-* **UC02-F4:** Nach Setzen des neuen Passworts muss das alte Passwort ungültig sein.
-
-**Nicht-funktionale Anforderungen**
-
-* **UC02-NF1:** Antwort bei „Passwort vergessen“ ist immer neutral (kein Account-Leak).
-* **UC02-NF2:** Reset-Link hat eine Ablaufzeit (z. B. 30 min).
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC02-F1 | Funktional | System muss über „Passwort vergessen“ eine E-Mail zum Zurücksetzen anfordern lassen. | Nutzer:innen benötigen Wiederherstellungsmöglichkeit. | Klick auf „Passwort vergessen“ führt zu E-Mail-Versand. | Nutzer:in | Muss | Entwurf |
+| UC02-F2 | Funktional | System muss einen zeitlich begrenzten Token generieren und versenden. | Schutz vor Missbrauch alter Links. | Token ist 30 min gültig, danach ungültig. | Entwicklerteam | Muss | Entwurf |
+| UC02-F3 | Funktional | Über den Link kann ein neues Passwort gesetzt werden. | Sicheres Zurücksetzen gewährleistet Kontowiederherstellung. | Eingabe und Bestätigung neuen Passworts erfolgreich möglich. | Nutzer:in | Muss | Entwurf |
+| UC02-F4 | Funktional | Nach Setzen des neuen Passworts muss das alte ungültig sein. | Erhöht Systemsicherheit. | Login mit altem Passwort schlägt fehl. | Security Officer | Muss | Entwurf |
+| UC02-NF1 | Nicht-funktional | Antwort bei „Passwort vergessen“ ist immer neutral. | Verhindert, dass Außenstehende Nutzerkonten erkennen. | System meldet stets „E-Mail gesendet, falls registriert“. | Security Officer | Muss | Entwurf |
+| UC02-NF2 | Nicht-funktional | Reset-Link hat Ablaufzeit. | Minimiert Risiko kompromittierter Tokens. | Link läuft nach 30 min automatisch ab. | Entwicklerteam | Muss | Entwurf |
 
 ---
 
 ## UC03 – Profil & Einstellungen verwalten
-
-**Funktionale Anforderungen**
-
-* **UC03-F1:** System muss die aktuellen Profildaten des eingeloggten Nutzers anzeigen.
-* **UC03-F2:** System muss das Ändern grundlegender Profildaten (Name, Studiengang, Avatar/Profilbild) erlauben.
-* **UC03-F3:** System muss die Änderungen speichern und erneut anzeigen.
-
-**Nicht-funktionale Anforderungen**
-
-* **UC03-NF1:** Nur der/die eingeloggte Nutzer:in darf sein/ihr eigenes Profil ändern.
-* **UC03-NF2:** Bei Fehlern (Pflichtfeld leer, zu lang) zeigt das System eine verständliche Fehlermeldung.
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC03-F1 | Funktional | System zeigt aktuelle Profildaten an. | Nutzer:innen sollen ihr Profil einsehen können. | Anzeige aller gespeicherten Felder im UI. | Nutzer:in | Muss | Entwurf |
+| UC03-F2 | Funktional | System erlaubt Änderungen an Name, Studiengang und Avatar. | Erhöht Personalisierbarkeit. | Änderungen werden gespeichert und korrekt dargestellt. | Nutzer:in | Soll | Entwurf |
+| UC03-F3 | Funktional | Änderungen werden gespeichert und angezeigt. | Sicherstellung von Datenpersistenz. | Aktualisierte Daten erscheinen nach Speichern erneut. | Entwicklerteam | Muss | Entwurf |
+| UC03-NF1 | Nicht-funktional | Nur eingeloggte Nutzer:innen dürfen ihr Profil ändern. | Datenschutz und Zugriffsschutz. | Zugriff auf Profiländerung nur mit gültiger Session. | Security Officer | Muss | Entwurf |
+| UC03-NF2 | Nicht-funktional | System zeigt verständliche Fehlermeldungen bei Eingabefehlern. | Verbesserte Usability. | Fehlermeldungen enthalten klare Ursachenbeschreibung. | UX-Designer | Soll | Entwurf |
 
 ---
 
 ## UC04 – Lernquest starten
-
-**Funktionale Anforderungen**
-
-* **UC04-F1:** System muss eingeloggten Nutzer:innen die Auswahl einer verfügbaren Lernquest ermöglichen.
-* **UC04-F2:** System muss nach Auswahl einer Quest die Start-Aktion ermöglichen.
-* **UC04-F3:** Nach Bestätigung muss das System den Queststatus auf „aktiv“ setzen und den Startzeitpunkt speichern.
-* **UC04-F4:** System darf gleichzeitig nur eine aktive Quest pro Nutzer:in zulassen.
-* **UC04-F5:** System muss bei aktiver Quest verhindern, dass eine weitere gestartet wird, und eine entsprechende Meldung anzeigen.
-
-**Nicht-funktionale Anforderungen**
-
-* **UC04-NF1:** Der Statuswechsel einer Quest auf „aktiv“ muss innerhalb von ≤ 1 Sekunde sichtbar sein.
-* **UC04-NF2:** Aktionen dürfen nur für authentifizierte Nutzer:innen verfügbar sein.
-* **UC04-NF3:** Das Starten einer Quest muss serverseitig protokolliert werden (Audit-Event „QUEST_STARTED“).
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC04-F1 | Funktional | System ermöglicht Auswahl einer verfügbaren Lernquest. | Nutzer:innen sollen Quests selbstständig starten können. | Auswahl aus Quests im UI möglich. | Product Owner | Muss | Entwurf |
+| UC04-F2 | Funktional | System ermöglicht Start der gewählten Quest. | Aktiviert Lernfortschritt-Tracking. | Klick auf „Starten“ setzt Queststatus auf „aktiv“. | Entwicklerteam | Muss | Entwurf |
+| UC04-F3 | Funktional | System speichert Startzeitpunkt. | Zeitliche Nachvollziehbarkeit der Lernsession. | Datenbank enthält Timestamp beim Start. | Entwicklerteam | Muss | Entwurf |
+| UC04-F4 | Funktional | Nur eine aktive Quest pro Nutzer:in. | Verhindert Überschneidungen. | Versuch, zweite Quest zu starten → Fehlermeldung. | Product Owner | Muss | Entwurf |
+| UC04-F5 | Funktional | Bei aktiver Quest wird Start weiterer Quests blockiert. | Konsistenz des Fortschritts. | Meldung „Eine Quest ist bereits aktiv“ erscheint. | Entwicklerteam | Muss | Entwurf |
+| UC04-NF1 | Nicht-funktional | Statuswechsel auf „aktiv“ erfolgt in ≤ 1 Sekunde. | Flüssige Nutzererfahrung. | Zeitmessung bestätigt ≤ 1 Sekunde Reaktion. | UX-Tester | Soll | Entwurf |
+| UC04-NF2 | Nicht-funktional | Aktionen nur für authentifizierte Nutzer:innen verfügbar. | Zugriffsschutz. | API-Aufruf ohne Authentifizierung → Fehler 401. | Security Officer | Muss | Entwurf |
+| UC04-NF3 | Nicht-funktional | Starten der Quest wird serverseitig protokolliert. | Auditierbarkeit von Lernaktivitäten. | Logeintrag „QUEST_STARTED“ im System vorhanden. | Entwicklerteam | Soll | Entwurf |
 
 ---
 
 ## UC05 – Lernquest abschließen (XP & Level-Up)
-
-**Funktionale Anforderungen**
-
-* **UC05-F1:** System muss Nutzer:innen ermöglichen, eine aktive Quest als abgeschlossen zu markieren.
-* **UC05-F2:** System muss beim Abschluss automatisch die zugehörigen XP gutschreiben und den Gesamt-XP-Stand aktualisieren.
-* **UC05-F3:** System muss prüfen, ob die neue XP-Summe eine Levelgrenze überschreitet, und falls ja, das neue Level freischalten.
-* **UC05-F4:** System muss das Level-Up visuell anzeigen (z. B. Popup oder Banner).
-* **UC05-F5:** System muss die abgeschlossene Quest mit Endzeitpunkt speichern und den Status auf „abgeschlossen“ setzen.
-
-**Nicht-funktionale Anforderungen**
-
-* **UC05-NF1:** Der Abschluss einer Quest darf höchstens 2 Sekunden Reaktionszeit haben.
-* **UC05-NF2:** XP-Vergabe muss atomar erfolgen (keine doppelte Gutschrift bei mehrfacher Eingabe).
-* **UC05-NF3:** Level-Up-Events müssen serverseitig protokolliert werden (Audit-Event „QUEST_COMPLETED“).
-* **UC05-NF4:** System darf nur abgeschlossene Quests für XP-Berechnung berücksichtigen.
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC05-F1 | Funktional | System ermöglicht Markierung einer aktiven Quest als abgeschlossen. | Abschluss signalisiert Lernfortschritt. | Button „Abschließen“ sichtbar und funktionsfähig. | Nutzer:in | Muss | Entwurf |
+| UC05-F2 | Funktional | System vergibt automatisch XP beim Abschluss. | Belohnung fördert Motivation. | XP-Wert wird zur Gesamtsumme addiert. | Product Owner | Muss | Entwurf |
+| UC05-F3 | Funktional | System prüft Level-Up bei XP-Grenze. | Spielerisches Fortschrittssystem. | Bei Überschreitung → Level-Anzeige aktualisiert. | Entwicklerteam | Soll | Entwurf |
+| UC05-F4 | Funktional | System zeigt Level-Up visuell an. | Steigert Benutzererlebnis. | Popup / Banner erscheint bei Level-Up. | UX-Designer | Soll | Entwurf |
+| UC05-F5 | Funktional | System speichert Endzeitpunkt und Status „abgeschlossen“. | Nachvollziehbarkeit und Auswertung. | Timestamp im Datensatz gespeichert. | Entwicklerteam | Muss | Entwurf |
+| UC05-NF1 | Nicht-funktional | Abschlussreaktion ≤ 2 Sekunden. | Flüssige Interaktion. | Messung bestätigt Reaktionszeit ≤ 2 Sekunden. | Tester | Soll | Entwurf |
+| UC05-NF2 | Nicht-funktional | XP-Vergabe atomar. | Vermeidung doppelter Gutschrift. | Doppelklick erzeugt keine Mehrfach-XP. | Entwicklerteam | Muss | Entwurf |
+| UC05-NF3 | Nicht-funktional | Level-Up-Event wird protokolliert. | Auditierbarkeit. | Log „QUEST_COMPLETED“ vorhanden. | Security Officer | Soll | Entwurf |
+| UC05-NF4 | Nicht-funktional | Nur abgeschlossene Quests zählen für XP. | Datenintegrität. | Nicht-abgeschlossene Quests werden ignoriert. | Product Owner | Muss | Entwurf |
 
 ---
 
 ## UC06 – Lern-Session per Timer tracken
-
-**Funktionale Anforderungen**
-
-* **UC06-F1:** System muss eingeloggten Nutzer:innen das Starten eines Lern-Timers ermöglichen.
-* **UC06-F2:** System muss beim Start die Startzeit speichern und während der Session die Laufzeit erfassen.
-* **UC06-F3:** System muss das Pausieren und Fortsetzen der Session ermöglichen.
-* **UC06-F4:** System muss beim Stoppen die Gesamtdauer berechnen und speichern.
-* **UC06-F5:** System muss optionale XP-Vergabe auf Basis der Lernzeit durchführen (z. B. 1 XP / 5 Minuten).
-* **UC06-F6:** System darf nicht mehr als einen aktiven Timer pro Nutzer:in zulassen.
-* **UC06-F7:** System muss bei Verbindungsabbruch die Laufzeit lokal puffern und nach Wiederverbindung synchronisieren.
-
-**Nicht-funktionale Anforderungen**
-
-* **UC06-NF1:** Die Abweichung zwischen UI-Timer und gespeicherter Zeit darf maximal ± 1 Minute betragen.
-* **UC06-NF2:** Timerdaten müssen auch bei Browser-Reload oder Tabwechsel erhalten bleiben.
-* **UC06-NF3:** Alle Timeraktionen (Start, Pause, Stop) müssen protokolliert werden.
-* **UC06-NF4:** Reaktionszeit für Start und Stop darf 1 Sekunde nicht überschreiten.
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC06-F1 | Funktional | System ermöglicht Start eines Lern-Timers. | Nutzer:innen wollen Fokuszeiten messen. | Klick auf „Start“ startet Timer. | Nutzer:in | Muss | Entwurf |
+| UC06-F2 | Funktional | System speichert Startzeit und Laufzeit. | Grundlage für XP-Berechnung. | Startzeit in Datenbank protokolliert. | Entwicklerteam | Muss | Entwurf |
+| UC06-F3 | Funktional | System ermöglicht Pausieren und Fortsetzen. | Erhöht Flexibilität. | Timer reagiert korrekt auf Pause/Fortsetzen. | UX-Designer | Soll | Entwurf |
+| UC06-F4 | Funktional | System berechnet und speichert Gesamtdauer beim Stoppen. | Dient späterer Analyse. | Dauer = Stop-Zeit − Start-Zeit. | Entwicklerteam | Muss | Entwurf |
+| UC06-F5 | Funktional | System vergibt optional XP nach Lernzeit. | Motivation durch Belohnung. | XP = 1 / 5 Minuten gespeichert. | Product Owner | Soll | Entwurf |
+| UC06-F6 | Funktional | Nur ein aktiver Timer pro Nutzer:in erlaubt. | Vermeidung doppelter Sessions. | Zweiter Startversuch blockiert. | Entwicklerteam | Muss | Entwurf |
+| UC06-F7 | Funktional | System puffert Zeitdaten bei Verbindungsabbruch. | Datensicherheit bei Offline-Nutzung. | Synchronisierung nach Reconnect erfolgreich. | Entwicklerteam | Soll | Entwurf |
+| UC06-NF1 | Nicht-funktional | Zeitabweichung ≤ 1 Minute. | Genauigkeit. | Vergleich UI/DB ≤ 1 Minute Differenz. | Tester | Soll | Entwurf |
+| UC06-NF2 | Nicht-funktional | Timerdaten bleiben nach Reload erhalten. | Benutzerfreundlichkeit. | Refresh des Tabs erhält Timerstatus. | UX-Tester | Soll | Entwurf |
+| UC06-NF3 | Nicht-funktional | Alle Timeraktionen werden protokolliert. | Nachvollziehbarkeit. | Logs für Start/Pause/Stop vorhanden. | Entwicklerteam | Soll | Entwurf |
+| UC06-NF4 | Nicht-funktional | Reaktionszeit ≤ 1 Sekunde. | Responsives UI. | Messung bestätigt Reaktionszeit ≤ 1 Sekunde. | Tester | Soll | Entwurf |
 
 ---
-
-## UC07 – Noten & Module verwalten
-
-**Funktionale Anforderungen**
-
-* **UC07-F1:** System muss es Nutzern ermöglichen, Noten für Module einzugeben.
-* **UC07-F2:** System muss es Nutzern ermöglichen, bestehende Noten zu bearbeiten.
-* **UC07-F3:** System muss es Nutzern ermöglichen, Noten zu löschen.
-* **UC07-F4:** System muss den Durchschnitt der eingetragenen Noten automatisch berechnen.
-* **UC07-F5:** System muss die Notenübersicht nach Änderungen aktualisieren.
-
-**Nicht-funktionale Anforderungen**
-
-* **UC07-NF1:** Änderungen an Noten müssen in Echtzeit im Dashboard reflektiert werden.
-* **UC07-NF2:** System muss Datenkonsistenz sicherstellen, d.h. keine fehlerhaften Durchschnittswerte.
-
----
-
-## UC08 – Fortschritt & Dashboard einsehen
-
-**Funktionale Anforderungen**
-
-* **UC08-F1:** System muss es Nutzern ermöglichen, das Dashboard zu öffnen.
-* **UC08-F2:** System muss den aktuellen XP-Stand des Nutzers anzeigen.
-* **UC08-F3:** System muss das Level des Nutzers anzeigen.
-* **UC08-F4:** System muss aktive und abgeschlossene Quests anzeigen.
-* **UC08-F5:** System muss die Notenstatistik des Nutzers anzeigen.
-
-**Nicht-funktionale Anforderungen**
-
-* **UC08-NF1:** Dashboard-Daten müssen innerhalb von 2 Sekunden nach Öffnen vollständig geladen sein.
-* **UC08-NF2:** Dashboard muss auf allen unterstützten Browsern korrekt angezeigt werden.
-
----
-
-## UC09 – Benachrichtigungen & Reminder verwalten
-
-**Funktionale Anforderungen**
-
-* **UC09-F1:** System muss es Nutzern ermöglichen, die Benachrichtigungseinstellungen zu öffnen.
-* **UC09-F2:** System muss Lern-Erinnerungen ein- oder ausschalten können.
-* **UC09-F3:** System muss Quest-Benachrichtigungen ein- oder ausschalten können.
-* **UC09-F4:** System muss die Änderungen an den Benachrichtigungseinstellungen speichern.
-
-**Nicht-funktionale Anforderungen**
-
-* **UC09-NF1:** Änderungen an Benachrichtigungen müssen sofort wirksam sein.
-* **UC09-NF2:** System muss Benachrichtigungen zuverlässig ausliefern (z. B. Push / E-Mail / Browser-Alert).
-
----
-
-## UC10 – Noten importieren / exportieren
-
-**Funktionale Anforderungen**
-
-* **UC10-F1:** System muss den Import von Noten aus einer CSV-Datei ermöglichen.
-* **UC10-F2:** System muss den Export von Noten aus einer CSV-Datei ermöglichen.
-* **UC10-F3:** System muss fehlerhafte Dateien erkennen und dem Benutzer eine Fehlermeldung anzeigen.
-
-**Nicht-funktionale Anforderungen**
-* **UC10-NF1:** Der Import/Export-Prozess soll innerhalb von 5 Sekunden abgeschlossen sein.  
-
----
-
-## UC11 – Achievements / Badges freischalten
-
-**Funktionale Anforderungen**
-
-* **UC11-F1:** System muss Bedingungen für Badges prüfen (z. B. gelöste Aufgaben, Punkte, Streaks).
-* **UC11-F2:** System muss beim Erfüllen der Bedingung das entsprechende Badge freischalten.
-* **UC11-F3:** Benutzer muss über das neue Achievement visuell informiert werden (z. B. Popup, Animation).
-* **UC11-F4:** Benutzer muss eine Übersicht aller verfügbaren und freigeschalteten Badges sehen können.  
-
-**Nicht-funktionale Anforderungen**
-* **UC11-NF1:** Das System soll den Badge-Check automatisch nach jeder relevanten Aktion durchführen.
----
-
-## UC12 – Leaderboard & Streaks anzeigen
-
-**Funktionale Anforderungen**
-
-* **UC12-F1:** System muss eine Rangliste aller Benutzer mit Punkten anzeigen.
-* **UC12-F2:** System muss Streaks (aufeinanderfolgende aktive Tage) berechnen und anzeigen.
-* **UC12-F3:** System muss die Daten bei Aufruf aktualisieren.
-* **UC12-F4:** Benutzer sollen ihre eigene Position schnell finden (z. B. durch Hervorhebung).
-
-**Nicht-funktionale Anforderungen**
-* **UC12-NF1:** Leaderboard soll innerhalb von 3 Sekunden geladen werden.  
-* **UC12-NF2:** Die Daten sollen regelmäßig synchronisiert werden.  
----
-
-## UC13 – Quest Katalog verwalten
-
-**Funktionale Anforderungen**
-
-* **UC13-F1:** System muss Admins das Einloggen ermöglichen.
-* **UC13-F2:** System muss Zugriff auf die Quest-Verwaltung bereitstellen.
-* **UC13-F3:** System muss das Erstellen neuer Quests erlauben.
-* **UC13-F4:** System muss das Bearbeiten bestehender Quests erlauben.
-* **UC13-F5:** System muss das Löschen von Quests ermöglichen.
-* **UC13-F6:** System muss den Quest-Katalog nach Änderungen automatisch aktualisieren.
-
-**Nicht-funktionale Anforderungen**
-
-* **UC13-NF1:** Änderungen am Katalog müssen innerhalb von 2 Sekunden sichtbar sein.
-* **UC13-NF2:** Nur eingeloggte Admins dürfen Änderungen am Katalog durchführen.
-* **UC13-NF3:** Alle Änderungen müssen versioniert und nachvollziehbar gespeichert werden.
-* **UC13-NF4:** System muss bei gleichzeitigen Bearbeitungen Konflikte korrekt behandeln.
-
----
-
-## UC14 – XP- und Levelregeln konfigurieren
-
-**Funktionale Anforderungen**
-
-* **UC14-F1:** System muss Admins das Einloggen ermöglichen.
-* **UC14-F2:** System muss Zugriff auf die Regelverwaltung bereitstellen.
-* **UC14-F3:** System muss das Ändern von XP- und Levelregeln ermöglichen.
-* **UC14-F4:** System muss geänderte Regeln speichern und aktivieren.
-* **UC14-F5:** System muss sicherstellen, dass neue Regeln sofort für alle Nutzer:innen gelten.
-
-**Nicht-funktionale Anforderungen**
-
-* **UC14-NF1:** Änderungen an den Regeln dürfen keine bestehenden Daten inkonsistent machen.
-* **UC14-NF2:** Regeländerungen müssen protokolliert werden.
-* **UC14-NF3:** Das Speichern der Regeln darf maximal 2 Sekunden dauern.
-* **UC14-NF4:** Nur autorisierte Admins dürfen Zugriff auf die Regelkonfiguration haben.
-
----
-
-## UC15 – Benutzerkonten administrieren
-
-**Funktionale Anforderungen**
-
-* **UC15-F1:** System muss Admins das Einloggen ermöglichen.
-* **UC15-F2:** System muss das Suchen von Benutzerkonten erlauben.
-* **UC15-F3:** System muss die Kontoeinstellungen anzeigen können.
-* **UC15-F4:** System muss das Löschen, Sperren oder Reaktivieren von Konten ermöglichen.
-* **UC15-F5:** System muss den Kontostatus nach Änderungen aktualisieren.
-
 
 
 
@@ -333,3 +174,118 @@ Michael Steer (Scrum Master)
 | **UC14 – XP- und Levelregeln konfigurieren (Admin)** | **UC11 – Achievements / Badges freischalten** | XP-Regeln beeinflussen Badge-Freischaltung. |
 | **UC15 – Benutzerkonten administrieren (Admin)** | **UC13 – Quest-Katalog verwalten (Admin)** | Admins können Quest-Autoren oder -Verwalter managen. |
 | **UC15 – Benutzerkonten administrieren (Admin)** | **UC14 – XP- und Levelregeln konfigurieren (Admin)** | Admins können Berechtigungen oder Änderungen an XP-Regeln durchführen. |
+## UC07 – Noten & Module verwalten
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC07-F1 | Funktional | System muss es Nutzer:innen ermöglichen, Noten für Module einzugeben. | Erlaubt individuelle Verwaltung akademischer Leistungen. | Neue Note kann erfolgreich gespeichert werden. | Nutzer:in | Muss | Entwurf |
+| UC07-F2 | Funktional | System muss Bearbeiten bestehender Noten erlauben. | Korrekturen oder Updates sollen möglich sein. | Änderung einer Note wird gespeichert und angezeigt. | Nutzer:in | Muss | Entwurf |
+| UC07-F3 | Funktional | System muss Noten löschen können. | Fehlerhafte Einträge sollen entfernt werden. | Löschung entfernt Note aus der Übersicht. | Nutzer:in | Soll | Entwurf |
+| UC07-F4 | Funktional | System berechnet automatisch den Durchschnitt. | Übersichtliche Leistungsdarstellung. | Durchschnittswert aktualisiert sich nach Änderung. | Entwicklerteam | Muss | Entwurf |
+| UC07-F5 | Funktional | System aktualisiert Notenübersicht nach Änderungen. | Echtzeitfeedback erhöht Usability. | Änderungen sofort sichtbar. | UX-Designer | Soll | Entwurf |
+| UC07-NF1 | Nicht-funktional | Änderungen an Noten werden in Echtzeit angezeigt. | Moderne Nutzererfahrung. | UI aktualisiert sich ohne Reload. | Entwicklerteam | Soll | Entwurf |
+| UC07-NF2 | Nicht-funktional | System stellt Datenkonsistenz sicher. | Vermeidung fehlerhafter Durchschnittswerte. | Durchschnitt korrekt auch nach Mehrfacheingaben. | Entwicklerteam | Muss | Entwurf |
+
+---
+
+## UC08 – Fortschritt & Dashboard einsehen
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC08-F1 | Funktional | System ermöglicht Zugriff auf das Dashboard. | Zentraler Einstiegspunkt. | Klick auf „Dashboard“ öffnet Übersicht. | Nutzer:in | Muss | Entwurf |
+| UC08-F2 | Funktional | Dashboard zeigt aktuellen XP-Stand. | Nutzer:innen wollen Fortschritt erkennen. | XP-Wert entspricht gespeicherter Datenbankwert. | Entwicklerteam | Muss | Entwurf |
+| UC08-F3 | Funktional | Dashboard zeigt Nutzerlevel. | Gamifizierungsmotivator. | Levelanzeige stimmt mit XP-Regeln überein. | Product Owner | Muss | Entwurf |
+| UC08-F4 | Funktional | Dashboard zeigt aktive & abgeschlossene Quests. | Vollständige Übersicht. | Alle Quests korrekt aufgelistet. | Nutzer:in | Soll | Entwurf |
+| UC08-F5 | Funktional | Dashboard zeigt Notenstatistik. | Kombinierte Lern- & Leistungsübersicht. | Anzeige Durchschnitt und Module. | Product Owner | Soll | Entwurf |
+| UC08-NF1 | Nicht-funktional | Dashboard lädt vollständig ≤ 2 Sekunden. | Schnelle Reaktionszeit. | Messung zeigt Ladezeit ≤ 2 s. | UX-Tester | Muss | Entwurf |
+| UC08-NF2 | Nicht-funktional | Dashboard funktioniert auf allen unterstützten Browsern. | Plattformunabhängigkeit. | Darstellung getestet auf Chrome, Firefox, Safari. | QA-Team | Soll | Entwurf |
+
+---
+
+## UC09 – Benachrichtigungen & Reminder verwalten
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC09-F1 | Funktional | System ermöglicht Öffnen der Benachrichtigungseinstellungen. | Nutzerkontrolle über Hinweise. | Menüpunkt „Benachrichtigungen“ erreichbar. | Nutzer:in | Muss | Entwurf |
+| UC09-F2 | Funktional | Nutzer:innen können Lern-Erinnerungen aktivieren/deaktivieren. | Anpassbare Motivation. | Schalter ändert Status erfolgreich. | Nutzer:in | Soll | Entwurf |
+| UC09-F3 | Funktional | Nutzer:innen können Quest-Benachrichtigungen steuern. | Reduktion unnötiger Meldungen. | Einstellungen persistieren nach Reload. | Nutzer:in | Soll | Entwurf |
+| UC09-F4 | Funktional | Änderungen werden gespeichert. | Konsistente Erfahrung. | Datenbankeintrag aktualisiert. | Entwicklerteam | Muss | Entwurf |
+| UC09-NF1 | Nicht-funktional | Änderungen wirken sofort. | Echtzeitfeedback. | Notification-Status ohne Reload übernommen. | Entwicklerteam | Soll | Entwurf |
+| UC09-NF2 | Nicht-funktional | Benachrichtigungen werden zuverlässig zugestellt. | Systemvertrauen. | Testmeldungen erscheinen korrekt per Push/E-Mail. | QA-Team | Muss | Entwurf |
+
+---
+
+## UC10 – Noten importieren / exportieren
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC10-F1 | Funktional | System erlaubt Import von Noten aus CSV-Datei. | Zeitersparnis bei Dateneingabe. | CSV erfolgreich eingelesen. | Nutzer:in | Soll | Entwurf |
+| UC10-F2 | Funktional | System erlaubt Export von Noten in CSV-Datei. | Datensicherung & Austausch. | Datei erzeugt und heruntergeladen. | Nutzer:in | Soll | Entwurf |
+| UC10-F3 | Funktional | System erkennt fehlerhafte Dateien und zeigt Fehlermeldung. | Benutzerfreundlichkeit & Fehlerkontrolle. | Ungültige Datei → Fehlermeldung erscheint. | Entwicklerteam | Muss | Entwurf |
+| UC10-NF1 | Nicht-funktional | Import/Export ≤ 5 Sekunden. | Performance-Anforderung. | Zeitmessung ≤ 5 s bei 100 Einträgen. | Tester | Soll | Entwurf |
+
+---
+
+## UC11 – Achievements / Badges freischalten
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC11-F1 | Funktional | System prüft Bedingungen für Badges. | Fördert Motivation. | Badge-Check wird nach Aktionen ausgeführt. | Product Owner | Muss | Entwurf |
+| UC11-F2 | Funktional | Bei erfüllter Bedingung wird Badge freigeschaltet. | Belohnungssystem. | Neuer Badge im Profil sichtbar. | Entwicklerteam | Muss | Entwurf |
+| UC11-F3 | Funktional | Nutzer:innen werden visuell über neues Badge informiert. | Feedback stärkt Engagement. | Popup/Animation erscheint. | UX-Designer | Soll | Entwurf |
+| UC11-F4 | Funktional | Übersicht aller Badges verfügbar. | Transparenz. | Liste zeigt gesperrte + freigeschaltete Badges. | Nutzer:in | Soll | Entwurf |
+| UC11-NF1 | Nicht-funktional | Badge-Check läuft automatisch nach jeder relevanten Aktion. | Zuverlässigkeit der Auswertung. | Logs zeigen Trigger-Ausführung. | Entwicklerteam | Muss | Entwurf |
+
+---
+
+## UC12 – Leaderboard & Streaks anzeigen
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC12-F1 | Funktional | System zeigt Rangliste aller Nutzer:innen mit Punkten. | Wettbewerbs-Motivation. | Leaderboard listet alle korrekt nach XP. | Product Owner | Muss | Entwurf |
+| UC12-F2 | Funktional | System berechnet und zeigt Streaks (aktive Tage). | Fördert tägliches Lernen. | Richtige Streak-Länge angezeigt. | Entwicklerteam | Soll | Entwurf |
+| UC12-F3 | Funktional | Daten werden bei Aufruf aktualisiert. | Aktuelle Werte erforderlich. | Refresh aktualisiert Ranking. | Entwicklerteam | Muss | Entwurf |
+| UC12-F4 | Funktional | Nutzer:innen finden eigene Position leicht. | Nutzerfreundlichkeit. | Eigenes Profil im Leaderboard hervorgehoben. | UX-Designer | Soll | Entwurf |
+| UC12-NF1 | Nicht-funktional | Leaderboard lädt ≤ 3 Sekunden. | Performance-Ziel. | Ladezeitmessung ≤ 3 s. | QA-Team | Soll | Entwurf |
+| UC12-NF2 | Nicht-funktional | Daten werden regelmäßig synchronisiert. | Aktualität. | Automatischer Sync z. B. alle 10 min. | Entwicklerteam | Soll | Entwurf |
+
+---
+
+## UC13 – Quest-Katalog verwalten
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC13-F1 | Funktional | System erlaubt Admin-Login. | Zugriffsschutz für Verwaltung. | Nur Admin-Konten authentifiziert. | Security Officer | Muss | Entwurf |
+| UC13-F2 | Funktional | Zugriff auf Quest-Verwaltung. | Verwaltung zentraler Inhalte. | Menüpunkt „Quests verwalten“ sichtbar. | Admin | Muss | Entwurf |
+| UC13-F3 | Funktional | System erlaubt Erstellen neuer Quests. | Erweiterbarkeit. | Neue Quest erscheint im Katalog. | Admin | Muss | Entwurf |
+| UC13-F4 | Funktional | System erlaubt Bearbeiten bestehender Quests. | Pflege & Korrekturen. | Änderungen werden übernommen. | Admin | Soll | Entwurf |
+| UC13-F5 | Funktional | System erlaubt Löschen von Quests. | Entfernen veralteter Inhalte. | Gelöschte Quest verschwindet aus Liste. | Admin | Soll | Entwurf |
+| UC13-F6 | Funktional | Katalog aktualisiert sich nach Änderungen. | Aktuelle Ansicht. | Refresh zeigt neue Daten. | Entwicklerteam | Soll | Entwurf |
+| UC13-NF1 | Nicht-funktional | Änderungen sichtbar ≤ 2 Sekunden. | Reaktionszeit. | UI-Update ≤ 2 s. | QA-Team | Soll | Entwurf |
+| UC13-NF2 | Nicht-funktional | Nur eingeloggte Admins dürfen Änderungen durchführen. | Sicherheit. | Auth-Prüfung vor CRUD-Operationen. | Security Officer | Muss | Entwurf |
+| UC13-NF3 | Nicht-funktional | Änderungen werden versioniert gespeichert. | Nachvollziehbarkeit. | Versionslog pro Änderung. | Entwicklerteam | Soll | Entwurf |
+| UC13-NF4 | Nicht-funktional | Konflikte bei gleichzeitiger Bearbeitung werden korrekt behandelt. | Datenintegrität. | Merge-Konflikte automatisch gelöst oder gemeldet. | Entwicklerteam | Soll | Entwurf |
+
+---
+
+## UC14 – XP- und Levelregeln konfigurieren
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC14-F1 | Funktional | Admin-Login erforderlich. | Zugriffsbeschränkung. | Nur Admins können konfigurieren. | Security Officer | Muss | Entwurf |
+| UC14-F2 | Funktional | Zugriff auf Regelverwaltung. | Übersicht aller XP/Level-Regeln. | Menüpunkt „Regeln verwalten“ vorhanden. | Admin | Muss | Entwurf |
+| UC14-F3 | Funktional | System erlaubt Ändern von XP- und Levelregeln. | Flexible Spielbalance. | Neue Regelwerte gespeichert. | Admin | Soll | Entwurf |
+| UC14-F4 | Funktional | Geänderte Regeln werden gespeichert und aktiv. | Sofortige Wirkung. | Neue Regeln gelten nach Speichern. | Entwicklerteam | Soll | Entwurf |
+| UC14-F5 | Funktional | Änderungen gelten sofort global. | Einheitliches Verhalten. | Nutzer:innen sehen direkt neue Werte. | Entwicklerteam | Soll | Entwurf |
+| UC14-NF1 | Nicht-funktional | Änderungen verursachen keine Dateninkonsistenz. | Systemstabilität. | Tests nach Regelupdate bestehen. | QA-Team | Muss | Entwurf |
+| UC14-NF2 | Nicht-funktional | Regeländerungen werden protokolliert. | Nachvollziehbarkeit. | Änderungslog mit Zeitstempel. | Entwicklerteam | Soll | Entwurf |
+| UC14-NF3 | Nicht-funktional | Speichern dauert ≤ 2 Sekunden. | Performance. | Zeitmessung ≤ 2 s. | Tester | Soll | Entwurf |
+| UC14-NF4 | Nicht-funktional | Zugriff nur für autorisierte Admins. | Sicherheit. | Authentifizierung erfolgreich geprüft. | Security Officer | Muss | Entwurf |
+
+---
+
+## UC15 – Benutzerkonten administrieren
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC15-F1 | Funktional | System erlaubt Admin-Login. | Schutz administrativer Funktionen. | Nur Admin-Konto akzeptiert. | Security Officer | Muss | Entwurf |
+| UC15-F2 | Funktional | System erlaubt Suche nach Benutzerkonten. | Effiziente Verwaltung. | Trefferanzeige nach Suchkriterium. | Admin | Muss | Entwurf |
+| UC15-F3 | Funktional | System zeigt Kontoeinstellungen an. | Transparenz über Benutzerdaten. | Detailansicht des Kontos öffnet sich. | Admin | Soll | Entwurf |
+| UC15-F4 | Funktional | System erlaubt Löschen, Sperren, Reaktivieren von Konten. | Kontrolle über Systemzugänge. | Statusänderung wird gespeichert. | Admin | Muss | Entwurf |
+| UC15-F5 | Funktional | System aktualisiert Kontostatus nach Änderungen. | Konsistenz. | Neue Statusanzeige korrekt im UI. | Entwicklerteam | Soll | Entwurf |
+| UC15-NF1 | Nicht-funktional | Nur autorisierte Admins dürfen Änderungen durchführen. | Sicherheit. | Rollenprüfung vor Aktion. | Security Officer | Muss | Entwurf |
+| UC15-NF2 | Nicht-funktional | Änderungen werden protokolliert. | Nachvollziehbarkeit. | Log-Eintrag mit Admin-ID und Aktion. | Entwicklerteam | Soll | Entwurf |
+| UC15-NF3 | Nicht-funktional | Reaktionszeit ≤ 2 Sekunden. | Benutzerfreundlichkeit. | Änderung bestätigt in ≤ 2 s. | QA-Team | Soll | Entwurf |
+
+---
