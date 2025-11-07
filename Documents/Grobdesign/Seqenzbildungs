@@ -1,119 +1,119 @@
-'========================================
-' UC09: Benachrichtigungen & Reminder verwalten
-'========================================
-@startuml UC09_Notifications
-actor User as "Studierende:r"
-participant NotificationView
-participant NotificationController
-participant NotificationService
+@startuml
+class User {
+  - userID
+  - name
+  - email
+  - passwordHash
+  - level
+  - xp
+  - badges
+  + login()
+  + logout()
+  + updateProfile()
+  + resetPassword()
+}
 
-User -> NotificationView: Einstellungen öffnen
-NotificationView -> NotificationController: updateSettings(UserID, settings)
-NotificationController -> NotificationService: saveSettings(UserID, settings)
-NotificationService --> NotificationController: Bestätigung
-NotificationController -> NotificationView: Einstellungen gespeichert
-NotificationView -> User: Zeige aktuelle Einstellungen
-@enduml
+class Admin {
+  - adminID
+  - name
+  - email
+  + manageUser()
+  + manageQuest()
+  + configureXP()
+}
 
-'========================================
-' UC10: Noten importieren oder exportieren
-'========================================
-@startuml UC10_ImportExport
-actor User as "Studierende:r"
-participant GradeView
-participant GradeController
-participant GradeManager
-participant FileService
+class QuestController {
+  + startQuest()
+  + completeQuest()
+  + getActiveQuests()
+}
 
-User -> GradeView: Import/Export starten
-GradeView -> GradeController: importExportGrades(file)
-GradeController -> FileService: verarbeiteDatei(file)
-FileService -> GradeManager: updateGrades(UserID, Daten)
-GradeManager --> GradeController: Bestätigung
-GradeController -> GradeView: Zeige aktualisierte Noten
-GradeView -> User: Import/Export abgeschlossen
-@enduml
+class Quest {
+  - questID
+  - title
+  - description
+  - xpReward
+  - status
+  + start()
+  + complete()
+}
 
-'========================================
-' UC11: Achievements / Badges freischalten
-'========================================
-@startuml UC11_Badges
-actor User as "Studierende:r"
-participant Progress
-participant BadgeService
-participant Dashboard
+class Progress {
+  - xpTotal
+  - level
+  - streaks
+  - completedQuests
+  + updateXP()
+  + checkLevelUp()
+  + trackSession()
+}
 
-User -> Progress: prüfeMeilensteine(UserID)
-Progress -> BadgeService: neueBadges(UserID)
-BadgeService --> Progress: Badge freigeschaltet
-Progress -> Dashboard: aktualisiereBadges(UserID)
-Dashboard -> User: Zeige neue Badges
-@enduml
+class GamificationEngine {
+  + calculateXP()
+  + checkLevelUp()
+  + awardBadge()
+}
 
-'========================================
-' UC12: Leaderboard & Streaks anzeigen
-'========================================
-@startuml UC12_Leaderboard
-actor User as "Studierende:r"
-participant Dashboard
-participant LeaderboardService
-participant Progress
+class GradeController {
+  + saveGrade()
+  + calculateAverage()
+  + importExportGrades()
+}
 
-User -> Dashboard: Leaderboard öffnen
-Dashboard -> LeaderboardService: ladeRangliste()
-LeaderboardService -> Progress: holeXP(UserID)
-Progress --> LeaderboardService: XP-Status
-LeaderboardService --> Dashboard: Rangliste + Streaks
-Dashboard -> User: Zeige Rangliste & Streaks
-@enduml
+class Course {
+  - courseID
+  - title
+  - ects
+  - grade
+  + addGrade()
+  + updateGrade()
+}
 
-'========================================
-' UC13: Quest-Katalog verwalten (Admin)
-'========================================
-@startuml UC13_QuestCatalog
-actor Admin
-participant QuestController
-participant QuestRepository
-participant QuestView
+class LeaderboardService {
+  + calculateRanking()
+  + showLeaderboard()
+}
 
-Admin -> QuestView: Quest erstellen / bearbeiten / löschen
-QuestView -> QuestController: updateQuest(questData)
-QuestController -> QuestRepository: saveQuest(questData)
-QuestRepository --> QuestController: Bestätigung
-QuestController -> QuestView: Quest-Katalog aktualisiert
-QuestView -> Admin: Zeige aktualisierten Katalog
-@enduml
+class NotificationService {
+  + sendNotification()
+  + saveSettings()
+}
 
-'========================================
-' UC14: XP- und Levelregeln konfigurieren (Admin)
-'========================================
-@startuml UC14_XPLevelConfig
-actor Admin
-participant ConfigView
-participant ConfigController
-participant GamificationEngine
+class BadgeService {
+  + awardBadge()
+}
 
-Admin -> ConfigView: Regeln bearbeiten
-ConfigView -> ConfigController: saveRules(rules)
-ConfigController -> GamificationEngine: updateRules(rules)
-GamificationEngine --> ConfigController: Bestätigung
-ConfigController -> ConfigView: Regeln gespeichert
-ConfigView -> Admin: Zeige aktualisierte Regeln
-@enduml
+class UserController {
+  + updateUserStatus()
+}
 
-'========================================
-' UC15: Benutzerkonten administrieren (Admin)
-'========================================
-@startuml UC15_UserManagement
-actor Admin
-participant UserController
-participant UserRepository
-participant AdminView
+class QuestRepository {
+  + saveQuest()
+  + deleteQuest()
+  + getQuestByID()
+}
 
-Admin -> AdminView: Benutzerkonto auswählen / ändern
-AdminView -> UserController: updateUserStatus(UserID, action)
-UserController -> UserRepository: applyChanges(UserID, action)
-UserRepository --> UserController: Bestätigung
-UserController -> AdminView: Kontostatus aktualisiert
-AdminView -> Admin: Zeige aktueller Kontostatus
+class UserRepository {
+  + saveUser()
+  + findUserByID()
+  + updatePassword()
+}
+
+' Beziehungen
+User --> QuestController
+User --> GradeController
+User --> NotificationService
+User --> Progress
+User --> LeaderboardService
+
+QuestController --> QuestRepository
+QuestController --> GamificationEngine
+GamificationEngine --> Progress
+Progress --> BadgeService
+
+GradeController --> Course
+Admin --> QuestController
+Admin --> UserController
+Admin --> GamificationEngine
+UserController --> UserRepository
 @enduml
