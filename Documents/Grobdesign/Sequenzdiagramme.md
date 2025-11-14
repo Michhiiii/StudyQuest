@@ -1,3 +1,66 @@
+# Projektskizze – StudyQuest
+
+---
+
+**Titel des Dokuments:**  
+Seqenzdiagramme – StudyQuest
+
+**Projektname:**  
+StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App
+
+**Modul:**  
+Software Engineering I – Praxis
+
+**Projektzeitraum:**  
+Wintersemester 2025 / 2026
+
+**Version:**  
+1.0
+
+**Datum:**  
+17. Oktober 2025
+
+**Author:innen:**  
+- Michael Steer (Scrum Master)  
+- Luke Engehardt (Product Owner)  
+- Giuliana Carrano (Developer)  
+- Paul Strasser (Developer)  
+- Roman Faber (Developer)
+
+**Betreuer / Prüfer:**  
+Sascha Wanninger
+
+**Freigabe durch autorisierte Person:**  
+Michael Steer (Scrum Master)
+
+---
+
+## Changelog
+
+| **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
+|--------------|-------------|-------------------|---------------------------------------------|
+| 1.0          | 14.11.2025  | M. Steer          | Erstfassung der Sequenzdiagramme erstellt      |
+| 1.1          |             | M. Steer          |            |
+| 1.2          |             | M. Steer                 | Finalversion zur Abgabe vorbereitet         |
+
+---
+
+## Distribution List
+
+| **Name**          | **Rolle**             | **Kommentar / Zuständigkeit**                 |
+|--------------------|-----------------------|-----------------------------------------------|
+| Sascha Wanninger   | Prüfer / Betreuer     | Bewertung im Rahmen des Moduls                |
+| Michael Steer      | Scrum Master          | Koordination & Freigabe                       |
+| Luke Engehardt     | Product Owner         | Anforderungen & Dokumentation                 |
+| Giuliana Carrano   | Developer             | Projektskizze, Dokumentation                  |
+| Paul Strasser      | Developer             | Technische Dokumentation                      |
+| Roman Faber        | Developer             | Architektur & UML                             |
+
+---
+
+© 2025 StudyQuest Project Team – DHBW Ravensburg
+
+
 <img width="1027" height="355" alt="SQ01" src="https://github.com/user-attachments/assets/ab344857-0225-4da7-8261-1875e6e5a162" />
 <img width="1027" height="355" alt="SQ01" src="https://github.com/user-attachments/assets/86025652-dc34-4b71-8a9c-5df41cedc42e" />
 <img width="995" height="472" alt="SQ02" src="https://github.com/user-attachments/assets/166f4cd0-6434-4aae-a252-deddb680f50f" />
