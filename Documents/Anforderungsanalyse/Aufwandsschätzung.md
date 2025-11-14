@@ -66,4 +66,5 @@ Michael Steer (Scrum Master)
 ---
 <img width="1332" height="453" alt="image" src="https://github.com/user-attachments/assets/37223882-5f19-4495-9752-c6c99c854ace" />
 
+<img width="842" height="404" alt="image" src="https://github.com/user-attachments/assets/66a8febb-0aa0-4373-89ef-8a391453ee35" />
 
