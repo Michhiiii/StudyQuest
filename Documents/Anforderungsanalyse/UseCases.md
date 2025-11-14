@@ -18,7 +18,7 @@ Wintersemester 2025 / 2026
 1.0
 
 **Datum:**  
-17. Oktober 2025
+5. November 2025
 
 **Author:innen:**  
 - Michael Steer (Scrum Master)  
@@ -39,8 +39,8 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
-| 1.0          | 17.10.2025  | M. Steer          | Erstfassung der Use Cases erstellt          |
-| 1.1          |             | M. Steer          | Änderungen nach Review durch Team           |
+| 1.0          | 05.11.2025  | M. Steer          | Erstfassung der Use Cases erstellt          |
+| 1.1          |             | M. Steer          |          |
 | 1.2          |             |                   | Finalversion zur Abgabe vorbereitet         |
 
 ---
