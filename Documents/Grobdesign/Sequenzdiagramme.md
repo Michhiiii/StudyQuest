@@ -1,9 +1,9 @@
-# Projektskizze – StudyQuest
+# Sequenzdiagramm – StudyQuest
 
 ---
 
 **Titel des Dokuments:**  
-Seqenzdiagramme – StudyQuest
+Sequenzdiagramme – StudyQuest
 
 **Projektname:**  
 StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App
