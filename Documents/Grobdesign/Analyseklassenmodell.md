@@ -1,4 +1,4 @@
-# Projektskizze – StudyQuest
+# Analyseklassenmodell – StudyQuest
 
 ---
 
