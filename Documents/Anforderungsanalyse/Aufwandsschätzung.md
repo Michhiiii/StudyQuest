@@ -59,8 +59,8 @@ Michael Steer (Scrum Master)
 ---
 
 © 2025 StudyQuest Project Team – DHBW Ravensburg
-# Requirements: StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App
-===========================================================================
+
+
 
 # Aufwandsschätzung
 ---
