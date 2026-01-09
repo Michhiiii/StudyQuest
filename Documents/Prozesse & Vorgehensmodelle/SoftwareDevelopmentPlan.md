@@ -205,7 +205,5 @@ Jedes Dokument enthält:
 - einen Änderungsverlauf (Changelog)  
 - eine Distributionsliste  
 - Versionskontrolle über Git (Tags, Branches)
----
 
-© 2025 StudyQuest Project Team – DHBW Ravensburg  
-Alle Inhalte dienen ausschließlich Studienzwecken im Rahmen des Moduls Software Engineering I – Praxis. 
+
