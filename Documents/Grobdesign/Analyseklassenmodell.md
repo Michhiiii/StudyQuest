@@ -58,8 +58,6 @@ Michael Steer (Scrum Master)
 
 ---
 
-© 2025 StudyQuest Project Team – DHBW Ravensburg
-
 
 
 <img width="885" height="662" alt="image" src="https://github.com/user-attachments/assets/095793be-678e-4e21-a18d-25c1177022e0" />
