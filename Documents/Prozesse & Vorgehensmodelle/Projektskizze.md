@@ -82,14 +82,32 @@ Die App läuft im Web-Browser und ist somit plattformunabhängig (Mac, Windows, 
 Spielerische Elemente wie Level, Quests, Erfahrungspunkte und Belohnungen** visualisieren Lernfortschritte.  
 Zusätzlich integriert die Webapplikation eine Notenverwaltung, um Lernaktivität und Studienleistungen in einem System zu verknüpfen.
 
-## 2. Projektziele
+## 2. Scope of Work
+
+Der Scope of Work definiert den inhaltlichen Umfang des Projekts „StudyQuest“ und grenzt eindeutig ab, welche Leistungen im Rahmen des Projekts erbracht werden und welche Inhalte nicht Bestandteil des Projekts sind.
+
+Zum Projektumfang gehören die Analyse der Anforderungen an eine gamifizierte Lern- und Notenverwaltungs-Web-Applikation sowie die Definition der Projektziele. Darüber hinaus umfasst das Projekt die konzeptionelle Ausarbeitung der Anwendung, einschließlich der Definition einer geeigneten Softwarearchitektur sowie der Modellierung relevanter UML-Diagramme wie Use-Case-, Klassen- und Sequenzdiagramme.
+
+Nicht Bestandteil des Projekts sind die vollständige Implementierung der Web-Applikation, der produktive Betrieb des Systems sowie die Anbindung an bestehende Hochschul- oder Notenverwaltungssysteme. Ebenso werden keine realen personenbezogenen oder prüfungsrelevanten Daten verarbeitet. Der Fokus liegt auf der methodischen Anwendung von Software-Engineering-Prozessen und nicht auf der Entwicklung eines marktreifen Produkts.
+
+## 3. Risiken
+
+Im Rahmen des Projekts bestehen verschiedene Risiken, die den Projektverlauf oder die Qualität der Ergebnisse beeinflussen können. Ein zentrales Risiko liegt in zeitlichen Engpässen, die durch parallele Studienleistungen oder eingeschränkte Verfügbarkeit einzelner Teammitglieder entstehen können. Dies kann zu Verzögerungen bei der Bearbeitung einzelner Projektphasen führen.
+
+Ein weiteres Risiko besteht in Abstimmungsproblemen innerhalb des Teams, insbesondere bei der gemeinsamen Erarbeitung konzeptioneller Inhalte und der Dokumentation. Unklare Zuständigkeiten oder Kommunikationsprobleme können den Fortschritt des Projekts beeinträchtigen.
+
+Darüber hinaus besteht ein technisches Risiko in der Wahl und Nutzung von Werkzeugen und Technologien, insbesondere wenn neue oder bislang wenig genutzte Tools eingesetzt werden. Dies kann zu zusätzlichem Einarbeitungsaufwand führen.
+
+Durch eine frühzeitige Aufgabenverteilung, regelmäßige Abstimmungen im Team sowie eine realistische Zeitplanung sollen diese Risiken minimiert werden.
+
+## 4. Projektziele
 ---------------
 - Lernfortschritt spielerisch darstellen und Motivation fördern  
 - Verwaltung von Noten und Studienleistungen ermöglichen  
 - Alle relevanten Software-Engineering-Prozesse dokumentieren: Analyse, Design, Architektur, Test, Projektplanung  
 - Prototypisch oder als Mockup eine Web-App umsetzen, ohne vollständige Implementierung  
 
-## 3. Stakeholder
+## 5. Stakeholder
 --------------
 ### Primäre Stakeholder
 | Rolle | Beschreibung |
@@ -107,12 +125,12 @@ Zusätzlich integriert die Webapplikation eine Notenverwaltung, um Lernaktivitä
 | **Tester / Qualitätssicherung** | Überprüft Funktionalität, Usability und Qualität |
 | **UX/UI-Designer (intern)** | Sorgt für eine intuitive und motivierende Benutzeroberfläche |
 
-## Glossar
+## 6. Glossar
 - **Gamification:** Einsatz spieltypischer Elemente in einem nicht-spielerischen Kontext, um Motivation und Engagement zu erhöhen.
 - **XP (Erfahrungspunkte):** Punkte, die für abgeschlossene Lernaktivitäten vergeben werden und den Fortschritt visualisieren.
 - **Mockup:** Prototypische Darstellung der App-Oberfläche ohne vollständige Funktionalität.
 
-## 6. Abhängigkeiten
+## 7. Abhängigkeiten
 -----------------
 - Abhängigkeit von Webbrowsern (Chrome, Edge, Firefox, Safari)  
 - Internetverbindung erforderlich für Online-Funktionen (optional bei Prototyp)  
@@ -120,7 +138,7 @@ Zusätzlich integriert die Webapplikation eine Notenverwaltung, um Lernaktivitä
 - Zeitplan abhängig von Verfügbarkeit der Teammitglieder  
 - Verwendung gemeinsamer Entwicklungsumgebung (z. B. Visual Studio Code, Node.js)  
 
-## 7. Randbedingungen
+## 8. Randbedingungen
 ------------------
 - Projektzeitraum: zwei Trimester  
 - Teamgröße: 5 Personen  
@@ -129,7 +147,7 @@ Zusätzlich integriert die Webapplikation eine Notenverwaltung, um Lernaktivitä
 - Nutzung kostenloser Tools und Open-Source-Komponenten  
 - Datenschutz: Keine echten Personendaten im Prototyp  
 
-## 8. Auswirkungen auf Stakeholder
+## 9. Auswirkungen auf Stakeholder
 -------------------------------
 | Stakeholder | Positive Auswirkungen | Negative / mögliche Risiken |
 |--------------|----------------------|-----------------------------|
@@ -139,15 +157,3 @@ Zusätzlich integriert die Webapplikation eine Notenverwaltung, um Lernaktivitä
 | **Dozent:innen** | Möglichkeit, Lernfortschritt der Studierenden besser einzuschätzen | Keine direkte Integration in Uni-Systeme |
 | **Systemadministrator** | Klare Struktur, einfache Wartung durch Web-Technologien | Zusätzliche Wartungsaufgaben bei realem Einsatz |
 
-## 9. Erwartete Ergebnisse
-------------------------
-- Lasten- und Pflichtenheft  
-- UML-Diagramme (Use Case, Klassendiagramm, Sequenzdiagramm)  
-- Architekturkonzept (3-Schichten-Webarchitektur)   
-- Testkonzept (Unit-, Integrations-, Systemtests)  
-- UI-Mockup oder Prototyp  
-
-## 10. Fazit
----------
-„StudyQuest“ kombiniert Gamification mit Notenverwaltung und wird als Web-App umgesetzt.  
-Das Projekt ist ideal, um die Phasen Analyse, Design, Implementierung und Test praxisnah zu demonstrieren, ohne eine vollständige Implementierung schreiben zu müssen.
