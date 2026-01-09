@@ -191,7 +191,7 @@ Pro Dokument: Changelog und Distribution List pflegen.
 
 ## 9. Aufwandsschätzung
 
-Die Aufwandsschätzung ist Bestandteil der Projektplanung im Scrum-Kontext. Sie erfolgt iterativ auf Basis des Product Backlogs und wird vom gesamten Entwicklungsteam gemeinsam durchgeführt. Zur Schätzung wird eine relative Methode verwendet. Komplexe Aufgaben werden in Schätzkonferenzen diskutiert. Risiken und Unsicherheiten werden bei der Schätzung berücksichtigt und können zu Anpassungen führen. Die Schätzungen werden im Projektverlauf regelmäßig überprüft und bei Bedarf aktualisiert. Die detaillierte Aufwandsschätzung ist im separaten Dokument **„Aufwandsschätzung** dokumentiert.
+Die Aufwandsschätzung ist Bestandteil der Projektplanung im Scrum-Kontext. Sie erfolgt iterativ auf Basis des Product Backlogs und wird vom gesamten Entwicklungsteam gemeinsam durchgeführt. Zur Schätzung wird eine relative Methode verwendet. Komplexe Aufgaben werden in Schätzkonferenzen diskutiert. Risiken und Unsicherheiten werden bei der Schätzung berücksichtigt und können zu Anpassungen führen. Die Schätzungen werden im Projektverlauf regelmäßig überprüft und bei Bedarf aktualisiert. Die detaillierte Aufwandsschätzung ist im separaten Dokument **Aufwandsschätzung** dokumentiert.
 
 
 
