@@ -120,13 +120,15 @@ const UserModel = {
         if (!user) throw new Error('User nicht gefunden');
 
         const oldLevel = user.level;
-        user.xp += xpAmount;
         user.total_xp_earned += xpAmount;
 
         // Berechne neues Level (UC05: Level-up Logic)
         const rules = DB.getGameRules();
         user.level = Math.floor(user.total_xp_earned / rules.level_threshold) + 1;
         user.level = Math.min(user.level, rules.max_level);
+
+        // Setze XP im aktuellen Level (Progress Bar wird zurückgesetzt bei Level-Up)
+        user.xp = user.total_xp_earned - ((user.level - 1) * rules.level_threshold);
 
         user.updated_at = new Date().toISOString();
         DB.saveUser(user);

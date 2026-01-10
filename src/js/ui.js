@@ -104,13 +104,16 @@ const UI = {
                     <div class="recent-section">
                         <h3>Letzte Aktivitäten</h3>
                         <div class="session-list">
-                            ${stats.recentSessions.map(s => `
-                                <div class="session-item">
-                                    <span class="session-quest" id="session-quest-${s.quest_id}"></span>
-                                    <span class="session-xp">+${s.xp_earned} XP</span>
-                                    <span class="session-time">${new Date(s.completed_at).toLocaleDateString('de-DE')}</span>
-                                </div>
-                            `).join('')}
+                            ${stats.recentSessions.map(s => {
+                                const questTitle = DB.findQuest(s.quest_id)?.title || 'Unbekannte Quest';
+                                return `
+                                    <div class="session-item">
+                                        <span class="session-quest">${questTitle}</span>
+                                        <span class="session-xp">+${s.xp_earned} XP</span>
+                                        <span class="session-time">${new Date(s.completed_at).toLocaleDateString('de-DE')}</span>
+                                    </div>
+                                `;
+                            }).join('')}
                         </div>
                     </div>
                 ` : ''}

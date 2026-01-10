@@ -194,7 +194,7 @@ const DB = {
                 title: 'API Integration',
                 description: 'Nutze externe APIs',
                 difficulty: 'medium',
-                xp_reward: 120,
+                xp_reward: 100,
                 status: 'available',
                 created_at: new Date().toISOString()
             },
@@ -203,7 +203,97 @@ const DB = {
                 title: 'Code Review Basics',
                 description: 'Lerne Best Practices',
                 difficulty: 'easy',
-                xp_reward: 40,
+                xp_reward: 50,
+                status: 'available',
+                created_at: new Date().toISOString()
+            },
+            {
+                id: 'q006',
+                title: 'Git & Version Control',
+                description: 'Beherrsche Git Workflows und Branching',
+                difficulty: 'easy',
+                xp_reward: 50,
+                status: 'available',
+                created_at: new Date().toISOString()
+            },
+            {
+                id: 'q007',
+                title: 'CSS Flexbox Meister',
+                description: 'Perfektioniere dein CSS Flexbox Wissen',
+                difficulty: 'medium',
+                xp_reward: 100,
+                status: 'available',
+                created_at: new Date().toISOString()
+            },
+            {
+                id: 'q008',
+                title: 'Array Methods Profi',
+                description: 'Beherrsche map, filter, reduce und mehr',
+                difficulty: 'medium',
+                xp_reward: 100,
+                status: 'available',
+                created_at: new Date().toISOString()
+            },
+            {
+                id: 'q009',
+                title: 'REST API Design',
+                description: 'Lerne die Prinzipien von RESTful APIs',
+                difficulty: 'hard',
+                xp_reward: 150,
+                status: 'available',
+                created_at: new Date().toISOString()
+            },
+            {
+                id: 'q010',
+                title: 'Testing & Debugging',
+                description: 'Schreibe Tests und debugge effektiv',
+                difficulty: 'medium',
+                xp_reward: 100,
+                status: 'available',
+                created_at: new Date().toISOString()
+            },
+            {
+                id: 'q011',
+                title: 'Performance Optimization',
+                description: 'Optimiere deine JavaScript-Performance',
+                difficulty: 'hard',
+                xp_reward: 150,
+                status: 'available',
+                created_at: new Date().toISOString()
+            },
+            {
+                id: 'q012',
+                title: 'Reguläre Ausdrücke',
+                description: 'Meistere Regex für Pattern Matching',
+                difficulty: 'medium',
+                xp_reward: 100,
+                status: 'available',
+                created_at: new Date().toISOString()
+            },
+            {
+                id: 'q013',
+                title: 'Security Best Practices',
+                description: 'Lerne Web-Sicherheit und Datenschutz',
+                difficulty: 'hard',
+                xp_reward: 150,
+                status: 'available',
+                created_at: new Date().toISOString()
+            },
+            {
+                id: 'q014',
+                title: 'Mobile Responsive Design',
+                description: 'Erstelle responsive Designs für alle Geräte',
+                difficulty: 'medium',
+                xp_reward: 100,
+                status: 'available',
+                created_at: new Date().toISOString()
+            },
+            {
+                id: 'q015',
+                title: 'Closure & Scope',
+                description: 'Verstehe JavaScript Closures und Scope',
+                difficulty: 'hard',
+                xp_reward: 150,
                 status: 'available',
                 created_at: new Date().toISOString()
             }
