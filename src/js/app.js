@@ -65,6 +65,15 @@ const app = {
     },
 
     /**
+     * Zeigt Notenverwaltung (UC07)
+     */
+    showGradesPage() {
+        const user = UserModel.getCurrentUser();
+        if (!user) { this.showAuthPage(); return; }
+        UI.showGradesPage();
+    },
+
+    /**
      * Zeigt Seite für aktive Quest
      */
     showActiveQuestPage() {

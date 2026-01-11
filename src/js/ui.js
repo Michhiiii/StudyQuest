@@ -93,9 +93,12 @@ const UI = {
                         <button id="start-quest-btn" class="btn btn-primary">
                             🚀 Neue Quest starten
                         </button>
-                        <button id="view-quests-btn" class="btn btn-secondary">
-                            📋 Alle Quests anschauen
-                        </button>
+                            <button id="view-quests-btn" class="btn btn-secondary">
+                                📋 Alle Quests anschauen
+                            </button>
+                            <button id="manage-grades-btn" class="btn btn-secondary">
+                                🧾 Noten verwalten
+                            </button>
                     </div>
                 </div>
 
@@ -122,6 +125,174 @@ const UI = {
 
         this._attachDashboardListeners();
         this._updateActiveQuestInfo();
+    },
+
+    /**
+     * Zeigt Notenverwaltung (UC07)
+     */
+    showGradesPage() {
+        const user = UserModel.getCurrentUser();
+        if (!user) { app.showAuthPage(); return; }
+
+        const grades = GradeModel.getAll(user.id);
+
+        const appDiv = document.getElementById('app');
+        appDiv.innerHTML = `
+            <div class="grades-container">
+                <div class="grades-header">
+                    <h1>Notenverwaltung</h1>
+                    <p class="subtitle">Noten hinzufügen, bearbeiten oder exportieren</p>
+                </div>
+
+                <div class="grades-actions">
+                    <button id="add-grade-btn" class="btn btn-primary">➕ Note hinzufügen</button>
+                    <button id="export-grades-btn" class="btn btn-secondary">⬇️ CSV exportieren</button>
+                    <label class="btn btn-secondary" style="display:inline-block; margin-left:0.5rem;">
+                        ⬆️ CSV importieren
+                        <input id="import-csv-input" type="file" accept="text/csv" style="display:none" />
+                    </label>
+                </div>
+
+                <div id="grades-list" class="grades-list">
+                    <table class="grades-table" style="width:100%; border-collapse:collapse;">
+                        <thead>
+                            <tr>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #e5e7eb;">Note</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #e5e7eb;">Modul</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #e5e7eb;">Semester</th>
+                                <th style="text-align:right; padding:8px; border-bottom:1px solid #e5e7eb;">Aktionen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${grades.map(g => `
+                                <tr data-id="${g.id}">
+                                    <td style="padding:8px; border-bottom:1px solid #f3f4f6;">${g.grade_value}</td>
+                                    <td style="padding:8px; border-bottom:1px solid #f3f4f6;">${g.module_name}</td>
+                                    <td style="padding:8px; border-bottom:1px solid #f3f4f6;">${g.semester || ''}</td>
+                                    <td style="padding:8px; border-bottom:1px solid #f3f4f6; text-align:right;">
+                                        <button class="btn btn-secondary btn-small edit-grade" data-id="${g.id}">Bearbeiten</button>
+                                        <button class="btn btn-danger btn-small delete-grade" data-id="${g.id}">Löschen</button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="back-to-dashboard">
+                    <button id="back-dashboard-from-grades" class="btn btn-secondary">← Zurück</button>
+                </div>
+            </div>
+        `;
+
+        // Listeners
+        document.getElementById('add-grade-btn')?.addEventListener('click', () => this._showAddGradeForm());
+        document.getElementById('export-grades-btn')?.addEventListener('click', () => this._exportGrades(user.id));
+        document.getElementById('import-csv-input')?.addEventListener('change', (e) => this._importGradesFromFile(e, user.id));
+        document.getElementById('back-dashboard-from-grades')?.addEventListener('click', () => app.showDashboard());
+
+        // Delegated handlers for edit/delete
+        document.querySelectorAll('.edit-grade').forEach(btn => btn.addEventListener('click', (e) => {
+            const id = e.currentTarget.dataset.id;
+            this._showEditGradeForm(id);
+        }));
+        document.querySelectorAll('.delete-grade').forEach(btn => btn.addEventListener('click', (e) => {
+            const id = e.currentTarget.dataset.id;
+            if (confirm('Note wirklich löschen?')) {
+                GradeModel.delete(id);
+                this.showGradesPage();
+            }
+        }));
+    },
+
+    _showAddGradeForm() {
+        const appDiv = document.getElementById('app');
+        appDiv.insertAdjacentHTML('beforeend', `
+            <div id="grade-form-modal" class="modal">
+                <div class="modal-card">
+                    <h3>Neue Note hinzufügen</h3>
+                    <div class="form-group"><label>Modul</label><input id="g-module" type="text" /></div>
+                    <div class="form-group"><label>Note</label><input id="g-value" type="number" step="0.01" /></div>
+                    <div class="form-group"><label>Semester</label><input id="g-semester" type="text" /></div>
+                    <div class="form-actions">
+                        <button id="save-grade-btn" class="btn btn-primary">Speichern</button>
+                        <button id="cancel-grade-btn" class="btn btn-secondary">Abbrechen</button>
+                    </div>
+                </div>
+            </div>
+        `);
+
+        document.getElementById('cancel-grade-btn')?.addEventListener('click', () => document.getElementById('grade-form-modal')?.remove());
+        document.getElementById('save-grade-btn')?.addEventListener('click', () => {
+            const moduleName = document.getElementById('g-module').value.trim();
+            const gradeValue = document.getElementById('g-value').value;
+            const semester = document.getElementById('g-semester').value.trim();
+            try {
+                const user = UserModel.getCurrentUser();
+                GradeModel.create(user.id, moduleName, gradeValue, semester);
+                document.getElementById('grade-form-modal')?.remove();
+                this.showGradesPage();
+            } catch (err) { alert('❌ ' + err.message); }
+        });
+    },
+
+    _showEditGradeForm(gradeId) {
+        const user = UserModel.getCurrentUser();
+        const grades = GradeModel.getAll(user.id);
+        const g = grades.find(x => x.id === gradeId);
+        if (!g) return alert('Note nicht gefunden');
+
+        const appDiv = document.getElementById('app');
+        appDiv.insertAdjacentHTML('beforeend', `
+            <div id="grade-form-modal" class="modal">
+                <div class="modal-card">
+                    <h3>Note bearbeiten</h3>
+                    <div class="form-group"><label>Modul</label><input id="g-module" type="text" value="${g.module_name}" /></div>
+                    <div class="form-group"><label>Note</label><input id="g-value" type="number" step="0.01" value="${g.grade_value}" /></div>
+                    <div class="form-group"><label>Semester</label><input id="g-semester" type="text" value="${g.semester || ''}" /></div>
+                    <div class="form-actions">
+                        <button id="update-grade-btn" class="btn btn-primary">Aktualisieren</button>
+                        <button id="cancel-grade-btn" class="btn btn-secondary">Abbrechen</button>
+                    </div>
+                </div>
+            </div>
+        `);
+
+        document.getElementById('cancel-grade-btn')?.addEventListener('click', () => document.getElementById('grade-form-modal')?.remove());
+        document.getElementById('update-grade-btn')?.addEventListener('click', () => {
+            const moduleName = document.getElementById('g-module').value.trim();
+            const gradeValue = document.getElementById('g-value').value;
+            const semester = document.getElementById('g-semester').value.trim();
+            try {
+                GradeModel.update(gradeId, { module_name: moduleName, grade_value: gradeValue, semester });
+                document.getElementById('grade-form-modal')?.remove();
+                this.showGradesPage();
+            } catch (err) { alert('❌ ' + err.message); }
+        });
+    },
+
+    _exportGrades(userId) {
+        const csv = GradeModel.exportCSV(userId);
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'grades_export.csv';
+        a.click();
+        URL.revokeObjectURL(url);
+    },
+
+    _importGradesFromFile(e, userId) {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+            const text = ev.target.result;
+            const count = GradeModel.importCSV(userId, text);
+            alert(`✅ ${count} Noten importiert`);
+            this.showGradesPage();
+        };
+        reader.readAsText(file, 'utf-8');
     },
 
     /**
@@ -395,6 +566,10 @@ const UI = {
 
         document.getElementById('view-quests-btn')?.addEventListener('click', () => {
             app.showQuestPage();
+        });
+
+        document.getElementById('manage-grades-btn')?.addEventListener('click', () => {
+            app.showGradesPage();
         });
 
         document.getElementById('go-to-quest-btn')?.addEventListener('click', () => {

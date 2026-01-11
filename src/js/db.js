@@ -9,6 +9,7 @@ const DB = {
     STORE_QUESTS: 'quests',
     STORE_SESSIONS: 'learning_sessions',
     STORE_TIMERS: 'timers',
+    STORE_GRADES: 'grades',
     STORE_RULES: 'game_rules',
     STORE_CURRENT_USER: 'current_user',
 
@@ -28,6 +29,9 @@ const DB = {
         }
         if (!this.get(this.STORE_TIMERS)) {
             this.set(this.STORE_TIMERS, []);
+        }
+        if (!this.get(this.STORE_GRADES)) {
+            this.set(this.STORE_GRADES, []);
         }
         if (!this.get(this.STORE_RULES)) {
             this.set(this.STORE_RULES, this._getDefaultGameRules());
@@ -152,6 +156,37 @@ const DB = {
     getUserSessions(userId) {
         const sessions = this.get(this.STORE_SESSIONS) || [];
         return sessions.filter(s => s.user_id === userId);
+    },
+
+    /**
+     * Grades store methods
+     */
+    getGradesForUser(userId) {
+        const grades = this.get(this.STORE_GRADES) || [];
+        return grades.filter(g => g.user_id === userId);
+    },
+
+    saveGrade(grade) {
+        const grades = this.get(this.STORE_GRADES) || [];
+        const index = grades.findIndex(g => g.id === grade.id);
+        if (index >= 0) grades[index] = grade; else grades.push(grade);
+        return this.set(this.STORE_GRADES, grades);
+    },
+
+    deleteGrade(gradeId) {
+        const grades = this.get(this.STORE_GRADES) || [];
+        const idx = grades.findIndex(g => g.id === gradeId);
+        if (idx >= 0) {
+            grades.splice(idx, 1);
+            return this.set(this.STORE_GRADES, grades);
+        }
+        return false;
+    },
+
+    importGrades(gradesArray) {
+        const grades = this.get(this.STORE_GRADES) || [];
+        const merged = grades.concat(gradesArray);
+        return this.set(this.STORE_GRADES, merged);
     },
 
     /**
