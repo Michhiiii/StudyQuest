@@ -8,6 +8,7 @@ const DB = {
     STORE_USERS: 'users',
     STORE_QUESTS: 'quests',
     STORE_SESSIONS: 'learning_sessions',
+    STORE_TIMERS: 'timers',
     STORE_RULES: 'game_rules',
     STORE_CURRENT_USER: 'current_user',
 
@@ -24,6 +25,9 @@ const DB = {
         }
         if (!this.get(this.STORE_SESSIONS)) {
             this.set(this.STORE_SESSIONS, []);
+        }
+        if (!this.get(this.STORE_TIMERS)) {
+            this.set(this.STORE_TIMERS, []);
         }
         if (!this.get(this.STORE_RULES)) {
             this.set(this.STORE_RULES, this._getDefaultGameRules());
@@ -148,6 +152,36 @@ const DB = {
     getUserSessions(userId) {
         const sessions = this.get(this.STORE_SESSIONS) || [];
         return sessions.filter(s => s.user_id === userId);
+    },
+
+    /**
+     * Timer-Store Methoden
+     */
+    saveTimer(timer) {
+        const timers = this.get(this.STORE_TIMERS) || [];
+        const index = timers.findIndex(t => t.id === timer.id);
+        if (index >= 0) timers[index] = timer; else timers.push(timer);
+        return this.set(this.STORE_TIMERS, timers);
+    },
+
+    getActiveTimerForUser(userId) {
+        const timers = this.get(this.STORE_TIMERS) || [];
+        return timers.find(t => t.user_id === userId && t.active === true) || null;
+    },
+
+    getTimersForUser(userId) {
+        const timers = this.get(this.STORE_TIMERS) || [];
+        return timers.filter(t => t.user_id === userId);
+    },
+
+    clearTimer(timerId) {
+        const timers = this.get(this.STORE_TIMERS) || [];
+        const idx = timers.findIndex(t => t.id === timerId);
+        if (idx >= 0) {
+            timers.splice(idx, 1);
+            return this.set(this.STORE_TIMERS, timers);
+        }
+        return false;
     },
 
     /**

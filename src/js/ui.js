@@ -204,6 +204,9 @@ const UI = {
         if (!quest) return;
 
         const appDiv = document.getElementById('app');
+        // Prüfe, ob bereits ein aktiver Timer für diesen User existiert
+        const activeTimer = DB.getActiveTimerForUser(user.id);
+
         appDiv.innerHTML = `
             <div class="quest-detail-container">
                 <div class="quest-detail-header">
@@ -224,12 +227,23 @@ const UI = {
 
                 <div class="quest-actions">
                     <p class="action-prompt">Hast du diese Quest abgeschlossen?</p>
-                    <button id="complete-quest-btn" class="btn btn-success">
-                        ✅ Quest Abschließen
-                    </button>
-                    <button id="cancel-quest-btn" class="btn btn-secondary">
-                        ❌ Abbrechen
-                    </button>
+                    <div id="timer-controls">
+                        ${activeTimer ? `
+                            <div class="timer-display">Verstrichene Zeit: <span id="timer-elapsed">--:--:--</span></div>
+                            <button id="stop-timer-btn" class="btn btn-success">⏹️ Timer stoppen & Abschluss</button>
+                        ` : `
+                            <button id="start-timer-btn" class="btn btn-primary">⏱️ Timer starten</button>
+                        `}
+                    </div>
+
+                    <div class="mt-2">
+                        <button id="complete-quest-btn" class="btn btn-secondary">
+                            ✅ Sofort abschließen (ohne Timer)
+                        </button>
+                        <button id="cancel-quest-btn" class="btn btn-secondary">
+                            ❌ Abbrechen
+                        </button>
+                    </div>
                 </div>
 
                 <div id="quest-result" class="quest-result"></div>
@@ -243,6 +257,9 @@ const UI = {
         document.getElementById('cancel-quest-btn')?.addEventListener('click', () => {
             app.showDashboard();
         });
+
+        // Attach timer listeners (start/stop) if present
+        this._attachActiveQuestTimerListeners(user, quest);
     },
 
     /**
@@ -280,6 +297,75 @@ const UI = {
         } catch (error) {
             const resultDiv = document.getElementById('quest-result');
             resultDiv.innerHTML = `<div class="error-message">❌ ${error.message}</div>`;
+        }
+    },
+
+    /**
+     * Helper: Formats seconds to HH:MM:SS
+     */
+    _formatTime(seconds) {
+        const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
+        const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
+        const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+        return `${h}:${m}:${s}`;
+    },
+
+    /**
+     * Attach Timer listeners for active quest page
+     */
+    _attachActiveQuestTimerListeners(user, quest) {
+        // Clear any existing interval
+        if (this._activeTimerInterval) {
+            clearInterval(this._activeTimerInterval);
+            this._activeTimerInterval = null;
+        }
+
+        const startTimerBtn = document.getElementById('start-timer-btn');
+        const stopTimerBtn = document.getElementById('stop-timer-btn');
+        const elapsedSpan = document.getElementById('timer-elapsed');
+
+        if (startTimerBtn) {
+            startTimerBtn.addEventListener('click', () => {
+                try {
+                    QuestSystem.startTimer(user.id, quest.id);
+                    UI.showActiveQuestPage();
+                } catch (err) {
+                    alert('❌ ' + err.message);
+                }
+            });
+        }
+
+        if (stopTimerBtn) {
+            // Update elapsed immediately and every second
+            const timer = DB.getActiveTimerForUser(user.id);
+            if (timer && elapsedSpan) {
+                const update = () => {
+                    const start = new Date(timer.start_time);
+                    const now = new Date();
+                    const sec = Math.max(0, Math.floor((now - start) / 1000));
+                    elapsedSpan.textContent = UI._formatTime(sec);
+                };
+                update();
+                this._activeTimerInterval = setInterval(update, 1000);
+            }
+
+            stopTimerBtn.addEventListener('click', () => {
+                try {
+                    const res = QuestSystem.stopTimer(user.id);
+                    const resultDiv = document.getElementById('quest-result');
+                    resultDiv.innerHTML = `
+                        <div class="success-message">
+                            <h2>🎉 Quest Abgeschlossen!</h2>
+                            <p class="result-text">+${res.xpEarned} XP (inkl. Zeitbonus ${res.timeBonus})</p>
+                        </div>
+                    `;
+                    // Clear interval
+                    if (this._activeTimerInterval) { clearInterval(this._activeTimerInterval); this._activeTimerInterval = null; }
+                    setTimeout(() => app.showDashboard(), 2000);
+                } catch (err) {
+                    alert('❌ ' + err.message);
+                }
+            });
         }
     },
 

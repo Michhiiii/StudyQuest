@@ -42,6 +42,90 @@ const QuestSystem = {
     },
 
     /**
+     * UC06: Timer starten für eine aktive Quest
+     * Erstellt einen Timer-Objekt und persistiert ihn
+     */
+    startTimer(userId, questId) {
+        const user = DB.findUser(userId);
+        if (!user) throw new Error('User nicht gefunden');
+
+        const quest = DB.findQuest(questId);
+        if (!quest) throw new Error('Quest nicht gefunden');
+
+        // Prüfe ob bereits ein aktiver Timer existiert
+        const existing = DB.getActiveTimerForUser(userId);
+        if (existing) throw new Error('Es läuft bereits ein Timer. Bitte beende diesen zuerst.');
+
+        // Setze aktive Quest falls noch nicht gesetzt
+        if (!user.active_quest_id) {
+            UserModel.setActiveQuest(userId, questId);
+        }
+
+        const timer = {
+            id: this._generateTimerId(),
+            user_id: userId,
+            quest_id: questId,
+            start_time: new Date().toISOString(),
+            end_time: null,
+            duration_seconds: 0,
+            active: true
+        };
+
+        DB.saveTimer(timer);
+        console.log(`✓ Timer gestartet für Quest ${questId}`);
+        return timer;
+    },
+
+    /**
+     * UC06: Timer stoppen - berechnet Dauer, XP und speichert Session
+     */
+    stopTimer(userId) {
+        const timer = DB.getActiveTimerForUser(userId);
+        if (!timer) throw new Error('Kein aktiver Timer gefunden');
+
+        timer.end_time = new Date().toISOString();
+        const start = new Date(timer.start_time);
+        const end = new Date(timer.end_time);
+        const durationSec = Math.max(0, Math.floor((end - start) / 1000));
+        timer.duration_seconds = durationSec;
+        timer.active = false;
+
+        DB.saveTimer(timer);
+
+        // Berechne XP: Basis XP der Quest + Zeitbonus
+        const quest = DB.findQuest(timer.quest_id);
+        const rules = DB.getGameRules();
+        const durationMinutes = Math.floor(durationSec / 60);
+        const timeBonus = Math.floor(durationMinutes * rules.xp_per_minute_timer);
+        const baseXP = this._calculateXPReward(quest);
+        const xpEarned = baseXP + timeBonus;
+
+        // Atomare Operation: XP hinzufügen + Quest abschließen + Session speichern
+        const xpResult = UserModel.addXP(userId, xpEarned);
+        UserModel.completeQuest(userId, timer.quest_id);
+
+        const session = {
+            id: this._generateSessionId(),
+            user_id: userId,
+            quest_id: timer.quest_id,
+            xp_earned: xpEarned,
+            duration_seconds: durationSec,
+            completed_at: new Date().toISOString()
+        };
+        DB.saveSession(session);
+
+        console.log(`✓ Timer gestoppt: +${xpEarned} XP (inkl. Zeitbonus ${timeBonus})`);
+        return {
+            timer,
+            xpEarned,
+            timeBonus,
+            durationSec,
+            leveledUp: xpResult.leveledUp,
+            newLevel: xpResult.newLevel
+        };
+    },
+
+    /**
      * UC05: Quest abschließen
      * Nutzer schließt Quest ab und erhält XP + Level-up
      * KRITISCH: Atomare Operation zur Vermeidung von Doppel-XP
@@ -170,5 +254,9 @@ const QuestSystem = {
      */
     _generateSessionId() {
         return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    },
+
+    _generateTimerId() {
+        return 'timer_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
     }
 };
