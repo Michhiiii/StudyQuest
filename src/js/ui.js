@@ -726,5 +726,249 @@ const UI = {
         document.getElementById('go-to-quest-btn')?.addEventListener('click', () => {
             app.showActiveQuestPage();
         });
+    },
+
+    /**
+     * UC13-15: Admin Panel
+     */
+    showAdminPage() {
+        const user = UserModel.getCurrentUser();
+        if (!user || !UserModel.isAdmin(user.id)) {
+            app.showDashboard();
+            return;
+        }
+
+        const quests = AdminSystem.getAllQuests();
+        const rules = AdminSystem.getGameRules();
+        const users = AdminSystem.getAllUsers();
+
+        const appDiv = document.getElementById('app');
+        appDiv.innerHTML = `
+            <div class="admin-container">
+                <div class="admin-header">
+                    <h1>⚙️ Admin Panel</h1>
+                    <p class="subtitle">Verwalte Quests, Regeln und Benutzer</p>
+                </div>
+
+                <!-- Admin Tabs -->
+                <div class="admin-tabs">
+                    <button class="admin-tab-btn active" data-tab="quests">📋 Quests (${quests.length})</button>
+                    <button class="admin-tab-btn" data-tab="rules">⚙️ Regeln</button>
+                    <button class="admin-tab-btn" data-tab="users">👥 Benutzer (${users.length})</button>
+                </div>
+
+                <!-- UC13: Quest Management Tab -->
+                <div class="admin-tab-content active" id="tab-quests">
+                    <div class="admin-section">
+                        <h2>Quest-Katalog verwalten</h2>
+                        <button id="create-quest-btn" class="btn btn-primary">+ Neue Quest erstellen</button>
+                        <div id="quests-list" class="quests-list">
+                            ${quests.map(q => `
+                                <div class="quest-item">
+                                    <div class="quest-info">
+                                        <div class="quest-title">${q.title}</div>
+                                        <div class="quest-desc">${q.description}</div>
+                                        <div class="quest-meta">
+                                            <span class="badge difficulty-${q.difficulty}">${q.difficulty}</span>
+                                            <span class="badge">⭐ ${q.xp_reward} XP</span>
+                                        </div>
+                                    </div>
+                                    <div class="quest-actions">
+                                        <button class="btn btn-small btn-secondary" data-action="edit-quest" data-id="${q.id}">✏️ Bearbeiten</button>
+                                        <button class="btn btn-small btn-danger" data-action="delete-quest" data-id="${q.id}">🗑️ Löschen</button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UC14: Game Rules Tab -->
+                <div class="admin-tab-content" id="tab-rules">
+                    <div class="admin-section">
+                        <h2>Spiel-Regeln konfigurieren</h2>
+                        <form id="rules-form" class="rules-form">
+                            <div class="form-group">
+                                <label>XP für Easy-Quests:</label>
+                                <input type="number" name="xp_per_quest_easy" value="${rules.xp_per_quest_easy}" min="10">
+                            </div>
+                            <div class="form-group">
+                                <label>XP für Medium-Quests:</label>
+                                <input type="number" name="xp_per_quest_medium" value="${rules.xp_per_quest_medium}" min="10">
+                            </div>
+                            <div class="form-group">
+                                <label>XP für Hard-Quests:</label>
+                                <input type="number" name="xp_per_quest_hard" value="${rules.xp_per_quest_hard}" min="10">
+                            </div>
+                            <div class="form-group">
+                                <label>XP pro Minute Timer:</label>
+                                <input type="number" name="xp_per_minute_timer" value="${rules.xp_per_minute_timer}" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label>XP für Level-Up:</label>
+                                <input type="number" name="level_threshold" value="${rules.level_threshold}" min="100">
+                            </div>
+                            <div class="form-group">
+                                <label>Max Level:</label>
+                                <input type="number" name="max_level" value="${rules.max_level}" min="10">
+                            </div>
+                            <button type="submit" class="btn btn-primary">💾 Änderungen speichern</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- UC15: User Management Tab -->
+                <div class="admin-tab-content" id="tab-users">
+                    <div class="admin-section">
+                        <h2>Benutzer verwalten</h2>
+                        <div class="user-stats">
+                            <div class="stat-badge">
+                                <span class="stat-label">Gesamt</span>
+                                <span class="stat-value">${users.length}</span>
+                            </div>
+                            <div class="stat-badge active">
+                                <span class="stat-label">Aktiv</span>
+                                <span class="stat-value">${users.filter(u => u.is_active).length}</span>
+                            </div>
+                            <div class="stat-badge admin">
+                                <span class="stat-label">Admins</span>
+                                <span class="stat-value">${users.filter(u => u.is_admin).length}</span>
+                            </div>
+                        </div>
+
+                        <div class="users-list">
+                            <div class="users-header">
+                                <div>Benutzer</div>
+                                <div>Level</div>
+                                <div>XP</div>
+                                <div>Status</div>
+                                <div>Admin</div>
+                                <div>Aktionen</div>
+                            </div>
+                            ${users.map(u => `
+                                <div class="user-row ${!u.is_active ? 'inactive' : ''}">
+                                    <div class="user-name">${u.name} (${u.email})</div>
+                                    <div>${u.level}</div>
+                                    <div>${u.total_xp_earned}</div>
+                                    <div>
+                                        <span class="status-badge ${u.is_active ? 'active' : 'inactive'}">
+                                            ${u.is_active ? '✓ Aktiv' : '✗ Inaktiv'}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="admin-badge ${u.is_admin ? 'yes' : 'no'}">
+                                            ${u.is_admin ? '👑 Admin' : '—'}
+                                        </span>
+                                    </div>
+                                    <div class="user-actions">
+                                        <button class="btn btn-small" data-action="toggle-admin" data-id="${u.id}">
+                                            ${u.is_admin ? '👤' : '👑'}
+                                        </button>
+                                        <button class="btn btn-small" data-action="toggle-active" data-id="${u.id}">
+                                            ${u.is_active ? '🔒' : '🔓'}
+                                        </button>
+                                        <button class="btn btn-small btn-danger" data-action="delete-user" data-id="${u.id}">🗑️</button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back Button -->
+                <div class="action-buttons">
+                    <button id="back-to-dashboard-admin-btn" class="btn btn-secondary">← Zurück</button>
+                </div>
+            </div>
+        `;
+
+        this._attachAdminListeners();
+    },
+
+    /**
+     * Admin Event Listeners
+     */
+    _attachAdminListeners() {
+        // Tab Switching
+        document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const tabName = e.target.dataset.tab;
+                document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.admin-tab-content').forEach(c => c.classList.remove('active'));
+                e.target.classList.add('active');
+                document.getElementById(`tab-${tabName}`).classList.add('active');
+            });
+        });
+
+        // Create Quest
+        document.getElementById('create-quest-btn')?.addEventListener('click', () => {
+            const title = prompt('Quest Titel:');
+            if (!title) return;
+            const description = prompt('Beschreibung:');
+            if (!description) return;
+            const difficulty = prompt('Schwierigkeit (easy/medium/hard):');
+            if (!difficulty) return;
+
+            AdminSystem.createQuest(title, description, difficulty);
+            app.showAdminPage();
+        });
+
+        // Delete Quest
+        document.querySelectorAll('[data-action="delete-quest"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const questId = btn.dataset.id;
+                if (confirm('Quest wirklich löschen?')) {
+                    AdminSystem.deleteQuest(questId);
+                    app.showAdminPage();
+                }
+            });
+        });
+
+        // Rules Form
+        document.getElementById('rules-form')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const updates = Object.fromEntries(formData);
+            
+            // Convert to numbers
+            Object.keys(updates).forEach(key => {
+                updates[key] = parseInt(updates[key]);
+            });
+
+            AdminSystem.updateGameRules(updates);
+            alert('✓ Regeln aktualisiert');
+        });
+
+        // User Management
+        document.querySelectorAll('[data-action="toggle-admin"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const userId = btn.dataset.id;
+                AdminSystem.toggleAdminRole(userId);
+                app.showAdminPage();
+            });
+        });
+
+        document.querySelectorAll('[data-action="toggle-active"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const userId = btn.dataset.id;
+                AdminSystem.toggleUserActive(userId);
+                app.showAdminPage();
+            });
+        });
+
+        document.querySelectorAll('[data-action="delete-user"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const userId = btn.dataset.id;
+                if (confirm('Benutzer wirklich löschen?')) {
+                    AdminSystem.deleteUser(userId);
+                    app.showAdminPage();
+                }
+            });
+        });
+
+        document.getElementById('back-to-dashboard-admin-btn')?.addEventListener('click', () => {
+            app.showDashboard();
+        });
     }
 };
+

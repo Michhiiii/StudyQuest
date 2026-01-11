@@ -48,6 +48,7 @@ const app = {
         }
 
         document.getElementById('navbar').classList.remove('hidden');
+        this._updateAdminButtonVisibility();
         UI.showDashboard();
     },
 
@@ -80,6 +81,18 @@ const app = {
         const user = UserModel.getCurrentUser();
         if (!user) { this.showAuthPage(); return; }
         UI.showLeaderboardPage();
+    },
+
+    /**
+     * UC13-15: Zeigt Admin Panel
+     */
+    showAdminPage() {
+        const user = UserModel.getCurrentUser();
+        if (!user || !UserModel.isAdmin(user.id)) {
+            this.showDashboard();
+            return;
+        }
+        UI.showAdminPage();
     },
 
     /**
@@ -157,9 +170,16 @@ const app = {
             alert('Profil-Seite noch nicht implementiert');
         });
 
+        document.getElementById('nav-admin')?.addEventListener('click', () => {
+            this.showAdminPage();
+        });
+
         document.getElementById('nav-logout')?.addEventListener('click', () => {
             this.logout();
         });
+
+        // UC13-15: Update Admin-Button Visibility
+        this._updateAdminButtonVisibility();
 
         // UC09: Notification Events - Ein zentraler Handler
         document.addEventListener('click', (e) => {
@@ -255,6 +275,20 @@ const app = {
         if (user) {
             this._updateNotificationList();
             this._updateNotificationBadge();
+        }
+    },
+
+    /**
+     * UC13-15: Update Admin-Button Visibility
+     */
+    _updateAdminButtonVisibility() {
+        const user = UserModel.getCurrentUser();
+        const adminBtn = document.getElementById('nav-admin');
+        
+        if (user && UserModel.isAdmin(user.id)) {
+            adminBtn?.classList.remove('hidden');
+        } else {
+            adminBtn?.classList.add('hidden');
         }
     },
 

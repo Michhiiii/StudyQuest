@@ -28,6 +28,9 @@ const UserModel = {
         }
 
         // Neuer User (Analyseklassenmodell: User Entity)
+        const allUsers = DB.get(DB.STORE_USERS) || [];
+        const isFirstUser = allUsers.length === 0;
+
         const newUser = {
             id: this._generateId(),
             email: email.toLowerCase(),
@@ -44,7 +47,10 @@ const UserModel = {
             // UC12: Streak-System
             current_streak: 0,
             best_streak: 0,
-            last_activity_date: null
+            last_activity_date: null,
+            // UC13-15: Admin-Rolle - Erster User ist automatisch Admin
+            is_admin: isFirstUser,
+            is_active: true
         };
 
         // Speichere in DB
@@ -275,6 +281,48 @@ const UserModel = {
      */
     _verifyPassword(password, hash) {
         return btoa(password + 'salt_key_2024') === hash;
+    },
+
+    /**
+     * UC13-15: Admin-Methoden
+     */
+    isAdmin(userId) {
+        const user = DB.findUser(userId);
+        return user && user.is_admin === true;
+    },
+
+    setAdminRole(userId, isAdmin) {
+        const user = DB.findUser(userId);
+        if (!user) throw new Error('User nicht gefunden');
+        user.is_admin = isAdmin;
+        user.updated_at = new Date().toISOString();
+        DB.saveUser(user);
+        return user;
+    },
+
+    deactivateUser(userId) {
+        const user = DB.findUser(userId);
+        if (!user) throw new Error('User nicht gefunden');
+        user.is_active = false;
+        user.updated_at = new Date().toISOString();
+        DB.saveUser(user);
+        return user;
+    },
+
+    activateUser(userId) {
+        const user = DB.findUser(userId);
+        if (!user) throw new Error('User nicht gefunden');
+        user.is_active = true;
+        user.updated_at = new Date().toISOString();
+        DB.saveUser(user);
+        return user;
+    },
+
+    deleteUser(userId) {
+        const users = DB.get(DB.STORE_USERS) || [];
+        const filtered = users.filter(u => u.id !== userId);
+        DB.set(DB.STORE_USERS, filtered);
+        return true;
     },
 
     /**
