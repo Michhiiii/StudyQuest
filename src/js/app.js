@@ -74,6 +74,15 @@ const app = {
     },
 
     /**
+     * UC12: Zeigt Leaderboard & Streaks
+     */
+    showLeaderboardPage() {
+        const user = UserModel.getCurrentUser();
+        if (!user) { this.showAuthPage(); return; }
+        UI.showLeaderboardPage();
+    },
+
+    /**
      * Zeigt Seite für aktive Quest
      */
     showActiveQuestPage() {

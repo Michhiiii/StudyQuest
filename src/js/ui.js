@@ -99,6 +99,9 @@ const UI = {
                             <button id="manage-grades-btn" class="btn btn-secondary">
                                 🧾 Noten verwalten
                             </button>
+                            <button id="view-leaderboard-btn" class="btn btn-secondary">
+                                🏆 Leaderboard & Streaks
+                            </button>
                     </div>
                 </div>
 
@@ -149,6 +152,126 @@ const UI = {
 
         this._attachDashboardListeners();
         this._updateActiveQuestInfo();
+    },
+
+    /**
+     * UC12: Zeigt Leaderboard & Streaks
+     */
+    showLeaderboardPage() {
+        const user = UserModel.getCurrentUser();
+        if (!user) { app.showAuthPage(); return; }
+
+        const appDiv = document.getElementById('app');
+        const userStats = LeaderboardSystem.getUserStats(user.id);
+        const top10 = LeaderboardSystem.getTop10('xp');
+
+        appDiv.innerHTML = `
+            <div class="leaderboard-container">
+                <div class="leaderboard-header">
+                    <h1>🏆 Leaderboard & Streaks</h1>
+                    <p class="subtitle">Deine Position und tägliche Lern-Streaks</p>
+                </div>
+
+                <!-- Persönliche Streak-Info -->
+                <div class="streak-card">
+                    <div class="streak-item">
+                        <div class="streak-icon">🔥</div>
+                        <div class="streak-content">
+                            <div class="streak-title">Aktuelle Serie</div>
+                            <div class="streak-value">${userStats.current_streak} Tage</div>
+                        </div>
+                    </div>
+                    <div class="streak-item">
+                        <div class="streak-icon">⭐</div>
+                        <div class="streak-content">
+                            <div class="streak-title">Beste Serie</div>
+                            <div class="streak-value">${userStats.best_streak} Tage</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Persönliche Rankings -->
+                <div class="rankings-card">
+                    <h3>📊 Deine Rankings</h3>
+                    <div class="rankings-grid">
+                        <div class="ranking-item">
+                            <div class="ranking-icon">⭐</div>
+                            <div class="ranking-label">XP Rang</div>
+                            <div class="ranking-value">#${userStats.rank_xp}</div>
+                        </div>
+                        <div class="ranking-item">
+                            <div class="ranking-icon">📈</div>
+                            <div class="ranking-label">Level Rang</div>
+                            <div class="ranking-value">#${userStats.rank_level}</div>
+                        </div>
+                        <div class="ranking-item">
+                            <div class="ranking-icon">✅</div>
+                            <div class="ranking-label">Quests Rang</div>
+                            <div class="ranking-value">#${userStats.rank_quests}</div>
+                        </div>
+                        <div class="ranking-item">
+                            <div class="ranking-icon">🔥</div>
+                            <div class="ranking-label">Streak Rang</div>
+                            <div class="ranking-value">#${userStats.rank_streak}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top 10 Leaderboard -->
+                <div class="leaderboard-table-card">
+                    <h3>🥇 Top 10 Spieler (nach XP)</h3>
+                    <div class="leaderboard-table">
+                        <div class="table-header">
+                            <div class="header-rank">Platz</div>
+                            <div class="header-player">Spieler</div>
+                            <div class="header-stat">Level</div>
+                            <div class="header-stat">XP</div>
+                            <div class="header-stat">Quests</div>
+                            <div class="header-stat">Streak</div>
+                        </div>
+                        ${top10.map((u, idx) => {
+                            const isCurrentUser = u.id === user.id;
+                            return `
+                                <div class="table-row ${isCurrentUser ? 'highlight' : ''}">
+                                    <div class="cell-rank">${this._getMedalEmoji(idx + 1)} ${idx + 1}</div>
+                                    <div class="cell-player">
+                                        <span class="player-avatar">${u.avatar}</span>
+                                        <span class="player-name">${u.name}${isCurrentUser ? ' (Du)' : ''}</span>
+                                    </div>
+                                    <div class="cell-stat">${u.level}</div>
+                                    <div class="cell-stat">${u.total_xp_earned}</div>
+                                    <div class="cell-stat">${u.completedQuests}</div>
+                                    <div class="cell-stat">🔥 ${u.best_streak}</div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+
+                <!-- Back Button -->
+                <div class="action-buttons">
+                    <button id="back-to-dashboard-btn" class="btn btn-secondary">
+                        ← Zurück zum Dashboard
+                    </button>
+                </div>
+            </div>
+        `;
+
+        document.getElementById('back-to-dashboard-btn')?.addEventListener('click', () => {
+            app.showDashboard();
+        });
+    },
+
+    /**
+     * Helper: Medal Emoji für Platzierungen
+     */
+    _getMedalEmoji(rank) {
+        switch(rank) {
+            case 1: return '🥇';
+            case 2: return '🥈';
+            case 3: return '🥉';
+            default: return '•';
+        }
     },
 
     /**
@@ -594,6 +717,10 @@ const UI = {
 
         document.getElementById('manage-grades-btn')?.addEventListener('click', () => {
             app.showGradesPage();
+        });
+
+        document.getElementById('view-leaderboard-btn')?.addEventListener('click', () => {
+            app.showLeaderboardPage();
         });
 
         document.getElementById('go-to-quest-btn')?.addEventListener('click', () => {

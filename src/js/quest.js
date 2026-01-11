@@ -130,6 +130,9 @@ const QuestSystem = {
             NotificationModel.notifyAchievementUnlocked(userId, ach.title);
         });
 
+        // UC12: Streak Update nach Quest-Abschluss
+        const streakUpdate = UserModel.updateStreak(userId);
+
         console.log(`✓ Timer gestoppt: +${xpEarned} XP (inkl. Zeitbonus ${timeBonus})`);
         return {
             timer,

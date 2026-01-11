@@ -40,7 +40,11 @@ const UserModel = {
             created_at: new Date().toISOString(),
             updated_at: new Date().toISOString(),
             active_quest_id: null,
-            quest_history: [] // UC04: Abgeschlossene Quests tracken
+            quest_history: [], // UC04: Abgeschlossene Quests tracken
+            // UC12: Streak-System
+            current_streak: 0,
+            best_streak: 0,
+            last_activity_date: null
         };
 
         // Speichere in DB
@@ -199,6 +203,61 @@ const UserModel = {
         }
 
         return user;
+    },
+
+    /**
+     * UC12: Streak-Update nach Quest-Abschluss
+     * Prüft ob heute schon eine Quest gemacht wurde
+     * Wenn ja: Streak +1
+     * Wenn nein: Streak zurücksetzen
+     */
+    updateStreak(userId) {
+        const user = DB.findUser(userId);
+        if (!user) throw new Error('User nicht gefunden');
+
+        const today = new Date().toDateString();
+        const lastActivity = user.last_activity_date ? new Date(user.last_activity_date).toDateString() : null;
+
+        // Erste Aktivität oder neu registriert
+        if (!lastActivity) {
+            user.current_streak = 1;
+            user.best_streak = 1;
+        }
+        // Heute schon aktiv gewesen
+        else if (lastActivity === today) {
+            // Nichts tun - Streak bleibt gleich
+        }
+        // Gestern aktiv gewesen
+        else {
+            const lastDate = new Date(user.last_activity_date);
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+
+            if (lastDate.toDateString() === yesterday.toDateString()) {
+                // Streak weitermachen
+                user.current_streak += 1;
+                if (user.current_streak > user.best_streak) {
+                    user.best_streak = user.current_streak;
+                }
+            } else {
+                // Streak abgebrochen - neuer Start
+                user.current_streak = 1;
+            }
+        }
+
+        user.last_activity_date = new Date().toISOString();
+        user.updated_at = new Date().toISOString();
+
+        DB.saveUser(user);
+
+        if (this.getCurrentUser()?.id === userId) {
+            DB.set(DB.STORE_CURRENT_USER, user);
+        }
+
+        return {
+            current_streak: user.current_streak,
+            best_streak: user.best_streak
+        };
     },
 
     /**
