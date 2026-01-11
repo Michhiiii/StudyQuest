@@ -114,6 +114,12 @@ const QuestSystem = {
         };
         DB.saveSession(session);
 
+        // UC09: Trigger Notifications
+        NotificationModel.notifyQuestCompleted(userId, quest.title, xpEarned);
+        if (xpResult.leveledUp) {
+            NotificationModel.notifyLevelUp(userId, xpResult.newLevel);
+        }
+
         console.log(`✓ Timer gestoppt: +${xpEarned} XP (inkl. Zeitbonus ${timeBonus})`);
         return {
             timer,

@@ -151,6 +151,120 @@ const app = {
         document.getElementById('nav-logout')?.addEventListener('click', () => {
             this.logout();
         });
+
+        // UC09: Notification Events - Ein zentraler Handler
+        document.addEventListener('click', (e) => {
+            const bellBtn = e.target.closest('#nav-notifications-bell');
+            const clearBtn = e.target.closest('#clear-notifications-btn');
+            const notifItem = e.target.closest('.notification-item');
+            const dropdown = document.getElementById('notification-dropdown');
+
+            // Bell click - toggle dropdown
+            if (bellBtn) {
+                console.log('Bell clicked');
+                e.stopPropagation();
+                if (dropdown) {
+                    dropdown.classList.toggle('hidden');
+                    if (!dropdown.classList.contains('hidden')) {
+                        this._updateNotificationList();
+                    }
+                }
+                return;
+            }
+
+            // Clear button
+            if (clearBtn) {
+                console.log('Clear clicked');
+                e.stopPropagation();
+                const user = UserModel.getCurrentUser();
+                if (user) {
+                    NotificationModel.markAllAsRead(user.id);
+                    this._updateNotificationList();
+                    this._updateNotificationBadge();
+                }
+                return;
+            }
+
+            // Notification item click
+            if (notifItem) {
+                console.log('Notif item clicked');
+                e.stopPropagation();
+                const notifId = notifItem.getAttribute('data-notif-id');
+                if (notifId) {
+                    this._markNotificationAsRead(notifId);
+                }
+                return;
+            }
+
+            // Close dropdown when clicking outside
+            if (dropdown && !dropdown.classList.contains('hidden')) {
+                const isInside = e.target.closest('#notification-dropdown') || e.target.closest('#nav-notifications-bell');
+                if (!isInside) {
+                    dropdown.classList.add('hidden');
+                }
+            }
+        }, true); // useCapture = true für höhere Priorität
+    },
+
+    /**
+     * UC09: Update Notification List im Dropdown
+     */
+    _updateNotificationList() {
+        const user = UserModel.getCurrentUser();
+        if (!user) return;
+
+        const notifications = NotificationModel.getAll(user.id).slice(0, 5);
+        const listDiv = document.getElementById('notification-list');
+
+        if (notifications.length === 0) {
+            listDiv.innerHTML = '<div class="notification-empty">Keine Benachrichtigungen</div>';
+            return;
+        }
+
+        listDiv.innerHTML = notifications.map(notif => {
+            const time = new Date(notif.created_at).toLocaleTimeString('de-DE', {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            return `
+                <div class="notification-item ${!notif.is_read ? 'unread' : ''}" 
+                     data-notif-id="${notif.id}">
+                    <div class="notification-message">${notif.message}</div>
+                    <div class="notification-time">${time}</div>
+                </div>
+            `;
+        }).join('');
+    },
+
+    /**
+     * UC09: Mark Notification as Read
+     */
+    _markNotificationAsRead(notificationId) {
+        NotificationModel.markAsRead(notificationId);
+        const user = UserModel.getCurrentUser();
+        if (user) {
+            this._updateNotificationList();
+            this._updateNotificationBadge();
+        }
+    },
+
+    /**
+     * UC09: Update Badge mit Anzahl ungelesener Notifications
+     */
+    _updateNotificationBadge() {
+        const user = UserModel.getCurrentUser();
+        if (!user) return;
+
+        const unreadCount = NotificationModel.countUnread(user.id);
+        const badge = document.getElementById('notification-badge');
+
+        if (unreadCount > 0) {
+            badge.textContent = unreadCount;
+            badge.classList.remove('hidden');
+        } else {
+            badge.classList.add('hidden');
+        }
     }
 };
 
@@ -159,4 +273,9 @@ const app = {
  */
 document.addEventListener('DOMContentLoaded', () => {
     app.init();
+    
+    // UC09: Update notification badge periodisch (jede 5 Sekunden)
+    setInterval(() => {
+        app._updateNotificationBadge();
+    }, 5000);
 });

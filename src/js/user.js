@@ -114,6 +114,7 @@ const UserModel = {
     /**
      * Fügt XP zu User hinzu (UC05: Quest abschließen)
      * Atomare Operation - verhindert Doppel-Zuschreibung
+     * UC09: Trigger Level-Up Notification
      */
     addXP(userId, xpAmount) {
         const user = DB.findUser(userId);
@@ -139,6 +140,13 @@ const UserModel = {
         }
 
         const leveledUp = user.level > oldLevel;
+        
+        // UC09: Notification bei Level-Up (Trigger wird auch in quest.js stopTimer() aufgerufen)
+        if (leveledUp && typeof NotificationModel !== 'undefined') {
+            // Notification wird in stopTimer() getriggert, nicht hier
+            // Das vermeidet doppelte Notifications
+        }
+
         console.log(`✓ XP hinzugefügt: +${xpAmount} XP (Level ${oldLevel} → ${user.level}${leveledUp ? ' 🎉' : ''})`);
 
         return {

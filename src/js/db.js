@@ -10,6 +10,7 @@ const DB = {
     STORE_SESSIONS: 'learning_sessions',
     STORE_TIMERS: 'timers',
     STORE_GRADES: 'grades',
+    STORE_NOTIFICATIONS: 'notifications',
     STORE_RULES: 'game_rules',
     STORE_CURRENT_USER: 'current_user',
 
@@ -32,6 +33,9 @@ const DB = {
         }
         if (!this.get(this.STORE_GRADES)) {
             this.set(this.STORE_GRADES, []);
+        }
+        if (!this.get(this.STORE_NOTIFICATIONS)) {
+            this.set(this.STORE_NOTIFICATIONS, []);
         }
         if (!this.get(this.STORE_RULES)) {
             this.set(this.STORE_RULES, this._getDefaultGameRules());
@@ -390,6 +394,35 @@ const DB = {
         localStorage.clear();
         this.init();
         console.log('✓ Datenbank geleert und zurückgesetzt');
+    },
+
+    /**
+     * Notifications store methods (UC09)
+     */
+    saveNotification(notification) {
+        const notes = this.get(this.STORE_NOTIFICATIONS) || [];
+        notes.push(notification);
+        return this.set(this.STORE_NOTIFICATIONS, notes);
+    },
+
+    getNotificationsForUser(userId) {
+        const notes = this.get(this.STORE_NOTIFICATIONS) || [];
+        return notes.filter(n => n.user_id === userId).sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    },
+
+    getUnreadNotificationsForUser(userId) {
+        const notes = this.get(this.STORE_NOTIFICATIONS) || [];
+        return notes.filter(n => n.user_id === userId && !n.is_read).length;
+    },
+
+    markNotificationAsRead(notificationId) {
+        const notes = this.get(this.STORE_NOTIFICATIONS) || [];
+        const note = notes.find(n => n.id === notificationId);
+        if (note) {
+            note.is_read = true;
+            return this.set(this.STORE_NOTIFICATIONS, notes);
+        }
+        return false;
     }
 };
 
