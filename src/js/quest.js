@@ -120,6 +120,16 @@ const QuestSystem = {
             NotificationModel.notifyLevelUp(userId, xpResult.newLevel);
         }
 
+        // UC11: Achievements prüfen und freischalten
+        const user = DB.findUser(userId);
+        const stats = QuestSystem.getQuestStats(userId);
+        const newAchievements = AchievementSystem.checkAndUnlock(userId, user, stats);
+        
+        // Trigger Achievement-Notifications
+        newAchievements.forEach(ach => {
+            NotificationModel.notifyAchievementUnlocked(userId, ach.title);
+        });
+
         console.log(`✓ Timer gestoppt: +${xpEarned} XP (inkl. Zeitbonus ${timeBonus})`);
         return {
             timer,
@@ -127,7 +137,8 @@ const QuestSystem = {
             timeBonus,
             durationSec,
             leveledUp: xpResult.leveledUp,
-            newLevel: xpResult.newLevel
+            newLevel: xpResult.newLevel,
+            newAchievements
         };
     },
 
@@ -230,12 +241,20 @@ const QuestSystem = {
         const completedCount = user.quest_history.length;
         const sessions = DB.getUserSessions(userId);
         const totalXPFromQuests = sessions.reduce((sum, s) => sum + s.xp_earned, 0);
+        
+        // UC11: Zusätzliche Stats für Achievements
+        const quickCompletions = sessions.filter(s => {
+            return s.duration_seconds && Math.floor(s.duration_seconds / 60) < 10;
+        }).length;
+        const timerCompletions = sessions.filter(s => s.duration_seconds).length;
 
         return {
             completedQuests: completedCount,
             totalXPEarned: totalXPFromQuests,
             activeQuestId: user.active_quest_id,
-            recentSessions: sessions.slice(-5) // Letzte 5 Sessions
+            recentSessions: sessions.slice(-5), // Letzte 5 Sessions
+            quickCompletions,
+            timerCompletions
         };
     },
 

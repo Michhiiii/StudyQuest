@@ -102,6 +102,30 @@ const UI = {
                     </div>
                 </div>
 
+                <!-- UC11: Achievements Gallery -->
+                <div class="achievements-section">
+                    <h3>🏆 Achievements (${AchievementSystem.getUnlockedCount(user.id)} / ${AchievementSystem.getAllAvailable().length})</h3>
+                    <div class="achievements-grid">
+                        ${AchievementSystem.getUnlocked(user.id).map(ach => `
+                            <div class="achievement-badge unlocked" data-tooltip="✓ Freigeschalten">
+                                <div class="achievement-icon">${ach.icon}</div>
+                                <div class="achievement-title">${ach.title}</div>
+                            </div>
+                        `).join('')}
+                        ${AchievementSystem.getAllAvailable().filter(avail => 
+                            !DB.hasAchievement(user.id, avail.key)
+                        ).map(ach => {
+                            const tooltip = AchievementSystem._getProgressText(user.id, ach.key, stats);
+                            return `
+                                <div class="achievement-badge locked" data-tooltip="${tooltip}">
+                                    <div class="achievement-icon">🔒</div>
+                                    <div class="achievement-title">${ach.title}</div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+
                 <!-- Recent Sessions -->
                 ${stats.recentSessions.length > 0 ? `
                     <div class="recent-section">

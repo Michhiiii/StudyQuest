@@ -11,6 +11,7 @@ const DB = {
     STORE_TIMERS: 'timers',
     STORE_GRADES: 'grades',
     STORE_NOTIFICATIONS: 'notifications',
+    STORE_ACHIEVEMENTS: 'achievements',
     STORE_RULES: 'game_rules',
     STORE_CURRENT_USER: 'current_user',
 
@@ -36,6 +37,9 @@ const DB = {
         }
         if (!this.get(this.STORE_NOTIFICATIONS)) {
             this.set(this.STORE_NOTIFICATIONS, []);
+        }
+        if (!this.get(this.STORE_ACHIEVEMENTS)) {
+            this.set(this.STORE_ACHIEVEMENTS, []);
         }
         if (!this.get(this.STORE_RULES)) {
             this.set(this.STORE_RULES, this._getDefaultGameRules());
@@ -423,6 +427,34 @@ const DB = {
             return this.set(this.STORE_NOTIFICATIONS, notes);
         }
         return false;
+    },
+
+    /**
+     * Achievements store methods (UC11)
+     */
+    saveAchievement(achievement) {
+        const achievements = this.get(this.STORE_ACHIEVEMENTS) || [];
+        const existing = achievements.find(a => a.id === achievement.id);
+        if (!existing) {
+            achievements.push(achievement);
+            return this.set(this.STORE_ACHIEVEMENTS, achievements);
+        }
+        return false;
+    },
+
+    getAchievementsForUser(userId) {
+        const achievements = this.get(this.STORE_ACHIEVEMENTS) || [];
+        return achievements.filter(a => a.user_id === userId).sort((a, b) => new Date(b.unlocked_at) - new Date(a.unlocked_at));
+    },
+
+    hasAchievement(userId, achievementKey) {
+        const achievements = this.get(this.STORE_ACHIEVEMENTS) || [];
+        return achievements.some(a => a.user_id === userId && a.key === achievementKey);
+    },
+
+    getUnlockedAchievementCount(userId) {
+        const achievements = this.get(this.STORE_ACHIEVEMENTS) || [];
+        return achievements.filter(a => a.user_id === userId).length;
     }
 };
 
