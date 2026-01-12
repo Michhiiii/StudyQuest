@@ -34,21 +34,19 @@ Die Anwendung folgt einem **dreischichtigen Architektur-Pattern**.  Die Präsent
 
 ### Interaktionsdiagramm (ASCII-Abstraktion)
 
-+-------------------------------------------------------------+
-| Presentation Layer: index.html, css/, ui.js |
-| - zeigt Seiten, sammelt Benutzereingaben |
-+---------------------------|---------------------------------+
-v
-+-------------------------------------------------------------+
-| Application Layer: app.js, user.js, quest.js, auth.js, ... |
-| - enthält Geschäftslogik (Registrierung, Quests, |
-| Noten, Benachrichtigungen, Achievements, Admin-Panel) |
-+---------------------------|---------------------------------+
-v
-+-------------------------------------------------------------+
-| Data Layer: db.js |
-| - kapselt LocalStorage, speichert Users, Quests, Sessions |
-+-------------------------------------------------------------+
++-------------------------------------------------------------+  
+| Presentation Layer: index.html, css/, ui.js |  
+| - zeigt Seiten, sammelt Benutzereingaben |  
++---------------------------|---------------------------------+  
++-------------------------------------------------------------+  
+| Application Layer: app.js, user.js, quest.js, auth.js, ... |  
+| - enthält Geschäftslogik (Registrierung, Quests, |  
+| Noten, Benachrichtigungen, Achievements, Admin-Panel) |  
++---------------------------|---------------------------------+  
++-------------------------------------------------------------+  
+| Data Layer: db.js |  
+| - kapselt LocalStorage, speichert Users, Quests, Sessions |  
++-------------------------------------------------------------+  
 
 Die Pfeile zeigen den Kontroll- und Datenfluss: Die Präsentationsschicht ruft Funktionen der Anwendungs-Schicht auf (z. B. beim Abschließen einer Quest), diese wiederum lesen/schreiben Daten über die Persistenzschicht.  Umgekehrt sendet die Datenbank keine direkten Events an die Anwendung, sondern die Business-Logik zieht Daten bei Bedarf.
 
