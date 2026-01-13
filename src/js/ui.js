@@ -545,20 +545,20 @@ const UI = {
 
                 <div class="quest-actions">
                     <p class="action-prompt">Hast du diese Quest abgeschlossen?</p>
-                    <div id="timer-controls">
+                    <div id="timer-controls" class="timer-controls-section">
                         ${activeTimer ? `
                             <div class="timer-display">Verstrichene Zeit: <span id="timer-elapsed">--:--:--</span></div>
-                            <button id="stop-timer-btn" class="btn btn-success">⏹️ Timer stoppen & Abschluss</button>
+                            <button id="stop-timer-btn" class="btn btn-success btn-block">⏹️ Timer stoppen & Abschluss</button>
                         ` : `
-                            <button id="start-timer-btn" class="btn btn-primary">⏱️ Timer starten</button>
+                            <button id="start-timer-btn" class="btn btn-primary btn-block">⏱️ Timer starten</button>
                         `}
                     </div>
 
-                    <div class="mt-2">
-                        <button id="complete-quest-btn" class="btn btn-secondary">
+                    <div class="quest-action-buttons">
+                        <button id="complete-quest-btn" class="btn btn-secondary btn-block">
                             ✅ Sofort abschließen (ohne Timer)
                         </button>
-                        <button id="cancel-quest-btn" class="btn btn-secondary">
+                        <button id="cancel-quest-btn" class="btn btn-secondary btn-block">
                             ❌ Abbrechen
                         </button>
                     </div>
