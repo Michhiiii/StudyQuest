@@ -186,5 +186,26 @@ const AchievementSystem = {
             default:
                 return achievement.description;
         }
+    },
+
+    /**
+     * Lädt Custom Achievements aus DB
+     */
+    loadCustomAchievements() {
+        const customAchievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
+        Object.keys(customAchievements).forEach(key => {
+            const ach = customAchievements[key];
+            // Rekonstruiere die unlock_condition Funktion basierend auf unlock_type
+            if (!ach.unlock_condition || typeof ach.unlock_condition !== 'function') {
+                ach.unlock_condition = AdminSystem._buildUnlockCondition(ach.unlock_type, ach.unlock_value);
+            }
+            this.ACHIEVEMENTS[key] = ach;
+        });
+        console.log('✓ Custom Achievements geladen');
     }
 };
+
+// Lade Custom Achievements beim App-Start
+if (typeof DB !== 'undefined') {
+    AchievementSystem.loadCustomAchievements();
+}

@@ -12,6 +12,7 @@ const DB = {
     STORE_GRADES: 'grades',
     STORE_NOTIFICATIONS: 'notifications',
     STORE_ACHIEVEMENTS: 'achievements',
+    STORE_CUSTOM_ACHIEVEMENTS: 'custom_achievements',
     STORE_RULES: 'game_rules',
     STORE_CURRENT_USER: 'current_user',
 
@@ -40,6 +41,9 @@ const DB = {
         }
         if (!this.get(this.STORE_ACHIEVEMENTS)) {
             this.set(this.STORE_ACHIEVEMENTS, []);
+        }
+        if (!this.get(this.STORE_CUSTOM_ACHIEVEMENTS)) {
+            this.set(this.STORE_CUSTOM_ACHIEVEMENTS, {});
         }
         if (!this.get(this.STORE_RULES)) {
             this.set(this.STORE_RULES, this._getDefaultGameRules());

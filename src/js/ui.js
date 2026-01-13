@@ -741,18 +741,20 @@ const UI = {
         const quests = AdminSystem.getAllQuests();
         const rules = AdminSystem.getGameRules();
         const users = AdminSystem.getAllUsers();
+        const achievements = AdminSystem.getAllAchievements();
 
         const appDiv = document.getElementById('app');
         appDiv.innerHTML = `
             <div class="admin-container">
                 <div class="admin-header">
                     <h1>⚙️ Admin Panel</h1>
-                    <p class="subtitle">Verwalte Quests, Regeln und Benutzer</p>
+                    <p class="subtitle">Verwalte Quests, Regeln, Achievements und Benutzer</p>
                 </div>
 
                 <!-- Admin Tabs -->
                 <div class="admin-tabs">
                     <button class="admin-tab-btn active" data-tab="quests">📋 Quests (${quests.length})</button>
+                    <button class="admin-tab-btn" data-tab="achievements">🏆 Achievements (${achievements.length})</button>
                     <button class="admin-tab-btn" data-tab="rules">⚙️ Regeln</button>
                     <button class="admin-tab-btn" data-tab="users">👥 Benutzer (${users.length})</button>
                 </div>
@@ -779,6 +781,35 @@ const UI = {
                                     </div>
                                 </div>
                             `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UC11: Achievements Management Tab -->
+                <div class="admin-tab-content" id="tab-achievements">
+                    <div class="admin-section">
+                        <h2>Achievements verwalten</h2>
+                        <button id="create-achievement-btn" class="btn btn-primary">+ Neues Achievement erstellen</button>
+                        <div id="achievements-list" class="achievements-list">
+                            ${achievements.map(ach => {
+                                const isCustom = AdminSystem.isCustomAchievement(ach.key);
+                                return `
+                                    <div class="achievement-item">
+                                        <div class="achievement-info">
+                                            <div class="achievement-icon" style="font-size: 2em;">${ach.icon}</div>
+                                            <div class="achievement-details">
+                                                <div class="achievement-title">${ach.title}</div>
+                                                <div class="achievement-desc">${ach.description}</div>
+                                                <div class="achievement-key">ID: ${ach.key} ${isCustom ? '<span class="badge">Benutzerdefiniert</span>' : '<span class="badge">Vordefiniert</span>'}</div>
+                                            </div>
+                                        </div>
+                                        <div class="achievement-actions">
+                                            <button class="btn btn-small btn-secondary" data-action="edit-achievement" data-key="${ach.key}">✏️ Bearbeiten</button>
+                                            ${isCustom ? `<button class="btn btn-small btn-danger" data-action="delete-achievement" data-key="${ach.key}">🗑️ Löschen</button>` : ''}
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
                         </div>
                     </div>
                 </div>
@@ -913,6 +944,25 @@ const UI = {
             app.showAdminPage();
         });
 
+        // Edit Quest
+        document.querySelectorAll('[data-action="edit-quest"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const questId = btn.dataset.id;
+                const quest = DB.findQuest(questId);
+                if (!quest) return alert('Quest nicht gefunden');
+
+                const title = prompt('Quest Titel:', quest.title);
+                if (!title) return;
+                const description = prompt('Beschreibung:', quest.description);
+                if (!description) return;
+                const difficulty = prompt('Schwierigkeit (easy/medium/hard):', quest.difficulty);
+                if (!difficulty) return;
+
+                AdminSystem.updateQuest(questId, { title, description, difficulty });
+                app.showAdminPage();
+            });
+        });
+
         // Delete Quest
         document.querySelectorAll('[data-action="delete-quest"]').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -966,9 +1016,222 @@ const UI = {
             });
         });
 
+        // Achievement Management
+        document.getElementById('create-achievement-btn')?.addEventListener('click', () => {
+            this._showCreateAchievementModal();
+        });
+
+        document.querySelectorAll('[data-action="edit-achievement"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const key = btn.dataset.key;
+                this._showEditAchievementModal(key);
+            });
+        });
+
+        document.querySelectorAll('[data-action="delete-achievement"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const key = btn.dataset.key;
+                const ach = AchievementSystem.ACHIEVEMENTS[key];
+                if (confirm(`Achievement "${ach.title}" wirklich löschen?`)) {
+                    try {
+                        AdminSystem.deleteAchievement(key);
+                        app.showAdminPage();
+                    } catch (err) {
+                        alert('❌ ' + err.message);
+                    }
+                }
+            });
+        });
+
         document.getElementById('back-to-dashboard-admin-btn')?.addEventListener('click', () => {
             app.showDashboard();
         });
+    },
+
+    /**
+     * Achievement Management Modals
+     */
+    _showCreateAchievementModal() {
+        const unlockTypes = AdminSystem.getUnlockConditionTypes();
+        const unlockTypeOptions = unlockTypes.map(t => `<option value="${t.key}">${t.icon} ${t.label}</option>`).join('');
+        
+        const appDiv = document.getElementById('app');
+        appDiv.insertAdjacentHTML('beforeend', `
+            <div id="achievement-modal" class="modal">
+                <div class="modal-card" style="max-width: 600px; max-height: 90vh; overflow-y: auto;">
+                    <h3>Neues Achievement erstellen</h3>
+                    <div class="form-group">
+                        <label>Achievement ID (Eindeutig):</label>
+                        <input id="ach-key" type="text" placeholder="z.B. super_speedster" />
+                    </div>
+                    <div class="form-group">
+                        <label>Titel:</label>
+                        <input id="ach-title" type="text" placeholder="z.B. 🚀 Super Speedster" />
+                    </div>
+                    <div class="form-group">
+                        <label>Beschreibung:</label>
+                        <textarea id="ach-desc" placeholder="z.B. Quest in unter 5 Minuten abgeschlossen" style="width:100%; min-height:60px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Icon/Emoji:</label>
+                        <input id="ach-icon" type="text" placeholder="z.B. 🚀" maxlength="2" />
+                    </div>
+                    <div class="form-group">
+                        <label>Freischalt-Bedingung:</label>
+                        <select id="ach-unlock-type" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1rem;">
+                            ${unlockTypeOptions}
+                        </select>
+                    </div>
+                    <div class="form-group" id="ach-value-group" style="display: none;">
+                        <label id="ach-value-label">Wert:</label>
+                        <input id="ach-unlock-value" type="number" min="1" placeholder="z.B. 10" />
+                    </div>
+                    <div class="form-actions">
+                        <button id="save-achievement-btn" class="btn btn-primary">Erstellen</button>
+                        <button id="cancel-achievement-btn" class="btn btn-secondary">Abbrechen</button>
+                    </div>
+                </div>
+            </div>
+        `);
+
+        // Zeige/Verstecke Value-Input basierend auf Unlock-Type
+        const unlockTypeSelect = document.getElementById('ach-unlock-type');
+        const valueGroup = document.getElementById('ach-value-group');
+        const valueLabel = document.getElementById('ach-value-label');
+        
+        const updateValueInput = () => {
+            const selectedType = unlockTypeSelect.value;
+            const type = unlockTypes.find(t => t.key === selectedType);
+            
+            if (['quest_count', 'level', 'xp'].includes(selectedType)) {
+                valueGroup.style.display = 'block';
+                if (selectedType === 'quest_count') valueLabel.textContent = 'Anzahl Quests:';
+                else if (selectedType === 'level') valueLabel.textContent = 'Level:';
+                else if (selectedType === 'xp') valueLabel.textContent = 'XP:';
+            } else {
+                valueGroup.style.display = 'none';
+            }
+        };
+        
+        unlockTypeSelect.addEventListener('change', updateValueInput);
+
+        document.getElementById('cancel-achievement-btn')?.addEventListener('click', () => {
+            document.getElementById('achievement-modal')?.remove();
+        });
+
+        document.getElementById('save-achievement-btn')?.addEventListener('click', () => {
+            const key = document.getElementById('ach-key').value.trim();
+            const title = document.getElementById('ach-title').value.trim();
+            const desc = document.getElementById('ach-desc').value.trim();
+            const icon = document.getElementById('ach-icon').value.trim();
+            const unlockType = document.getElementById('ach-unlock-type').value;
+            const unlockValue = document.getElementById('ach-unlock-value').value ? parseInt(document.getElementById('ach-unlock-value').value) : null;
+
+            if (!key || !title || !desc || !icon) {
+                alert('❌ Bitte alle Felder ausfüllen');
+                return;
+            }
+
+            try {
+                AdminSystem.createAchievementWithCondition(key, title, desc, icon, unlockType, unlockValue);
+                document.getElementById('achievement-modal')?.remove();
+                app.showAdminPage();
+            } catch (err) {
+                alert('❌ ' + err.message);
+            }
+        });
+    },
+
+    _showEditAchievementModal(key) {
+        const ach = AchievementSystem.ACHIEVEMENTS[key];
+        if (!ach) return alert('Achievement nicht gefunden');
+
+        const unlockTypes = AdminSystem.getUnlockConditionTypes();
+        const unlockTypeOptions = unlockTypes.map(t => `<option value="${t.key}" ${ach.unlock_type === t.key ? 'selected' : ''}>${t.icon} ${t.label}</option>`).join('');
+        
+        const appDiv = document.getElementById('app');
+        appDiv.insertAdjacentHTML('beforeend', `
+            <div id="achievement-modal" class="modal">
+                <div class="modal-card" style="max-width: 600px; max-height: 90vh; overflow-y: auto;">
+                    <h3>Achievement bearbeiten</h3>
+                    <div class="form-group">
+                        <label>Achievement ID (nur Anzeige):</label>
+                        <input type="text" value="${key}" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label>Titel:</label>
+                        <input id="ach-title" type="text" value="${ach.title}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Beschreibung:</label>
+                        <textarea id="ach-desc" style="width:100%; min-height:60px;">${ach.description}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Icon/Emoji:</label>
+                        <input id="ach-icon" type="text" value="${ach.icon}" maxlength="2" />
+                    </div>
+                    <div class="form-group">
+                        <label>Freischalt-Bedingung:</label>
+                        <select id="ach-unlock-type" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1rem;">
+                            ${unlockTypeOptions}
+                        </select>
+                    </div>
+                    <div class="form-group" id="ach-value-group" style="display: ${['quest_count', 'level', 'xp'].includes(ach.unlock_type) ? 'block' : 'none'};">
+                        <label id="ach-value-label">Wert:</label>
+                        <input id="ach-unlock-value" type="number" min="1" value="${ach.unlock_value || ''}" placeholder="z.B. 10" />
+                    </div>
+                    <div class="form-actions">
+                        <button id="update-achievement-btn" class="btn btn-primary">Speichern</button>
+                        <button id="cancel-achievement-btn" class="btn btn-secondary">Abbrechen</button>
+                    </div>
+                </div>
+            </div>
+        `);
+
+        // Zeige/Verstecke Value-Input basierend auf Unlock-Type
+        const unlockTypeSelect = document.getElementById('ach-unlock-type');
+        const valueGroup = document.getElementById('ach-value-group');
+        const valueLabel = document.getElementById('ach-value-label');
+        
+        const updateValueInput = () => {
+            const selectedType = unlockTypeSelect.value;
+            const type = unlockTypes.find(t => t.key === selectedType);
+            
+            if (['quest_count', 'level', 'xp'].includes(selectedType)) {
+                valueGroup.style.display = 'block';
+                if (selectedType === 'quest_count') valueLabel.textContent = 'Anzahl Quests:';
+                else if (selectedType === 'level') valueLabel.textContent = 'Level:';
+                else if (selectedType === 'xp') valueLabel.textContent = 'XP:';
+            } else {
+                valueGroup.style.display = 'none';
+            }
+        };
+        
+        unlockTypeSelect.addEventListener('change', updateValueInput);
+
+        document.getElementById('cancel-achievement-btn')?.addEventListener('click', () => {
+            document.getElementById('achievement-modal')?.remove();
+        });
+
+        document.getElementById('update-achievement-btn')?.addEventListener('click', () => {
+            const title = document.getElementById('ach-title').value.trim();
+            const desc = document.getElementById('ach-desc').value.trim();
+            const icon = document.getElementById('ach-icon').value.trim();
+            const unlockType = document.getElementById('ach-unlock-type').value;
+            const unlockValue = document.getElementById('ach-unlock-value').value ? parseInt(document.getElementById('ach-unlock-value').value) : null;
+
+            if (!title || !desc || !icon) {
+                alert('❌ Bitte alle Felder ausfüllen');
+                return;
+            }
+
+            try {
+                AdminSystem.updateAchievement(key, { title, description: desc, icon, unlock_type: unlockType, unlock_value: unlockValue });
+                document.getElementById('achievement-modal')?.remove();
+                app.showAdminPage();
+            } catch (err) {
+                alert('❌ ' + err.message);
+            }
+        });
     }
 };
-

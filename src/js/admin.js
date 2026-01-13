@@ -155,5 +155,142 @@ const AdminSystem = {
 
         console.log(`✓ User gelöscht: ${userId}`);
         return true;
+    },
+
+    /**
+     * UC11: Achievement Management
+     */
+    getAllAchievements() {
+        // Gebe alle benutzerdefinierten und vordefinierten Achievements zurück
+        return Object.values(AchievementSystem.ACHIEVEMENTS);
+    },
+
+    createAchievement(key, title, description, icon) {
+        // Füge neues Achievement zu AchievementSystem.ACHIEVEMENTS hinzu
+        const achievement = {
+            key,
+            title,
+            description,
+            icon,
+            unlock_condition: () => false, // Neue Achievements müssen manuell freigeschalten werden
+            unlock_type: 'never', // Typ der Freischalts-Bedingung
+            unlock_value: null // Wert für die Bedingung (z.B. Anzahl Quests)
+        };
+
+        AchievementSystem.ACHIEVEMENTS[key] = achievement;
+        
+        // Speichere in DB unter eigenem Store
+        const customAchievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
+        customAchievements[key] = achievement;
+        DB.set(DB.STORE_CUSTOM_ACHIEVEMENTS, customAchievements);
+
+        console.log(`✓ Achievement erstellt: ${title}`);
+        return achievement;
+    },
+
+    createAchievementWithCondition(key, title, description, icon, unlockType, unlockValue = null) {
+        // Erstelle Achievement mit Freischalt-Bedingung
+        const unlock_condition = this._buildUnlockCondition(unlockType, unlockValue);
+        
+        const achievement = {
+            key,
+            title,
+            description,
+            icon,
+            unlock_condition,
+            unlock_type: unlockType,
+            unlock_value: unlockValue
+        };
+
+        AchievementSystem.ACHIEVEMENTS[key] = achievement;
+        
+        const customAchievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
+        customAchievements[key] = achievement;
+        DB.set(DB.STORE_CUSTOM_ACHIEVEMENTS, customAchievements);
+
+        console.log(`✓ Achievement mit Bedingung erstellt: ${title}`);
+        return achievement;
+    },
+
+    /**
+     * Erstelle Unlock-Bedingung basierend auf Typ
+     */
+    _buildUnlockCondition(unlockType, unlockValue) {
+        switch(unlockType) {
+            case 'immediate':
+                return () => true; // Sofort freigeschalten
+            
+            case 'quest_count':
+                return (stats) => stats.completedQuests >= (unlockValue || 1);
+            
+            case 'level':
+                return (stats, user) => user.level >= (unlockValue || 1);
+            
+            case 'xp':
+                return (stats, user) => user.total_xp_earned >= (unlockValue || 100);
+            
+            case 'never':
+            default:
+                return () => false; // Keine automatische Freischaltung
+        }
+    },
+
+    /**
+     * Gib Unlock-Bedingungen-Typen zurück
+     */
+    getUnlockConditionTypes() {
+        return [
+            { key: 'never', label: 'Niemals (nur manuell)', icon: '🔒' },
+            { key: 'immediate', label: 'Sofort freigeschalten', icon: '⭐' },
+            { key: 'quest_count', label: 'Nach X Quests', icon: '📋' },
+            { key: 'level', label: 'Nach Level X', icon: '📈' },
+            { key: 'xp', label: 'Nach X XP', icon: '💰' }
+        ];
+    },
+
+    updateAchievement(key, updates) {
+        const achievement = AchievementSystem.ACHIEVEMENTS[key];
+        if (!achievement) throw new Error('Achievement nicht gefunden');
+
+        if (updates.title) achievement.title = updates.title;
+        if (updates.description) achievement.description = updates.description;
+        if (updates.icon) achievement.icon = updates.icon;
+        
+        // Aktualisiere Unlock-Bedingung falls Typ oder Wert geändert
+        if (updates.unlock_type) {
+            achievement.unlock_type = updates.unlock_type;
+            achievement.unlock_value = updates.unlock_value || null;
+            achievement.unlock_condition = this._buildUnlockCondition(updates.unlock_type, updates.unlock_value);
+        }
+
+        // Speichere Update in Custom-Store falls es ein custom Achievement ist
+        const customAchievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
+        if (customAchievements[key]) {
+            customAchievements[key] = achievement;
+            DB.set(DB.STORE_CUSTOM_ACHIEVEMENTS, customAchievements);
+        }
+
+        console.log(`✓ Achievement aktualisiert: ${achievement.title}`);
+        return achievement;
+    },
+
+    deleteAchievement(key) {
+        // Nur custom Achievements können gelöscht werden
+        const customAchievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
+        if (!customAchievements[key]) {
+            throw new Error('Dieses Achievement kann nicht gelöscht werden (Vordefiniert)');
+        }
+
+        delete AchievementSystem.ACHIEVEMENTS[key];
+        delete customAchievements[key];
+        DB.set(DB.STORE_CUSTOM_ACHIEVEMENTS, customAchievements);
+
+        console.log(`✓ Achievement gelöscht: ${key}`);
+        return true;
+    },
+
+    isCustomAchievement(key) {
+        const customAchievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
+        return !!customAchievements[key];
     }
 };
