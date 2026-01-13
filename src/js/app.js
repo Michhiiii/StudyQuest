@@ -166,10 +166,6 @@ const app = {
             this.showQuestPage();
         });
 
-        document.getElementById('nav-profile')?.addEventListener('click', () => {
-            alert('Profil-Seite noch nicht implementiert');
-        });
-
         document.getElementById('nav-admin')?.addEventListener('click', () => {
             this.showAdminPage();
         });
