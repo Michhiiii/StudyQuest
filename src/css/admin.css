@@ -211,33 +211,39 @@
     margin-bottom: 2rem;
 }
 
-.stat-badge {
+.user-stat-badge {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: 12px;
     text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.stat-badge.active {
+.user-stat-badge.active {
     background: linear-gradient(135deg, #10b981, #059669);
 }
 
-.stat-badge.admin {
+.user-stat-badge.admin {
     background: linear-gradient(135deg, #f59e0b, #d97706);
 }
 
-.stat-label {
+.user-stat-badge .stat-label {
     display: block;
-    font-size: 0.85rem;
-    opacity: 0.9;
-    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 1;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: white;
 }
 
-.stat-value {
+.user-stat-badge .stat-value {
     display: block;
-    font-size: 1.75rem;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
 }
 
 /* Users List */

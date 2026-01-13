@@ -853,15 +853,15 @@ const UI = {
                     <div class="admin-section">
                         <h2>Benutzer verwalten</h2>
                         <div class="user-stats">
-                            <div class="stat-badge">
+                            <div class="user-stat-badge">
                                 <span class="stat-label">Gesamt</span>
                                 <span class="stat-value">${users.length}</span>
                             </div>
-                            <div class="stat-badge active">
+                            <div class="user-stat-badge active">
                                 <span class="stat-label">Aktiv</span>
                                 <span class="stat-value">${users.filter(u => u.is_active).length}</span>
                             </div>
-                            <div class="stat-badge admin">
+                            <div class="user-stat-badge admin">
                                 <span class="stat-label">Admins</span>
                                 <span class="stat-value">${users.filter(u => u.is_admin).length}</span>
                             </div>
