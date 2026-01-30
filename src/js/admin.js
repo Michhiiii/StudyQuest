@@ -9,22 +9,22 @@ const AdminSystem = {
      */
 
     createQuest(title, description, difficulty, xp_reward = null) {
-        const questId = 'quest_' + Date.now();
+        const quest_id = 'quest_' + Date.now();
         
         // Berechne XP basierend auf Difficulty
         const rules = DB.getGameRules();
-        const xpMap = {
+        const xp_map = {
             easy: rules.xp_per_quest_easy,
             medium: rules.xp_per_quest_medium,
             hard: rules.xp_per_quest_hard
         };
 
         const quest = {
-            id: questId,
+            id: quest_id,
             title,
             description,
             difficulty,
-            xp_reward: xp_reward || xpMap[difficulty] || 100,
+            xp_reward: xp_reward || xp_map[difficulty] || 100,
             status: 'available',
             created_at: new Date().toISOString()
         };
@@ -126,12 +126,12 @@ const AdminSystem = {
         const user = DB.findUser(userId);
         if (!user) throw new Error('User nicht gefunden');
         
-        const isAdmin = !user.is_admin;
-        user.is_admin = isAdmin;
+        const is_admin = !user.is_admin;
+        user.is_admin = is_admin;
         user.updated_at = new Date().toISOString();
         DB.saveUser(user);
 
-        console.log(`✓ Admin-Rolle ${isAdmin ? 'hinzugefügt' : 'entfernt'}: ${user.email}`);
+        console.log(`✓ Admin-Rolle ${is_admin ? 'hinzugefügt' : 'entfernt'}: ${user.email}`);
         return user;
     },
 
@@ -139,12 +139,12 @@ const AdminSystem = {
         const user = DB.findUser(userId);
         if (!user) throw new Error('User nicht gefunden');
         
-        const isActive = !user.is_active;
-        user.is_active = isActive;
+        const is_active = !user.is_active;
+        user.is_active = is_active;
         user.updated_at = new Date().toISOString();
         DB.saveUser(user);
 
-        console.log(`✓ User ${isActive ? 'aktiviert' : 'deaktiviert'}: ${user.email}`);
+        console.log(`✓ User ${is_active ? 'aktiviert' : 'deaktiviert'}: ${user.email}`);
         return user;
     },
 
@@ -180,9 +180,9 @@ const AdminSystem = {
         AchievementSystem.ACHIEVEMENTS[key] = achievement;
         
         // Speichere in DB unter eigenem Store
-        const customAchievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
-        customAchievements[key] = achievement;
-        DB.set(DB.STORE_CUSTOM_ACHIEVEMENTS, customAchievements);
+        const custom_achievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
+        custom_achievements[key] = achievement;
+        DB.set(DB.STORE_CUSTOM_ACHIEVEMENTS, custom_achievements);
 
         console.log(`✓ Achievement erstellt: ${title}`);
         return achievement;
@@ -204,9 +204,9 @@ const AdminSystem = {
 
         AchievementSystem.ACHIEVEMENTS[key] = achievement;
         
-        const customAchievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
-        customAchievements[key] = achievement;
-        DB.set(DB.STORE_CUSTOM_ACHIEVEMENTS, customAchievements);
+        const custom_achievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
+        custom_achievements[key] = achievement;
+        DB.set(DB.STORE_CUSTOM_ACHIEVEMENTS, custom_achievements);
 
         console.log(`✓ Achievement mit Bedingung erstellt: ${title}`);
         return achievement;
@@ -264,10 +264,10 @@ const AdminSystem = {
         }
 
         // Speichere Update in Custom-Store falls es ein custom Achievement ist
-        const customAchievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
-        if (customAchievements[key]) {
-            customAchievements[key] = achievement;
-            DB.set(DB.STORE_CUSTOM_ACHIEVEMENTS, customAchievements);
+        const custom_achievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
+        if (custom_achievements[key]) {
+            custom_achievements[key] = achievement;
+            DB.set(DB.STORE_CUSTOM_ACHIEVEMENTS, custom_achievements);
         }
 
         console.log(`✓ Achievement aktualisiert: ${achievement.title}`);
@@ -276,21 +276,21 @@ const AdminSystem = {
 
     deleteAchievement(key) {
         // Nur custom Achievements können gelöscht werden
-        const customAchievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
-        if (!customAchievements[key]) {
+        const custom_achievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
+        if (!custom_achievements[key]) {
             throw new Error('Dieses Achievement kann nicht gelöscht werden (Vordefiniert)');
         }
 
         delete AchievementSystem.ACHIEVEMENTS[key];
-        delete customAchievements[key];
-        DB.set(DB.STORE_CUSTOM_ACHIEVEMENTS, customAchievements);
+        delete custom_achievements[key];
+        DB.set(DB.STORE_CUSTOM_ACHIEVEMENTS, custom_achievements);
 
         console.log(`✓ Achievement gelöscht: ${key}`);
         return true;
     },
 
     isCustomAchievement(key) {
-        const customAchievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
-        return !!customAchievements[key];
+        const custom_achievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
+        return !!custom_achievements[key];
     }
 };

@@ -139,16 +139,16 @@ const AuthUI = {
     _handleLogin() {
         const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
-        const errorDiv = document.getElementById('login-error');
+        const error_div = document.getElementById('login-error');
 
         try {
-            errorDiv.textContent = '';
+            error_div.textContent = '';
             UserModel.authenticate(email, password);
             
             // Erfolgreich - gehe zu Dashboard
             app.showDashboard();
         } catch (error) {
-            errorDiv.textContent = '❌ ' + error.message;
+            error_div.textContent = '❌ ' + error.message;
         }
     },
 
@@ -159,14 +159,14 @@ const AuthUI = {
         const name = document.getElementById('register-name').value;
         const email = document.getElementById('register-email').value;
         const password = document.getElementById('register-password').value;
-        const passwordConfirm = document.getElementById('register-password-confirm').value;
-        const errorDiv = document.getElementById('register-error');
+        const password_confirm = document.getElementById('register-password-confirm').value;
+        const error_div = document.getElementById('register-error');
 
         try {
-            errorDiv.textContent = '';
+            error_div.textContent = '';
 
             // Zusätz-Validierung
-            if (password !== passwordConfirm) {
+            if (password !== password_confirm) {
                 throw new Error('Passwörter stimmen nicht überein');
             }
 
@@ -179,7 +179,7 @@ const AuthUI = {
             // Erfolgreich - gehe zu Dashboard
             app.showDashboard();
         } catch (error) {
-            errorDiv.textContent = '❌ ' + error.message;
+            error_div.textContent = '❌ ' + error.message;
         }
     }
 };

@@ -16,7 +16,7 @@ const UI = {
 
         const stats = QuestSystem.getQuestStats(user.id);
         const rules = DB.getGameRules();
-        const xpToNextLevel = (user.level * rules.level_threshold) - user.total_xp_earned;
+        const xp_to_next_level = (user.level * rules.level_threshold) - user.total_xp_earned;
 
         const appDiv = document.getElementById('app');
         appDiv.innerHTML = `
@@ -55,7 +55,7 @@ const UI = {
                     <div class="stat-card">
                         <div class="stat-icon">🎯</div>
                         <div class="stat-content">
-                            <div class="stat-value">${xpToNextLevel}</div>
+                            <div class="stat-value">${xp_to_next_level}</div>
                             <div class="stat-label">XP zum nächsten Level</div>
                         </div>
                     </div>
@@ -230,13 +230,13 @@ const UI = {
                             <div class="header-stat">Streak</div>
                         </div>
                         ${top10.map((u, idx) => {
-                            const isCurrentUser = u.id === user.id;
+                            const is_current_user = u.id === user.id;
                             return `
-                                <div class="table-row ${isCurrentUser ? 'highlight' : ''}">
+                                <div class="table-row ${is_current_user ? 'highlight' : ''}">
                                     <div class="cell-rank">${this._getMedalEmoji(idx + 1)} ${idx + 1}</div>
                                     <div class="cell-player">
                                         <span class="player-avatar">${u.avatar}</span>
-                                        <span class="player-name">${u.name}${isCurrentUser ? ' (Du)' : ''}</span>
+                                        <span class="player-name">${u.name}${is_current_user ? ' (Du)' : ''}</span>
                                     </div>
                                     <div class="cell-stat">${u.level}</div>
                                     <div class="cell-stat">${u.total_xp_earned}</div>
@@ -371,12 +371,12 @@ const UI = {
 
         document.getElementById('cancel-grade-btn')?.addEventListener('click', () => document.getElementById('grade-form-modal')?.remove());
         document.getElementById('save-grade-btn')?.addEventListener('click', () => {
-            const moduleName = document.getElementById('g-module').value.trim();
-            const gradeValue = document.getElementById('g-value').value;
+            const module_name = document.getElementById('g-module').value.trim();
+            const grade_value = document.getElementById('g-value').value;
             const semester = document.getElementById('g-semester').value.trim();
             try {
                 const user = UserModel.getCurrentUser();
-                GradeModel.create(user.id, moduleName, gradeValue, semester);
+                GradeModel.create(user.id, module_name, grade_value, semester);
                 document.getElementById('grade-form-modal')?.remove();
                 this.showGradesPage();
             } catch (err) { alert('❌ ' + err.message); }
@@ -407,11 +407,11 @@ const UI = {
 
         document.getElementById('cancel-grade-btn')?.addEventListener('click', () => document.getElementById('grade-form-modal')?.remove());
         document.getElementById('update-grade-btn')?.addEventListener('click', () => {
-            const moduleName = document.getElementById('g-module').value.trim();
-            const gradeValue = document.getElementById('g-value').value;
+            const module_name = document.getElementById('g-module').value.trim();
+            const grade_value = document.getElementById('g-value').value;
             const semester = document.getElementById('g-semester').value.trim();
             try {
-                GradeModel.update(gradeId, { module_name: moduleName, grade_value: gradeValue, semester });
+                GradeModel.update(gradeId, { module_name: module_name, grade_value: grade_value, semester });
                 document.getElementById('grade-form-modal')?.remove();
                 this.showGradesPage();
             } catch (err) { alert('❌ ' + err.message); }
@@ -638,12 +638,12 @@ const UI = {
             this._activeTimerInterval = null;
         }
 
-        const startTimerBtn = document.getElementById('start-timer-btn');
-        const stopTimerBtn = document.getElementById('stop-timer-btn');
-        const elapsedSpan = document.getElementById('timer-elapsed');
+        const start_timer_btn = document.getElementById('start-timer-btn');
+        const stop_timer_btn = document.getElementById('stop-timer-btn');
+        const elapsed_span = document.getElementById('timer-elapsed');
 
-        if (startTimerBtn) {
-            startTimerBtn.addEventListener('click', () => {
+        if (start_timer_btn) {
+            start_timer_btn.addEventListener('click', () => {
                 try {
                     QuestSystem.startTimer(user.id, quest.id);
                     UI.showActiveQuestPage();
@@ -653,21 +653,21 @@ const UI = {
             });
         }
 
-        if (stopTimerBtn) {
+        if (stop_timer_btn) {
             // Update elapsed immediately and every second
             const timer = DB.getActiveTimerForUser(user.id);
-            if (timer && elapsedSpan) {
+            if (timer && elapsed_span) {
                 const update = () => {
                     const start = new Date(timer.start_time);
                     const now = new Date();
                     const sec = Math.max(0, Math.floor((now - start) / 1000));
-                    elapsedSpan.textContent = UI._formatTime(sec);
+                    elapsed_span.textContent = UI._formatTime(sec);
                 };
                 update();
                 this._activeTimerInterval = setInterval(update, 1000);
             }
 
-            stopTimerBtn.addEventListener('click', () => {
+            stop_timer_btn.addEventListener('click', () => {
                 try {
                     const res = QuestSystem.stopTimer(user.id);
                     const resultDiv = document.getElementById('quest-result');
@@ -947,8 +947,8 @@ const UI = {
         // Edit Quest
         document.querySelectorAll('[data-action="edit-quest"]').forEach(btn => {
             btn.addEventListener('click', () => {
-                const questId = btn.dataset.id;
-                const quest = DB.findQuest(questId);
+                const quest_id = btn.dataset.id;
+                const quest = DB.findQuest(quest_id);
                 if (!quest) return alert('Quest nicht gefunden');
 
                 const title = prompt('Quest Titel:', quest.title);
@@ -958,7 +958,7 @@ const UI = {
                 const difficulty = prompt('Schwierigkeit (easy/medium/hard):', quest.difficulty);
                 if (!difficulty) return;
 
-                AdminSystem.updateQuest(questId, { title, description, difficulty });
+                AdminSystem.updateQuest(quest_id, { title, description, difficulty });
                 app.showAdminPage();
             });
         });
@@ -966,9 +966,9 @@ const UI = {
         // Delete Quest
         document.querySelectorAll('[data-action="delete-quest"]').forEach(btn => {
             btn.addEventListener('click', () => {
-                const questId = btn.dataset.id;
+                const quest_id = btn.dataset.id;
                 if (confirm('Quest wirklich löschen?')) {
-                    AdminSystem.deleteQuest(questId);
+                    AdminSystem.deleteQuest(quest_id);
                     app.showAdminPage();
                 }
             });

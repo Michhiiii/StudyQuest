@@ -86,8 +86,8 @@ const QuestSystem = {
         timer.end_time = new Date().toISOString();
         const start = new Date(timer.start_time);
         const end = new Date(timer.end_time);
-        const durationSec = Math.max(0, Math.floor((end - start) / 1000));
-        timer.duration_seconds = durationSec;
+        const duration_sec = Math.max(0, Math.floor((end - start) / 1000));
+        timer.duration_seconds = duration_sec;
         timer.active = false;
 
         DB.saveTimer(timer);
@@ -95,29 +95,29 @@ const QuestSystem = {
         // Berechne XP: Basis XP der Quest + Zeitbonus
         const quest = DB.findQuest(timer.quest_id);
         const rules = DB.getGameRules();
-        const durationMinutes = Math.floor(durationSec / 60);
-        const timeBonus = Math.floor(durationMinutes * rules.xp_per_minute_timer);
-        const baseXP = this._calculateXPReward(quest);
-        const xpEarned = baseXP + timeBonus;
+        const duration_minutes = Math.floor(duration_sec / 60);
+        const time_bonus = Math.floor(duration_minutes * rules.xp_per_minute_timer);
+        const base_xp = this._calculateXPReward(quest);
+        const xp_earned = base_xp + time_bonus;
 
         // Atomare Operation: XP hinzufügen + Quest abschließen + Session speichern
-        const xpResult = UserModel.addXP(userId, xpEarned);
+        const xp_result = UserModel.addXP(userId, xp_earned);
         UserModel.completeQuest(userId, timer.quest_id);
 
         const session = {
             id: this._generateSessionId(),
             user_id: userId,
             quest_id: timer.quest_id,
-            xp_earned: xpEarned,
-            duration_seconds: durationSec,
+            xp_earned: xp_earned,
+            duration_seconds: duration_sec,
             completed_at: new Date().toISOString()
         };
         DB.saveSession(session);
 
         // UC09: Trigger Notifications
-        NotificationModel.notifyQuestCompleted(userId, quest.title, xpEarned);
-        if (xpResult.leveledUp) {
-            NotificationModel.notifyLevelUp(userId, xpResult.newLevel);
+        NotificationModel.notifyQuestCompleted(userId, quest.title, xp_earned);
+        if (xp_result.leveledUp) {
+            NotificationModel.notifyLevelUp(userId, xp_result.newLevel);
         }
 
         // UC11: Achievements prüfen und freischalten
@@ -133,14 +133,14 @@ const QuestSystem = {
         // UC12: Streak Update nach Quest-Abschluss
         const streakUpdate = UserModel.updateStreak(userId);
 
-        console.log(`✓ Timer gestoppt: +${xpEarned} XP (inkl. Zeitbonus ${timeBonus})`);
+        console.log(`✓ Timer gestoppt: +${xp_earned} XP (inkl. Zeitbonus ${time_bonus})`);
         return {
             timer,
-            xpEarned,
-            timeBonus,
-            durationSec,
-            leveledUp: xpResult.leveledUp,
-            newLevel: xpResult.newLevel,
+            xpEarned: xp_earned,
+            timeBonus: time_bonus,
+            durationSec: duration_sec,
+            leveledUp: xp_result.leveledUp,
+            newLevel: xp_result.newLevel,
             newAchievements
         };
     },
@@ -268,13 +268,13 @@ const QuestSystem = {
     _calculateXPReward(quest) {
         const rules = DB.getGameRules();
         
-        const xpMap = {
+        const xp_map = {
             easy: rules.xp_per_easy_quest,
             medium: rules.xp_per_medium_quest,
             hard: rules.xp_per_hard_quest
         };
 
-        return xpMap[quest.difficulty] || quest.xp_reward;
+        return xp_map[quest.difficulty] || quest.xp_reward;
     },
 
     /**

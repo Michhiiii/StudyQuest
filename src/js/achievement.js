@@ -97,7 +97,7 @@ const AchievementSystem = {
      * Wird nach Quest-Abschluss oder Level-Up aufgerufen
      */
     checkAndUnlock(userId, user, stats) {
-        const newlyUnlocked = [];
+        const newly_unlocked = [];
 
         Object.values(this.ACHIEVEMENTS).forEach(achievement => {
             // Prüfe ob Achievement bereits freigeschaltet
@@ -107,7 +107,7 @@ const AchievementSystem = {
 
             // Prüfe Unlock-Bedingung
             if (achievement.unlock_condition(stats, user)) {
-                const unlockedAchievement = {
+                const unlocked_achievement = {
                     id: 'achievement_' + userId + '_' + achievement.key + '_' + Date.now(),
                     user_id: userId,
                     key: achievement.key,
@@ -117,14 +117,14 @@ const AchievementSystem = {
                     unlocked_at: new Date().toISOString()
                 };
 
-                DB.saveAchievement(unlockedAchievement);
-                newlyUnlocked.push(unlockedAchievement);
+                DB.saveAchievement(unlocked_achievement);
+                newly_unlocked.push(unlocked_achievement);
 
                 console.log(`✓ Achievement freigeschalten: ${achievement.title}`);
             }
         });
 
-        return newlyUnlocked;
+        return newly_unlocked;
     },
 
     /**
@@ -192,9 +192,9 @@ const AchievementSystem = {
      * Lädt Custom Achievements aus DB
      */
     loadCustomAchievements() {
-        const customAchievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
-        Object.keys(customAchievements).forEach(key => {
-            const ach = customAchievements[key];
+        const custom_achievements = DB.get(DB.STORE_CUSTOM_ACHIEVEMENTS) || {};
+        Object.keys(custom_achievements).forEach(key => {
+            const ach = custom_achievements[key];
             // Rekonstruiere die unlock_condition Funktion basierend auf unlock_type
             if (!ach.unlock_condition || typeof ach.unlock_condition !== 'function') {
                 ach.unlock_condition = AdminSystem._buildUnlockCondition(ach.unlock_type, ach.unlock_value);

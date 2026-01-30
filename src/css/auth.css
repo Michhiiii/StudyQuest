@@ -13,7 +13,7 @@
 .auth-card {
     background: var(--bg-white);
     border-radius: 12px;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow_lg);
     padding: 2.5rem;
     width: 100%;
     max-width: 450px;
@@ -33,7 +33,7 @@
 
 .auth-card h1 {
     font-size: 2rem;
-    color: var(--primary-color);
+    color: var(--primary_color);
     text-align: center;
     margin-bottom: 0.5rem;
 }
@@ -49,7 +49,7 @@
     display: flex;
     gap: 0;
     margin-bottom: 2rem;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border_color);
 }
 
 .auth-tab-btn {
@@ -70,8 +70,8 @@
 }
 
 .auth-tab-btn.active {
-    color: var(--primary-color);
-    border-bottom-color: var(--primary-color);
+    color: var(--primary_color);
+    border-bottom-color: var(--primary_color);
 }
 
 /* Forms */

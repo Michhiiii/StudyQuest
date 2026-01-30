@@ -48,11 +48,11 @@
 .quest-card:hover:not(.completed) {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
-    border-color: var(--primary-color);
+    border-color: var(--primary_color);
 }
 
 .quest-card.active {
-    border-color: var(--success-color);
+    border-color: var(--success_color);
     background: #f0fdf4;
 }
 
@@ -101,12 +101,12 @@
 
 .xp-reward {
     font-weight: 600;
-    color: var(--primary-color);
+    color: var(--primary_color);
     font-size: 0.95rem;
 }
 
 .completed-badge {
-    color: var(--success-color);
+    color: var(--success_color);
     font-weight: 600;
     font-size: 0.95rem;
 }
@@ -169,7 +169,7 @@
 .info-value {
     font-size: 1.25rem;
     font-weight: 600;
-    color: var(--primary-color);
+    color: var(--primary_color);
 }
 
 .quest-actions {
@@ -204,7 +204,7 @@
 
 .timer-display span {
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--primary_color);
     font-family: monospace;
 }
 

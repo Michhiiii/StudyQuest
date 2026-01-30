@@ -29,7 +29,7 @@ const UserModel = {
 
         // Neuer User (Analyseklassenmodell: User Entity)
         const allUsers = DB.get(DB.STORE_USERS) || [];
-        const isFirstUser = allUsers.length === 0;
+        const is_first_user = allUsers.length === 0;
 
         const newUser = {
             id: this._generateId(),
@@ -49,7 +49,7 @@ const UserModel = {
             best_streak: 0,
             last_activity_date: null,
             // UC13-15: Admin-Rolle - Erster User ist automatisch Admin
-            is_admin: isFirstUser,
+            is_admin: is_first_user,
             is_active: true
         };
 
@@ -130,7 +130,7 @@ const UserModel = {
         const user = DB.findUser(userId);
         if (!user) throw new Error('User nicht gefunden');
 
-        const oldLevel = user.level;
+        const old_level = user.level;
         user.total_xp_earned += xpAmount;
 
         // Berechne neues Level (UC05: Level-up Logic)
@@ -149,20 +149,20 @@ const UserModel = {
             DB.set(DB.STORE_CURRENT_USER, user);
         }
 
-        const leveledUp = user.level > oldLevel;
+        const leveled_up = user.level > old_level;
         
         // UC09: Notification bei Level-Up (Trigger wird auch in quest.js stopTimer() aufgerufen)
-        if (leveledUp && typeof NotificationModel !== 'undefined') {
+        if (leveled_up && typeof NotificationModel !== 'undefined') {
             // Notification wird in stopTimer() getriggert, nicht hier
             // Das vermeidet doppelte Notifications
         }
 
-        console.log(`✓ XP hinzugefügt: +${xpAmount} XP (Level ${oldLevel} → ${user.level}${leveledUp ? ' 🎉' : ''})`);
+        console.log(`✓ XP hinzugefügt: +${xpAmount} XP (Level ${old_level} → ${user.level}${leveled_up ? ' 🎉' : ''})`);
 
         return {
             user,
             xpAdded: xpAmount,
-            leveledUp,
+            leveled_up,
             newLevel: user.level
         };
     },
@@ -222,20 +222,20 @@ const UserModel = {
         if (!user) throw new Error('User nicht gefunden');
 
         const today = new Date().toDateString();
-        const lastActivity = user.last_activity_date ? new Date(user.last_activity_date).toDateString() : null;
+        const last_activity = user.last_activity_date ? new Date(user.last_activity_date).toDateString() : null;
 
         // Erste Aktivität oder neu registriert
-        if (!lastActivity) {
+        if (!last_activity) {
             user.current_streak = 1;
             user.best_streak = 1;
         }
         // Heute schon aktiv gewesen
-        else if (lastActivity === today) {
+        else if (last_activity === today) {
             // Nichts tun - Streak bleibt gleich
         }
         // Gestern aktiv gewesen
         else {
-            const lastDate = new Date(user.last_activity_date);
+            const last_date = new Date(user.last_activity_date);
             const yesterday = new Date();
             yesterday.setDate(yesterday.getDate() - 1);
 

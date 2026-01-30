@@ -41,7 +41,7 @@
     display: flex;
     gap: 1.5rem;
     align-items: center;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow_lg);
 }
 
 .streak-item:nth-child(2) {
@@ -151,7 +151,7 @@
     grid-template-columns: 60px 1fr 80px 100px 80px 100px;
     gap: 1rem;
     padding: 1rem;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border_color);
     border-radius: 8px;
     align-items: center;
     transition: var(--transition);
@@ -165,7 +165,7 @@
 
 .table-row.highlight {
     background: linear-gradient(135deg, #fef3c7, #fde68a);
-    border-color: var(--warning-color);
+    border-color: var(--warning_color);
     font-weight: 500;
 }
 
@@ -192,7 +192,7 @@
 .cell-stat {
     text-align: center;
     font-weight: 500;
-    color: var(--primary-color);
+    color: var(--primary_color);
 }
 
 .header-rank,

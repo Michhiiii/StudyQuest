@@ -10,7 +10,7 @@
 }
 
 .admin-header {
-    background: var(--bg-white);
+    background: var(--bg_white);
     padding: 2rem;
     border-radius: 12px;
     box-shadow: var(--shadow);
@@ -31,7 +31,7 @@
     display: flex;
     gap: 0.5rem;
     background: #f5f5f5;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--primary_color);
     overflow-x: auto;
     padding: 0.5rem 0;
 }
@@ -50,14 +50,14 @@
 }
 
 .admin-tab-btn:hover {
-    color: var(--primary-color);
+    color: var(--primary_color);
     background: rgba(100, 116, 222, 0.08);
 }
 
 .admin-tab-btn.active {
     color: white;
-    background: var(--primary-color);
-    border-bottom-color: var(--primary-color);
+    background: var(--primary_color);
+    border-bottom-color: var(--primary_color);
     border-radius: 4px 4px 0 0;
 }
 
@@ -102,7 +102,7 @@
 }
 
 .quest-item:hover {
-    border-color: var(--primary-color);
+    border-color: var(--primary_color);
     box-shadow: var(--shadow);
 }
 
@@ -131,7 +131,7 @@
 .badge {
     display: inline-block;
     padding: 0.25rem 0.75rem;
-    background: var(--primary-color);
+    background: var(--primary_color);
     color: white;
     border-radius: 12px;
     font-size: 0.8rem;
@@ -199,7 +199,7 @@
 
 .form-group input:focus {
     outline: none;
-    border-color: var(--primary-color);
+    border-color: var(--primary_color);
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
@@ -439,7 +439,7 @@
 }
 
 .achievement-item:hover {
-    border-color: var(--primary-color);
+    border-color: var(--primary_color);
     box-shadow: var(--shadow);
 }
 

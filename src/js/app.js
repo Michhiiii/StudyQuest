@@ -17,9 +17,9 @@ const app = {
         DB.init();
 
         // Prüfe ob User eingeloggt ist
-        const currentUser = UserModel.getCurrentUser();
+        const current_user = UserModel.getCurrentUser();
         
-        if (currentUser) {
+        if (current_user) {
             this.showDashboard();
         } else {
             this.showAuthPage();
@@ -136,8 +136,8 @@ const app = {
             return;
         }
 
-        const userObj = DB.findUser(user.id);
-        if (userObj.active_quest_id === questId) {
+        const user_obj = DB.findUser(user.id);
+        if (user_obj.active_quest_id === questId) {
             this.showActiveQuestPage();
         } else {
             this.startQuest(questId);
@@ -179,13 +179,13 @@ const app = {
 
         // UC09: Notification Events - Ein zentraler Handler
         document.addEventListener('click', (e) => {
-            const bellBtn = e.target.closest('#nav-notifications-bell');
-            const clearBtn = e.target.closest('#clear-notifications-btn');
-            const notifItem = e.target.closest('.notification-item');
+            const bell_btn = e.target.closest('#nav-notifications-bell');
+            const clear_btn = e.target.closest('#clear-notifications-btn');
+            const notif_item = e.target.closest('.notification-item');
             const dropdown = document.getElementById('notification-dropdown');
 
             // Bell click - toggle dropdown
-            if (bellBtn) {
+            if (bell_btn) {
                 console.log('Bell clicked');
                 e.stopPropagation();
                 if (dropdown) {
@@ -198,7 +198,7 @@ const app = {
             }
 
             // Clear button
-            if (clearBtn) {
+            if (clear_btn) {
                 console.log('Clear clicked');
                 e.stopPropagation();
                 const user = UserModel.getCurrentUser();
@@ -211,20 +211,20 @@ const app = {
             }
 
             // Notification item click
-            if (notifItem) {
+            if (notif_item) {
                 console.log('Notif item clicked');
                 e.stopPropagation();
-                const notifId = notifItem.getAttribute('data-notif-id');
-                if (notifId) {
-                    this._markNotificationAsRead(notifId);
+                const notif_id = notif_item.getAttribute('data-notif-id');
+                if (notif_id) {
+                    this._markNotificationAsRead(notif_id);
                 }
                 return;
             }
 
             // Close dropdown when clicking outside
             if (dropdown && !dropdown.classList.contains('hidden')) {
-                const isInside = e.target.closest('#notification-dropdown') || e.target.closest('#nav-notifications-bell');
-                if (!isInside) {
+                const is_inside = e.target.closest('#notification-dropdown') || e.target.closest('#nav-notifications-bell');
+                if (!is_inside) {
                     dropdown.classList.add('hidden');
                 }
             }
@@ -239,14 +239,14 @@ const app = {
         if (!user) return;
 
         const notifications = NotificationModel.getAll(user.id).slice(0, 5);
-        const listDiv = document.getElementById('notification-list');
+        const list_div = document.getElementById('notification-list');
 
         if (notifications.length === 0) {
-            listDiv.innerHTML = '<div class="notification-empty">Keine Benachrichtigungen</div>';
+            list_div.innerHTML = '<div class="notification-empty">Keine Benachrichtigungen</div>';
             return;
         }
 
-        listDiv.innerHTML = notifications.map(notif => {
+        list_div.innerHTML = notifications.map(notif => {
             const time = new Date(notif.created_at).toLocaleTimeString('de-DE', {
                 hour: '2-digit',
                 minute: '2-digit'
@@ -279,12 +279,12 @@ const app = {
      */
     _updateAdminButtonVisibility() {
         const user = UserModel.getCurrentUser();
-        const adminBtn = document.getElementById('nav-admin');
+        const admin_btn = document.getElementById('nav-admin');
         
         if (user && UserModel.isAdmin(user.id)) {
-            adminBtn?.classList.remove('hidden');
+            admin_btn?.classList.remove('hidden');
         } else {
-            adminBtn?.classList.add('hidden');
+            admin_btn?.classList.add('hidden');
         }
     },
 
@@ -295,11 +295,11 @@ const app = {
         const user = UserModel.getCurrentUser();
         if (!user) return;
 
-        const unreadCount = NotificationModel.countUnread(user.id);
+        const unread_count = NotificationModel.countUnread(user.id);
         const badge = document.getElementById('notification-badge');
 
-        if (unreadCount > 0) {
-            badge.textContent = unreadCount;
+        if (unread_count > 0) {
+            badge.textContent = unread_count;
             badge.classList.remove('hidden');
         } else {
             badge.classList.add('hidden');
