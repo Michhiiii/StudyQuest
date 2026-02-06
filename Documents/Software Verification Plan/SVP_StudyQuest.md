@@ -20,7 +20,8 @@
 
 Dieser Software Verification Plan (SVP) beschreibt, **wie** die StudyQuest-Web-App systematisch verifiziert wird, sodass die Implementierung in `src/` die spezifizierten Anforderungen erfüllt und zuverlässig funktioniert.
 
-**Verifikationsziel:**  
+**Verifikationsziel:**
+
 - Abdeckung der Anforderungen aus `Documents/Anforderungsanalyse/Requirements.md` (funktional + nicht-funktional).  
 - Nachweis der korrekten Umsetzung der 15 Use Cases (UC01–UC15).  
 - Sicherstellung von Nachvollziehbarkeit (Traceability) zwischen Anforderungen ↔ Testfällen ↔ Ergebnissen.
