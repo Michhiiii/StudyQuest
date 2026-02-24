@@ -40,8 +40,9 @@ Michael Steer (Scrum Master)
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
 | 1.0          | 05.11.2025  | M. Steer          | Erstfassung der Requirements erstellt          |
-| 1.1          |             | M. Steer          |           |
-| 1.2          |             |                   | Finalversion zur Abgabe vorbereitet         |
+| 1.1          | 13.01.2026            | M. Steer          | Glossar & Dependencies hinzugefügt          |
+| 1.2          | 19.02.2026 | M. Steer  | Requirement Status auf "Implementiert & Getestet" gesetzt | 
+| 1.3          | 24.02.2026            | M. Steer                  |Finalversion zur Abgabe vorbereitet         |
 
 ---
 
