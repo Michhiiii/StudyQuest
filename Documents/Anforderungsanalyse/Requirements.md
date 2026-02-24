@@ -305,11 +305,37 @@ Michael Steer (Scrum Master)
 | **UC07 – Noten & Module verwalten** | **UC08 – Fortschritt & Dashboard einsehen** | Notenübersicht wird im Dashboard dargestellt. |
 | **UC07 – Noten & Module verwalten** | **UC10 – Noten importieren / exportieren** | Import/Export greift direkt auf Notendaten zu. |
 | **UC10 – Noten importieren / exportieren** | **UC07 – Noten & Module verwalten** | Importierte oder exportierte Dateien ändern Notendaten. |
-| **UC11 – Achievements / Badges freischalten** | **UC08 – Fortschritt & Dashboard einsehen** | Freigeschaltete Badges erscheinen im Dashboard. |
-| **UC11 – Achievements / Badges freischalten** | **UC12 – Leaderboard & Streaks anzeigen** | Achievements beeinflussen Leaderboard-Bewertung. |
-| **UC13 – Quest-Katalog verwalten (Admin)** | **UC14 – XP- und Levelregeln konfigurieren (Admin)** | XP-Regeln basieren auf Quest-Struktur aus dem Katalog. |
-| **UC14 – XP- und Levelregeln konfigurieren (Admin)** | **UC05 – Lernquest abschließen (XP & Level-Up)** | XP-Regeln bestimmen XP-Berechnung beim Questabschluss. |
-| **UC14 – XP- und Levelregeln konfigurieren (Admin)** | **UC11 – Achievements / Badges freischalten** | XP-Regeln beeinflussen Badge-Freischaltung. |
-| **UC15 – Benutzerkonten administrieren (Admin)** | **UC13 – Quest-Katalog verwalten (Admin)** | Admins können Quest-Autoren oder -Verwalter managen. |
 | **UC15 – Benutzerkonten administrieren (Admin)** | **UC14 – XP- und Levelregeln konfigurieren (Admin)** | Admins können Berechtigungen oder Änderungen an XP-Regeln durchführen. |
+
 ---
+
+## Glossar – Fachbegriffe & Definitionen
+
+| **Begriff** | **Definition** | **Kontext / Beispiel** |
+|---|---|---|
+| **Quest** | Eine Lernaufgabe mit definierten XP-Belohnungen und Schwierigkeitsgraden (Easy/Medium/Hard). Nutzer starten eine Quest, arbeiten daran und schließen sie ab, um XP zu verdienen. | UC04-UC06, UC13, UC14. Beispiel: "JavaScript Basics" als Easy-Quest mit 50 XP. |
+| **XP (Experience Points)** | Erfahrungspunkte, die Benutzer durch das Abschließen von Quests oder Lernzeiten verdienen. XP werden akkumuliert und beeinflussen das Level und die Leaderboard-Position. | UC05, UC06, UC12. Beispiel: Easy-Quest = 50 XP, Medium = 100 XP, Hard = 150 XP. |
+| **Level** | Spielerstufe, basierend auf akkumulierter XP. Jeder Level erfordert einen bestimmten Schwellenwert an XP. Ein Level-Up ist ein Meilenstein und wird visuell zurückgemeldet. | UC05, UC08, UC12. Beispiel: Level 5 erreicht bei 2.500 XP (5 × 500 XP-Schwelle). |
+| **Achievement / Badge** | Virtuelle Abzeichen, die Benutzer durch bestimmte Meilensteine freischalten (z.B. "Quest Master" bei 10 abgeschlossenen Quests). Achievements dienen der Motivation und Anerkennung. | UC11, UC08. Beispiel-Badges: Quest Starter (1 Quest), Speed Runner (<10 min), Consistency (30-Tage Streak). |
+| **Streak** | Aufeinanderfolgende Tage, an denen ein Benutzer mindestens eine Quest abgeschlossen hat. Streaks repräsentieren Konsistenz und werden in der Leaderboard bewertet. | UC12. Beispiel: Nutzer hat 5 Tage hintereinander gelernt → Streak = 5. |
+| **Leaderboard** | Rangierungstabelle, die Nutzer nach 4 verschiedenen Kriterien sortiert: XP, Level, abgeschlossene Quests, Streak. Das Leaderboard fördert kompetitives Lernen. | UC12. Beispiel: Top 10 nach XP, mit Medallenmarkierungen (🥇 1., 🥈 2., 🥉 3.). |
+| **Gamification** | Einsatz spieltypischer Elemente (Punkte, Levels, Badges, Rankings) zur Motivationssteigerung in nicht-Spiel-Kontexten. In StudyQuest: XP als Punkte, Level als Progression, Achievements als Abzeichen. | Projektkonzept über alle Use Cases. |
+| **Learning Session / Lernsession** | Aufzeichnung eines Quest-Abschlusses oder einer Lernzeit mit Zeitstempel, Dauer und verdientem XP. Sessions dienen als Audit-Trail und werden für Datenanalyse gespeichert. | UC05, UC06, UC08. Beispiel: "JS Basics Quest am 24.02.2026 15:30–15:45, 50+25 XP Bonus". |
+| **Timer-Bonus** | Zusätzliche XP (Standard: +25%) für das Abschließen einer Quest oder Lernzeit in unter 10 Minuten. Bonus fördert konzentriertes, effizientes Lernen. | UC06. Beispiel: Quest mit 100 XP in 8 Minuten = 100 + 25 = 125 XP. |
+| **Admin Panel** | Administrationsbereich, in dem nur Admins Quests erstellen/editieren, Spielregeln konfigurieren und Benutzer verwalten können. Zugang ist rollenbasiert (UC01-NF1). | UC13-UC15. Beispiel-Funktionen: "Neue Quest erstellen", "XP-Regeln ändern". |
+| **Role-Based Access Control (RBAC)** | Zugriffskontrollmechanismus basierend auf Benutzerrollen (Studierende / Admin). Bestimmte Funktionen sind nur für spezifische Rollen verfügbar. | UC01-UC03 (Studierende), UC13-UC15 (Admin). |
+| **CSV (Comma-Separated Values)** | Dateiformat für den strukturierten Im- und Export von Schlüsseldaten (hier: Schulnoten). CSV-Dateien sind plattformübergreifend lesbar (Excel, LibreOffice, Google Sheets). | UC10. Beispiel: "Modul,Note,Semester" Header mit Notenzeilen. |
+| **Authentifizierung** | Prozess der Identitätsprüfung eines Benutzers mittels E-Mail und Passwort. Erfolgreiche Authentifizierung erzeugt eine Session. | UC01-UC03. Beispiel: "test@example.com" + "geheimesPasswort123" → Authentifizierung erfolgreich. |
+| **Session / Sitzung** | Verwaltete Verbindung zwischen Browser und System, die die Authentifizierung eines Nutzers dokumentiert. Sessions werden gelöscht bei Logout. | UC01-UC03, UC08. Beispiel: Session-Token im localStorage. |
+| **Passwort-Reset** | Sicherheitsprozess zur Wiederherstellung eines vergessenen Passworts über zeitlich begrenzte Tokens. Reset-Token läuft nach 30 Minuten ab. | UC02. Beispiel-Ablauf: "Passwort vergessen" → Token per E-Mail → Link mit Token → Neues Passwort setzen. |
+| **Notification / Benachrichtigung** | Nachricht an den Benutzer bei bestimmten Ereignissen (Quest-Abschluss, Level-Up, Achievement freigeschalten, Reminder). Benachrichtigungen erscheinen als Toast/Bell-Icon. | UC09. Beispiel: "🎉 Glückwunsch! Du bist Level 5!". |
+| **Dashboard** | Personalisierte Übersichtsseite nach dem Login, die alle wichtigen Nutzer-Statistiken aggregiert (XP, Level, aktive Quest, Notenübersicht, Achievements). | UC08. Beispiel-Widgets: XP-Fortschritt, Top Quest, Notendurchschnitt. |
+| **Refresh / UI-Update** | Aktualisierung der Benutzeroberfläche, um neue Daten anzuzeigen, ohne die Seite neu zu laden (dynamisches Update). | UC13. Beispiel: Nach Admin-Änderung an einer Quest wird die Quest-Liste im UI sofort aktualisiert. |
+| **LocalStorage** | Browser-basierte Persistierungsmechanismus für Benutzerdaten (Alternative zu Backend-Datenbank). Daten werden im Browser gespeichert und gelten per Domain. | Technologie. Beispiel: `localStorage.setItem('users', JSON.stringify(userData))`. |
+| **XSS-Prevention (Cross-Site Scripting)** | Sicherheitsmaßnahmen gegen Attacken, bei denen böse JavaScript-Code in die App injiziert wird. Prevention durch Input-Validierung und Output-Escaping. | Sicherheit. Beispiel: User-Input wird HTML-escaped, um Injektionen zu verhindern. |
+| **Doppel-Submit-Schutz** | Mechanismus, um versehentliche oder böswillige Mehrfach-Abschlüsse (z.B. Doppelklick auf Button) zu verhindern. Wird durch Button-Deaktivierung oder Token-Prüfung erreicht. | UC05-NF2. Beispiel: "Quest abschließen"-Button wird nach 1. Klick deaktiviert. |
+| **Atomic Operation / Atomare Operation** | Datenbankoperation, die vollständig-oder-gar-nicht ausgeführt wird (keine Teilvollzüge). Sichert Datenkonsistenz. | UC05. Beispiel: Quest-Abschluss mit XP-Vergabe ist eine Transaktion. |
+
+---
+
+Ende des Dokuments.
