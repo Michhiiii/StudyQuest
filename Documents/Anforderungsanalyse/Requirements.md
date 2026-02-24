@@ -84,9 +84,6 @@ Michael Steer (Scrum Master)
 | **Atomic Operation / Atomare Operation** | Datenbankoperation, die vollständig-oder-gar-nicht ausgeführt wird (keine Teilvollzüge). Sichert Datenkonsistenz. | UC05. Beispiel: Quest-Abschluss mit XP-Vergabe ist eine Transaktion. |
 ---
 
-# Requirements: StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App
-===========================================================================
-
 # Requirements Specification – StudyQuest  
 ### Gamifizierte Lern- und Notenverwaltungs-Web-App  
 
