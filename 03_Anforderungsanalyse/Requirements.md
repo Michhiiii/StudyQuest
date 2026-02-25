@@ -18,7 +18,7 @@ Wintersemester 2025 / 2026
 1.3
 
 **Datum:**  
-25. Februar 2026
+24. Februar 2026
 
 **Author:innen:**  
 - Michael Steer (Scrum Master)  
