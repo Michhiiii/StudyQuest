@@ -51,11 +51,10 @@ Michael Steer (Scrum Master)
 |--------------------|-----------------------|-----------------------------------------------|
 | Sascha Wanninger   | Prüfer / Betreuer     | Bewertung im Rahmen des Moduls                |
 | Michael Steer      | Scrum Master          | Koordination & Freigabe                       |
-| Luke Engehardt     | Product Owner         | Anforderungen & Dokumentation                 |
-| Giuliana Carrano   | Developer             | Projektskizze, Dokumentation                  |
-| Paul Strasser      | Developer             | Technische Dokumentation                      |
-| Roman Faber        | Developer             | Architektur & UML                             |
-
+| Luke Engehardt     | Product Owner         | Anforderungen, Dokumentation & Technische Dokumentation                  |
+| Giuliana Carrano   | Developer             | Projektskizze, Dokumentation, Architektur & UML                   |
+| Paul Strasser      | Developer             | /                     |
+| Roman Faber        | Developer             | /                           |
 ---
 
 
