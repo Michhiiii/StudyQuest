@@ -129,13 +129,13 @@ Verbesserungsmaßnahmen werden für den nächsten Sprint festgehalten.
 
 | Meilenstein | Geplantes Datum | Ziel / Ergebnis | Dokument / Artefakt |
 |--------------|-----------------|------------------|----------------------|
-| **M1 – Projektskizze abgeschlossen** | 17.10.2025 | Fertigstellung der Projektskizze mit Scope, Risiken, Zielen und Stakeholdern | `Projektskizze.md` |
-| **M2 – Software Development Plan** | 24.10.2025 | Definition von Vorgehensmodell (SCRUM), Rollen, Verantwortlichkeiten, Tools und Kommunikationsstruktur | `SDP.md` |
-| **M3 – Analyse & Architekturentwurf** | 21.11.2025 | Erstellung der Anforderungsanalyse, Use-Case- und Aktivitätsdiagramme, Grobdesign und Softwarearchitektur (3-Schichten-Modell) | `UML.pdf` / `Architektur.md` |
-| **M4 – Implementierung Sprint 1 (Grundfunktionen)** | 19.12.2025 | Entwicklung der Kernfunktionen (Login, Benutzerverwaltung, Notenübersicht) mit lauffähigem Prototyp | `prototype/` / `src/` |
-| **M5 – Implementierung Sprint 2 (Gamification & UI)** | 31.01.2026 | Erweiterung um Gamification-Elemente (XP, Level, Quests) und UI-Optimierung | `UI-Mockup/` / `frontend/` |
-| **M6 – Testkonzept & Review** | 10.03.2026 | Erstellung und Durchführung von Testfällen (funktional, usability), Review und Qualitätssicherung | `Testkonzept.md` / `Review-Protokoll.md` |
-| **M7 – Abschluss & Retrospektive** | 31.03.2026 | Abschlussbericht, Lessons Learned, Präsentation und Projektdokumentation | `Abschlussbericht.md` / `Slides.pptx` |
+| **M1 – Projektskizze abgeschlossen** | 17.10.2025 | Projektskizze mit Scope, Risiken, Zielen, Stakeholdern, Glossar und Randbedingungen | `Projektskizze.md` |
+| **M2 – Software Development Plan** | 24.10.2025 | Vorgehensmodell, Rollen, Verantwortlichkeiten, Meilensteine, Tooling | `SoftwareDevelopmentPlan.md` |
+| **M3 – Anforderungsanalyse** | 21.11.2025 | Funktionale und nicht-funktionale Anforderungen, Use Cases, Systemgrenzen | `Requirements.md` / `UseCases.md` |
+| **M4 – Grobdesign & Architektur** | 05.12.2025 | Analyseklassenmodell, Sequenzdiagramme, Architektur und Patterns | `Analyseklassenmodell.md` / `Sequenzdiagramme.md` / `Softwarearchitektur.md` |
+| **M5 – Prototyp Implementierung** | 31.01.2026 | Kernfunktionen, Gamification, UI, Datenhaltung als lauffähiger Prototyp | `src/` |
+| **M6 – Verifikation & QA** | 10.03.2026 | Testplan, Testfälle, Traceability und Qualitätssicherung | `SVP_StudyQuest.md` / `SVP_StudyQuest_Traceability_Matrix.csv` / `SQAP_SQAR_StudyQuest.md` / `SQAR_StudyQuest.md` / `tests/` |
+| **M7 – Abschluss & Dokumentation** | 31.03.2026 | Finalisierung der Doku, Reviews, Retrospektive und Abgabe | `Software_Design_Document.md` / `README.md` |
 
 ---
 
