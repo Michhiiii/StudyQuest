@@ -18,7 +18,7 @@ Wintersemester 2025 / 2026
 1.0
 
 **Datum:**  
-17. Oktober 2025
+25. Februar 2026
 
 **Author:innen:**  
 - Michael Steer (Scrum Master)  
@@ -40,8 +40,9 @@ Michael Steer (Scrum Master)
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
 | 1.0          | 14.11.2025  | M. Steer          | Erstfassung der Sequenzdiagramme erstellt      |
-| 1.1          |             | M. Steer          |            |
-| 1.2          |             | M. Steer                 | Finalversion zur Abgabe vorbereitet         |
+| 1.1          | 21.11.2025            | M. Steer          | Diagramme hinzugefügt            |
+|1.2 | 22.11.2025 | G. Carrano | Fehler in Diagramm behoben | 
+| 1.2          | 25.02.2026            | M. Steer                 | Finalversion zur Abgabe vorbereitet         |
 
 ---
 
