@@ -15,10 +15,10 @@ Software Engineering I – Praxis
 Wintersemester 2025 / 2026
 
 **Version:**  
-1.0
+1.1
 
 **Datum:**  
-5. November 2025
+25. Februar 2026
 
 **Author:innen:**  
 - Michael Steer (Scrum Master)  
