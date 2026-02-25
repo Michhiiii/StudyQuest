@@ -76,7 +76,7 @@ Projektmitglieder:
 
 ## 1. Projektidee
 --------------
-„StudyQuest“ ist eine Lernapplikation, die Studierende durch **Gamification** zum regelmäßigen Lernen motivieren und gleichzeitig bei der **Organisation ihrer Studienleistungen** unterstützt.  
+„StudyQuest“ ist eine Lernapplikation, die Studierende durch Gamification zum regelmäßigen Lernen motivieren und gleichzeitig bei der Organisation ihrer Studienleistungen unterstützt.  
 Die App läuft im Web-Browser und ist somit plattformunabhängig (Mac, Windows, Linux).  
 Spielerische Elemente wie Level, Quests, Erfahrungspunkte und Belohnungen** visualisieren Lernfortschritte.  
 Zusätzlich integriert die Webapplikation eine Notenverwaltung, um Lernaktivität und Studienleistungen in einem System zu verknüpfen.
@@ -87,7 +87,7 @@ Der Scope of Work definiert den inhaltlichen Umfang des Projekts „StudyQuest�
 
 Zum Projektumfang gehören die Analyse der Anforderungen an eine gamifizierte Lern- und Notenverwaltungs-Web-Applikation sowie die Definition der Projektziele. Darüber hinaus umfasst das Projekt die konzeptionelle Ausarbeitung der Anwendung, einschließlich der Definition einer geeigneten Softwarearchitektur sowie der Modellierung relevanter UML-Diagramme wie Use-Case-, Klassen- und Sequenzdiagramme.
 
-Nicht Bestandteil des Projekts sind die vollständige Implementierung der Web-Applikation, der produktive Betrieb des Systems sowie die Anbindung an bestehende Hochschul- oder Notenverwaltungssysteme. Ebenso werden keine realen personenbezogenen oder prüfungsrelevanten Daten verarbeitet. Der Fokus liegt auf der methodischen Anwendung von Software-Engineering-Prozessen und nicht auf der Entwicklung eines marktreifen Produkts.
+Nicht Bestandteil des Projekts sind der produktive Betrieb des Systems sowie die Anbindung an bestehende Hochschul- oder Notenverwaltungssysteme. Ebenso werden keine realen personenbezogenen oder prüfungsrelevanten Daten verarbeitet. Der Fokus liegt auf der methodischen Anwendung von Software-Engineering-Prozessen und nicht auf der Entwicklung eines marktreifen Produkts.
 
 ## 3. Risiken
 
