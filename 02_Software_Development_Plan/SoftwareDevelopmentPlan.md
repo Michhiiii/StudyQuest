@@ -121,7 +121,7 @@ Verbesserungsmaßnahmen werden für den nächsten Sprint festgehalten.
 
 **Scrum Master:** Einhaltung des Scrum-Prozesses, Organisation der Meetings, Moderation, Beseitigung von Hindernissen.  
 **Product Owner:** Definition und Priorisierung der Anforderungen, Pflege des Product Backlogs, Abnahme von Increments.  
-**Developer-Team:** Umsetzung der User Stories, Implementierung des Frontends, leichte Anwendungslogik, Erstellung UML/Architektur, Testplanung und Dokumentation.
+**Developer-Team:** Umsetzung der User Stories, Implementierung des Frontends, Anwendungslogik, Erstellung UML/Architektur, Testplanung und Dokumentation.
 
 ---
 
@@ -184,7 +184,6 @@ Pro Dokument: Changelog und Distribution List pflegen.
 
 **Build/Deployment (Prototyp)**  
 - Kein Build-Step erforderlich; statische Auslieferung  
-- Optional: GitHub Pages für Hosting des Prototyps
 
 **Testen (leichtgewichtig)**  
 - Manuelle Funktions- und Usability-Tests anhand definierter Szenarien  
