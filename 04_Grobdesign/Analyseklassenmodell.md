@@ -18,7 +18,7 @@ Wintersemester 2025 / 2026
 1.2
 
 **Datum:**  
-24.02.2026
+24. Februar 2026
 
 **Author:innen:**  
 - Michael Steer (Scrum Master)  
@@ -313,50 +313,8 @@ Das Analyseklassenmodell basiert auf den Anforderungen aus der Anforderungsanaly
 
 ## 3. Klassendiagramm-Übersicht
 
-```
-┌─────────────┐
-│    User     │
-├─────────────┤
-│ - id        │
-│ - email     │
-│ - level     │
-│ - total_xp  │
-└──────┬──────┘
-       │ 1
-       │
-       ├─────────── 1:N ────────────┬──────────────┐
-       │                            │              │
-       │                       ┌────────┐    ┌──────────┐
-       │                       │ Quest  │    │  Grade   │
-       │                       └────────┘    └──────────┘
-       │
-       ├─────────── 1:N ──────────┬──────────────┐
-       │                          │              │
-       │                    ┌──────────────┐  ┌────────────┐
-       │                    │Learning      │  │Achievement │
-       │                    │Session       │  └────────────┘
-       │                    └──────────────┘
-       │
-       └─────────── 1:N ────────────┤
-                                ┌────────────┐
-                                │Notification│
-                                └────────────┘
+<img width="3682" height="3788" alt="mermaid-diagram-2026-02-25-152245" src="https://github.com/user-attachments/assets/c9dbd09f-310d-4f40-8b1a-36f0b4ed98e1" />
 
-┌──────────────┐
-│  Leaderboard │
-├──────────────┤
-│ - criterion  │
-│ - rankings   │
-└──────────────┘
-
-┌──────────────┐
-│  GameRule    │
-├──────────────┤
-│ - easy_xp    │
-│ - hard_xp    │
-│ - max_level  │
-└──────────────┘
-```
 
 ---
 
@@ -400,7 +358,7 @@ Das Analyseklassenmodell basiert auf den Anforderungen aus der Anforderungsanaly
 
 ---
 
-## 6. Anforderungsverfolgung (Traceability)
+## 6. Anforderungsverfolgung 
 
 | Use Case | Beteiligte Klassen | Hauptfluss |
 |----------|------------------|-----------|
@@ -436,23 +394,6 @@ Das Analyseklassenmodell basiert auf den Anforderungen aus der Anforderungsanaly
 
 ---
 
-## 8. Abhängigkeiten zwischen Klassen
 
-```
-GameRule
-   ↓ 
-Quest ← → LearningSession → User
-         ↗                   ↓
-                    Achievement
-                       ↑
-                    Notification
-                       ↑
-                   Leaderboard
-                       ↑
-                      Grade
-```
 
----
-
-Ende des Dokuments.
 
