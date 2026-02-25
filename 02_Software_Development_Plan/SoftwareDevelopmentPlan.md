@@ -44,14 +44,14 @@ Michael Steer (Scrum Master)
 
 ## Distribution List
 
-| Name             | Rolle             | Kommentar / Zuständigkeit                     |
-|------------------|-------------------|-----------------------------------------------|
-| Sascha Wanninger | Prüfer / Betreuer | Bewertung im Rahmen des Moduls                |
-| Michael Steer    | Scrum Master      | Koordination und Freigabe                     |
-| Luke Engehardt   | Product Owner     | Anforderungen und Dokumentation               |
-| Giuliana Carrano | Developer         | Projektskizze, Dokumentation, UI-Design       |
-| Paul Strasser    | Developer         | Technische Dokumentation, Backend/Logik       |
-| Roman Faber      | Developer         | Architektur, UML und Integration              |
+| **Name**          | **Rolle**             | **Kommentar / Zuständigkeit**                 |
+|--------------------|-----------------------|-----------------------------------------------|
+| Sascha Wanninger   | Prüfer / Betreuer     | Bewertung im Rahmen des Moduls                |
+| Michael Steer      | Scrum Master          | Koordination & Freigabe                       |
+| Luke Engehardt     | Product Owner         | Anforderungen, Dokumentation & Technische Dokumentation                  |
+| Giuliana Carrano   | Developer             | Projektskizze, Dokumentation, Architektur & UML                   |
+| Paul Strasser      | Developer             | /                     |
+| Roman Faber        | Developer             | /                           |
 
 ---
 
