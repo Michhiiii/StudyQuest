@@ -15,7 +15,7 @@ Software Engineering I – Praxis
 Wintersemester 2025 / 2026
 
 **Version:**  
-1.0
+1.3
 
 **Datum:**  
 25. Februar 2026
@@ -42,7 +42,7 @@ Michael Steer (Scrum Master)
 | 1.0          | 14.11.2025  | M. Steer          | Erstfassung der Sequenzdiagramme erstellt      |
 | 1.1          | 21.11.2025            | M. Steer          | Diagramme hinzugefügt            |
 |1.2 | 22.11.2025 | G. Carrano | Fehler in Diagramm behoben | 
-| 1.2          | 25.02.2026            | M. Steer                 | Finalversion zur Abgabe vorbereitet         |
+| 1.3          | 25.02.2026            | M. Steer                 | Finalversion zur Abgabe vorbereitet         |
 
 ---
 
