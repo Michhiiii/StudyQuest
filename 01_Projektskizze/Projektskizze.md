@@ -15,10 +15,10 @@ Software Engineering I – Praxis
 Wintersemester 2025 / 2026
 
 **Version:**  
-1.0
+1.2
 
 **Datum:**  
-17. Oktober 2025
+25. Februar 2026
 
 **Author:innen:**  
 - Michael Steer (Scrum Master)  
@@ -40,8 +40,8 @@ Michael Steer (Scrum Master)
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
 | 1.0          | 17.10.2025  | M. Steer          | Erstfassung der Projektskizze erstellt      |
-| 1.1          |             | M. Steer          | Änderungen nach Review durch Team           |
-| 1.2          |             |                   | Finalversion zur Abgabe vorbereitet         |
+| 1.1          | 24.10.2025            | M. Steer          | Änderungen nach Review            |
+| 1.2          | 25.02.2026            | M.Steer                  | Finalversion zur Abgabe vorbereitet         |
 
 ---
 
