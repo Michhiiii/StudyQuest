@@ -39,7 +39,7 @@ Michael Steer (Scrum Master)
 |--------:|-----------|---------------|----------------------------------------------------------------|
 | 1.0     | 17.10.2025| G. Carrano    | Erstfassung des Software Development Plans erstellt           |
 | 1.1     | 17.10.2025| G. Carrano    | Technologie- und Tooling-Stack (VS Code, HTML/CSS/JS) ergänzt |
-| 1.2      | 25.02.2026  M. Steer | Finalversion zur Abgabe vorbereitet | 
+| 1.2      | 25.02.2026 | M. Steer | Finalversion zur Abgabe vorbereitet | 
 
 ---
 
