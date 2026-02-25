@@ -49,8 +49,8 @@ Michael Steer (Scrum Master)
 | Michael Steer      | Scrum Master          | Koordination & Freigabe                       |
 | Luke Engehardt     | Product Owner         | Anforderungen, Dokumentation & Technische Dokumentation                  |
 | Giuliana Carrano   | Developer             | Projektskizze, Dokumentation, Architektur & UML                   |
-| Paul Strasser      | Developer             | /                     |
-| Roman Faber        | Developer             | /                           |
+| Paul Strasser      | Developer             |                      |
+| Roman Faber        | Developer             |                            |
 
 ## 1. Zweck & Geltungsbereich
 Dieses Dokument beschreibt die Software-Architektur und das Design der Anwendung *StudyQuest* und verbindet die vorhandenen **Requirements** und die **Softwarearchitektur-Dokumentation** mit einer konkreten technischen Implementierungsbeschreibung (Codereferenzen). Es richtet sich an Entwickler:innen, Tester:innen und Maintainer.
