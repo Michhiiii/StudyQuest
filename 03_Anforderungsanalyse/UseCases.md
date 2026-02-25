@@ -40,8 +40,7 @@ Michael Steer (Scrum Master)
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
 | 1.0          | 05.11.2025  | M. Steer          | Erstfassung der Use Cases erstellt          |
-| 1.1          |             | M. Steer          |          |
-| 1.2          |             |                   | Finalversion zur Abgabe vorbereitet         |
+| 1.1          | 25.02.2026            |                   | Finalversion zur Abgabe vorbereitet         |
 
 ---
 
