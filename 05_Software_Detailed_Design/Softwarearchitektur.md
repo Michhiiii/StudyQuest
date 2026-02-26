@@ -84,21 +84,9 @@ Die Anwendung folgt einem dreischichtigen Architektur-Pattern.  Die Präsentatio
 | **Datenschicht** |  | Ein einziger Modul, `db.js`, kapselt sämtliche Speicherzugriffe. |
 | `db.js` | LocalStorage-Manager | Verwaltet den Zugriff auf LocalStorage (Users, Quests, Sessions, Timer, Grades, Notifications, Achievements, Game Rules), initialisiert Default-Werte und bietet CRUD-Funktionen für jede Entität. |
 
-### Interaktionsdiagramm (ASCII-Abstraktion)
+### Interaktionsdiagramm 
+<img width="4287" height="2789" alt="mermaid-diagram-2026-02-26-212416" src="https://github.com/user-attachments/assets/55e0c42a-2e9c-4b4a-b08b-b65c65ba70eb" />
 
-+-------------------------------------------------------------+  
-| Presentation Layer: index.html, css/, ui.js |  
-| - zeigt Seiten, sammelt Benutzereingaben |  
-+---------------------------|---------------------------------+  
-+-------------------------------------------------------------+  
-| Application Layer: app.js, user.js, quest.js, auth.js, ... |  
-| - enthält Geschäftslogik (Registrierung, Quests, |  
-| Noten, Benachrichtigungen, Achievements, Admin-Panel) |  
-+---------------------------|---------------------------------+  
-+-------------------------------------------------------------+  
-| Data Layer: db.js |  
-| - kapselt LocalStorage, speichert Users, Quests, Sessions |  
-+-------------------------------------------------------------+  
 
 Die Pfeile zeigen den Kontroll- und Datenfluss: Die Präsentationsschicht ruft Funktionen der Anwendungs-Schicht auf (z. B. beim Abschließen einer Quest), diese wiederum lesen/schreiben Daten über die Persistenzschicht.  Umgekehrt sendet die Datenbank keine direkten Events an die Anwendung, sondern die Business-Logik zieht Daten bei Bedarf.
 
