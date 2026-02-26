@@ -1,17 +1,69 @@
 # Softwarearchitektur – StudyQuest
 
+---
+
+**Titel des Dokuments:**  
+Softwarearchitektur – StudyQuest
+
+**Projektname:**  
+StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App
+
+**Modul:**  
+Software Engineering I – Praxis
+
+**Projektzeitraum:**  
+Wintersemester 2025 / 2026
+
+**Version:**  
+1.1
+
+**Datum:**  
+26. Februar 2026
+
+**Author:innen:**  
+- Michael Steer (Scrum Master)  
+- Luke Engehardt (Product Owner)  
+- Giuliana Carrano (Developer)  
+- Paul Strasser (Developer)  
+- Roman Faber (Developer)
+
+**Betreuer / Prüfer:**  
+Sascha Wanninger
+
+**Freigabe durch autorisierte Person:**  
+Michael Steer (Scrum Master)
+
+---
+
+## Changelog
+
+| **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
+|--------------|-------------|-------------------|---------------------------------------------|
+| 1.0          | 17.10.2025  | M. Steer          | Erstfassung der Projektskizze erstellt      |
+| 1.1          | 24.10.2025            | M. Steer          | Finalversion zur Abgabe vorbereitet           |
+
+---
+
+## Distribution List
+
+| **Name**          | **Rolle**             | **Kommentar / Zuständigkeit**                 |
+|--------------------|-----------------------|-----------------------------------------------|
+| Sascha Wanninger   | Prüfer / Betreuer     | Bewertung im Rahmen des Moduls                |
+| Michael Steer      | Scrum Master          | Koordination & Freigabe                       |
+| Luke Engehardt     | Product Owner         | Anforderungen, Dokumentation & Technische Dokumentation                  |
+| Giuliana Carrano   | Developer             | Projektskizze, Dokumentation, Architektur & UML                   |
+| Paul Strasser      | Developer             |                      |
+| Roman Faber        | Developer             |                            |
+---
+
+
 ## Einleitung
 
-*StudyQuest* ist eine gamifizierte Web-App zur Lern- und Notenverwaltung.  Die Implementierung basiert auf einem einfachen Client-Side-Stack (HTML, CSS und JavaScript) und verwendet den Browser‐**LocalStorage** als Persistenzschicht.  Das System wurde gemäß dem **3-Schichten-Modell** entwickelt:contentReference[oaicite:0]{index=0}, bestehend aus einer Präsentations-, einer Anwendungs- und einer Datenebene.  Die folgenden Abschnitte gehen auf die Anforderungen aus dem Software-Engineering-Praxis-Aufgabenblatt ein, insbesondere auf:
-
-- Beschreibung der Hauptmodule und ihrer Interaktionen in einem Paket-/Moduldiagramm.
-- Modellierung der Abhängigkeiten zwischen Analyse-Klassen und den eingesetzten „Frameworks“:contentReference[oaicite:1]{index=1}.
-- Verfeinerung des Analyse-Klassenmodells basierend auf den gewählten Technologien.
-- Beschreibung von Referenzarchitekturen.
+*StudyQuest* ist eine gamifizierte Web-App zur Lern- und Notenverwaltung.  Die Implementierung basiert auf einem einfachen Client-Side-Stack (HTML, CSS und JavaScript) und verwendet den Browser‐LocalStorage als Persistenzschicht.  Das System wurde gemäß dem **3-Schichten-Modell** entwickelt:contentReference[oaicite:0]{index=0}, bestehend aus einer Präsentations-, einer Anwendungs- und einer Datenebene. 
 
 ## Hauptmodule & Interaktionen
 
-Die Anwendung folgt einem **dreischichtigen Architektur-Pattern**.  Die Präsentations- und Business-Logik laufen komplett im Browser; es gibt kein separates Backend.  Die nachstehende Tabelle fasst die wichtigsten Module zusammen und ordnet sie der jeweiligen Schicht zu:contentReference[oaicite:2]{index=2}:
+Die Anwendung folgt einem dreischichtigen Architektur-Patter*.  Die Präsentations- und Business bzw. Daten-Logik laufen komplett im Browser; es gibt kein separates Backend.  Die nachstehende Tabelle fasst die wichtigsten Module zusammen und ordnet sie der jeweiligen Schicht zu:contentReference[oaicite:2]{index=2}:
 
 | Schicht/Modul | Aufgabe | Erläuterung |
 | --- | --- | --- |
