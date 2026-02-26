@@ -63,7 +63,7 @@ Michael Steer (Scrum Master)
 
 ## Hauptmodule & Interaktionen
 
-Die Anwendung folgt einem dreischichtigen Architektur-Patter*.  Die Präsentations- und Business bzw. Daten-Logik laufen komplett im Browser; es gibt kein separates Backend.  Die nachstehende Tabelle fasst die wichtigsten Module zusammen und ordnet sie der jeweiligen Schicht zu:contentReference[oaicite:2]{index=2}:
+Die Anwendung folgt einem dreischichtigen Architektur-Pattern.  Die Präsentations- und Business bzw. Daten-Logik laufen komplett im Browser; es gibt kein separates Backend.  Die nachstehende Tabelle fasst die wichtigsten Module zusammen und ordnet sie der jeweiligen Schicht zu:contentReference[oaicite:2]{index=2}:
 
 | Schicht/Modul | Aufgabe | Erläuterung |
 | --- | --- | --- |
