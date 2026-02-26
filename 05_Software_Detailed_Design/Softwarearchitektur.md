@@ -63,7 +63,7 @@ Michael Steer (Scrum Master)
 
 ## Hauptmodule & Interaktionen
 
-Die Anwendung folgt einem dreischichtigen Architektur-Pattern.  Die Präsentations- und Business bzw. Daten-Logik laufen komplett im Browser; es gibt kein separates Backend.  Die nachstehende Tabelle fasst die wichtigsten Module zusammen und ordnet sie der jeweiligen Schicht zu:contentReference[oaicite:2]{index=2}:
+Die Anwendung folgt einem dreischichtigen Architektur-Pattern.  Die Präsentations- und Anwendungs-Logik laufen komplett im Browser. Es gibt kein separates Backend.  Die nachstehende Tabelle fasst die wichtigsten Module zusammen und ordnet sie der jeweiligen Schicht zu:contentReference[oaicite:2]{index=2}:
 
 | Schicht/Modul | Aufgabe | Erläuterung |
 | --- | --- | --- |
@@ -71,7 +71,7 @@ Die Anwendung folgt einem dreischichtigen Architektur-Pattern.  Die Präsentatio
 | `index.html` | Einstiegspunkt der Single-Page-App | Bindet CSS- und JS-Module ein und definiert Platzhalter für das UI:contentReference[oaicite:4]{index=4}. |
 | `css/` | Styling | Enthält Stildefinitionen für Authentifizierung, Dashboard, Leaderboard, Admin-Bereiche usw. |
 | `ui.js` | UI-Renderer | Verwaltet das DOM, zeigt Seiten (Login, Dashboard, Quest-Ansicht, Admin-Panel usw.) an und reagiert auf Klicks. |
-| **Anwendungs-/Business-Schicht** |  | Hier liegen sämtliche Geschäftslogik-Module:contentReference[oaicite:5]{index=5}.  Die Module kommunizieren über gemeinsame Datenstrukturen und rufen sich gegenseitig auf. |
+| **Anwendungsschicht** |  | Hier liegen sämtliche Geschäftslogik-Module:contentReference[oaicite:5]{index=5}.  Die Module kommunizieren über gemeinsame Datenstrukturen und rufen sich gegenseitig auf. |
 | `app.js` | Router & Controller | Zentrale Steuerung der Single-Page-App.  Lädt Benutzer-Sessions, initialisiert die Datenbank, leitet Navigation (Dashboard, Quests, Leaderboard, Admin) und koordiniert andere Module. |
 | `auth.js` | Authentifizierung | Handhabt Registrierung, Login/Logout sowie die Darstellung der Auth-Formulare.  Ruft bei Erfolg `user.js` und `app.js` auf. |
 | `user.js` | Benutzerverwaltung | Enthält das User-Modell (u. a. Level, XP, Rollen).  Prüft Credentials, verwaltet die aktuelle Session und implementiert Rollen- und Streak-Logik. |
@@ -81,7 +81,7 @@ Die Anwendung folgt einem dreischichtigen Architektur-Pattern.  Die Präsentatio
 | `achievement.js` | Achievements & Badges | Prüft Bedingungen (Anzahl Quests, Level, Geschwindigkeit) und vergibt Badges. |
 | `leaderboard.js` | Rankings & Streaks | Berechnet Rankings nach XP, Level, erledigten Quests und Tages-Streaks; zeigt Top-10-Tabellen an. |
 | `admin.js` | Admin-Funktionen | Ermöglicht das Erstellen/Ändern/Löschen von Quests, das Konfigurieren der Spielregeln sowie die Benutzer- und Rollenverwaltung. |
-| **Daten-/Persistenzschicht** |  | Ein einziger Modul, `db.js`, kapselt sämtliche Speicherzugriffe:contentReference[oaicite:6]{index=6}. |
+| **Datenschicht** |  | Ein einziger Modul, `db.js`, kapselt sämtliche Speicherzugriffe:contentReference[oaicite:6]{index=6}. |
 | `db.js` | LocalStorage-Manager | Verwaltet den Zugriff auf LocalStorage (Users, Quests, Sessions, Timer, Grades, Notifications, Achievements, Game Rules):contentReference[oaicite:7]{index=7}, initialisiert Default-Werte und bietet CRUD-Funktionen für jede Entität. |
 
 ### Interaktionsdiagramm (ASCII-Abstraktion)
