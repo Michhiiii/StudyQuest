@@ -13,7 +13,7 @@ Software Engineering I – Praxis
 Wintersemester 2025 / 2026
 
 **Version:**  
-1.0
+1.3
 
 **Datum:**  
 30.01.2026
@@ -38,8 +38,9 @@ Michael Steer (Scrum Master)
 | **Version** | **Datum** | **Autor** | **Änderungsbeschreibung** |
 | --- | --- | --- | --- |
 | 1.0 | 30.01.2026 | Giuliana Carrano | Erstfassung des SDD, basiert auf Requirements und Architektur-Dokumenten |
-| 1.1 | 30.01.2026 | Giuliana Carrano | Formalia ergänzt: Kopfblatt, Autoren; Emojis entfernt |
+| 1.1 | 30.01.2026 | Giuliana Carrano | Formalia ergänzt: Kopfblatt, Autoren |
 | 1.2 | 30.01.2026 | Giuliana Carrano | Distribution List und erweitertes Changelog ergänzt |
+| 1.3 | 27.02.2026 | Giuliana Carrano | Finalversion zur Abgabe vorbereitet | 
 
 ## Distribution List
 
@@ -61,8 +62,6 @@ Dieses Dokument verbindet die Requirements mit konkreten Implementierungsdetails
 - **Nicht-funktionale Anforderungen** (Performance, Security, Input-Validation)
 - **Testkonzepte** und Qualitätssicherung
 - **Direkte Code-Mappings** zu `src/js`
-
-Zielgruppe: Entwickler:innen, Tester:innen, Maintainer und Code-Reviewer.
 
 ### 1.2 Abgrenzung zur Softwarearchitektur
 Die Softwarearchitektur-Dokumentation behandelt die strukturelle Lösung des Problems:
