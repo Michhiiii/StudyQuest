@@ -16,7 +16,7 @@ Wintersemester 2025 / 2026
 1.3
 
 **Datum:**  
-30.01.2026
+27.02.2026
 
 **Author:innen:**  
 - Michael Steer (Scrum Master)  
@@ -70,13 +70,6 @@ Die Softwarearchitektur-Dokumentation behandelt die strukturelle Lösung des Pro
 - Referenzarchitekturen und Design-Entscheidungen
 - Konzeptionelle Übersicht ohne Code-Referenzen
 
-Dieses SDD ist die detaillierte Konkretisierung jener Architektur auf Codeebene.
-
-**Referenzen:**
-- `Documents/Anforderungsanalyse/Requirements.md`
-- `Documents/Softwarearchitektur/Softwarearchitektur.md`
-- Quellcode: `src/` (siehe unten)
-
 ---
 
 ## 2. Module & Verantwortlichkeiten
@@ -100,7 +93,7 @@ Dieses SDD ist die detaillierte Konkretisierung jener Architektur auf Codeebene.
 ---
 
 ## 2.1 Entwurfsmuster (v1.0: Direkte Modulaufrufe statt Observer)
-In der aktuellen Implementierung sind **direkte Modulaufrufe** verwendet: `quest.js` ruft `NotificationModel`, `AchievementSystem` und `UserModel` direkt auf (kein EventBus). Das Observer-Pattern wird als **Refactor-Vorschlag für v2.0** dokumentiert. Details, zukünftige Architektur und Nutzen des Patterns siehe: `Documents/Softwarearchitektur/DesignPattern_Observer.md`.
+In der aktuellen Implementierung sind direkte Modulaufrufe verwendet: `quest.js` ruft `NotificationModel`, `AchievementSystem` und `UserModel` direkt auf (kein EventBus). Das Observer-Pattern wird als **Refactor-Vorschlag für v2.0** dokumentiert. Details, zukünftige Architektur und Nutzen des Patterns siehe: `Documents/Softwarearchitektur/DesignPattern_Observer.md`.
 
 ## 3. Datenmodell (Domänenobjekte)
 
@@ -187,10 +180,4 @@ Diese direkte Sequenz erfolgt synchron, **nicht asynchron über EventBus**. (Sie
 
 ---
 
-## 10. Offene Punkte & Empfehlungen
-- **Passwort-Handling** sofort verbessern (Hashing + Salting).  
-- **Tests**: Mindestens einige Unit-Tests für `db.js`, `quest.js`, `user.js`.  
-- **Modularisierung**: Wechsel zu ESM + Build-Tool (Vite) für bessere Entwickbarkeit.
-
----
 
