@@ -37,10 +37,10 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum** | **Autor** | **Änderungsbeschreibung** |
 | --- | --- | --- | --- |
-| 1.0 | 30.01.2026 | Giuliana Carrano | Erstfassung des SDD, basiert auf Requirements und Architektur-Dokumenten |
-| 1.1 | 30.01.2026 | Giuliana Carrano | Formalia ergänzt: Kopfblatt, Autoren |
-| 1.2 | 30.01.2026 | Giuliana Carrano | Distribution List und erweitertes Changelog ergänzt |
-| 1.3 | 27.02.2026 | Giuliana Carrano | Finalversion zur Abgabe vorbereitet | 
+| 1.0 | 30.01.2026 | G. Carrano | Erstfassung des SDD, basiert auf Requirements und Architektur-Dokumenten |
+| 1.1 | 30.01.2026 | G. Carrano | Formalia ergänzt: Kopfblatt, Autoren |
+| 1.2 | 30.01.2026 | G. Carrano | Distribution List und erweitertes Changelog ergänzt |
+| 1.3 | 27.02.2026 | G. Carrano | Finalversion zur Abgabe vorbereitet | 
 
 ## Distribution List
 
