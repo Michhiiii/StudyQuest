@@ -1,12 +1,65 @@
 # Entwurfsmuster: Observer (Publish/Subscribe) – StudyQuest
 
+**Titel des Dokuments:**  
+Oberserver (Publish/Subscribe) – StudyQuest
+
+**Projektname:**  
+StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App
+
+**Modul:**  
+Software Engineering I – Praxis
+
+**Projektzeitraum:**  
+Wintersemester 2025 / 2026
+
+**Version:**  
+1.2
+
+**Datum:**  
+26.02.2026
+
+**Author:innen:**  
+- Michael Steer (Scrum Master)  
+- Luke Engehardt (Product Owner)  
+- Giuliana Carrano (Developer)  
+- Paul Strasser (Developer)  
+- Roman Faber (Developer)
+
+**Betreuer / Prüfer:**  
+Sascha Wanninger
+
+**Freigabe durch autorisierte Person:**  
+Michael Steer (Scrum Master)
+
+---
+
+## Changelog
+
+| **Version** | **Datum** | **Autor** | **Änderungsbeschreibung** |
+| --- | --- | --- | --- |
+| 1.0 | 30.01.2026 | L. Engelhardt | Erstfassung |
+| 1.1 | 10.02.2026 | M. Steer  | Überarbeitung passend zu v1.0 |
+| 1.2. | 26.02.2026 | M. Steer | Finalversion zur Abgabe vorbereitet | 
+
+## Distribution List
+
+| **Name**          | **Rolle**             | **Kommentar / Zuständigkeit**                 |
+|--------------------|-----------------------|-----------------------------------------------|
+| Sascha Wanninger   | Prüfer / Betreuer     | Bewertung im Rahmen des Moduls                |
+| Michael Steer      | Scrum Master          | Koordination & Freigabe                       |
+| Luke Engehardt     | Product Owner         | Anforderungen, Dokumentation & Technische Dokumentation                  |
+| Giuliana Carrano   | Developer             | Projektskizze, Dokumentation, Architektur & UML                   |
+| Paul Strasser      | Developer             |                      |
+| Roman Faber        | Developer             |                            |
+
+
 **Status: Architektur-Konzept für zukünftige Verbesserung (v1.0: Nicht implementiert)**
 
 ## 1. Ziel
 Die Quest-Logik soll fachlich bleiben (XP berechnen, Quest abschließen). Nebenwirkungen wie Notifications, Achievements und Streaks sollen entkoppelt werden. Neue Reaktionen auf ein Ereignis (z. B. Telemetrie, zusätzliche Badges, UI-Refresh) sollen ohne Änderung am Quest-Modul möglich sein.
 
 ## 2. Aktuelle Implementierung (v1.0)
-Die **aktuelle Version nutzt direkte Methodenaufrufe**, nicht das hier dokumentierte Observer-Pattern:
+Die aktuelle Version nutzt direkte Methodenaufrufe, nicht das hier dokumentierte Observer-Pattern:
 
 In `src/js/quest.js` (Zeilen 115-140) werden nach `stopTimer()` folgende Operationen direkt aufgerufen:
 ```javascript
