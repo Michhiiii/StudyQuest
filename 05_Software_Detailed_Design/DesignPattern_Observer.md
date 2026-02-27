@@ -1,21 +1,40 @@
 # Entwurfsmuster: Observer (Publish/Subscribe) – StudyQuest
 
+**Status: Architektur-Konzept für zukünftige Verbesserung (v1.0: Nicht implementiert)**
+
 ## 1. Ziel
-Die Quest-Logik soll fachlich bleiben (XP berechnen, Quest abschließen). Nebenwirkungen wie Notifications, Achievements und Streaks sollen entkoppelt werden. Neue Reaktionen auf ein Ereignis (z. B. Telemetrie, zusätzliche Badges, UI-Refresh) sollen ohne Änderung am Quest-Modul möglich sein.
+Die Quest-Logik soll fachlich bleiben (XP berechnen, Quest abschließen). Nebenwirkungen wie Notifications, Achievements und Streaks sollen entkoppelt werden. Neue Reaktionen auf ein Ereignis (z. B. Telemetrie, zusätzliche Badges, UI-Refresh) sollen ohne Änderung am Quest-Modul möglich sein.
 
-## 2. Ausgangssituation im Projekt
-Aktuell werden in `src/js/quest.js` nach dem Stoppen eines Timers bzw. beim Abschließen einer Quest mehrere Folgeschritte direkt im gleichen Modul ausgeführt, z. B.:
+## 2. Aktuelle Implementierung (v1.0)
+Die **aktuelle Version nutzt direkte Methodenaufrufe**, nicht das hier dokumentierte Observer-Pattern:
 
-- `NotificationModel.notifyQuestCompleted(...)` und `NotificationModel.notifyLevelUp(...)`
-- `AchievementSystem.checkAndUnlock(...)` und danach weitere Notification-Aufrufe
-- `UserModel.updateStreak(...)`
+In `src/js/quest.js` (Zeilen 115-140) werden nach `stopTimer()` folgende Operationen direkt aufgerufen:
+```javascript
+// Direkte Aufrufe (keine EventBus-Vermittlung)
+NotificationModel.notifyQuestCompleted(...);
+NotificationModel.notifyLevelUp(...);
+AchievementSystem.checkAndUnlock(...);
+NotificationModel.notifyAchievementUnlocked(...);  // Multiple Aufrufe
+UserModel.updateStreak(...);
+```
 
-Damit kennt `QuestSystem` mehrere Subsysteme gleichzeitig. Das ist funktional ok, aber es koppelt die Module stark und macht spätere Erweiterungen und Tests unnötig aufwendig.
+Dies bedeutet:
+- ✓ **Funktional korrekt** – Alle Nebenwirkungen werden korrekt ausgelöst
+- ✗ **Starke Kopplung** – `QuestSystem` kennt `NotificationModel`, `AchievementSystem` und `UserModel` direkt
+- ✗ **Erweiterbarkeit** – Neue Reaktionen erfordern Code-Änderungen im `quest.js`
+
+## 2.1 Warum nicht v1.0 implementiert?
+Das Observer-Pattern hätte folgende Anforderungen:
+- Eine `EventBus`-Instanz (`eventBus.js`)
+- Registrierung aller Observer in `app.js` beim Start
+- Asynchrone Event-Verarbeitung (könnten Race Conditions entstehen?)
+- Für den MVP-Scope nicht prioritär, da direkte Aufrufe ausreichen
 
 ## 3. Pattern-Kurzbeschreibung
 **Observer** beschreibt eine 1:n-Beziehung: Ein Publisher (Subject) veröffentlicht Zustandsänderungen/Ereignisse, mehrere Subscriber (Observer) reagieren darauf. In Web-Apps wird das oft als **Publish/Subscribe** umgesetzt (EventBus).
 
-## 4. Mapping auf StudyQuest
+## 4. Proposed Architecture (zukünftige Verbesserung)
+
 ### 4.1 Rollen
 - **Publisher/Subject:** `QuestSystem` (und perspektivisch weitere fachliche Module)
 - **EventBus:** zentrale Instanz `EventBus` mit `subscribe()` und `publish()`
@@ -36,7 +55,7 @@ Damit kennt `QuestSystem` mehrere Subsysteme gleichzeitig. Das ist funktional ok
 - **AchievementObserver**: triggert `AchievementSystem.checkAndUnlock()` und publisht pro Treffer `achievement.unlocked`
 - **StreakObserver**: ruft `UserModel.updateStreak()` und publisht optional `streak.updated`
 
-## 5. UML (PlantUML)
+## 5. Proposed UML Architecture (zukünftige Verbesserung)
 ### 5.1 Klassendiagramm
 ```plantuml
 @startuml
@@ -89,20 +108,37 @@ EventBus -> NotificationObserver : onAchievementUnlocked(...)
 @enduml
 ```
 
-## 6. Umsetzungsvorschlag (ohne Code-Zwang)
+## 6. Umsetzungsvorschlag für Refactor (nicht v1.0)
+
 1. `eventBus.js` einführen (kleines Objekt mit interner Map `event -> [handler]`).
-2. Observer in `app.init()` registrieren (z. B. `EventBus.subscribe('quest.completed', NotificationObserver.onQuestCompleted)`).
+2. Observer in `app.init()` registrieren (z. B. `EventBus.subscribe('quest.completed', NotificationObserver.onQuestCompleted)`).
 3. In `quest.js` die direkten Aufrufe (Notification/Achievement/Streak) durch `EventBus.publish(...)` ersetzen.
 4. Event-Namen als Konstanten definieren, um Tippfehler zu vermeiden.
+5. **Testing:** Isolierte Unit-Tests für jeden Observer möglich (keine Abhängigkeiten zu anderen Modulen).
 
-## 7. Nutzen und Trade-offs
-**Nutzen:** klare Verantwortlichkeiten, weniger Kopplung, Erweiterungen ohne Seiteneffekte, bessere Testbarkeit (Observer isoliert testbar).
+## 7. Nutzen des Refactors (zukünftig)
+**Mit EventBus-Implementierung würde gelten:**
+- ✓ Klare Verantwortlichkeiten (jeder Observer eine Funktion)
+- ✓ Weniger Kopplung (`quest.js` kennt EventBus, nicht die Observer direkt)
+- ✓ Erweiterungen ohne Seiteneffekte (neue Observer hinzufügen ohne quest.js zu ändern)
+- ✓ Bessere Testbarkeit (Observer isoliert testbar)
 
-**Trade-offs:** Kontrollfluss wird „indirekter“ (Debugging schwieriger), Event-Reihenfolge muss bewusst festgelegt werden, Gefahr von vergessenen `unsubscribe()` (Speicher/Handler-Leaks) bei dynamischem Registrieren.
+**Trade-offs des Refactors:**
+- ✗ Kontrollfluss wird „indirekter" (Debugging schwieriger)
+- ✗ Event-Reihenfolge muss bewusst festgelegt werden
+- ✗ Gefahr von vergessenen `unsubscribe()` (Speicher-Leaks) bei dynamischem Registrieren
 
 
-## 8. Abnahmekriterien (Dokumentation)
+## 8. Abnahmekriterien (zukünftige Implementierung)
 - Es ist klar beschrieben, **welches** Ereignis der Publisher auslöst und **welche** Observer darauf reagieren.
 - UML-Diagramme zeigen Teilnehmer und Ablauf (Klasse + Sequenz).
 - Es ist ein Mapping auf die vorhandenen Module vorhanden (`quest.js`, `notification.js`, `achievement.js`, `user.js`).
 - Die Vorteile und Grenzen sind kurz benannt.
+- EventBus wird in `app.init()` initialisiert und alle Observer werden registriert.
+- keine direkten Aufrufe zwischen Modulen mehr, nur EventBus-Publish/Subscribe.
+
+## 9. Abnahmekriterien v1.0 (aktuelle Implementierung)
+✓ Direktes Modulzugriffsmuster der aktuellen Architektur funktioniert korrekt  
+✓ Alle Nebenwirkungen (Notifications, Achievements, Streaks) werden nach Quest-Ende ausgelöst  
+✓ Funktionale Anforderungen erfüllt, auch wenn nicht das Observer-Pattern verwendet wird  
+✓ Dieses Dokument dient als Architektur-Verbesserungsvorschlag für spätere Versionen

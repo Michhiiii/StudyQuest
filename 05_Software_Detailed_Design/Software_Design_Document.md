@@ -53,7 +53,25 @@ Michael Steer (Scrum Master)
 | Roman Faber        | Developer             |                            |
 
 ## 1. Zweck & Geltungsbereich
-Dieses Dokument beschreibt die Software-Architektur und das Design der Anwendung *StudyQuest* und verbindet die vorhandenen **Requirements** und die **Softwarearchitektur-Dokumentation** mit einer konkreten technischen Implementierungsbeschreibung (Codereferenzen). Es richtet sich an Entwickler:innen, Tester:innen und Maintainer.
+
+### 1.1 Zweck dieses Dokuments
+Dieses Dokument verbindet die Requirements mit konkreten Implementierungsdetails und Code-Referenzen. Der Fokus liegt auf:
+- **API-Schnittstellen** zwischen den Modulen
+- **Algorithmen und Geschäftslogik** (z. B. XP-Vergabe, Level-Up-Berechnung)
+- **Nicht-funktionale Anforderungen** (Performance, Security, Input-Validation)
+- **Testkonzepte** und Qualitätssicherung
+- **Direkte Code-Mappings** zu `src/js`
+
+Zielgruppe: Entwickler:innen, Tester:innen, Maintainer und Code-Reviewer.
+
+### 1.2 Abgrenzung zur Softwarearchitektur
+Die Softwarearchitektur-Dokumentation behandelt die strukturelle Lösung des Problems:
+- Schichtmodell und Architektur-Pattern (3-Schichten, MVC, SPA)
+- Abhängigkeiten zwischen Analyse-Klassen und Technologien
+- Referenzarchitekturen und Design-Entscheidungen
+- Konzeptionelle Übersicht ohne Code-Referenzen
+
+Dieses SDD ist die detaillierte Konkretisierung jener Architektur auf Codeebene.
 
 **Referenzen:**
 - `Documents/Anforderungsanalyse/Requirements.md`
@@ -92,22 +110,22 @@ Kurz: Single-Page-Web-App (SPA) in **Vanilla JavaScript**, persistiert lokal via
 
 ---
 
-## 3.1 Entwurfsmuster
-Im System wird das Entwurfsmuster **Observer (Publish/Subscribe)** als Konzept für eventbasierte Nebenwirkungen vorgesehen (Notifications, Achievements, Streaks). Details, UML und Mapping auf die Module siehe: `Documents/Softwarearchitektur/DesignPattern_Observer.md`.
+## 3.1 Entwurfsmuster (v1.0: Direkte Modulaufrufe statt Observer)
+In der aktuellen Implementierung sind **direkte Modulaufrufe** verwendet: `quest.js` ruft `NotificationModel`, `AchievementSystem` und `UserModel` direkt auf (kein EventBus). Das Observer-Pattern wird als **Refactor-Vorschlag für v2.0** dokumentiert. Details, zukünftige Architektur und Nutzen des Patterns siehe: `Documents/Softwarearchitektur/DesignPattern_Observer.md`.
 
 ## 4. Datenmodell (Domänenobjekte)
 
 
 Kurzbeschreibung der primären Stores (LocalStorage-Key):
 
-- **User (`users`)**: `{ id, email, name, password_hash, role, xp, level, active_quest_id, achievements:[], last_active }`
+- **User (`users`)**: `{ id, email, name, password_hash, is_admin (Boolean), xp (aktuelles Level-XP), level, total_xp_earned (kumulativ), active_quest_id, quest_history: [], current_streak, best_streak, last_activity_date, avatar, created_at, updated_at }`
 - **Quest (`quests`)**: `{ id, title, description, difficulty, xp_reward, status }`
-- **LearningSession (`sessions`)**: `{ id, user_id, quest_id, xp_earned, started_at, ended_at }`
-- **Grade (`grades`)**: `{ id, user_id, subject, value, semester }`
-- **Achievement (`achievements`)**: `{ id, name, condition, unlocked_by: [user_ids] }`
-- **Notification (`notifications`)**: `{ id, user_id, message, read, created_at }`
-- **GameRule (`game_rules`)**: `{ xp_per_difficulty, level_thresholds, max_level }`
-- **Timer (`timers`)**: `{ id, user_id, quest_id, start_ts, remaining_s }`
+- **LearningSession (`sessions`)**: `{ id, user_id, quest_id, xp_earned, duration_seconds, completed_at }`
+- **Grade (`grades`)**: `{ id, user_id, module_name, grade_value, semester, created_at }`
+- **Achievement (`achievements`)**: `{ id, user_id, key, title, icon, description, unlocked_at }` (separater Store pro User, nicht Teil von User)
+- **Notification (`notifications`)**: `{ id, user_id, type, message, data, is_read, created_at }`
+- **GameRule (`game_rules`)**: `{ level_threshold, xp_per_minute_timer, max_level }`
+- **Timer (`timers`)**: `{ id, user_id, quest_id, start_time, end_time, duration_seconds, active }`
 
 ---
 
@@ -115,22 +133,29 @@ Kurzbeschreibung der primären Stores (LocalStorage-Key):
 Kern-Schnittstellen (Beispiele):
 
 - `db.get(store, id)` → Objekt | `db.save(store, obj)` → id
-- `auth.register(email, password)` → { success, message }
-- `auth.login(email, password)` → { success, user }
-- `quest.startQuest(userId, questId)` → { success, timerId }
-- `quest.completeQuest(userId, questId)` → { xpAwarded, levelUp: true/false }
-- `leaderboard.getTop(n)` → Array<UserRank>
-- `grade.importCSV(file)` / `grade.exportCSV()`
+- `auth.register(email, password, name)` → { success, message } | User-Erstellung
+- `user.authenticate(email, password)` → User Objekt (wirft Error bei Fehler)
+- `quest.startQuest(userId, questId)` → { questId, title, description, xp_reward, difficulty, started_at }
+- `quest.startTimer(userId, questId)` → Timer Objekt
+- `quest.stopTimer(userId)` → { timer, xpEarned, timeBonus, durationSec, leveledUp, newLevel, newAchievements }
+- `leaderboard.getTop10(criteria)` → Array<UserStats>
+- `grade.importCSV(userId, csvText)` / `grade.exportCSV(userId)`
 
-Event-Flow: UI → `app.js`/Controller → Business-Module → `db.js` → LocalStorage. Nach wichtigen Aktionen (QuestComplete, LevelUp) sendet das Modul Notifications/Events an `ui.js`.
+Kontrollfluss (v1.0): UI → `app.js` (Router/Controller) → Business-Module (`quest.js`, `user.js`, `achievement.js`, `grade.js`, etc.) → `db.js` → LocalStorage. Bei Quest-Abschluss: `quest.stopTimer()` ruft direkt folgende Module nacheinander auf:
+1. `NotificationModel.notifyQuestCompleted()`
+2. `UserModel.addXP()` (prüft & triggert Level-Up Notification)
+3. `AchievementSystem.checkAndUnlock()` (prüft & triggert Achievement Notifications)
+4. `UserModel.updateStreak()`
+
+Diese direkte Sequenz erfolgt synchron, **nicht asynchron über EventBus**. (Siehe Abschnitt 3.1)
 
 ---
 
 ## 6. Wichtige Algorithmen & Regeln
-- **XP-Vergabe:** Basis-Wert = `game_rules.xp_per_difficulty[difficulty]` ± Boni (Time-Bonus). Implementiert in `quest.js`.
-- **Level-Up:** Schwelle per `game_rules.level_thresholds` (z. B. cumulative XP). `user.updateLevel()` prüft und löst `Achievement` aus.
-- **Leaderboard:** Sort by `xp` desc, Tie-Breaker: `last_active` (recent first).
-- **Streaks:** Anzahl aufeinanderfolgender Tage mit mindestens einer `LearningSession`.
+- **XP-Vergabe:** Basis XP der Quest (in Questdefinition) + Zeitbonus = `(duration_minutes * game_rules.xp_per_minute_timer)`. Implementiert in `quest.js`, Zeilen 85-100.
+- **Level-Up:** Berechnet als `Math.floor(total_xp_earned / level_threshold) + 1`. `user.addXP()` prüft automatisch und setzt neues Level. Auslöser für Achievement-Checks.
+- **Leaderboard:** Sort Primary Key ist `total_xp_earned` descending. Für alle Rankings: nach dem gewählten Kriterium (xp/level/quests/streak/achievements) sortierend. Tie-Breaker: **Nicht implementiert** in v1.0 (würde `last_activity_date` sein, ist aber optional).
+- **Streaks:** Gezählt in `days_in_row` basierend auf `LearningSession`-Einträgen. Update in `UserModel.updateStreak()` prüft ob letzte Aktivität heute oder gestern war.
 
 ---
 

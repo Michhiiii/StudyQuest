@@ -94,27 +94,27 @@ Die Pfeile zeigen den Kontroll- und Datenfluss: Die Präsentationsschicht ruft F
 
 Das Analyseklassenmodell (siehe Grobdesign) definiert die wesentlichen Domänenklassen **User**, **Quest**, **LearningSession**, **Grade**, **Achievement**, **Notification**, **GameRule** und **Timer**.  In der Implementierung werden diese Klassen größtenteils als JavaScript-Objekte und Collections in LocalStorage realisiert, einige werden durch Module gekapselt:
 
-- **User** – Repräsentiert einen Benutzer mit Eigenschaften wie `id`, `email`, `name`, `password_hash`, `level`, `xp` und `role`.  Geschäftslogik‐Methoden (z. B. `login`, `updateStreak`, `isAdmin`) befinden sich in `user.js`.  Persistiert wird das Objekt in `users`-Store im LocalStorage.
-- **Quest** – Definiert Lernaufgaben (`id`, `title`, `description`, `difficulty`, `xp_reward`, `status`).  Funktionen wie `startQuest()`, `completeQuest()` und XP-Berechnung liegen in `quest.js`, die Instanzen werden im `quests`-Store des LocalStorage verwaltet.
-- **LearningSession** – Audit-Trail für Quest-Abschlüsse, enthält `id`, `user_id`, `quest_id`, `xp_earned` und `completed_at`.  Sessions werden über `quest.js` und `db.js` erzeugt und gespeichert.
-- **Grade** – Enthält Noten (`id`, `user_id`, `subject`, `value`) und wird durch `grade.js` verwaltet.  Persistiert im `grades`-Store, Import/Export via CSV wird vom Modul unterstützt.
+- **User** – Repräsentiert einen Benutzer mit Eigenschaften wie `id`, `email`, `name`, `password_hash`, `level`, `xp` (aktuelles Level-XP), `total_xp_earned` (kumulativ), `is_admin` (Boolean statt `role`), `current_streak`, `best_streak`, `last_activity_date`.  Geschäftslogik-Methoden (z. B. `authenticate()`, `updateStreak()`, `isAdmin()`) befinden sich in `user.js`.  Persistiert wird das Objekt in `users`-Store im LocalStorage.
+- **Quest** – Definiert Lernaufgaben (`id`, `title`, `description`, `difficulty`, `xp_reward`, `status`).  Funktionen wie `startQuest()`, `startTimer()`, `stopTimer()` (nicht `completeQuest()` - das ist implizit bei Timerend) und XP-Berechnung liegen in `quest.js`, die Instanzen werden im `quests`-Store des LocalStorage verwaltet.
+- **LearningSession** – Audit-Trail für Quest-Abschlüsse, enthält `id`, `user_id`, `quest_id`, `xp_earned`, `duration_seconds`, `completed_at`.  Sessions werden über `quest.js` (bei `stopTimer()`) und `db.js` erzeugt und gespeichert.
+- **Grade** – Enthält Noten (`id`, `user_id`, `module_name` (nicht `subject`), `grade_value`, `semester`, `created_at`) und wird durch `grade.js` verwaltet.  Persistiert im `grades`-Store, Import/Export via CSV wird vom Modul unterstützt.
 - **Achievement** – Repräsentiert freischaltbare Badges, `achievement.js` definiert die Bedingungen und pflegt eine Liste freigeschalteter Badges im `achievements`-Store.
 - **Notification** – Temporäre Ereignisse, die dem User angezeigt werden, gespeichert im `notifications`-Store und von `notification.js` angezeigt.
-- **GameRule** – Konfigurierbare Spielparameter wie XP-Werte pro Quest-Schwierigkeit, Level-Threshold und maximale Level.  `admin.js` erlaubt Admins, die Regeln zu bearbeiten, die Werte werden im `game_rules`-Store persistiert.
-- **Timer** – Wird für laufende Quests benötigt, speichert Start-Zeit und restliche Sekunden im `timers`-Store.  `quest.js` und `ui.js` koordinieren das Timer-Display und einen XP-Bonus.
+- **GameRule** – Konfigurierbare Spielparameter wie `xp_per_minute_timer` (Zeitzuschlag pro Minute Timer), `level_threshold` (XP pro Level-Aufstieg), `max_level`.  `admin.js` erlaubt Admins, die Regeln zu bearbeiten, die Werte werden im `game_rules`-Store persistiert.
+- **Timer** – Wird für laufende Quests benötigt, speichert `id`, `user_id`, `quest_id`, `start_time`, `end_time`, `duration_seconds`, `active` (Boolean) im `timers`-Store.  `quest.js` (Funktionen `startTimer()`, `stopTimer()`) und `ui.js` koordinieren das Timer-Display und die XP-Bonus-Berechnung.
 
 **Framework-Abhängigkeiten:** Die Anwendung nutzt kein externes Frontend- oder Backend-Framework, alle Module sind in Vanilla-JavaScript geschrieben.  Als persistente Technologie dient der Browser-LocalStorage.  Die einzige „Framework-Abhängigkeit“ ist daher die Browser-API (DOM, LocalStorage).  Diese beeinflusst das Klassenmodell wie folgt:
 
 - Jedes Objekt muss eine serialisierbare Struktur besitzen (JSON), da LocalStorage nur Strings speichert.  Deshalb haben alle Entitäten eindeutige `id`-Felder und werden als flache Objekte gespeichert.
-- Passwörter werden im Prototyp lediglich Base64-kodiert, was in einer produktiven Architektur durch eine kryptographische Hash-Funktion (z. B. bcrypt) ersetzt werden sollte.
-- Da keine Live-Datenbank existiert, gibt es keine konkurrierenden Zugriffe, Transaktionen werden in der Business-Logik implementiert (z. B. bei `completeQuest()` in `quest.js` wird XP vergeben, Level aktualisiert und eine Session angelegt in atomarer Reihenfolge).
+- Passwörter werden im Prototyp mit einem vereinfachten Hash-Verfahren kodiert (`_hashPassword()`), was in einer produktiven Architektur durch eine kryptographische Hash-Funktion (z. B. bcrypt/Argon2) ersetzt werden sollte.
+- Da keine Live-Datenbank existiert, gibt es keine konkurrierenden Zugriffe, Transaktionen werden in der Business-Logik implementiert (z. B. bei `stopTimer()` in `quest.js` wird Timerzeit erfasst, XP berechnet, Level aktualisiert und eine LearningSession angelegt in synchroner/atomarer Reihenfolge).
 
 ## Verfeinerung des Analyse-Klassenmodells
 
 Auf Basis der Implementierung wurden einige Anpassungen am Analyse-Klassenmodell vorgenommen:
 
 1. **Eindeutige IDs und Persistenz-Attribute:**  Alle Klassen besitzen ein `id`-Attribut, um Objekte im LocalStorage referenzieren zu können.  Für Relationen (z. B. `user_id` in LearningSession, `quest_id` in Timer) werden Fremdschlüssel als IDs gespeichert.
-2. **Rollen und Rechte:**  Das `User`-Objekt erhielt ein Feld `role`/`is_admin` zur Unterscheidung zwischen normalen Benutzern und Administratoren.  Dies wird von `admin.js` verwendet, um zu entscheiden, ob Admin-Funktionen angezeigt werden.
+2. **Rollen und Rechte:**  Das `User`-Objekt hat ein Feld `is_admin` (Boolean, nicht `role`) zur Unterscheidung zwischen normalen Benutzern und Administratoren.  Der erste User, der sich registriert, erhält automatisch Admin-Status. `/admin.js` verwendet dieses Feld, um zu entscheiden, ob Admin-Funktionen angezeigt werden.
 3. **Status-Felder:**  `Quest` enthält ein `status`-Attribut (z. B. „available“, „active“, „completed“) und die IDs aktiver Quests werden im User-Objekt gespeichert (`active_quest_id`).
 4. **Audit-Trail:**  Die Klasse `LearningSession` wurde eingeführt, um jeden Quest-Abschluss mit Zeitstempel zu speichern.  Diese Daten werden für Achievements, Leaderboard-Berechnungen und Streak-Updates genutzt.
 5. **Timer als eigene Entität:**  Obwohl Timer zunächst nur UI-Logik war, wird es als persistentes Objekt im LocalStorage gespeichert, damit das Zeit-Tracking nach Seiten-Reload fortgesetzt werden kann.  Timer hält Verweise auf den User und die Quest und speichert Start- und Endzeit.
