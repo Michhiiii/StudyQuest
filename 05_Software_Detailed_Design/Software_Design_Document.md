@@ -79,17 +79,7 @@ Dieses SDD ist die detaillierte Konkretisierung jener Architektur auf Codeebene.
 
 ---
 
-## 2. Systemübersicht
-Kurz: Single-Page-Web-App (SPA) in **Vanilla JavaScript**, persistiert lokal via **LocalStorage**. Dreischicht-Ansatz: Presentation (`index.html`, `css/`, `ui.js`) → Application (`app.js`, `*.js`) → Data (`db.js`).
-
-### 2.1 Hauptziele
-- Gamifizierte Lernverwaltung (Quests, XP, Level, Achievements)
-- Einfache Notenverwaltung mit Import/Export (CSV)
-- Offline-fähig durch LocalStorage-Persistenz
-
----
-
-## 3. Module & Verantwortlichkeiten
+## 2. Module & Verantwortlichkeiten
 (Übersicht, Implementierung in `src/js`) 
 
 - **`index.html` / `css/`** – UI-Templates, Styles.
@@ -109,10 +99,10 @@ Kurz: Single-Page-Web-App (SPA) in **Vanilla JavaScript**, persistiert lokal via
 
 ---
 
-## 3.1 Entwurfsmuster (v1.0: Direkte Modulaufrufe statt Observer)
+## 2.1 Entwurfsmuster (v1.0: Direkte Modulaufrufe statt Observer)
 In der aktuellen Implementierung sind **direkte Modulaufrufe** verwendet: `quest.js` ruft `NotificationModel`, `AchievementSystem` und `UserModel` direkt auf (kein EventBus). Das Observer-Pattern wird als **Refactor-Vorschlag für v2.0** dokumentiert. Details, zukünftige Architektur und Nutzen des Patterns siehe: `Documents/Softwarearchitektur/DesignPattern_Observer.md`.
 
-## 4. Datenmodell (Domänenobjekte)
+## 3. Datenmodell (Domänenobjekte)
 
 
 Kurzbeschreibung der primären Stores (LocalStorage-Key):
@@ -128,7 +118,7 @@ Kurzbeschreibung der primären Stores (LocalStorage-Key):
 
 ---
 
-## 5. Schnittstellen & API (aus Sicht der Module)
+## 4. Schnittstellen & API (aus Sicht der Module)
 Kern-Schnittstellen (Beispiele):
 
 - `db.get(store, id)` → Objekt | `db.save(store, obj)` → id
@@ -150,7 +140,7 @@ Diese direkte Sequenz erfolgt synchron, **nicht asynchron über EventBus**. (Sie
 
 ---
 
-## 6. Wichtige Algorithmen & Regeln
+## 5. Wichtige Algorithmen & Regeln
 - **XP-Vergabe:** Basis XP der Quest (in Questdefinition) + Zeitbonus = `(duration_minutes * game_rules.xp_per_minute_timer)`. Implementiert in `quest.js`, Zeilen 85-100.
 - **Level-Up:** Berechnet als `Math.floor(total_xp_earned / level_threshold) + 1`. `user.addXP()` prüft automatisch und setzt neues Level. Auslöser für Achievement-Checks.
 - **Leaderboard:** Sort Primary Key ist `total_xp_earned` descending. Für alle Rankings: nach dem gewählten Kriterium (xp/level/quests/streak/achievements) sortierend. Tie-Breaker: **Nicht implementiert** in v1.0 (würde `last_activity_date` sein, ist aber optional).
@@ -158,7 +148,7 @@ Diese direkte Sequenz erfolgt synchron, **nicht asynchron über EventBus**. (Sie
 
 ---
 
-## 7. Nicht-funktionale Anforderungen & Sicherheit
+## 6. Nicht-funktionale Anforderungen & Sicherheit
 - **Performance:** Dashboard/Leaderboard laden ≤ 2 s (Ziel). Vermeidung teurer Sortieroperationen auf großen Collections.
 - **Security (aktuell):** Passwörter sind prototypisch gespeichert; Empfehlung: bcrypt/Argon2 + serverseitige Authentifizierung für produktive Nutzung.
 - **XSS & Input Validation:** Alle Benutzereingaben vor dem Rendern escapen; `ui.js` sicheres DOM-Update.
@@ -168,7 +158,7 @@ Diese direkte Sequenz erfolgt synchron, **nicht asynchron über EventBus**. (Sie
 
 ---
 
-## 8. Testkonzept
+## 7. Testkonzept
 - **Unit Tests:** Modularer JS-Code in testbaren Funktionen; empfohlen: Jest/JS test runner (Refactoring zu ESM/Modules erleichtert Testability).
 - **Integration Tests:** Manual / automatisiert (z. B. Playwright) für UI-Flows: Registrierung, Quest-Start/Completion, CSV-Import.
 - **Testfälle (Auswahl):**
@@ -178,7 +168,7 @@ Diese direkte Sequenz erfolgt synchron, **nicht asynchron über EventBus**. (Sie
 
 ---
 
-## 9. Deployment, Wartung & Weiterentwicklung
+## 8. Deployment, Wartung & Weiterentwicklung
 - **Refactor-Vorschläge:**
   - Trenne Module in ESM/TypeScript für bessere Typensicherheit und Tests.
   - Ersatz `LocalStorage` durch REST-API + DB (z. B. Firebase/Postgres) mit Migrationspfad.
@@ -187,7 +177,7 @@ Diese direkte Sequenz erfolgt synchron, **nicht asynchron über EventBus**. (Sie
 
 ---
 
-## 10. Mapping: Use Cases → Code (Kurz)
+## 9. Mapping: Use Cases → Code (Kurz)
 - **UC01 (Register/Login)** → `auth.js`, `user.js`, `db.js`
 - **UC04/05 (Quests)** → `quest.js`, `user.js`, `db.js`, `achievement.js`, `notification.js`
 - **UC06 (Timer)** → `quest.js`, `timers`-Store, `ui.js`
@@ -197,18 +187,10 @@ Diese direkte Sequenz erfolgt synchron, **nicht asynchron über EventBus**. (Sie
 
 ---
 
-## 11. Offene Punkte & Empfehlungen
+## 10. Offene Punkte & Empfehlungen
 - **Passwort-Handling** sofort verbessern (Hashing + Salting).  
 - **Tests**: Mindestens einige Unit-Tests für `db.js`, `quest.js`, `user.js`.  
 - **Modularisierung**: Wechsel zu ESM + Build-Tool (Vite) für bessere Entwickbarkeit.
 
 ---
 
-**Anhang:** Links zu relevanten Dokumenten im Repo:  
-`Documents/Anforderungsanalyse/Requirements.md`  
-`Documents/Softwarearchitektur/Softwarearchitektur.md`  
-`src/` (Code-Referenz)
-
----
-
-*Ende SDD v1.0*
