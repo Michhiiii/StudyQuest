@@ -110,19 +110,6 @@ Die Verifikation wurde mit dem aktuellen Code in `10_Durchfuehrung/src/` abgegli
 
 ---
 
-## 3. Referenzen & Baseline-Dokumente
-
-- Requirements: `03_Anforderungsanalyse/Requirements.md`
-- Use Cases: `03_Anforderungsanalyse/UseCases.md`
-- Software Development Plan: `02_Software_Development_Plan/SoftwareDevelopmentPlan.md`
-- Architektur: `05_Software_Detailed_Design/Softwarearchitektur.md`
-- Detailed Design: `05_Software_Detailed_Design/Software_Design_Document.md`
-- Review Procedure (Dokumente): `10_Durchfuehrung/reviewProcedure.md`
-
-Baseline: Die Verifikation referenziert den Stand der ZIP-Abgabe (Repository Snapshot).
-
----
-
 ## 4. Verifikationsstrategie
 
 ### 4.1 Verifikationsmethoden (ECSS-Style)
@@ -138,7 +125,7 @@ Baseline: Die Verifikation referenziert den Stand der ZIP-Abgabe (Repository Sna
 
 - **Unit-ish Tests (optional):** Business-Logik-Funktionen in Isolation (sofern Testharness ergänzt wird).
 - **Integration Tests:** Zusammenspiel Business-Logik ↔ Data Layer (LocalStorage) ↔ UI.
-- **System Tests (Schwerpunkt):** End-to-End Use Case Tests im Browser (manuell + optional automatisiert z. B. Playwright).
+- **System Tests (Schwerpunkt):** End-to-End Use Case Tests im Browser.
 
 ### 4.3 Entry-/Exit-Kriterien
 
