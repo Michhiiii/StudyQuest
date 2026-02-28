@@ -51,17 +51,30 @@ Dieser Software Verification Plan (SVP) beschreibt, **wie** die StudyQuest-Web-A
 **Out of Scope / Einschränkungen**
 - „Serverseitige“ Anforderungen (z. B. 401 API-Calls, serverseitige Logs) sind in der reinen Client-Architektur nur **äquivalent** über lokale Audit-Trails testbar.
 - Kryptografisch starkes Password Hashing (bcrypt) ist im Prototyp ggf. nicht umgesetzt; wird als **Security-Deviation** dokumentiert, wenn Acceptance Criteria nicht erfüllt werden.
+- E-Mail/Push-basierte Flows (Passwort-Reset-Mail, Push-Reminder) sind ohne Backend/Provider nicht end-to-end verifizierbar.
+
+### 2.3 Codeabgleich (Stand: 28.02.2026)
+
+Die Verifikation wurde mit dem aktuellen Code in `10_Durchfuehrung/src/` abgeglichen. Folgende Punkte sind als **bekannte Abweichungen** markiert und werden im SVP als Deviation/INS statt als erfolgreicher Systemtest geführt:
+
+- **UC02 (Passwort-Reset):** nicht implementiert (kein Reset-UI, kein Token-Flow, kein Mailversand).
+- **UC06-F3:** Timer-Pause/Fortsetzen nicht implementiert (vorhanden: Start/Stop, Ein-Timer-Regel).
+- **UC06-F7:** Reconnect/Sync-Pufferlogik nicht implementiert.
+- **UC09-F1..F3:** keine Benachrichtigungs-Einstellungen/Reminder-Toggles; implementiert ist Notification-Anzeige mit Read/Clear.
+- **UC09-NF2:** keine Push-/E-Mail-Zustellung.
+- **UC13-NF3/NF4, UC14-NF2, UC15-NF2:** keine Versionierungs-/Auditlog-Mechanik im Persistenzmodell.
+- **UC07-F4, UC08-F5:** Notendurchschnitt/Notenstatistik im Dashboard sind in v1.0 nicht umgesetzt.
 
 ---
 
 ## 3. Referenzen & Baseline-Dokumente
 
-- Requirements: `Documents/Anforderungsanalyse/Requirements.md`
-- Use Cases: `Documents/Anforderungsanalyse/UseCases.md`
-- Software Development Plan: `Documents/Prozesse & Vorgehensmodelle/SoftwareDevelopmentPlan.md`
-- Architektur: `Documents/Softwarearchitektur/Softwarearchitektur.md`
-- Detailed Design: `Detailed Design/Software_Design_Document.md`
-- Review Procedure (Dokumente): `reviewProcedure.md`
+- Requirements: `03_Anforderungsanalyse/Requirements.md`
+- Use Cases: `03_Anforderungsanalyse/UseCases.md`
+- Software Development Plan: `02_Software_Development_Plan/SoftwareDevelopmentPlan.md`
+- Architektur: `05_Software_Detailed_Design/Softwarearchitektur.md`
+- Detailed Design: `05_Software_Detailed_Design/Software_Design_Document.md`
+- Review Procedure (Dokumente): `10_Durchfuehrung/reviewProcedure.md`
 
 Baseline: Die Verifikation referenziert den Stand der ZIP-Abgabe (Repository Snapshot).
 
@@ -125,14 +138,14 @@ Baseline: Die Verifikation referenziert den Stand der ZIP-Abgabe (Repository Sna
 | UC | Name | Actor | Description | Pre | Post |
 | --- | --- | --- | --- | --- | --- |
 | UC01 | Registrieren und Einloggen | Studierende:r | Nutzer erstellt ein Konto oder meldet sich an, um auf persönliche Daten zuzugreifen. | App ist im Browser geöffnet. | Nutzer ist authentifiziert und im Dashboard eingeloggt. |
-| UC02 | Passwort zurücksetzen | Studierende:r | Nutzer setzt vergessene Zugangsdaten über E-Mail-Link zurück. | Nutzerkonto existiert; E-Mail-Funktion aktiv. | Neues Passwort gesetzt, Zugang wiederhergestellt. |
+| UC02 | Passwort zurücksetzen | Studierende:r | Geplanter Use Case (v1.0 nicht implementiert): Passwort-Reset über E-Mail-Link. | Nutzerkonto existiert; E-Mail-Funktion aktiv. | Deviation dokumentiert (kein produktiver Flow in Client-only v1.0). |
 | UC03 | Profil & Einstellungen verwalten | Studierende:r | Nutzer bearbeitet persönliche Daten, Avatar, Lernpräferenzen. | Nutzer ist eingeloggt. | Änderungen im Profil gespeichert. |
 | UC04 | Lernquest starten | Studierende:r | Nutzer wählt eine Lernquest aus und beginnt eine Lernsession. | Nutzer ist eingeloggt; Quests verfügbar. | Queststatus auf „aktiv“ gesetzt. |
 | UC05 | Lernquest abschließen (XP & Level-Up) | Studierende:r | Nutzer schließt eine aktive Quest ab und erhält XP / Belohnungen. | Eine aktive Quest ist vorhanden. | XP-Stand aktualisiert, ggf. Level-Up oder neue Quest freigeschaltet. |
 | UC06 | Lern-Session per Timer tracken | Studierende:r | Nutzer startet einen Lern-Timer, um Fokuszeiten zu tracken. | Nutzer ist eingeloggt. | Sessiondaten gespeichert; XP-Vergabe optional. |
 | UC07 | Noten & Module verwalten | Studierende:r | Nutzer trägt Noten ein, bearbeitet oder löscht sie, berechnet Durchschnitt. | Nutzer ist eingeloggt. | Aktualisierte Notenübersicht, berechneter Schnitt. |
 | UC08 | Fortschritt & Dashboard einsehen | Studierende:r | Nutzer sieht XP-Stand, Level, Quests und Notenstatistik auf dem Dashboard. | Nutzer ist eingeloggt; Daten vorhanden. | Übersicht angezeigt. |
-| UC09 | Benachrichtigungen & Reminder verwalten | Studierende:r | Nutzer aktiviert oder deaktiviert Lern-Erinnerungen und Quest-Benachrichtigungen. | Nutzer ist eingeloggt. | Benachrichtigungseinstellungen gespeichert. |
+| UC09 | Benachrichtigungen & Reminder verwalten | Studierende:r | Teilweise umgesetzt: In-App Notifications anzeigen/als gelesen markieren/alle gelesen. Reminder-Settings sind v1.0 nicht implementiert. | Nutzer ist eingeloggt. | Notification-Status aktualisiert; fehlende Settings als Deviation dokumentiert. |
 | UC10 | Noten importieren oder exportieren | Studierende:r | Nutzer lädt Noten als CSV hoch oder exportiert sie zur Sicherung. | Nutzer ist eingeloggt. | Daten importiert oder exportiert. |
 | UC11 | Achievements / Badges freischalten | Studierende:r | Nutzer erhält Auszeichnungen für bestimmte Meilensteine (z. B. 10 Quests abgeschlossen). | XP-Zähler oder Bedingungen erfüllt. | Neuer Badge wird im Profil angezeigt. |
 | UC12 | Leaderboard & Streaks anzeigen | Studierende:r | Nutzer vergleicht Fortschritt mit anderen oder hält tägliche Lern-Streaks. | Nutzer ist eingeloggt; Vergleichsdaten vorhanden. | Rangliste und Streak-Status aktualisiert. |
@@ -153,9 +166,9 @@ Baseline: Die Verifikation referenziert den Stand der ZIP-Abgabe (Repository Sna
 | TC-UC01-02 | Registrierung verhindert Duplikat-E-Mail | System | TST | UC01-F2 |
 | TC-UC01-03 | Login (gültig/ungültig) & Dashboard-Navigation | System | TST | UC01-F3, UC01-F4 |
 | TC-UC01-NF-01 | Security: Passwort nicht im Klartext + neutrale Fehlermeldungen | System | INS/TST | UC01-NF1, UC01-NF2 |
-| TC-UC02-01 | Passwort-Reset anfordern: neutrale Rückmeldung | System | TST | UC02-F1, UC02-NF1 |
-| TC-UC02-02 | Reset-Token: Erzeugung & Ablaufzeit (30 min) | System | ANL/TST | UC02-F2, UC02-NF2 |
-| TC-UC02-03 | Neues Passwort setzen invalidiert altes Passwort | System | TST | UC02-F3, UC02-F4 |
+| TC-UC02-01 | Passwort-Reset Feature-Check (nicht implementiert) | System | INS | UC02-F1, UC02-NF1 (Deviation) |
+| TC-UC02-02 | Reset-Token/Ablaufzeit Feature-Check (nicht implementiert) | System | INS | UC02-F2, UC02-NF2 (Deviation) |
+| TC-UC02-03 | Passwortwechsel-Flow Feature-Check (nicht implementiert) | System | INS | UC02-F3, UC02-F4 (Deviation) |
 | TC-UC03-01 | Profil anzeigen | System | TST | UC03-F1 |
 | TC-UC03-02 | Profil ändern: Name/Avatar speichern & wieder anzeigen | System | TST | UC03-F2, UC03-F3 |
 | TC-UC03-NF-01 | Zugriffsschutz & Fehlermeldungen bei Profiländerung | System | TST | UC03-NF1, UC03-NF2 |
@@ -167,7 +180,7 @@ Baseline: Die Verifikation referenziert den Stand der ZIP-Abgabe (Repository Sna
 | TC-UC05-03 | Level-Up: Schwellenwert & visuelles Feedback | System | TST | UC05-F3, UC05-F4 |
 | TC-UC05-NF-01 | Performance: Abschlussreaktion ≤ 2s | System | ANL/TST | UC05-NF1 |
 | TC-UC06-01 | Timer starten: Startzeit & Persistenz | System | TST | UC06-F1, UC06-F2 |
-| TC-UC06-02 | Timer pausieren/fortsetzen + Ein-Timer-Regel | System | TST | UC06-F3, UC06-F6 |
+| TC-UC06-02 | Ein-Timer-Regel (Pause/Fortsetzen nicht implementiert) | System | TST/INS | UC06-F6, UC06-F3 (Deviation) |
 | TC-UC06-03 | Timer stoppen: Dauerberechnung & optionale XP-Vergabe | System | TST | UC06-F4, UC06-F5 |
 | TC-UC06-04 | Timer bleibt nach Reload erhalten | System | TST | UC06-NF2 |
 | TC-UC06-NF-01 | Timer-Genauigkeit & Response-Time | System | ANL/TST | UC06-NF1, UC06-NF4 |
@@ -176,8 +189,8 @@ Baseline: Die Verifikation referenziert den Stand der ZIP-Abgabe (Repository Sna
 | TC-UC07-03 | Durchschnittsberechnung & Datenkonsistenz | System | TST | UC07-F4, UC07-NF2 |
 | TC-UC08-01 | Dashboard zeigt korrekte Statistiken (XP/Level/Quests/Noten) | System | TST | UC08-F1, UC08-F2, UC08-F3, UC08-F4, UC08-F5 |
 | TC-UC08-NF-01 | Dashboard Ladezeit ≤ 2s + Browser-Kompatibilität | System | ANL/TST | UC08-NF1, UC08-NF2 |
-| TC-UC09-01 | Benachrichtigungseinstellungen ändern (Reminder/Quest/Level) | System | TST | UC09-F1, UC09-F2, UC09-F3, UC09-F4 |
-| TC-UC09-NF-01 | Sofortige Wirkung & Zustellung (soweit implementiert) | System | TST/ANL | UC09-NF1, UC09-NF2 |
+| TC-UC09-01 | In-App Notifications: anzeigen, gelesen markieren, alle gelesen | System | TST/INS | UC09-F4 (teilweise), UC09-F1..F3 (Deviation) |
+| TC-UC09-NF-01 | In-App Notification Reaktionsverhalten (keine Push/E-Mail) | System | TST/INS | UC09-NF1 (teilweise), UC09-NF2 (Deviation) |
 | TC-UC10-01 | CSV Export: Inhalt & Format korrekt | System | TST | UC10-F2 |
 | TC-UC10-02 | CSV Import: gültige Datei | System | TST | UC10-F1 |
 | TC-UC10-03 | CSV Import: ungültige Datei -> Fehlermeldung | System | TST | UC10-F3 |
@@ -192,11 +205,13 @@ Baseline: Die Verifikation referenziert den Stand der ZIP-Abgabe (Repository Sna
 | TC-UC13-02 | Quest CRUD im Admin Panel (Create/Update/Delete) | System | TST | UC13-F2, UC13-F3, UC13-F4, UC13-F5, UC13-F6 |
 | TC-UC13-NF-01 | Admin Änderungen sichtbar ≤ 2s | System | ANL/TST | UC13-NF1 |
 | TC-UC14-01 | Game Rules ändern & sofort wirksam | System | TST | UC14-F1, UC14-F2, UC14-F3, UC14-F4, UC14-F5 |
-| TC-UC14-NF-01 | Sicherheit/Protokollierung & Performance beim Speichern | System | TST/ANL | UC14-NF2, UC14-NF3, UC14-NF4 |
-| TC-UC15-01 | User-Administration: Suchen, Admin-Rechte, Aktiv/Deaktiv, Löschen | System | TST | UC15-F1, UC15-F2, UC15-F3, UC15-F4, UC15-F5 |
-| TC-UC15-NF-01 | Zugriffsschutz + Protokollierung + Reaktionszeit ≤ 2s | System | TST/ANL | UC15-NF1, UC15-NF2, UC15-NF3 |
+| TC-UC14-NF-01 | Sicherheit & Performance beim Speichern (Auditlog Deviation) | System | TST/ANL/INS | UC14-NF3, UC14-NF4, UC14-NF2 (Deviation) |
+| TC-UC15-01 | User-Administration: Admin-Rechte, Aktiv/Deaktiv, Löschen | System | TST/INS | UC15-F1, UC15-F4, UC15-F5, UC15-F2/F3 (Deviation) |
+| TC-UC15-NF-01 | Zugriffsschutz + Reaktionszeit ≤ 2s (ohne Auditlog) | System | TST/ANL/INS | UC15-NF1, UC15-NF3, UC15-NF2 (Deviation) |
 
 ### 7.2 Detaillierte Testfallbeschreibungen
+
+Hinweis: Testfälle mit Kennzeichnung **(Deviation)** werden im aktuellen Projektstand nicht als „bestanden“ im Sinne einer Feature-Implementierung gewertet, sondern als dokumentierte Lücke zwischen Requirement und v1.0-Codebasis (Inspection-Nachweis).
 
 ### TC-GEN-01 – Smoke-Test: App startet & DB wird initialisiert
 
@@ -275,51 +290,48 @@ Mit korrekten Daten wird Dashboard angezeigt; mit falschen Daten erscheint eine 
 **Erwartetes Ergebnis / Pass-Kriterium**
 Passwort wird nicht als Klartext gespeichert (Hash/Obfuskation); Fehlermeldung bleibt neutral (keine Aussage ob E-Mail existiert).
 
-### TC-UC02-01 – Passwort-Reset anfordern: neutrale Rückmeldung
+### TC-UC02-01 – Passwort-Reset Feature-Check (v1.0 Deviation)
 
 - **Testlevel:** System
-- **Methode:** TST
+- **Methode:** INS
 - **Verifizierte Anforderungen:** UC02-F1, UC02-NF1
-- **Vorbedingungen:** User existiert (für Negativtest zusätzlich eine nicht registrierte E-Mail).
+- **Vorbedingungen:** Aktuelle App-Version v1.0 gestartet.
 
 **Schritte**
-1) 'Passwort vergessen' Flow starten
-2) E-Mail eingeben (einmal registriert, einmal nicht registriert)
-3) Absenden
+1) Auth-UI prüfen (Login/Register)
+2) Nach 'Passwort vergessen'/Reset-Einstieg suchen
+3) `auth.js` auf Reset-Handler prüfen
 
 **Erwartetes Ergebnis / Pass-Kriterium**
-System reagiert immer neutral (z.B. 'E-Mail gesendet, falls registriert').
+Reset-Flow ist in v1.0 nicht vorhanden; Abweichung wird dokumentiert.
 
-### TC-UC02-02 – Reset-Token: Erzeugung & Ablaufzeit (30 min)
+### TC-UC02-02 – Reset-Token/Ablaufzeit Feature-Check (v1.0 Deviation)
 
 - **Testlevel:** System
-- **Methode:** ANL/TST
+- **Methode:** INS
 - **Verifizierte Anforderungen:** UC02-F2, UC02-NF2
-- **Vorbedingungen:** Reset-Flow ist verfügbar; Uhrzeit/Timer messbar.
+- **Vorbedingungen:** Aktuelle App-Version v1.0 gestartet.
 
 **Schritte**
-1) Reset anfordern und Token/Link erzeugen
-2) Token sofort verwenden -> gültig
-3) Systemzeit/Token-Zeitstempel >30 min simulieren
-4) Token erneut verwenden
+1) Code-/UI-Inspektion auf Token-Erzeugung prüfen
+2) Prüfen, ob Ablaufzeit-Validierung existiert
 
 **Erwartetes Ergebnis / Pass-Kriterium**
-Token ist direkt nach Erstellung gültig; nach 30 Minuten ungültig; Zugriff wird verweigert.
+Kein Token-Flow vorhanden; Requirement in v1.0 nicht implementiert, Deviation dokumentiert.
 
-### TC-UC02-03 – Neues Passwort setzen invalidiert altes Passwort
+### TC-UC02-03 – Passwortwechsel über Reset-Link Feature-Check (v1.0 Deviation)
 
 - **Testlevel:** System
-- **Methode:** TST
+- **Methode:** INS
 - **Verifizierte Anforderungen:** UC02-F3, UC02-F4
-- **Vorbedingungen:** Gültiger Reset-Token existiert.
+- **Vorbedingungen:** Aktuelle App-Version v1.0 gestartet.
 
 **Schritte**
-1) Über Reset-Link neues Passwort setzen
-2) Login mit altem Passwort
-3) Login mit neuem Passwort
+1) Prüfen, ob Reset-Link-Handling existiert
+2) Prüfen, ob alter Hash invalidiert werden kann
 
 **Erwartetes Ergebnis / Pass-Kriterium**
-Login mit altem Passwort schlägt fehl; Login mit neuem Passwort funktioniert.
+Funktion in v1.0 nicht implementiert; Deviation dokumentiert.
 
 ### TC-UC03-01 – Profil anzeigen
 
@@ -482,20 +494,19 @@ UI-Update erfolgt ≤ 2 Sekunden.
 **Erwartetes Ergebnis / Pass-Kriterium**
 Timer startet; Startzeit/Laufzeit werden gespeichert.
 
-### TC-UC06-02 – Timer pausieren/fortsetzen + Ein-Timer-Regel
+### TC-UC06-02 – Ein-Timer-Regel (Pause/Fortsetzen v1.0 Deviation)
 
 - **Testlevel:** System
-- **Methode:** TST
-- **Verifizierte Anforderungen:** UC06-F3, UC06-F6
+- **Methode:** TST/INS
+- **Verifizierte Anforderungen:** UC06-F6, UC06-F3
 - **Vorbedingungen:** Timer läuft.
 
 **Schritte**
-1) Pause klicken -> Timer stoppt
-2) Fortsetzen -> Timer läuft weiter
-3) Zweiten Timer-Start versuchen
+1) Zweiten Timer-Start versuchen
+2) Auf Pause/Fortsetzen-Controls prüfen
 
 **Erwartetes Ergebnis / Pass-Kriterium**
-Pause/Fortsetzen funktioniert; zweiter Timer wird blockiert.
+Ein-Timer-Regel funktioniert (zweiter Timer wird blockiert); Pause/Fortsetzen in v1.0 nicht implementiert (Deviation).
 
 ### TC-UC06-03 – Timer stoppen: Dauerberechnung & optionale XP-Vergabe
 
@@ -616,36 +627,36 @@ Dashboard zeigt konsistente Werte basierend auf gespeicherten Daten.
 **Erwartetes Ergebnis / Pass-Kriterium**
 Dashboard lädt ≤ 2 Sekunden; Darstellung und Kernfunktionen funktionieren in allen Browsern.
 
-### TC-UC09-01 – Benachrichtigungseinstellungen ändern (Reminder/Quest/Level)
+### TC-UC09-01 – In-App Notifications: anzeigen, gelesen markieren, alle gelesen
 
 - **Testlevel:** System
-- **Methode:** TST
-- **Verifizierte Anforderungen:** UC09-F1, UC09-F2, UC09-F3, UC09-F4
-- **Vorbedingungen:** User eingeloggt.
+- **Methode:** TST/INS
+- **Verifizierte Anforderungen:** UC09-F4 (teilweise), UC09-F1..F3
+- **Vorbedingungen:** User eingeloggt; mindestens eine Notification vorhanden.
 
 **Schritte**
-1) Notification-Settings öffnen
-2) Reminder/Quest/Level toggeln
-3) Speichern
-4) Reload und erneut prüfen
+1) Notification-Bell öffnen
+2) Einzelne Notification als gelesen markieren
+3) "Alle gelesen" ausführen
+4) Prüfen, ob Settings/Reminder-Toggles existieren
 
 **Erwartetes Ergebnis / Pass-Kriterium**
-Änderungen werden gespeichert und wirken nachweisbar (UI + gespeicherter Status).
+Read-State-Funktion funktioniert; dedizierte Settings/Reminder in v1.0 nicht implementiert (Deviation).
 
-### TC-UC09-NF-01 – Sofortige Wirkung & Zustellung (soweit implementiert)
+### TC-UC09-NF-01 – In-App Notification Reaktionsverhalten (ohne Push/E-Mail)
 
 - **Testlevel:** System
-- **Methode:** TST/ANL
+- **Methode:** TST/INS
 - **Verifizierte Anforderungen:** UC09-NF1, UC09-NF2
 - **Vorbedingungen:** Benachrichtigungssystem aktiv.
 
 **Schritte**
-1) Toggle ändern
-2) Sofortige UI-Änderung prüfen
-3) Test-Notification auslösen (Quest abschließen / Level-Up)
+1) Quest abschließen / Level-Up auslösen
+2) Prüfen, ob In-App Notification zeitnah erscheint
+3) Prüfen, ob Push/E-Mail-Kanal vorhanden ist
 
 **Erwartetes Ergebnis / Pass-Kriterium**
-Änderungen wirken sofort; Notifications erscheinen zuverlässig im UI (Bell/Toast).
+In-App Notifications erscheinen; Push/E-Mail-Zustellung ist in v1.0 nicht implementiert (Deviation).
 
 ### TC-UC10-01 – CSV Export: Inhalt & Format korrekt
 
@@ -851,54 +862,54 @@ Quests werden korrekt angelegt/aktualisiert/entfernt; Katalog aktualisiert sich.
 **Erwartetes Ergebnis / Pass-Kriterium**
 Regeln werden gespeichert und wirken sofort (XP/Level-Berechnung).
 
-### TC-UC14-NF-01 – Sicherheit/Protokollierung & Performance beim Speichern
+### TC-UC14-NF-01 – Sicherheit & Performance beim Speichern (Auditlog v1.0 Deviation)
 
 - **Testlevel:** System
 - **Methode:** TST/ANL
 - **Verifizierte Anforderungen:** UC14-NF2, UC14-NF3, UC14-NF4
-- **Vorbedingungen:** Admin eingeloggt; Logging-Funktion vorhanden (Audit).
+- **Vorbedingungen:** Admin eingeloggt.
 
 **Schritte**
 1) Regel ändern und speichern
 2) Zeit messen
-3) Prüfen, ob Log-Eintrag vorhanden
+3) Prüfen, ob Auditlog vorhanden
 4) Non-Admin versucht Zugriff
 
 **Erwartetes Ergebnis / Pass-Kriterium**
-Speichern ≤ 2s; Änderungen protokolliert; Zugriff nur für Admins.
+Speichern ≤ 2s; Zugriff nur für Admins; fehlendes Auditlog wird als Deviation dokumentiert.
 
-### TC-UC15-01 – User-Administration: Suchen, Admin-Rechte, Aktiv/Deaktiv, Löschen
+### TC-UC15-01 – User-Administration: Admin-Rechte, Aktiv/Deaktiv, Löschen
 
 - **Testlevel:** System
 - **Methode:** TST
-- **Verifizierte Anforderungen:** UC15-F1, UC15-F2, UC15-F3, UC15-F4, UC15-F5
+- **Verifizierte Anforderungen:** UC15-F1, UC15-F4, UC15-F5, UC15-F2, UC15-F3
 - **Vorbedingungen:** Admin eingeloggt; mehrere User vorhanden.
 
 **Schritte**
 1) Users Tab öffnen
-2) User suchen
-3) Admin-Rechte togglen
-4) User deaktivieren/reaktivieren
-5) User löschen
+2) Admin-Rechte togglen
+3) User deaktivieren/reaktivieren
+4) User löschen
+5) Prüfen, ob Such-/Detailansicht vorhanden ist
 
 **Erwartetes Ergebnis / Pass-Kriterium**
-Änderungen werden korrekt gespeichert und in UI angezeigt.
+Rollen-/Status-/Löschaktionen funktionieren; fehlende Suche/Detailansicht wird als Deviation dokumentiert.
 
-### TC-UC15-NF-01 – Zugriffsschutz + Protokollierung + Reaktionszeit ≤ 2s
+### TC-UC15-NF-01 – Zugriffsschutz + Reaktionszeit ≤ 2s (Auditlog v1.0 Deviation)
 
 - **Testlevel:** System
-- **Methode:** TST/ANL
+- **Methode:** TST/ANL/INS
 - **Verifizierte Anforderungen:** UC15-NF1, UC15-NF2, UC15-NF3
-- **Vorbedingungen:** Admin eingeloggt; Logging-Funktion vorhanden.
+- **Vorbedingungen:** Admin eingeloggt.
 
 **Schritte**
 1) Änderung durchführen
 2) Zeit messen
-3) Log prüfen
+3) Auditlog-Verfügbarkeit prüfen
 4) Non-Admin versucht Admin-Aktion
 
 **Erwartetes Ergebnis / Pass-Kriterium**
-Nur Admins dürfen ändern; Log-Eintrag existiert; UI bestätigt ≤ 2 Sekunden.
+Nur Admins dürfen ändern; UI bestätigt ≤ 2 Sekunden; fehlendes Auditlog wird als Deviation dokumentiert.
 
 
 ---
