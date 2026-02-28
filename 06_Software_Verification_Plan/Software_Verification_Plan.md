@@ -98,7 +98,7 @@ Dieser Software Verification Plan (SVP) beschreibt, **wie** die StudyQuest-Web-A
 
 ### 2.3 Codeabgleich (Stand: 28.02.2026)
 
-Die Verifikation wurde mit dem aktuellen Code in `10_Durchfuehrung/src/` abgeglichen. Folgende Punkte sind als **bekannte Abweichungen** markiert und werden im SVP als Deviation/INS statt als erfolgreicher Systemtest geführt:
+Die Verifikation wurde mit dem aktuellen Code in `10_Durchfuehrung/src/` abgeglichen. Folgende Punkte sind als bekannte Abweichungen markiert und werden im SVP als Deviation/INS statt als erfolgreicher Systemtest geführt:
 
 - **UC02 (Passwort-Reset):** nicht implementiert (kein Reset-UI, kein Token-Flow, kein Mailversand).
 - **UC06-F3:** Timer-Pause/Fortsetzen nicht implementiert (vorhanden: Start/Stop, Ein-Timer-Regel).
