@@ -163,31 +163,9 @@ Die Verifikation wurde mit dem aktuellen Code in `10_Durchfuehrung/src/` abgegli
 
 ---
 
-## 6. Use Case Übersicht
+## 6. Testfallkatalog
 
-| UC | Name | Actor | Description | Pre | Post |
-| --- | --- | --- | --- | --- | --- |
-| UC01 | Registrieren und Einloggen | Studierende:r | Nutzer erstellt ein Konto oder meldet sich an, um auf persönliche Daten zuzugreifen. | App ist im Browser geöffnet. | Nutzer ist authentifiziert und im Dashboard eingeloggt. |
-| UC02 | Passwort zurücksetzen | Studierende:r | Geplanter Use Case (v1.0 nicht implementiert): Passwort-Reset über E-Mail-Link. | Nutzerkonto existiert; E-Mail-Funktion aktiv. | Deviation dokumentiert (kein produktiver Flow in Client-only v1.0). |
-| UC03 | Profil & Einstellungen verwalten | Studierende:r | Nutzer bearbeitet persönliche Daten, Avatar, Lernpräferenzen. | Nutzer ist eingeloggt. | Änderungen im Profil gespeichert. |
-| UC04 | Lernquest starten | Studierende:r | Nutzer wählt eine Lernquest aus und beginnt eine Lernsession. | Nutzer ist eingeloggt; Quests verfügbar. | Queststatus auf „aktiv“ gesetzt. |
-| UC05 | Lernquest abschließen (XP & Level-Up) | Studierende:r | Nutzer schließt eine aktive Quest ab und erhält XP / Belohnungen. | Eine aktive Quest ist vorhanden. | XP-Stand aktualisiert, ggf. Level-Up oder neue Quest freigeschaltet. |
-| UC06 | Lern-Session per Timer tracken | Studierende:r | Nutzer startet einen Lern-Timer, um Fokuszeiten zu tracken. | Nutzer ist eingeloggt. | Sessiondaten gespeichert; XP-Vergabe optional. |
-| UC07 | Noten & Module verwalten | Studierende:r | Nutzer trägt Noten ein, bearbeitet oder löscht sie, berechnet Durchschnitt. | Nutzer ist eingeloggt. | Aktualisierte Notenübersicht, berechneter Schnitt. |
-| UC08 | Fortschritt & Dashboard einsehen | Studierende:r | Nutzer sieht XP-Stand, Level, Quests und Notenstatistik auf dem Dashboard. | Nutzer ist eingeloggt; Daten vorhanden. | Übersicht angezeigt. |
-| UC09 | Benachrichtigungen & Reminder verwalten | Studierende:r | Teilweise umgesetzt: In-App Notifications anzeigen/als gelesen markieren/alle gelesen. Reminder-Settings sind v1.0 nicht implementiert. | Nutzer ist eingeloggt. | Notification-Status aktualisiert; fehlende Settings als Deviation dokumentiert. |
-| UC10 | Noten importieren oder exportieren | Studierende:r | Nutzer lädt Noten als CSV hoch oder exportiert sie zur Sicherung. | Nutzer ist eingeloggt. | Daten importiert oder exportiert. |
-| UC11 | Achievements / Badges freischalten | Studierende:r | Nutzer erhält Auszeichnungen für bestimmte Meilensteine (z. B. 10 Quests abgeschlossen). | XP-Zähler oder Bedingungen erfüllt. | Neuer Badge wird im Profil angezeigt. |
-| UC12 | Leaderboard & Streaks anzeigen | Studierende:r | Nutzer vergleicht Fortschritt mit anderen oder hält tägliche Lern-Streaks. | Nutzer ist eingeloggt; Vergleichsdaten vorhanden. | Rangliste und Streak-Status aktualisiert. |
-| UC13 | Quest-Katalog verwalten | Administrator | Admin erstellt, bearbeitet oder löscht Quests im System. | Admin ist eingeloggt. | Quest-Katalog aktualisiert. |
-| UC14 | XP- und Levelregeln konfigurieren | Administrator | Admin definiert XP-Werte, Level-Grenzen oder Belohnungslogik. | Admin ist eingeloggt. | Neue Regeln im System gespeichert. |
-| UC15 | Benutzerkonten administrieren | Administrator | Admin verwaltet Nutzerkonten (z. B. löschen, sperren, reaktivieren). | Admin ist eingeloggt. | Kontostatus aktualisiert. |
-
----
-
-## 7. Testfallkatalog
-
-### 7.1 Übersicht
+### 6.1 Übersicht
 
 | TC | Title | Level | Method | Related |
 | --- | --- | --- | --- | --- |
@@ -318,7 +296,7 @@ Reset-Flow ist in v1.0 nicht vorhanden; Abweichung wird dokumentiert.
 
 ## Übrige Testfälle (Kurzform)
 
-Die folgenden Testfälle werden in Kurzform mit Pass-Kriterium dokumentiert (vollständige Details sind in 7.1 TC-Katalog abrufbar):
+Die folgenden Testfälle werden in Kurzform mit Pass-Kriterium dokumentiert:
 
 | TC-Gruppe | Testlevel | Methode | Anforderungen | Pass-Kriterium |
 |-----------|-----------|---------|---------------|----------------|
@@ -353,7 +331,7 @@ A = Accountable, R = Responsible, C = Consulted
 
 ---
 
-## 9. Zeitplan & Meilensteine (Template)
+## 9. Zeitplan & Meilensteine
 
 - **M1 – Testdesign fertig:** Testfälle + Traceability definiert  
 - **M2 – Systemtest 1 (Feature Complete):** UC01–UC12  
@@ -376,11 +354,3 @@ Hinweis: Für das Praxis-Modul kann der Zeitplan an Sprint-Termine angepasst wer
 Die vollständige Requirement-to-Test-Traceability ist als CSV hinterlegt:
 
 - `SVP_StudyQuest_Traceability_Matrix.csv`
-
----
-
-## Anhang A – Traceability Matrix (Kurzform)
-
-> Vollständig in der CSV-Datei. In diesem Dokument nur Auszug/Prinzip:  
-> Jede Requirement-ID (z. B. UC05-F2) wird mindestens einem Testfall (z. B. TC-UC05-01) zugeordnet.
-
