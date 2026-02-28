@@ -1,108 +1,108 @@
-ID,Type,Requirement,AcceptanceCriteria,VerificationMethod,TestCases,Responsible,Priority
-UC01-F1,Funktional,Das System muss die Registrierung von Nutzer:innen mittels E-Mail und Passwort ermöglichen.,Neue Registrierung mit gültiger E-Mail und Passwort erzeugt einen Datensatz.,TST,"TC-UC01-01, TC-UC01-02, TC-UC01-03",Product Owner,Muss
-UC01-F2,Funktional,"Das System muss prüfen, ob eine E-Mail bereits existiert und doppelte Konten verhindern.",Registrierung mit existierender E-Mail erzeugt eine Fehlermeldung und kein Konto.,TST,"TC-UC01-01, TC-UC01-02, TC-UC01-03",Product Owner,Muss
-UC01-F3,Funktional,Das System muss den Login mit E-Mail und Passwort erlauben.,Gültige Login-Daten öffnen das Dashboard.,TST,"TC-UC01-01, TC-UC01-02, TC-UC01-03",Nutzer:in,Muss
-UC01-F4,Funktional,Nach erfolgreichem Login muss das Dashboard angezeigt werden.,Nach Login wird das personalisierte Dashboard geladen.,TST,"TC-UC01-01, TC-UC01-02, TC-UC01-03",Product Owner,Muss
-UC01-NF1,Nicht-funktional,Passwörter dürfen nicht im Klartext gespeichert werden.,Passwort-Hashes (z. B. bcrypt) sind in der Datenbank nachweisbar.,ANL/TST,TC-UC01-NF-01,Entwicklerteam,Muss
-UC01-NF2,Nicht-funktional,Fehlermeldungen dürfen keine Information über existierende Accounts preisgeben.,Einheitliche Fehlermeldung „E-Mail oder Passwort falsch“ wird angezeigt.,ANL/TST,TC-UC01-NF-01,Entwicklerteam,Muss
-UC02-F1,Funktional,System muss über „Passwort vergessen“ eine E-Mail zum Zurücksetzen anfordern lassen.,Klick auf „Passwort vergessen“ führt zu E-Mail-Versand.,INS,TC-UC02-01 (Deviation),Nutzer:in,Muss
-UC02-F2,Funktional,System muss einen zeitlich begrenzten Token generieren und versenden.,"Token ist 30 min gültig, danach ungültig.",INS,TC-UC02-02 (Deviation),Entwicklerteam,Muss
-UC02-F3,Funktional,Über den Link kann ein neues Passwort gesetzt werden.,Eingabe und Bestätigung neuen Passworts erfolgreich möglich.,INS,TC-UC02-03 (Deviation),Nutzer:in,Muss
-UC02-F4,Funktional,Nach Setzen des neuen Passworts muss das alte ungültig sein.,Login mit altem Passwort schlägt fehl.,INS,TC-UC02-03 (Deviation),Entwicklerteam,Muss
-UC02-NF1,Nicht-funktional,Antwort bei „Passwort vergessen“ ist immer neutral.,"System meldet stets „E-Mail gesendet, falls registriert“.",INS,TC-UC02-01 (Deviation),Entwicklerteam,Muss
-UC02-NF2,Nicht-funktional,Reset-Link hat Ablaufzeit.,Link läuft nach 30 min automatisch ab.,INS,TC-UC02-02 (Deviation),Entwicklerteam,Muss
-UC03-F1,Funktional,System zeigt aktuelle Profildaten an.,Anzeige aller gespeicherten Felder im UI.,TST,"TC-UC03-01, TC-UC03-02",Nutzer:in,Muss
-UC03-F2,Funktional,"System erlaubt Änderungen an Name, Studiengang und Avatar.",Änderungen werden gespeichert und korrekt dargestellt.,TST,"TC-UC03-01, TC-UC03-02",Nutzer:in,Soll
-UC03-F3,Funktional,Änderungen werden gespeichert und angezeigt.,Aktualisierte Daten erscheinen nach Speichern erneut.,TST,"TC-UC03-01, TC-UC03-02",Entwicklerteam,Muss
-UC03-NF1,Nicht-funktional,Nur eingeloggte Nutzer:innen dürfen ihr Profil ändern.,Zugriff auf Profiländerung nur mit gültiger Session.,ANL/TST,TC-UC03-NF-01,Entwicklerteam,Muss
-UC03-NF2,Nicht-funktional,System zeigt verständliche Fehlermeldungen bei Eingabefehlern.,Fehlermeldungen enthalten klare Ursachenbeschreibung.,ANL/TST,TC-UC03-NF-01,UX-Designer,Soll
-UC04-F1,Funktional,System ermöglicht Auswahl einer verfügbaren Lernquest.,Auswahl aus Quests im UI möglich.,TST,"TC-UC04-01, TC-UC04-02",Product Owner,Muss
-UC04-F2,Funktional,System ermöglicht Start der gewählten Quest.,Klick auf „Starten“ setzt Queststatus auf „aktiv“.,TST,"TC-UC04-01, TC-UC04-02",Entwicklerteam,Muss
-UC04-F3,Funktional,System speichert Startzeitpunkt.,Datenbank enthält Timestamp beim Start.,TST,"TC-UC04-01, TC-UC04-02",Entwicklerteam,Muss
-UC04-F4,Funktional,Nur eine aktive Quest pro Nutzer:in.,"Versuch, zweite Quest zu starten → Fehlermeldung.",TST,"TC-UC04-01, TC-UC04-02",Product Owner,Muss
-UC04-F5,Funktional,Bei aktiver Quest wird Start weiterer Quests blockiert.,Meldung „Eine Quest ist bereits aktiv“ erscheint.,TST,"TC-UC04-01, TC-UC04-02",Entwicklerteam,Muss
-UC04-NF1,Nicht-funktional,Statuswechsel auf „aktiv“ erfolgt in ≤ 1 Sekunde.,Zeitmessung bestätigt ≤ 1 Sekunde Reaktion.,ANL/TST,TC-UC04-NF-01,UX-Tester,Soll
-UC04-NF2,Nicht-funktional,Aktionen nur für authentifizierte Nutzer:innen verfügbar.,Client-seitig: Navigation/Action nur mit Session möglich.,ANL/TST,TC-UC04-NF-01,Entwicklerteam,Muss
-UC04-NF3,Nicht-funktional,Starten der Quest wird serverseitig protokolliert.,In v1.0 nur lokale/Console-Protokollierung (kein Server-Log).,INS,TC-UC04-NF-01 (Deviation),Entwicklerteam,Soll
-UC05-F1,Funktional,System ermöglicht Markierung einer aktiven Quest als abgeschlossen.,Button „Abschließen“ sichtbar und funktionsfähig.,TST,"TC-UC05-01, TC-UC05-02, TC-UC05-03",Nutzer:in,Muss
-UC05-F2,Funktional,System vergibt automatisch XP beim Abschluss.,XP-Wert wird zur Gesamtsumme addiert.,TST,"TC-UC05-01, TC-UC05-02, TC-UC05-03",Product Owner,Muss
-UC05-F3,Funktional,System prüft Level-Up bei XP-Grenze.,Bei Überschreitung → Level-Anzeige aktualisiert.,TST,"TC-UC05-01, TC-UC05-02, TC-UC05-03",Entwicklerteam,Soll
-UC05-F4,Funktional,System zeigt Level-Up visuell an.,Popup / Banner erscheint bei Level-Up.,TST,"TC-UC05-01, TC-UC05-02, TC-UC05-03",UX-Designer,Soll
-UC05-F5,Funktional,System speichert Endzeitpunkt und Status „abgeschlossen“.,Timestamp im Datensatz gespeichert.,TST,"TC-UC05-01, TC-UC05-02, TC-UC05-03",Entwicklerteam,Muss
-UC05-NF1,Nicht-funktional,Abschlussreaktion ≤ 2 Sekunden.,Messung bestätigt Reaktionszeit ≤ 2 Sekunden.,ANL/TST,TC-UC05-NF-01,Tester,Soll
-UC05-NF2,Nicht-funktional,XP-Vergabe atomar.,Doppelklick erzeugt keine Mehrfach-XP.,ANL/TST,TC-UC05-NF-01,Entwicklerteam,Muss
-UC05-NF3,Nicht-funktional,Level-Up-Event wird protokolliert.,In v1.0 nur lokale/Console-Protokollierung (kein persistentes Auditlog).,INS,TC-UC05-NF-01 (Deviation),Entwicklerteam,Soll
-UC05-NF4,Nicht-funktional,Nur abgeschlossene Quests zählen für XP.,Nicht-abgeschlossene Quests werden ignoriert.,ANL/TST,TC-UC05-NF-01,Product Owner,Muss
-UC06-F1,Funktional,System ermöglicht Start eines Lern-Timers.,Klick auf „Start“ startet Timer.,TST,"TC-UC06-01, TC-UC06-02, TC-UC06-03, TC-UC06-04",Nutzer:in,Muss
-UC06-F2,Funktional,System speichert Startzeit und Laufzeit.,Startzeit in Datenbank protokolliert.,TST,"TC-UC06-01, TC-UC06-02, TC-UC06-03, TC-UC06-04",Entwicklerteam,Muss
-UC06-F3,Funktional,System ermöglicht Pausieren und Fortsetzen.,Timer reagiert korrekt auf Pause/Fortsetzen.,INS,TC-UC06-02 (Deviation),UX-Designer,Soll
-UC06-F4,Funktional,System berechnet und speichert Gesamtdauer beim Stoppen.,Dauer = Stop-Zeit − Start-Zeit.,TST,"TC-UC06-01, TC-UC06-02, TC-UC06-03, TC-UC06-04",Entwicklerteam,Muss
-UC06-F5,Funktional,System vergibt optional XP nach Lernzeit.,XP = 1 / 5 Minuten gespeichert.,TST,"TC-UC06-01, TC-UC06-02, TC-UC06-03, TC-UC06-04",Product Owner,Soll
-UC06-F6,Funktional,Nur ein aktiver Timer pro Nutzer:in erlaubt.,Zweiter Startversuch blockiert.,TST,"TC-UC06-01, TC-UC06-02, TC-UC06-03, TC-UC06-04",Entwicklerteam,Muss
-UC06-F7,Funktional,System puffert Zeitdaten bei Verbindungsabbruch.,Synchronisierung nach Reconnect erfolgreich.,INS,TC-UC06-04 (Deviation),Entwicklerteam,Soll
-UC06-NF1,Nicht-funktional,Zeitabweichung ≤ 1 Minute.,Vergleich UI/DB ≤ 1 Minute Differenz.,ANL/TST,TC-UC06-NF-01,Tester,Soll
-UC06-NF2,Nicht-funktional,Timerdaten bleiben nach Reload erhalten.,Refresh des Tabs erhält Timerstatus.,ANL/TST,TC-UC06-NF-01,UX-Tester,Soll
-UC06-NF3,Nicht-funktional,Alle Timeraktionen werden protokolliert.,In v1.0 nur Start/Stop lokal protokolliert; Pause/Resume nicht vorhanden.,INS,TC-UC06-NF-01 (Deviation),Entwicklerteam,Soll
-UC06-NF4,Nicht-funktional,Reaktionszeit ≤ 1 Sekunde.,Messung bestätigt Reaktionszeit ≤ 1 Sekunde.,ANL/TST,TC-UC06-NF-01,Tester,Soll
-UC07-F1,Funktional,"System muss es Nutzer:innen ermöglichen, Noten für Module einzugeben.",Neue Note kann erfolgreich gespeichert werden.,TST,"TC-UC07-01, TC-UC07-02, TC-UC07-03",Nutzer:in,Muss
-UC07-F2,Funktional,System muss Bearbeiten bestehender Noten erlauben.,Änderung einer Note wird gespeichert und angezeigt.,TST,"TC-UC07-01, TC-UC07-02, TC-UC07-03",Nutzer:in,Muss
-UC07-F3,Funktional,System muss Noten löschen können.,Löschung entfernt Note aus der Übersicht.,TST,"TC-UC07-01, TC-UC07-02, TC-UC07-03",Nutzer:in,Soll
-UC07-F4,Funktional,System berechnet automatisch den Durchschnitt.,Durchschnittswert aktualisiert sich nach Änderung.,INS,TC-UC07-03 (Deviation),Entwicklerteam,Muss
-UC07-F5,Funktional,System aktualisiert Notenübersicht nach Änderungen.,Änderungen sofort sichtbar.,TST,"TC-UC07-01, TC-UC07-02, TC-UC07-03",UX-Designer,Soll
-UC07-NF1,Nicht-funktional,Änderungen an Noten werden in Echtzeit angezeigt.,UI aktualisiert sich ohne Reload.,ANL/TST,,Entwicklerteam,Soll
-UC07-NF2,Nicht-funktional,System stellt Datenkonsistenz sicher.,Durchschnitt korrekt auch nach Mehrfacheingaben.,ANL/TST,,Entwicklerteam,Muss
-UC08-F1,Funktional,System ermöglicht Zugriff auf das Dashboard.,Klick auf „Dashboard“ öffnet Übersicht.,TST,TC-UC08-01,Nutzer:in,Muss
-UC08-F2,Funktional,Dashboard zeigt aktuellen XP-Stand.,XP-Wert entspricht gespeicherter Datenbankwert.,TST,TC-UC08-01,Entwicklerteam,Muss
-UC08-F3,Funktional,Dashboard zeigt Nutzerlevel.,Levelanzeige stimmt mit XP-Regeln überein.,TST,TC-UC08-01,Product Owner,Muss
-UC08-F4,Funktional,Dashboard zeigt aktive & abgeschlossene Quests.,Alle Quests korrekt aufgelistet.,TST,TC-UC08-01,Nutzer:in,Soll
-UC08-F5,Funktional,Dashboard zeigt Notenstatistik.,Anzeige Durchschnitt und Module.,INS,TC-UC08-01 (Deviation),Product Owner,Soll
-UC08-NF1,Nicht-funktional,Dashboard lädt vollständig ≤ 2 Sekunden.,Messung zeigt Ladezeit ≤ 2 s.,ANL/TST,TC-UC08-NF-01,UX-Tester,Muss
-UC08-NF2,Nicht-funktional,Dashboard funktioniert auf allen unterstützten Browsern.,"Darstellung getestet auf Chrome, Firefox, Safari.",ANL/TST,TC-UC08-NF-01,QA-Team,Soll
-UC09-F1,Funktional,System ermöglicht Öffnen der Benachrichtigungseinstellungen.,Menüpunkt „Benachrichtigungen“ erreichbar.,INS,TC-UC09-01 (Deviation),Nutzer:in,Muss
-UC09-F2,Funktional,Nutzer:innen können Lern-Erinnerungen aktivieren/deaktivieren.,Schalter ändert Status erfolgreich.,INS,TC-UC09-01 (Deviation),Nutzer:in,Soll
-UC09-F3,Funktional,Nutzer:innen können Quest-Benachrichtigungen steuern.,Einstellungen persistieren nach Reload.,INS,TC-UC09-01 (Deviation),Nutzer:in,Soll
-UC09-F4,Funktional,Änderungen werden gespeichert.,Datenbankeintrag aktualisiert.,TST,TC-UC09-01,Entwicklerteam,Muss
-UC09-NF1,Nicht-funktional,Änderungen wirken sofort.,Notification-Status ohne Reload übernommen.,ANL/TST,TC-UC09-NF-01,Entwicklerteam,Soll
-UC09-NF2,Nicht-funktional,Benachrichtigungen werden zuverlässig zugestellt.,Testmeldungen erscheinen korrekt per Push/E-Mail.,INS,TC-UC09-NF-01 (Deviation),QA-Team,Muss
-UC10-F1,Funktional,System erlaubt Import von Noten aus CSV-Datei.,CSV erfolgreich eingelesen.,TST,"TC-UC10-01, TC-UC10-02, TC-UC10-03",Nutzer:in,Soll
-UC10-F2,Funktional,System erlaubt Export von Noten in CSV-Datei.,Datei erzeugt und heruntergeladen.,TST,"TC-UC10-01, TC-UC10-02, TC-UC10-03",Nutzer:in,Soll
-UC10-F3,Funktional,System erkennt fehlerhafte Dateien und zeigt Fehlermeldung.,Ungültige Datei → Fehlermeldung erscheint.,TST,"TC-UC10-01, TC-UC10-02, TC-UC10-03",Entwicklerteam,Muss
-UC10-NF1,Nicht-funktional,Import/Export ≤ 5 Sekunden.,Zeitmessung ≤ 5 s bei 100 Einträgen.,ANL/TST,TC-UC10-NF-01,Tester,Soll
-UC11-F1,Funktional,System prüft Bedingungen für Badges.,Badge-Check wird nach Aktionen ausgeführt.,TST,"TC-UC11-01, TC-UC11-02",Product Owner,Muss
-UC11-F2,Funktional,Bei erfüllter Bedingung wird Badge freigeschaltet.,Neuer Badge im Profil sichtbar.,TST,"TC-UC11-01, TC-UC11-02",Entwicklerteam,Muss
-UC11-F3,Funktional,Nutzer:innen werden visuell über neues Badge informiert.,Popup/Animation erscheint.,TST,"TC-UC11-01, TC-UC11-02",UX-Designer,Soll
-UC11-F4,Funktional,Übersicht aller Badges verfügbar.,Liste zeigt gesperrte + freigeschaltete Badges.,TST,"TC-UC11-01, TC-UC11-02",Nutzer:in,Soll
-UC11-NF1,Nicht-funktional,Badge-Check läuft automatisch nach jeder relevanten Aktion.,Logs zeigen Trigger-Ausführung.,ANL/TST,TC-UC11-NF-01,Entwicklerteam,Muss
-UC12-F1,Funktional,System zeigt Rangliste aller Nutzer:innen mit Punkten.,Leaderboard listet alle korrekt nach XP.,TST,"TC-UC12-01, TC-UC12-02",Product Owner,Muss
-UC12-F2,Funktional,System berechnet und zeigt Streaks (aktive Tage).,Richtige Streak-Länge angezeigt.,TST,"TC-UC12-01, TC-UC12-02",Entwicklerteam,Soll
-UC12-F3,Funktional,Daten werden bei Aufruf aktualisiert.,Refresh aktualisiert Ranking.,TST,"TC-UC12-01, TC-UC12-02",Entwicklerteam,Muss
-UC12-F4,Funktional,Nutzer:innen finden eigene Position leicht.,Eigenes Profil im Leaderboard hervorgehoben.,TST,"TC-UC12-01, TC-UC12-02",UX-Designer,Soll
-UC12-NF1,Nicht-funktional,Leaderboard lädt ≤ 3 Sekunden.,Ladezeitmessung ≤ 3 s.,ANL/TST,TC-UC12-NF-01,QA-Team,Soll
-UC12-NF2,Nicht-funktional,Daten werden regelmäßig synchronisiert.,Automatischer Sync z. B. alle 10 min.,INS,TC-UC12-NF-01 (Deviation),Entwicklerteam,Soll
-UC13-F1,Funktional,System erlaubt Admin-Login.,Nur Admin-Konten authentifiziert.,TST,"TC-UC13-01, TC-UC13-02",Entwicklerteam,Muss
-UC13-F2,Funktional,Zugriff auf Quest-Verwaltung.,Menüpunkt „Quests verwalten“ sichtbar.,TST,"TC-UC13-01, TC-UC13-02",Admin,Muss
-UC13-F3,Funktional,System erlaubt Erstellen neuer Quests.,Neue Quest erscheint im Katalog.,TST,"TC-UC13-01, TC-UC13-02",Admin,Muss
-UC13-F4,Funktional,System erlaubt Bearbeiten bestehender Quests.,Änderungen werden übernommen.,TST,"TC-UC13-01, TC-UC13-02",Admin,Soll
-UC13-F5,Funktional,System erlaubt Löschen von Quests.,Gelöschte Quest verschwindet aus Liste.,TST,"TC-UC13-01, TC-UC13-02",Admin,Soll
-UC13-F6,Funktional,Katalog aktualisiert sich nach Änderungen.,Refresh zeigt neue Daten.,TST,"TC-UC13-01, TC-UC13-02",Entwicklerteam,Soll
-UC13-NF1,Nicht-funktional,Änderungen sichtbar ≤ 2 Sekunden.,UI-Update ≤ 2 s.,ANL/TST,TC-UC13-NF-01,QA-Team,Soll
-UC13-NF2,Nicht-funktional,Nur eingeloggte Admins dürfen Änderungen durchführen.,Auth-Prüfung vor CRUD-Operationen.,ANL/TST,TC-UC13-NF-01,Entwicklerteam,Muss
-UC13-NF3,Nicht-funktional,Änderungen werden versioniert gespeichert.,Versionslog pro Änderung.,INS,TC-UC13-NF-01 (Deviation),Entwicklerteam,Soll
-UC13-NF4,Nicht-funktional,Konflikte bei gleichzeitiger Bearbeitung werden korrekt behandelt.,Merge-Konflikte automatisch gelöst oder gemeldet.,INS,TC-UC13-NF-01 (Deviation),Entwicklerteam,Soll
-UC14-F1,Funktional,Admin-Login erforderlich.,Nur Admins können konfigurieren.,TST,TC-UC14-01,Entwicklerteam,Muss
-UC14-F2,Funktional,Zugriff auf Regelverwaltung.,Menüpunkt „Regeln verwalten“ vorhanden.,TST,TC-UC14-01,Admin,Muss
-UC14-F3,Funktional,System erlaubt Ändern von XP- und Levelregeln.,Neue Regelwerte gespeichert.,TST,TC-UC14-01,Admin,Soll
-UC14-F4,Funktional,Geänderte Regeln werden gespeichert und aktiv.,Neue Regeln gelten nach Speichern.,TST,TC-UC14-01,Entwicklerteam,Soll
-UC14-F5,Funktional,Änderungen gelten sofort global.,Nutzer:innen sehen direkt neue Werte.,TST,TC-UC14-01,Entwicklerteam,Soll
-UC14-NF1,Nicht-funktional,Änderungen verursachen keine Dateninkonsistenz.,Tests nach Regelupdate bestehen.,ANL/TST,TC-UC14-NF-01,QA-Team,Muss
-UC14-NF2,Nicht-funktional,Regeländerungen werden protokolliert.,Änderungslog mit Zeitstempel.,INS,TC-UC14-NF-01 (Deviation),Entwicklerteam,Soll
-UC14-NF3,Nicht-funktional,Speichern dauert ≤ 2 Sekunden.,Zeitmessung ≤ 2 s.,ANL/TST,TC-UC14-NF-01,Tester,Soll
-UC14-NF4,Nicht-funktional,Zugriff nur für autorisierte Admins.,Authentifizierung erfolgreich geprüft.,ANL/TST,TC-UC14-NF-01,Entwicklerteam,Muss
-UC15-F1,Funktional,System erlaubt Admin-Login.,Nur Admin-Konto akzeptiert.,TST,TC-UC15-01,Entwicklerteam,Muss
-UC15-F2,Funktional,System erlaubt Suche nach Benutzerkonten.,Trefferanzeige nach Suchkriterium.,INS,TC-UC15-01 (Deviation),Admin,Muss
-UC15-F3,Funktional,System zeigt Kontoeinstellungen an.,Detailansicht des Kontos öffnet sich.,INS,TC-UC15-01 (Deviation),Admin,Soll
-UC15-F4,Funktional,"System erlaubt Löschen, Sperren, Reaktivieren von Konten.",Statusänderung wird gespeichert.,TST,TC-UC15-01,Admin,Muss
-UC15-F5,Funktional,System aktualisiert Kontostatus nach Änderungen.,Neue Statusanzeige korrekt im UI.,TST,TC-UC15-01,Entwicklerteam,Soll
-UC15-NF1,Nicht-funktional,Nur autorisierte Admins dürfen Änderungen durchführen.,Rollenprüfung vor Aktion.,ANL/TST,TC-UC15-NF-01,Entwicklerteam,Muss
-UC15-NF2,Nicht-funktional,Änderungen werden protokolliert.,Log-Eintrag mit Admin-ID und Aktion.,INS,TC-UC15-NF-01 (Deviation),Entwicklerteam,Soll
-UC15-NF3,Nicht-funktional,Reaktionszeit ≤ 2 Sekunden.,Änderung bestätigt in ≤ 2 s.,ANL/TST,TC-UC15-NF-01,QA-Team,Soll
+ID,Requirement,Method,TestCases,Status
+UC01-F1,Registrierung mit E-Mail/Passwort möglich,TST,TC-UC01-01,✓
+UC01-F2,Duplikat-E-Mail blockiert,TST,TC-UC01-02,✓
+UC01-F3,Login mit E-Mail/Passwort,TST,TC-UC01-03,✓
+UC01-F4,Dashboard nach Login angezeigt,TST,TC-UC01-03,✓
+UC01-NF1,Passwort nicht im Klartext,ANL/TST,TC-UC01-NF-01,✓
+UC01-NF2,Neutrale Fehlermeldungen,ANL/TST,TC-UC01-NF-01,✓
+UC02-F1,Passwort-Reset anfordern,INS,TC-UC02-01,Deviation
+UC02-F2,Zeitlich begrenzter Reset-Token,INS,TC-UC02-02,Deviation
+UC02-F3,Neues Passwort setzen,INS,TC-UC02-03,Deviation
+UC02-F4,Altes Passwort invalidieren,INS,TC-UC02-03,Deviation
+UC02-NF1,Neutrale Antwort bei Reset,INS,TC-UC02-01,Deviation
+UC02-NF2,Reset-Link Ablaufzeit,INS,TC-UC02-02,Deviation
+UC03-F1,Profildaten anzeigen,TST,TC-UC03-01,✓
+UC03-F2,Name/Avatar ändern speichern,TST,TC-UC03-02,✓
+UC03-F3,Änderungen persistieren,TST,TC-UC03-02,✓
+UC03-NF1,Nur eingeloggte User dürfen ändern,ANL/TST,TC-UC03-NF-01,✓
+UC03-NF2,Verständliche Fehlermeldungen,ANL/TST,TC-UC03-NF-01,✓
+UC04-F1,Quest-Auswahl möglich,TST,TC-UC04-01,✓
+UC04-F2,Quest starten funktioniert,TST,TC-UC04-01,✓
+UC04-F3,Startzeitpunkt gespeichert,TST,TC-UC04-01,✓
+UC04-F4,Nur eine aktive Quest pro User,TST,TC-UC04-02,✓
+UC04-F5,Zweite Quest-Start blockiert,TST,TC-UC04-02,✓
+UC04-NF1,Status-Wechsel ≤1s,ANL/TST,TC-UC04-NF-01,✓
+UC04-NF2,Nur authentifizierte User,ANL/TST,TC-UC04-NF-01,✓
+UC04-NF3,Quest-Start serverseitig protokolliert,INS,TC-UC04-NF-01,Deviation
+UC05-F1,Quest abschließen markieren,TST,TC-UC05-01,✓
+UC05-F2,XP automatisch vergeben,TST,TC-UC05-01,✓
+UC05-F3,Level-Up Prüfung,TST,TC-UC05-03,✓
+UC05-F4,Level-Up visuell angezeigt,TST,TC-UC05-03,✓
+UC05-F5,Endzeitpunkt & Status gespeichert,TST,TC-UC05-01,✓
+UC05-NF1,Abschluss-Reaktion ≤2s,ANL/TST,TC-UC05-NF-01,✓
+UC05-NF2,XP-Vergabe atomar,ANL/TST,TC-UC05-02,✓
+UC05-NF3,Level-Up Event protokolliert,INS,TC-UC05-NF-01,Deviation
+UC05-NF4,Nur abgeschlossene Quests zählen,ANL/TST,TC-UC05-01,✓
+UC06-F1,Lern-Timer starten,TST,TC-UC06-01,✓
+UC06-F2,Startzeit & Laufzeit speichern,TST,TC-UC06-01,✓
+UC06-F3,Timer pausieren/fortsetzen,INS,TC-UC06-02,Deviation
+UC06-F4,Gesamtdauer berechnen & speichern,TST,TC-UC06-03,✓
+UC06-F5,Optional XP nach Lernzeit,TST,TC-UC06-03,✓
+UC06-F6,Nur ein aktiver Timer pro User,TST,TC-UC06-02,✓
+UC06-F7,Pufferung bei Verbindungsabbruch,INS,TC-UC06-04,Deviation
+UC06-NF1,Zeitabweichung ≤1 Minute,ANL/TST,TC-UC06-NF-01,✓
+UC06-NF2,Timerdaten bleiben nach Reload,ANL/TST,TC-UC06-04,✓
+UC06-NF3,Timeraktionen protokolliert,INS,TC-UC06-NF-01,Deviation
+UC06-NF4,Reaktionszeit ≤1s,ANL/TST,TC-UC06-NF-01,✓
+UC07-F1,Noten eingeben,TST,TC-UC07-01,✓
+UC07-F2,Noten bearbeiten,TST,TC-UC07-02,✓
+UC07-F3,Noten löschen,TST,TC-UC07-02,✓
+UC07-F4,Durchschnitt automatisch berechnen,INS,TC-UC07-03,Deviation
+UC07-F5,Notenübersicht aktualisieren,TST,TC-UC07-01,✓
+UC07-NF1,Änderungen in Echtzeit angezeigt,ANL/TST,TC-UC07-NF-01,✓
+UC07-NF2,Datenkonsistenz gewährleistet,ANL/TST,TC-UC07-03,✓
+UC08-F1,Dashboard-Zugriff,TST,TC-UC08-01,✓
+UC08-F2,XP-Stand angezeigt,TST,TC-UC08-01,✓
+UC08-F3,Level angezeigt,TST,TC-UC08-01,✓
+UC08-F4,Aktive & abgeschlossene Quests,TST,TC-UC08-01,✓
+UC08-F5,Notenstatistik angezeigt,INS,TC-UC08-01,Deviation
+UC08-NF1,Dashboard lädt ≤2s,ANL/TST,TC-UC08-NF-01,✓
+UC08-NF2,Browser-Kompatibilität (Chrome/Firefox/Safari),ANL/TST,TC-UC08-NF-01,✓
+UC09-F1,Benachrichtigungseinstellungen öffnen,INS,TC-UC09-01,Deviation
+UC09-F2,Lern-Erinnerungen aktivieren/deaktivieren,INS,TC-UC09-01,Deviation
+UC09-F3,Quest-Benachrichtigungen steuern,INS,TC-UC09-01,Deviation
+UC09-F4,Einstellungen speichern,TST,TC-UC09-01,✓
+UC09-NF1,Änderungen wirken sofort,ANL/TST,TC-UC09-NF-01,✓
+UC09-NF2,Zuverlässige Zustellung (Push/E-Mail),INS,TC-UC09-NF-01,Deviation
+UC10-F1,CSV-Import möglich,TST,TC-UC10-02,✓
+UC10-F2,CSV-Export möglich,TST,TC-UC10-01,✓
+UC10-F3,Fehlerhafte Dateien erkannt,TST,TC-UC10-03,✓
+UC10-NF1,Import/Export ≤5s,ANL/TST,TC-UC10-NF-01,✓
+UC11-F1,Badge-Bedingungen prüfen,TST,TC-UC11-01,✓
+UC11-F2,Badge freischalten,TST,TC-UC11-01,✓
+UC11-F3,Visuelles Feedback bei Badge,TST,TC-UC11-02,✓
+UC11-F4,Badge-Übersicht verfügbar,TST,TC-UC11-02,✓
+UC11-NF1,Automatischer Badge-Check,ANL/TST,TC-UC11-NF-01,✓
+UC12-F1,Leaderboard mit Ranking,TST,TC-UC12-01,✓
+UC12-F2,Streaks berechnen & anzeigen,TST,TC-UC12-02,✓
+UC12-F3,Daten bei Aufruf aktualisieren,TST,TC-UC12-02,✓
+UC12-F4,Eigene Position hervorgehoben,TST,TC-UC12-01,✓
+UC12-NF1,Leaderboard lädt ≤3s,ANL/TST,TC-UC12-NF-01,✓
+UC12-NF2,Regelmäßige Datensynchronisation,INS,TC-UC12-NF-01,Deviation
+UC13-F1,Admin-Login,TST,TC-UC13-01,✓
+UC13-F2,Quest-Verwaltung Zugriff,TST,TC-UC13-02,✓
+UC13-F3,Neue Quest erstellen,TST,TC-UC13-02,✓
+UC13-F4,Quest bearbeiten,TST,TC-UC13-02,✓
+UC13-F5,Quest löschen,TST,TC-UC13-02,✓
+UC13-F6,Katalog nach Änderungen aktualisieren,TST,TC-UC13-02,✓
+UC13-NF1,Änderungen sichtbar ≤2s,ANL/TST,TC-UC13-NF-01,✓
+UC13-NF2,Nur Admins dürfen ändern,ANL/TST,TC-UC13-NF-01,✓
+UC13-NF3,Änderungen versioniert speichern,INS,TC-UC13-NF-01,Deviation
+UC13-NF4,Konflikte bei Simultanbearbeitung behandeln,INS,TC-UC13-NF-01,Deviation
+UC14-F1,Admin-Login erforderlich,TST,TC-UC14-01,✓
+UC14-F2,Regelverwaltungs-Zugriff,TST,TC-UC14-01,✓
+UC14-F3,XP- & Levelregeln ändern,TST,TC-UC14-01,✓
+UC14-F4,Geänderte Regeln aktiv speichern,TST,TC-UC14-01,✓
+UC14-F5,Änderungen gelten sofort global,TST,TC-UC14-01,✓
+UC14-NF1,Keine Dateninkonsistenz,ANL/TST,TC-UC14-NF-01,✓
+UC14-NF2,Regeländerungen protokollieren,INS,TC-UC14-NF-01,Deviation
+UC14-NF3,Speichern dauert ≤2s,ANL/TST,TC-UC14-NF-01,✓
+UC14-NF4,Zugriff nur für autorisierte Admins,ANL/TST,TC-UC14-NF-01,✓
+UC15-F1,Admin-Login,TST,TC-UC15-01,✓
+UC15-F2,Benutzerkonten suchen,INS,TC-UC15-01,Deviation
+UC15-F3,Kontoeinstellungen anzeigen,INS,TC-UC15-01,Deviation
+UC15-F4,Konten löschen/sperren/reaktivieren,TST,TC-UC15-01,✓
+UC15-F5,Kontostatus aktualisieren,TST,TC-UC15-01,✓
+UC15-NF1,Nur autorisierte Admins dürfen ändern,ANL/TST,TC-UC15-NF-01,✓
+UC15-NF2,Änderungen protokollieren,INS,TC-UC15-NF-01,Deviation
+UC15-NF3,Reaktionszeit ≤2s,ANL/TST,TC-UC15-NF-01,✓
