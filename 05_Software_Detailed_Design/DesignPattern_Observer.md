@@ -39,7 +39,7 @@ Michael Steer (Scrum Master)
 | --- | --- | --- | --- |
 | 1.0 | 30.01.2026 | L. Engelhardt | Erstfassung |
 | 1.1 | 10.02.2026 | M. Steer  | Überarbeitung passend zu v1.0 |
-| 1.2. | 26.02.2026 | M. Steer | Finalversion zur Abgabe vorbereitet | 
+| 1.2 | 26.02.2026 | M. Steer | Finalversion zur Abgabe vorbereitet | 
 
 ## Distribution List
 
