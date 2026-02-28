@@ -84,7 +84,7 @@ Das Observer-Pattern hätte folgende Anforderungen:
 - Für den MVP-Scope nicht prioritär, da direkte Aufrufe ausreichen
 
 ## 3. Pattern-Kurzbeschreibung
-**Observer** beschreibt eine 1:n-Beziehung: Ein Publisher (Subject) veröffentlicht Zustandsänderungen/Ereignisse, mehrere Subscriber (Observer) reagieren darauf. In Web-Apps wird das oft als **Publish/Subscribe** umgesetzt (EventBus).
+Observer beschreibt eine 1:n-Beziehung: Ein Publisher (Subject) veröffentlicht Zustandsänderungen/Ereignisse, mehrere Subscriber (Observer) reagieren darauf. In Web-Apps wird das oft als Publish/Subscribe umgesetzt (EventBus).
 
 ## 4. Proposed Architecture (zukünftige Verbesserung)
 
@@ -110,56 +110,11 @@ Das Observer-Pattern hätte folgende Anforderungen:
 
 ## 5. Proposed UML Architecture (zukünftige Verbesserung)
 ### 5.1 Klassendiagramm
-```plantuml
-@startuml
-class EventBus {
-  +subscribe(eventName, handler)
-  +unsubscribe(eventName, handler)
-  +publish(eventName, payload)
-}
+<img width="1049" height="267" alt="image" src="https://github.com/user-attachments/assets/b0efb93a-d072-48eb-b5da-ad45ae554384" />
 
-class QuestSystem {
-  +stopTimer(userId)
-  +completeQuest(userId, questId)
-}
-
-class NotificationObserver {
-  +onQuestCompleted(payload)
-  +onLevelUp(payload)
-}
-
-class AchievementObserver {
-  +onQuestCompleted(payload)
-}
-
-class StreakObserver {
-  +onQuestCompleted(payload)
-}
-
-QuestSystem --> EventBus : publish(...)
-NotificationObserver --> EventBus : subscribe(...)
-AchievementObserver --> EventBus : subscribe(...)
-StreakObserver --> EventBus : subscribe(...)
-@enduml
-```
 
 ### 5.2 Sequenzdiagramm (Timer stoppen)
-```plantuml
-@startuml
-actor User
-User -> QuestSystem : stopTimer(userId)
-QuestSystem -> DB : saveTimer(...)
-QuestSystem -> UserModel : addXP(...)
-QuestSystem -> UserModel : completeQuest(...)
-QuestSystem -> DB : saveSession(...)
-QuestSystem -> EventBus : publish('quest.completed', payload)
-EventBus -> NotificationObserver : onQuestCompleted(payload)
-EventBus -> AchievementObserver : onQuestCompleted(payload)
-EventBus -> StreakObserver : onQuestCompleted(payload)
-AchievementObserver -> EventBus : publish('achievement.unlocked', ...)
-EventBus -> NotificationObserver : onAchievementUnlocked(...)
-@enduml
-```
+<img width="1065" height="501" alt="image" src="https://github.com/user-attachments/assets/6040faec-fb16-4194-aa21-91f0d91b3c64" />
 
 ## 6. Umsetzungsvorschlag für Refactor (nicht v1.0)
 
