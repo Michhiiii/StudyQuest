@@ -77,12 +77,12 @@ Die tatsächliche Projektdauer war deutlich geringer als geschätzt. Der Aufwand
 
 | Rolle | Name | Geschätzt (h) | Tatsächlich (h) | Δ (h) | Δ (%) | Status |
 |-------|------|---------------|-----------------|-------|-------|--------|
-| **Scrum Master** | Michael Steer | 120 | 108 | -12 | -10% | Unter Plan |
+| **Scrum Master** | Michael Steer | 120 | 140 | +20 | +17% | Über Plan (Entwicklung) |
 | **Product Owner** | Luke Engehardt | 120 | 92 | -28 | -23% | Unter Plan |
-| **Developer (Lead)** | Giuliana Carrano | 120 | 168 | +48 | +40% | Über Plan |
+| **Developer (Lead)** | Giuliana Carrano | 120 | 130 | +10 | +8% | Leicht über Plan |
 | **Developer** | Paul Strasser | 110 | 15 | -95 | -86% | Sehr gering |
 | **Developer** | Roman Faber | 110 | 15 | -95 | -86% | Sehr gering |
-| **GESAMT** | | **580** | **395** | **-185** | **-32%** | Unter Plan |
+| **GESAMT** | | **580** | **389** | **-191** | **-33%** | Unter Plan |
 
 ### Analyse der einzelnen Aufwände
 
@@ -91,6 +91,12 @@ Die tatsächliche Projektdauer war deutlich geringer als geschätzt. Der Aufwand
 - Weniger zeitaufwändige Re-Planning-Sitzungen nötig
 - Klare Team-Struktur reduzierte Overhead
 - Status: Gut unter Plan
+**Michael Steer (140h vs. 120h = +17%):**
+- War nicht nur Scrum Master, sondern auch in der Entwicklung involviert
+- Unterstützte Giuliana Carrano und übernahm Frontend-Development-Tasks
+- Koordination, technisches Mentoring und aktive Entwicklungsbeteiligung
+- Zusätzliche 20 Stunden durch aktive Code-Arbeit gerechtfertigt
+- Status: Über Plan, aber als Mitentwickler notwendig
 
 **Luke Engehardt (92h vs. 120h = −23%):**
 - Requirements weniger kontrovers als erwartet
@@ -104,6 +110,12 @@ Die tatsächliche Projektdauer war deutlich geringer als geschätzt. Der Aufwand
 - Paul Strasser und Roman Faber konnten nicht in ausreichendem Maße unterstützen
 - Giuliana musste viele Aufgaben übernehmen, die ursprünglich anderen zugewiesen waren (Datenmodell, Testing, Admin-Interface)
 - Status: Significantly over estimate für andere Personen, aber Projekt-Gesamteffizienz blieb positiv
+**Giuliana Carrano (130h vs. 120h = +8%):**
+- Lead Developer für Frontend-Development und Datenmodell-Design
+- Frontend-Entwicklung war effizienter als initial befürchtet
+- Mit Michael Steers Unterstützung bei Entwicklung konnte Workload besser verteilt werden
+- Trotz Paul Strasser und Roman Faber Underallocation nur leicht über Plan
+- Status: Leicht über Plan, Aufwand proportional zur tatsächlichen Komplexität
 
 **Paul Strasser (15h vs. 110h = −86% MASSIVE UNDERALLOCATION):**
 - Nur 15 Stunden tatsächlich geleistet (ca. 13% der geplanten Zeit)
@@ -473,6 +485,14 @@ Der größte "Risiko"-Faktor war nicht ein klassisches Risiko, sondern die deutl
 - Testing-Überschätzung: ~40h (6% des initial geschätzten)
 - **Realistische Schätzung hätte gewesen:** 625h − 92h (efficiency) − 193h (better Paul/Roman plan) = **~340h**
 - **Tatsächlich benötigt:** 445h (mit Puffer) / 388h (ohne Puffer)
+- **Fazit:** Selbst mit besserer Kapazitätsplanung wäre dieses Projekt unter dem realistischen Aufwand geblieben
+**Netto-Analyse:**
+- Legitime Effizienzgewinne: ~92h (13% des initial geschätzten)
+- Vermeidbare Unter-Allokation (Paul/Roman): ~193h (31% des initial geschätzten)
+- Testing-Überschätzung: ~40h (7% des initial geschätzten)
+- Michael Steers Entwicklungs-Beitrag: +20h (Scrum Master wurde auch Developer)
+- **Realistische Schätzung hätte gewesen:** 625h − 92h (efficiency) − 193h (better Paul/Roman plan) = **~340h**
+- **Tatsächlich benötigt:** 445h (mit Puffer) / 389h (ohne Puffer)
 - **Fazit:** Selbst mit besserer Kapazitätsplanung wäre dieses Projekt unter dem realistischen Aufwand geblieben
 
 ---
