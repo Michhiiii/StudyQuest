@@ -1,10 +1,56 @@
-# Aufwandsschätzung StudyQuest – Finalbewertung (Februar 2026)
+# Aufwandsschätzung StudyQuest – Finalschätzung 
 
-**Projektname:** StudyQuest  
-**Zeitraum:** Oktober 2025 – Februar 2026 (6 Monate - ABGESCHLOSSEN)  
-**Datum:** 27.02.2026  
-**Version:** 2.0 (Finale Auswertung)
+**Titel des Dokuments:**  
+Aufwandsschätzung Final - StudyQuest
 
+**Projektname:**  
+StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App
+
+**Modul:**  
+Software Engineering I – Praxis
+
+**Projektzeitraum:**  
+Wintersemester 2025 / 2026
+
+**Version:**  
+1.2
+
+**Datum:**  
+03.03.2026
+
+**Author:innen:**  
+- Michael Steer (Scrum Master)  
+- Luke Engehardt (Product Owner)  
+- Giuliana Carrano (Developer)  
+- Paul Strasser (Developer)  
+- Roman Faber (Developer)
+
+**Betreuer / Prüfer:**  
+Sascha Wanninger
+
+**Freigabe durch autorisierte Person:**  
+Michael Steer (Scrum Master)
+
+---
+
+## Changelog
+
+| **Version** | **Datum** | **Autor** | **Änderungsbeschreibung** |
+| --- | --- | --- | --- |
+| 1.0 | 06.02.2026 | M.Steer | Erstfassung des SQAP/SQAR |
+| 1.2 | 03.03.2026 | M.Steer | Finalversion zur Abgabe vorbereitet  |
+
+---
+## Distribution List
+
+| **Name**          | **Rolle**             | **Kommentar / Zuständigkeit**                 |
+|--------------------|-----------------------|-----------------------------------------------|
+| Sascha Wanninger   | Prüfer / Betreuer     | Bewertung im Rahmen des Moduls                |
+| Michael Steer      | Scrum Master          | Koordination & Freigabe                       |
+| Luke Engehardt     | Product Owner         | Anforderungen, Dokumentation & Technische Dokumentation                  |
+| Giuliana Carrano   | Developer             | Projektskizze, Dokumentation, Architektur & UML                   |
+| Paul Strasser      | Developer             |                      |
+| Roman Faber        | Developer             |                            |
 ---
 
 ## 1. Vergleich: Geschätzt vs. Tatsächlich
