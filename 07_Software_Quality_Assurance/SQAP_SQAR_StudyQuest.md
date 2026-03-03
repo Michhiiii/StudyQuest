@@ -1,18 +1,35 @@
 # Software Quality Assurance Plan & Report (SQAP/SQAR) – StudyQuest
 
-**Projekt:** StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App  
-**Modul:** Software Engineering I – Praxis (DHBW Ravensburg)  
-**Version:** 2.0  
-**Datum:** 02.03.2026
+**Titel des Dokuments:**  
+Software Quality Assurance Plan & Report - StudyQuest
 
-**Autor:innen (Projektteam):**
-- Michael Steer (Scrum Master)
-- Luke Engehardt (Product Owner)
-- Giuliana Carrano (Developer)
-- Paul Strasser (Developer)
+**Projektname:**  
+StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App
+
+**Modul:**  
+Software Engineering I – Praxis
+
+**Projektzeitraum:**  
+Wintersemester 2025 / 2026
+
+**Version:**  
+1.2
+
+**Datum:**  
+02.03.2026
+
+**Author:innen:**  
+- Michael Steer (Scrum Master)  
+- Luke Engehardt (Product Owner)  
+- Giuliana Carrano (Developer)  
+- Paul Strasser (Developer)  
 - Roman Faber (Developer)
 
-**Betreuer / Prüfer:** Sascha Wanninger
+**Betreuer / Prüfer:**  
+Sascha Wanninger
+
+**Freigabe durch autorisierte Person:**  
+Michael Steer (Scrum Master)
 
 ---
 
@@ -20,9 +37,9 @@
 
 | **Version** | **Datum** | **Autor** | **Änderungsbeschreibung** |
 | --- | --- | --- | --- |
-| 1.0 | 06.02.2026 | Projektteam | Erstfassung des SQAP/SQAR |
-| 1.1 | 01.03.2026 | Projektteam | Konsistenzabgleich mit SVP, Traceability-Matrix und Testartefakten |
-| 2.0 | 02.03.2026 | Projektteam | **Umfassende Erweiterung:** Einleitung mit analytischer vs. konstruktiver QS, detaillierte Coding Rules (Abschnitt 2.3), erweiterte Audit-Beschreibungen (Abschnitt 3), umfassende Qualitätsmetriken (Abschnitt 9), ausführliche Lessons Learned (Abschnitt 10), detaillierte Verifikationsergebnisse (Abschnitt 7) |
+| 1.0 | 06.02.2026 | M.Steer | Erstfassung des SQAP/SQAR |
+| 1.1 | 01.03.2026 | M.Steer | Konsistenzabgleich mit SVP, Traceability-Matrix und Testartefakten |
+| 1.2 | 02.03.2026 | M.Steer | Finalversion zur Abgabe vorbereitet  |
 
 ---
 
