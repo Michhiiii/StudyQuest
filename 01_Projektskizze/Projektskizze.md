@@ -139,12 +139,13 @@ Durch eine frühzeitige Aufgabenverteilung, regelmäßige Abstimmungen im Team s
 
 ## 8. Randbedingungen
 ------------------
-- Projektzeitraum: zwei Trimester  
+- Projektzeitraum: Wintersemester 2025/2026 (30.10.2025 bis 10.03.2026)  
 - Teamgröße: 5 Personen  
-- Fokus auf Prozess und Dokumentation, keine vollständige Implementierung  
-- Einhaltung der im Modul „Software Engineering“ geforderten Vorgehensmodelle und Standards  
+- Fokus auf Prozess und Dokumentation, Prototypische Implementierung  
+- Einhaltung der im Modul "Software Engineering" geforderten Vorgehensmodelle und Standards  
 - Nutzung kostenloser Tools und Open-Source-Komponenten  
-- Datenschutz: Keine echten Personendaten im Prototyp  
+- Datenschutz: Keine echten Personendaten im Prototyp
+- **Abgabefrist:** 10. März 2026
 
 ## 9. Auswirkungen auf Stakeholder
 -------------------------------

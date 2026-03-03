@@ -151,13 +151,13 @@ Michael Steer (Scrum Master)
 
 | Meilenstein | Datum | Deliverables | Geschätzte h |
 |-------------|-------|-------------|-------------|
-| M1 | 17.10.2025 | Projektskizze, Kick-off | 15 |
-| M2 | 24.10.2025 | SDP, Risk Register | 15 |
-| M3 | 21.11.2025 | Requirements, Use Cases, Glossar | 55 |
-| M4 | 05.12.2025 | Grobdesign, UML, Sequenzdiagramme | 50 |
-| M5 | 10.01.2026 | Prototyp (Frontend + Core-Module), SDD | 175 |
-| M6 | 02.02.2026 | Test-Plan, Verifikationsmatrix, Testdurchführung | 110 |
-| M7 | 25.02.2026 | SQAP/SQAR, Dokumentation, Abgabe | 90 |
+| M1 | 30.10.2025 | Projektskizze, Kick-off | 15 |
+| M2 | 06.11.2025 | SDP, Risk Register | 15 |
+| M3 | 04.12.2025 | Requirements, Use Cases, Glossar | 55 |
+| M4 | 18.12.2025 | Grobdesign, UML, Sequenzdiagramme | 50 |
+| M5 | 23.01.2026 | Prototyp (Frontend + Core-Module), SDD | 175 |
+| M6 | 15.02.2026 | Test-Plan, Verifikationsmatrix, Testdurchführung | 110 |
+| M7 | 10.03.2026 | SQAP/SQAR, Dokumentation, Abgabe | 90 |
 | **GESAMT** | | | **510** |
 
 ---

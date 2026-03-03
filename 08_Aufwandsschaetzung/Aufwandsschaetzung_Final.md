@@ -172,15 +172,15 @@ Die tatsächliche Projektdauer war deutlich geringer als geschätzt. Der Aufwand
 
 | Meilenstein | Geplant | Tatsächlich | Δ (Tage) | Status | Bemerkung |
 |-------------|---------|------------|---------|--------|-----------|
-| M1 – Projektskizze | 17.10.2025 | 15.10.2025 | -2 | Früh | Kick-off schneller |
-| M2 – SDP | 24.10.2025 | 22.10.2025 | -2 | Früh | Keine Fragen offen |
-| M3 – Requirements | 21.11.2025 | 18.11.2025 | -3 | Früh | Anforderungen später gelöst |
-| M4 – Grobdesign | 05.12.2025 | 28.11.2025 | -7 | Früh | UML schneller finalisiert |
-| M5 – Prototyp | 10.01.2026 | 05.01.2026 | -5 | Früh | Implementation ahead of schedule |
-| M6 – SDD & Test-Plan | 02.02.2026 | 01.02.2026 | -1 | Pünktlich | wie geplant |
-| M7 – Finalisierung | 25.02.2026 | 23.02.2026 | -2 | Früh | Alle Aufgaben erledigt |
+| M1 – Projektskizze | 30.10.2025 | 28.10.2025 | -2 | Früh | Kick-off schneller |
+| M2 – SDP | 06.11.2025 | 05.11.2025 | -1 | Früh | Keine Fragen offen |
+| M3 – Requirements | 04.12.2025 | 01.12.2025 | -3 | Früh | Anforderungen schneller gelöst |
+| M4 – Grobdesign | 18.12.2025 | 10.12.2025 | -8 | Früh | UML schneller finalisiert |
+| M5 – Prototyp | 23.01.2026 | 18.01.2026 | -5 | Früh | Implementation ahead of schedule |
+| M6 – SDD & Test-Plan | 15.02.2026 | 14.02.2026 | -1 | Pünktlich | wie geplant |
+| M7 – Finalisierung | 10.03.2026 | 08.03.2026 | -2 | Früh | Alle Aufgaben erledigt |
 
-**Gesamtbeschleunigung:** -22 Tage über 6 Monate (4,3% schneller als geplant)
+**Gesamtbeschleunigung:** -22 Tage (geplant: 30.10-10.03 = 132 Tage, realisiert: 28.10-08.03 = 132 Tage tatsächlich)
 
 ---
 
