@@ -130,10 +130,10 @@ Michael Steer (Scrum Master)
 
 | Risiko | Eintrittswahrscheinlichkeit | Auswirkung | Strategie | Puffer (h) |
 |--------|---------------------------|-----------|----------|-----------|
-| Unklare oder sich ändernde Requirements | Mittel (30%) | Hoch | Frühe Klärung durch Anforderungskonferenzen | 20 |
+| Unklare oder sich ändernde Requirements | Mittel (30%) | Hoch | Frühe Klärung durch Anforderungskonferenzen | 30 |
 | Technische Probleme (LocalStorage, Browser-Kompatibilität) | Mittel (40%) | Mittel | Frühes Prototyping, Spike für technische Risiken | 25 |
 | Teamausfälle (Krankheit, andere verpflichtende Tasks) | Mittel (25%) | Hoch | Redundanter Fokus auf Dokumentation, Pair Programming | 20 |
-| Scope Creep durch Stakeholder-Anforderungen | Niedrig (15%) | Mittel | Striktes Change Management, Review-Gates | 10 |
+|
 
 **GESAMT RESERVE (15%):** 75 Stunden
 
