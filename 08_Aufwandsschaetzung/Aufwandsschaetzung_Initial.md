@@ -234,13 +234,13 @@ SDP (M2)
 **Pro Person (Durchschnitt pro Monat):**
 - Michael Steer: ~20h/Monat (120h Gesamt / 6 Monate)
   - Scrum Master: Koordination, Planning Poker, Design-Reviews, Verwaltung
-- Luke Engehardt: ~17h/Monat (100h Gesamt / 6 Monate)
+- Luke Engehardt: ~20h/Monat (120h Gesamt / 6 Monate)
   - Product Owner: Requirements-Refinement, Acceptance Criteria, Stakeholder-Management
-- Giuliana Carrano: ~30h/Monat (180h Gesamt / 6 Monate)
+- Giuliana Carrano: ~20h/Monat (120h Gesamt / 6 Monate)
   - Lead Developer: Frontend-Heavy, wegen UI/UX-Komplexität und Gamification-Features
-- Paul Strasser: ~15h/Monat (90h Gesamt / 6 Monate)
+- Paul Strasser: ~18h/Monat (110h Gesamt / 6 Monate)
   - Developer: Datenhaltung, Datenmodell, CSV-Import/Export
-- Roman Faber: ~15h/Monat (90h Gesamt / 6 Monate)
+- Roman Faber: ~18h/Monat (110h Gesamt / 6 Monate)
   - Developer: Test-Framework, Integration, QA-Dokumentation
 
 **Validierung der Schätzung:**
