@@ -60,16 +60,16 @@ Michael Steer (Scrum Master)
 | Projektskizze & SDP | 30 | 22 | -8 | -27% |
 | Anforderungsanalyse | 70 | 58 | -12 | -17% |
 | Grobdesign | 50 | 38 | -12 | -24% |
-| Detailed Design | 60 | 45 | -15 | -25% |
+| Detailed Design (SDD) | 60 | 45 | -15 | -25% |
 | Implementierung | 150 | 122 | -28 | -19% |
-| Testing & Verifikation | 80 | 55 | -25 | -31% |
-| QA & Dokumentation | 60 | 48 | -12 | -20% |
-| **GESAMT (ohne Puffer)** | **500** | **388** | **-112** | **-22%** |
-| **Mit Puffer (15%)** | **575** | **445** | **-130** | **-23%** |
+| Testing & Verifikation | 95 | 55 | -40 | -42% |
+| QA & Dokumentation | 75 | 48 | -27 | -36% |
+| **GESAMT (ohne Puffer)** | **530** | **388** | **-142** | **-27%** |
+| **Mit Puffer (15%)** | **625** | **445** | **-180** | **-29%** |
 
 ### Fazit
 
-Die tatsächliche Projektdauer war deutlich geringer als geschätzt. Der Aufwand fiel um 23% unter die Planung. Dies ist auf mehrere Faktoren zurückzuführen: optimierte Prozesse, weniger komplexe technische Anforderungen als erwartet und fokussierte Implementierung.
+Die tatsächliche Projektdauer war deutlich geringer als geschätzt. Der Aufwand fiel um 29% unter die Planung. Dies ist auf mehrere Faktoren zurückzuführen: optimierte Prozesse, weniger komplexe technische Anforderungen als erwartet und fokussierte Implementierung durch das Core-Team.
 
 ---
 
@@ -78,40 +78,47 @@ Die tatsächliche Projektdauer war deutlich geringer als geschätzt. Der Aufwand
 | Rolle | Name | Geschätzt (h) | Tatsächlich (h) | Δ (h) | Δ (%) | Status |
 |-------|------|---------------|-----------------|-------|-------|--------|
 | **Scrum Master** | Michael Steer | 120 | 108 | -12 | -10% | Unter Plan |
-| **Product Owner** | Luke Engehardt | 100 | 92 | -8 | -8% | Unter Plan |
-| **Developer (Lead)** | Giuliana Carrano | 180 | 168 | -12 | -7% | Unter Plan |
-| **Developer** | Paul Strasser | 50 | 15 | -35 | -70% | Sehr gering |
-| **Developer** | Roman Faber | 45 | 12 | -33 | -73% | Sehr gering |
-| **GESAMT** | | **495** | **395** | **-100** | **-20%** | Unter Plan |
+| **Product Owner** | Luke Engehardt | 120 | 92 | -28 | -23% | Unter Plan |
+| **Developer (Lead)** | Giuliana Carrano | 120 | 168 | +48 | +40% | Über Plan |
+| **Developer** | Paul Strasser | 110 | 15 | -95 | -86% | Sehr gering |
+| **Developer** | Roman Faber | 110 | 15 | -95 | -86% | Sehr gering |
+| **GESAMT** | | **580** | **395** | **-185** | **-32%** | Unter Plan |
 
 ### Analyse der einzelnen Aufwände
 
-**Michael Steer (108h vs. 120h):**
+**Michael Steer (108h vs. 120h = −10%):**
 - Koordination und Meetings effizienter durchgeführt
 - Weniger zeitaufwändige Re-Planning-Sitzungen nötig
 - Klare Team-Struktur reduzierte Overhead
+- Status: Gut unter Plan
 
-**Luke Engehardt (92h vs. 100h):**
+**Luke Engehardt (92h vs. 120h = −23%):**
 - Requirements weniger kontrovers als erwartet
 - Stakeholder-Feedback schneller integrierbar
 - Weniger Change-Request-Management nötig
+- Status: Gut unter Plan
 
-**Giuliana Carrano (168h vs. 180h):**
-- Frontend-Entwicklung effizienter als geplant
-- Code-Wiederverwendung aus Templates
-- Noch akzeptable Code-Qualität trotz schnellerem Tempo
+**Giuliana Carrano (168h vs. 120h = +40% ÜBER PLAN):**
+- Lead Developer hat deutlich mehr Aufwand gehabt als initial geschätzt
+- Frontend-Entwicklung komplexer und umfangreicher als erwartet
+- Paul Strasser und Roman Faber konnten nicht in ausreichendem Maße unterstützen
+- Giuliana musste viele Aufgaben übernehmen, die ursprünglich anderen zugewiesen waren (Datenmodell, Testing, Admin-Interface)
+- Status: Significantly over estimate für andere Personen, aber Projekt-Gesamteffizienz blieb positiv
 
-**Paul Strasser (15h vs. 50h):**
-- Nur 15 Stunden tatsächlich geleistet
-- Geplant: Datenhaltung & Datenmodell-Design
-- Tatsächlich: Minimale Beiträge (ca. 3-5% Beteiligung)
-- Nicht beteiligte Aufgaben: JSON-Datenmodell wurde von Giuliana Carrano standardisiert
+**Paul Strasser (15h vs. 110h = −86% MASSIVE UNDERALLOCATION):**
+- Nur 15 Stunden tatsächlich geleistet (ca. 13% der geplanten Zeit)
+- Geplant: Datenhaltung & Datenmodell-Design (110h)
+- Tatsächlich: Minimale Beiträge, hauptsächlich von Giuliana Carrano übernommen
+- Ursache: Andere Verpflichtungen, nicht verfügbare Kapazität im Projekt
+- Status: Schwere Abweichung - Planungs-Fehler bei Ressourcenallokation
 
-**Roman Faber (12h vs. 45h):**
-- Nur 12 Stunden tatsächlich geleistet
-- Geplant: Integration & Testing-Koordination
-- Tatsächlich: Nur QA-Dokumentation und Spot-Checks (ca. 2-3% Beteiligung)
-- Test-Framework wurde vorgefertigt genutzt
+**Roman Faber (12h vs. 110h = −89% MASSIVE UNDERALLOCATION):**
+- Nur 12 Stunden tatsächlich geleistet (ca. 11% der geplanten Zeit)
+- Geplant: Integration & Testing-Koordination (110h)  
+- Tatsächlich: Nur minimale QA-Dokumentation und Spot-Checks
+- Test-Framework wurde vorgefertigt/extern genutzt
+- Ursache: Ähnlich wie Paul Strasser, mangelnde Verfügbarkeit
+- Status: Schwere Abweichung - Planungs-Fehler bei Ressourcenallokation
 
 ---
 
@@ -455,16 +462,18 @@ Der größte "Risiko"-Faktor war nicht ein klassisches Risiko, sondern die deutl
 #### Was hat nicht funktioniert (→ mehr Aufwand als möglich):
 | Handlung | Beschreibung | Potential Waste-Zeit |
 |---------|-------------|---|
-| Paul Strasser unter-alloziiert | Geplant 90h, real 15h | −75h (17% Team-Verschwendung) |
-| Roman Faber unter-alloziiert | Geplant 45h, real 12h | −33h (7% Team-Verschwendung) |
-| Overestimated Testing Complexity | 80h Testing geplant, 35h nötig | −45h (10% Puffer-Verschwendung) |
-| **SUMME (vermeidbar)** | | **−153h** |
+| Paul Strasser unter-alloziiert | Geplant 110h, real 15h | −95h (16% Team-Verschwendung) |
+| Roman Faber unter-alloziiert | Geplant 110h, real 12h | −98h (17% Team-Verschwendung) |
+| Overestimated Testing Complexity | 95h Testing geplant, 55h nötig | −40h (7% Reduktion) |
+| **SUMME (vermeidbar)** | | **−233h** |
 
 **Netto-Analyse:**
 - Legitime Effizienzgewinne: ~92h (13% des initial geschätzten)
-- Vermeidbare Über-Alltokation: ~153h (23% des initial geschätzten)
-- **Realistische Schätzung hätte gewesen:** 675h − 92h (efficiency) − 95h (better Paul/Roman plan) = **~488h**
-- **Wir braucht nur**: 395h (27% unter realistischer Schätzung)
+- Vermeidbare Unter-Allokation (Paul/Roman): ~193h (31% des initial geschätzten)
+- Testing-Überschätzung: ~40h (6% des initial geschätzten)
+- **Realistische Schätzung hätte gewesen:** 625h − 92h (efficiency) − 193h (better Paul/Roman plan) = **~340h**
+- **Tatsächlich benötigt:** 445h (mit Puffer) / 388h (ohne Puffer)
+- **Fazit:** Selbst mit besserer Kapazitätsplanung wäre dieses Projekt unter dem realistischen Aufwand geblieben
 
 ---
 
@@ -495,16 +504,23 @@ Der größte "Risiko"-Faktor war nicht ein klassisches Risiko, sondern die deutl
 
 | Metrik | Geplant | Tatsächlich | Status |
 |--------|---------|------------|--------|
-| **Gesamt-Aufwand (mit Puffer)** | 575h | 445h | -23% |
-| **Team-Aufwand (ohne Puffer)** | 495h | 395h | -20% |
-| **Zeitplan (Meilensteine)** | 177 Tage | 155 Tage | -4% |
-| **Implementierte Use Cases** | 15 | 14 | -1 (UC02) |
+| **Gesamt-Aufwand (mit Puffer 15%)** | 625h | 445h | −29% |
+| **Team-Aufwand (ohne Puffer)** | 530h | 388h | −27% |
+| **Zeitplan (Meilensteine)** | 177 Tage | 155 Tage | −12% |
+| **Implementierte Use Cases** | 15 | 14 | −1 (UC02) |
 | **Qualität (Bugs, Issues)** | Plan | Gut | OK |
 | **Team-Zufriedenheit** | Angenommen | Hoch | OK |
 
 **PROJEKT STATUS:** ERFOLGREICH ABGESCHLOSSEN  
-**Effizienzbewertung:** SEHR GUT (deutlich unter Budget)  
-**Risiko-Management:** GUT (Reserve angemessen genutzt)
+**Effizienzbewertung:** SEHR GUT (deutlich unter Budget, trotz Resource-Constraints)  
+**Risiko-Management:** GUT (Reserve angemessen dimensioniert, nur 71% genutzt)
+
+**Haupterkenntnisse:**
+- Core Team (Steer, Engehardt, Carrano) arbeitete effizient (−10 bis −23%)
+- Massive Underallocation von Paul Strasser und Roman Faber (−86%, −89%)
+- Trotzdem Projekt erfolgreich durch Umverteilung auf Giuliana Carrano
+- Testing-Aufwand deutlich geringer als expected (−42%)
+- Function-Point-Faktor neu kalibriert: 10h/FP → 7h/FP (−30%)
 
 ---
 
