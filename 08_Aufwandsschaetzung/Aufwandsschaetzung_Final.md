@@ -64,8 +64,8 @@ Michael Steer (Scrum Master)
 | Implementierung | 150 | 122 | -28 | -19% |
 | Testing & Verifikation | 95 | 55 | -40 | -42% |
 | QA & Dokumentation | 75 | 48 | -27 | -36% |
-| **GESAMT (ohne Puffer)** | **530** | **388** | **-142** | **-27%** |
-| **Mit Puffer (15%)** | **625** | **445** | **-180** | **-29%** |
+| **GESAMT (ohne Puffer)** | **530** | **392** | **-138** | **-26%** |
+| **Mit Puffer (15%)** | **625** | **449** | **-176** | **-28%** |
 
 ### Fazit
 
@@ -82,15 +82,10 @@ Die tatsächliche Projektdauer war deutlich geringer als geschätzt. Der Aufwand
 | **Developer (Lead)** | Giuliana Carrano | 120 | 130 | +10 | +8% | Leicht über Plan |
 | **Developer** | Paul Strasser | 110 | 15 | -95 | -86% | Sehr gering |
 | **Developer** | Roman Faber | 110 | 15 | -95 | -86% | Sehr gering |
-| **GESAMT** | | **580** | **389** | **-191** | **-33%** | Unter Plan |
+| **GESAMT** | | **580** | **392** | **-188** | **-32%** | Unter Plan |
 
 ### Analyse der einzelnen Aufwände
 
-**Michael Steer (108h vs. 120h = −10%):**
-- Koordination und Meetings effizienter durchgeführt
-- Weniger zeitaufwändige Re-Planning-Sitzungen nötig
-- Klare Team-Struktur reduzierte Overhead
-- Status: Gut unter Plan
 **Michael Steer (140h vs. 120h = +17%):**
 - War nicht nur Scrum Master, sondern auch in der Entwicklung involviert
 - Unterstützte Giuliana Carrano und übernahm Frontend-Development-Tasks
@@ -104,12 +99,6 @@ Die tatsächliche Projektdauer war deutlich geringer als geschätzt. Der Aufwand
 - Weniger Change-Request-Management nötig
 - Status: Gut unter Plan
 
-**Giuliana Carrano (168h vs. 120h = +40% ÜBER PLAN):**
-- Lead Developer hat deutlich mehr Aufwand gehabt als initial geschätzt
-- Frontend-Entwicklung komplexer und umfangreicher als erwartet
-- Paul Strasser und Roman Faber konnten nicht in ausreichendem Maße unterstützen
-- Giuliana musste viele Aufgaben übernehmen, die ursprünglich anderen zugewiesen waren (Datenmodell, Testing, Admin-Interface)
-- Status: Significantly over estimate für andere Personen, aber Projekt-Gesamteffizienz blieb positiv
 **Giuliana Carrano (130h vs. 120h = +8%):**
 - Lead Developer für Frontend-Development und Datenmodell-Design
 - Frontend-Entwicklung war effizienter als initial befürchtet
@@ -118,14 +107,14 @@ Die tatsächliche Projektdauer war deutlich geringer als geschätzt. Der Aufwand
 - Status: Leicht über Plan, Aufwand proportional zur tatsächlichen Komplexität
 
 **Paul Strasser (15h vs. 110h = −86% MASSIVE UNDERALLOCATION):**
-- Nur 15 Stunden tatsächlich geleistet (ca. 13% der geplanten Zeit)
+- Nur 15 Stunden tatsächlich geleistet (ca. 14% der geplanten Zeit)
 - Geplant: Datenhaltung & Datenmodell-Design (110h)
 - Tatsächlich: Minimale Beiträge, hauptsächlich von Giuliana Carrano übernommen
 - Ursache: Andere Verpflichtungen, nicht verfügbare Kapazität im Projekt
 - Status: Schwere Abweichung - Planungs-Fehler bei Ressourcenallokation
 
-**Roman Faber (12h vs. 110h = −89% MASSIVE UNDERALLOCATION):**
-- Nur 12 Stunden tatsächlich geleistet (ca. 11% der geplanten Zeit)
+**Roman Faber (15h vs. 110h = −86% MASSIVE UNDERALLOCATION):**
+- Nur 15 Stunden tatsächlich geleistet (ca. 14% der geplanten Zeit)
 - Geplant: Integration & Testing-Koordination (110h)  
 - Tatsächlich: Nur minimale QA-Dokumentation und Spot-Checks
 - Test-Framework wurde vorgefertigt/extern genutzt
@@ -370,8 +359,8 @@ Der größte "Risiko"-Faktor war nicht ein klassisches Risiko, sondern die deutl
 
 | Kriterium | Geschätzt (Initial) | Tatsächlich (Final) | Δ | Δ (%) | Kategorie |
 |-----------|---|---|---|---|---|
-| **GESAMT AUFWAND** | 675h | 445h | −230h | −34% | Underestimate (zu konservativ) |
-| **ohne Puffer** | 580h | 395h | −185h | −32% | – |
+| **GESAMT AUFWAND** | 675h | 449h | −226h | −34% | Underestimate (zu konservativ) |
+| **ohne Puffer** | 580h | 392h | −188h | −32% | – |
 | Implementierung | 157h | 98h | −59h | −38% | Gutgeschätzt |
 | Testing | 80h | 35h | −45h | −56% | Überkonservativ |
 | Anforderungsanalyse | 70h | 48h | −22h | −31% | Überkonservativ |
@@ -488,11 +477,11 @@ Der größte "Risiko"-Faktor war nicht ein klassisches Risiko, sondern die deutl
 - **Fazit:** Selbst mit besserer Kapazitätsplanung wäre dieses Projekt unter dem realistischen Aufwand geblieben
 **Netto-Analyse:**
 - Legitime Effizienzgewinne: ~92h (13% des initial geschätzten)
-- Vermeidbare Unter-Allokation (Paul/Roman): ~193h (31% des initial geschätzten)
+- Vermeidbare Unter-Allokation (Paul/Roman): ~190h (30% des initial geschätzten)
 - Testing-Überschätzung: ~40h (7% des initial geschätzten)
 - Michael Steers Entwicklungs-Beitrag: +20h (Scrum Master wurde auch Developer)
-- **Realistische Schätzung hätte gewesen:** 625h − 92h (efficiency) − 193h (better Paul/Roman plan) = **~340h**
-- **Tatsächlich benötigt:** 445h (mit Puffer) / 389h (ohne Puffer)
+- **Realistische Schätzung hätte gewesen:** 625h − 92h (efficiency) − 190h (better Paul/Roman plan) = **~343h**
+- **Tatsächlich benötigt:** 449h (mit Puffer) / 392h (ohne Puffer)
 - **Fazit:** Selbst mit besserer Kapazitätsplanung wäre dieses Projekt unter dem realistischen Aufwand geblieben
 
 ---
@@ -524,8 +513,8 @@ Der größte "Risiko"-Faktor war nicht ein klassisches Risiko, sondern die deutl
 
 | Metrik | Geplant | Tatsächlich | Status |
 |--------|---------|------------|--------|
-| **Gesamt-Aufwand (mit Puffer 15%)** | 625h | 445h | −29% |
-| **Team-Aufwand (ohne Puffer)** | 530h | 388h | −27% |
+| **Gesamt-Aufwand (mit Puffer 15%)** | 625h | 449h | −28% |
+| **Team-Aufwand (ohne Puffer)** | 530h | 392h | −26% |
 | **Zeitplan (Meilensteine)** | 177 Tage | 155 Tage | −12% |
 | **Implementierte Use Cases** | 15 | 14 | −1 (UC02) |
 | **Qualität (Bugs, Issues)** | Plan | Gut | OK |
