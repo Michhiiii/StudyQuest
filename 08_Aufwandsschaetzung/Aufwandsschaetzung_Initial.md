@@ -1,7 +1,5 @@
 # Aufwandsschätzung StudyQuest – Initialschätzung (Oktober 2025)
 
-# Software Quality Assurance Plan & Report (SQAP/SQAR) – StudyQuest
-
 **Titel des Dokuments:**  
 Aufwandsschätzung Initial - StudyQuest
 
