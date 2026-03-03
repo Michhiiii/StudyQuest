@@ -43,11 +43,11 @@
 
 | Rolle | Name | Aufwand (h) | Anteil | Bemerkung |
 |-------|------|------------|--------|----------|
-| **Scrum Master** | Michael Steer | 120 | 15% | Koordination, Reviews, Dokumentation |
-| **Product Owner** | Luke Engehardt | 100 | 13% | Anforderungen, Prioritäten, Abnahme |
-| **Developer (Lead)** | Giuliana Carrano | 180 | 23% | Frontend, UI/UX, Architektur |
-| **Developer** | Paul Strasser | 90 | 11% | Datenhaltung, Datenmodell, Backend-Integration |
-| **Developer** | Roman Faber | 90 | 11% | Integration, Testing, QA-Koordination |
+| **Scrum Master** | Michael Steer | 120 | ~21% | Koordination, Reviews, Dokumentation |
+| **Product Owner** | Luke Engehardt | 120 | ~21% | Anforderungen, Prioritäten, Abnahme |
+| **Developer (Lead)** | Giuliana Carrano | 120 | ~21% | Frontend, UI/UX, Architektur |
+| **Developer** | Paul Strasser | 110 | ~19% | Datenhaltung, Datenmodell, Backend-Integration |
+| **Developer** | Roman Faber | 110 | ~19% | Integration, Testing, QA-Koordination |
 | **GESAMT** | | **580 Stunden** | **74%** | Zzgl. 95h Puffer |
 
 ---
