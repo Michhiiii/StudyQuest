@@ -42,7 +42,17 @@ Michael Steer (Scrum Master)
 | 1.2 | 02.03.2026 | M.Steer | Finalversion zur Abgabe vorbereitet  |
 
 ---
+## Distribution List
 
+| **Name**          | **Rolle**             | **Kommentar / Zuständigkeit**                 |
+|--------------------|-----------------------|-----------------------------------------------|
+| Sascha Wanninger   | Prüfer / Betreuer     | Bewertung im Rahmen des Moduls                |
+| Michael Steer      | Scrum Master          | Koordination & Freigabe                       |
+| Luke Engehardt     | Product Owner         | Anforderungen, Dokumentation & Technische Dokumentation                  |
+| Giuliana Carrano   | Developer             | Projektskizze, Dokumentation, Architektur & UML                   |
+| Paul Strasser      | Developer             |                      |
+| Roman Faber        | Developer             |                            |
+---
 # TEIL I: SOFTWARE QUALITY ASSURANCE PLAN (SQAP)
 
 ## 1. Einleitung und Anwendungsbereich
