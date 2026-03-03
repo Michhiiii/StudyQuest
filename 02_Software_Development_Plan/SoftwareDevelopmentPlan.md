@@ -134,7 +134,7 @@ Verbesserungsmaßnahmen werden für den nächsten Sprint festgehalten.
 | **M3 – Anforderungsanalyse** | 21.11.2025 | Funktionale und nicht-funktionale Anforderungen, Use Cases, Systemgrenzen | `Requirements.md` / `UseCases.md` |
 | **M4 – Grobdesign & Architektur** | 05.12.2025 | Analyseklassenmodell, Sequenzdiagramme, Architektur und Patterns | `Analyseklassenmodell.md` / `Sequenzdiagramme.md` / `Softwarearchitektur.md` |
 | **M5 – Prototyp Implementierung** | 10.01.2026 | Kernfunktionen, Gamification, UI, Datenhaltung als lauffähiger Prototyp | `src/` |
-| **M6 – Verifikation & QA** | 02.02.2026 | Testplan, Testfälle, Traceability und Qualitätssicherung | `SVP_StudyQuest.md` / `SVP_StudyQuest_Traceability_Matrix.csv` / `SQAP_SQAR_StudyQuest.md` / `SQAR_StudyQuest.md` / `tests/` |
+| **M6 – Verifikation & QA** | 02.02.2026 | Testplan, Testfälle, Traceability und Qualitätssicherung | `SVP_StudyQuest.md` / `SVP_StudyQuest_Traceability_Matrix.csv` / `SQAP_SQAR_StudyQuest.md` / `tests/` |
 | **M7 – Abschluss & Dokumentation** | 25.02.2026 | Finalisierung der Doku, Reviews, Retrospektive und Abgabe | `Software_Design_Document.md` / `README.md` |
 
 ---

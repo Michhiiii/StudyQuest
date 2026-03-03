@@ -153,7 +153,7 @@ Das Analyseklassenmodell basiert auf den Anforderungen aus der Anforderungsanaly
 | `quest_id` | String | Referenz zu Quest |
 | `xp_earned` | Integer | Verdiente XP (+ Timer-Bonus) |
 | `duration_seconds` | Integer | Zeitaufwand in Sekunden |
-| `timer_bonus_applied` | Boolean | Wurde <10min-Bonus angewendet? |
+| `timer_bonus_applied` | Boolean | Wurde Timer-Bonus angewendet? |
 | `completed_at` | DateTime | Abschluss-Zeitstempel |
 | `started_at` | DateTime | Start-Zeitstempel |
 
@@ -162,7 +162,7 @@ Das Analyseklassenmodell basiert auf den Anforderungen aus der Anforderungsanaly
 | Methode | Parameter | Rückgabe | Beschreibung |
 |---------|-----------|----------|-------------|
 | `calculateDuration()` | - | Integer | Berechnet Dauer in Sekunden |
-| `applyTimerBonus()` | baseXP | Integer | +25% XP wenn < 10 min |
+| `applyTimerBonus()` | baseXP | Integer | duration_minutes × xp_per_minute_timer (linearer Timer-Bonus) |
 | `logSession()` | - | Boolean | Speichert Session in DB |
 
 **Assoziationen:**
@@ -294,7 +294,7 @@ Das Analyseklassenmodell basiert auf den Anforderungen aus der Anforderungsanaly
 | `medium_xp` | Integer | XP für mittlere Quests (default: 100) |
 | `hard_xp` | Integer | XP für schwere Quests (default: 150) |
 | `level_threshold` | Integer | XP für Level-Up (default: 500) |
-| `timer_bonus_percent` | Integer | Bonus für <10min (default: 25%) |
+| `xp_per_minute_timer` | Integer | XP pro Minute Timer-Bonus (default: 2) |
 | `max_level` | Integer | Maximales Level (default: 50) |
 | `updated_at` | DateTime | Letzte Regeländerung |
 
@@ -362,8 +362,8 @@ Das Analyseklassenmodell basiert auf den Anforderungen aus der Anforderungsanaly
 
 | Use Case | Beteiligte Klassen | Hauptfluss |
 |----------|------------------|-----------|
-| UC01 - Register | User | User.register() → Email validieren |
-| UC02 - Login | User | User.login() → Session starten |
+| UC01 - Registrieren & Einloggen | User | User.register() → Email validieren |
+| UC02 - Passwort zurücksetzen | User | User.login() → Session starten |
 | UC03 - Profil | User | User.updateProfile() → Daten speichern |
 | UC04 - Quest Start | User, Quest | User.setActiveQuest(), Quest.getQuestInfo() |
 | UC05 - Quest Complete | User, Quest, LearningSession, GameRule, Achievement | User.addXP(), LearningSession.logSession(), Achievement.checkUnlock() |

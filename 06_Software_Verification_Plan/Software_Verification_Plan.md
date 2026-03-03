@@ -39,10 +39,10 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
-| 1.0          | 17.10.2025  | M. Steer          | Erstfassung der Projektskizze erstellt      |
+| 1.0          | 17.10.2025  | M. Steer          | Erstfassung des Software Verification Plans erstellt      |
 | 1.1          | 30.10.2025            | M. Steer          | Änderungen nach Review            |
-| 1.2 | 13.01.2026 | M. Steer | Änpassung an v1.0 | 
-| 1.2          | 28.02.2026            | M.Steer                  | Finalversion zur Abgabe vorbereitet         |
+| 1.2 | 13.01.2026 | M. Steer | Anpassung an v1.0 | 
+| 1.3          | 28.02.2026            | M. Steer                  | Finalversion zur Abgabe vorbereitet         |
 
 ---
 

@@ -306,21 +306,21 @@ test('User login with correct credentials should succeed', () => {
 
 | **Use Case** | **Titel** | **Testfall-IDs** | **Status** | **Bemerkungen** |
 |---|---|---|---|---|
-| UC01 | Registrierung | TC-UC01-01 bis -04 |  Verifiziert | Happy Path + Validierung |
-| UC02 | Login/Logout | TC-UC02-01 bis -03 |  Deviation | Passwort-Reset fehlt (UC02-F3) |
-| UC03 | Profil bearbeiten | TC-UC03-01 bis -03 |  Verifiziert | Avatar, Settings |
-| UC04 | Quest erstellen | TC-UC04-01 bis -05 |  Verifiziert | Titel, Beschreibung, Deadline |
-| UC05 | Quest abschließen | TC-UC05-01 bis -04 |  Verifiziert | XP-Vergabe, Level-Up |
-| UC06 | Lernzeit tracken | TC-UC06-01 bis -04 |  Deviation | Timer Pause/Resume fehlt (F3, F7) |
-| UC07 | Note hinzufügen | TC-UC07-01 bis -04 |  Deviation | Notendurchschnitt fehlt (F4) |
-| UC08 | Note bearbeiten | TC-UC08-01 bis -03 |  Deviation | Notenstatistik fehlt (F5) |
-| UC09 | Benachrichtigungen | TC-UC09-01 bis -04 |  Deviation | Settings + Zustellung fehlen (F1-F3, NF2) |
-| UC10 | Leaderboard anzeigen | TC-UC10-01 bis -03 |  Verifiziert | Ranking, Filter |
-| UC11 | Achievements anzeigen | TC-UC11-01 bis -03 |  Verifiziert | Badge-Anzeige |
-| UC12 | Dashboard anzeigen | TC-UC12-01 bis -03 |  Verifiziert | Quest-Übersicht, XP-Anzeige |
-| UC13 | Admin: User verwalten | TC-UC13-01 bis -03 |  Deviation | Versionierung fehlt (NF3, NF4) |
-| UC14 | Admin: Quests moderieren | TC-UC14-01 bis -03 |  Deviation | NF2 (Auditlog) fehlt |
-| UC15 | Admin: System-Reports | TC-UC15-01 bis -03 |  Deviation | NF2 (Export) fehlt |
+| UC01 | Registrieren und Einloggen | TC-UC01-01 bis -04 |  Verifiziert | Happy Path + Validierung |
+| UC02 | Passwort zurücksetzen | TC-UC02-01 bis -03 |  Deviation | UC02 komplett nicht implementiert (F1-F4, NF1-NF2) |
+| UC03 | Profil & Einstellungen verwalten | TC-UC03-01 bis -03 |  Verifiziert | Avatar, Settings |
+| UC04 | Lernquest starten | TC-UC04-01 bis -05 |  Verifiziert | Titel, Beschreibung, Deadline |
+| UC05 | Lernquest abschließen (XP & Level-Up) | TC-UC05-01 bis -04 |  Verifiziert | XP-Vergabe, Level-Up |
+| UC06 | Lern-Session per Timer tracken | TC-UC06-01 bis -04 |  Deviation | Timer Pause/Resume fehlt (F3, F7) |
+| UC07 | Noten & Module verwalten | TC-UC07-01 bis -04 |  Deviation | Notendurchschnitt fehlt (F4) |
+| UC08 | Fortschritt & Dashboard einsehen | TC-UC08-01 bis -03 |  Deviation | Notenstatistik fehlt (F5) |
+| UC09 | Benachrichtigungen & Reminder verwalten | TC-UC09-01 bis -04 |  Deviation | Settings + Zustellung fehlen (F1-F3, NF2) |
+| UC10 | Noten importieren oder exportieren | TC-UC10-01 bis -03 |  Verifiziert | Ranking, Filter |
+| UC11 | Achievements / Badges freischalten | TC-UC11-01 bis -03 |  Verifiziert | Badge-Anzeige |
+| UC12 | Leaderboard & Streaks anzeigen | TC-UC12-01 bis -03 |  Verifiziert | Quest-Übersicht, XP-Anzeige |
+| UC13 | Quest-Katalog verwalten | TC-UC13-01 bis -03 |  Deviation | Versionierung fehlt (NF3, NF4) |
+| UC14 | XP- und Levelregeln konfigurieren | TC-UC14-01 bis -03 |  Deviation | NF2 (Auditlog) fehlt |
+| UC15 | Benutzerkonten administrieren | TC-UC15-01 bis -03 |  Deviation | NF2 (Protokollierung/Auditlog) fehlt |
 
 **Verifikationsmethoden:**
 - **Manuelle Tests:** UI-Workflows durchgespielt

@@ -1,4 +1,4 @@
-# Requirements – StudyQuest
+﻿# Requirements – StudyQuest
 
 ---
 
@@ -80,12 +80,12 @@ Michael Steer (Scrum Master)
 ## UC02 – Passwort zurücksetzen
 | **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
 |--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
-| UC02-F1 | Funktional | System muss über „Passwort vergessen“ eine E-Mail zum Zurücksetzen anfordern lassen. | Nutzer:innen benötigen Wiederherstellungsmöglichkeit. | Klick auf „Passwort vergessen“ führt zu E-Mail-Versand. | Nutzer:in | Muss | Implementiert & Getestet |
-| UC02-F2 | Funktional | System muss einen zeitlich begrenzten Token generieren und versenden. | Schutz vor Missbrauch alter Links. | Token ist 30 min gültig, danach ungültig. | Entwicklerteam | Muss | Implementiert & Getestet |
-| UC02-F3 | Funktional | Über den Link kann ein neues Passwort gesetzt werden. | Sicheres Zurücksetzen gewährleistet Kontowiederherstellung. | Eingabe und Bestätigung neuen Passworts erfolgreich möglich. | Nutzer:in | Muss | Implementiert & Getestet |
-| UC02-F4 | Funktional | Nach Setzen des neuen Passworts muss das alte ungültig sein. | Erhöht Systemsicherheit. | Login mit altem Passwort schlägt fehl. | Security Officer | Muss | Implementiert & Getestet |
-| UC02-NF1 | Nicht-funktional | Antwort bei „Passwort vergessen“ ist immer neutral. | Verhindert, dass Außenstehende Nutzerkonten erkennen. | System meldet stets „E-Mail gesendet, falls registriert“. | Security Officer | Muss | Implementiert & Getestet |
-| UC02-NF2 | Nicht-funktional | Reset-Link hat Ablaufzeit. | Minimiert Risiko kompromittierter Tokens. | Link läuft nach 30 min automatisch ab. | Entwicklerteam | Muss | Implementiert & Getestet |
+| UC02-F1 | Funktional | System muss über „Passwort vergessen“ eine E-Mail zum Zurücksetzen anfordern lassen. | Nutzer:innen benötigen Wiederherstellungsmöglichkeit. | Klick auf „Passwort vergessen“ führt zu E-Mail-Versand. | Nutzer:in | Muss | Nicht implementiert (Deviation) |
+| UC02-F2 | Funktional | System muss einen zeitlich begrenzten Token generieren und versenden. | Schutz vor Missbrauch alter Links. | Token ist 30 min gültig, danach ungültig. | Entwicklerteam | Muss | Nicht implementiert (Deviation) |
+| UC02-F3 | Funktional | Über den Link kann ein neues Passwort gesetzt werden. | Sicheres Zurücksetzen gewährleistet Kontowiederherstellung. | Eingabe und Bestätigung neuen Passworts erfolgreich möglich. | Nutzer:in | Muss | Nicht implementiert (Deviation) |
+| UC02-F4 | Funktional | Nach Setzen des neuen Passworts muss das alte ungültig sein. | Erhöht Systemsicherheit. | Login mit altem Passwort schlägt fehl. | Security Officer | Muss | Nicht implementiert (Deviation) |
+| UC02-NF1 | Nicht-funktional | Antwort bei „Passwort vergessen“ ist immer neutral. | Verhindert, dass Außenstehende Nutzerkonten erkennen. | System meldet stets „E-Mail gesendet, falls registriert“. | Security Officer | Muss | Nicht implementiert (Deviation) |
+| UC02-NF2 | Nicht-funktional | Reset-Link hat Ablaufzeit. | Minimiert Risiko kompromittierter Tokens. | Link läuft nach 30 min automatisch ab. | Entwicklerteam | Muss | Nicht implementiert (Deviation) |
 
 ---
 
@@ -134,15 +134,26 @@ Michael Steer (Scrum Master)
 |--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
 | UC06-F1 | Funktional | System ermöglicht Start eines Lern-Timers. | Nutzer:innen wollen Fokuszeiten messen. | Klick auf „Start“ startet Timer. | Nutzer:in | Muss | Implementiert & Getestet |
 | UC06-F2 | Funktional | System speichert Startzeit und Laufzeit. | Grundlage für XP-Berechnung. | Startzeit in Datenbank protokolliert. | Entwicklerteam | Muss | Implementiert & Getestet |
-| UC06-F3 | Funktional | System ermöglicht Pausieren und Fortsetzen. | Erhöht Flexibilität. | Timer reagiert korrekt auf Pause/Fortsetzen. | UX-Designer | Soll | Implementiert & Getestet |
+| UC06-F3 | Funktional | System ermöglicht Pausieren und Fortsetzen. | Erhöht Flexibilität. | Timer reagiert korrekt auf Pause/Fortsetzen. | UX-Designer | Soll | Nicht implementiert (Deviation) |
 | UC06-F4 | Funktional | System berechnet und speichert Gesamtdauer beim Stoppen. | Dient späterer Analyse. | Dauer = Stop-Zeit − Start-Zeit. | Entwicklerteam | Muss | Implementiert & Getestet |
 | UC06-F5 | Funktional | System vergibt optional XP nach Lernzeit. | Motivation durch Belohnung. | XP = 1 / 5 Minuten gespeichert. | Product Owner | Soll | Implementiert & Getestet |
 | UC06-F6 | Funktional | Nur ein aktiver Timer pro Nutzer:in erlaubt. | Vermeidung doppelter Sessions. | Zweiter Startversuch blockiert. | Entwicklerteam | Muss | Implementiert & Getestet |
-| UC06-F7 | Funktional | System puffert Zeitdaten bei Verbindungsabbruch. | Datensicherheit bei Offline-Nutzung. | Synchronisierung nach Reconnect erfolgreich. | Entwicklerteam | Soll | Implementiert & Getestet |
+| UC06-F7 | Funktional | System puffert Zeitdaten bei Verbindungsabbruch. | Datensicherheit bei Offline-Nutzung. | Synchronisierung nach Reconnect erfolgreich. | Entwicklerteam | Soll | Nicht implementiert (Deviation) |
 | UC06-NF1 | Nicht-funktional | Zeitabweichung ≤ 1 Minute. | Genauigkeit. | Vergleich UI/DB ≤ 1 Minute Differenz. | Tester | Soll | Implementiert & Getestet |
 | UC06-NF2 | Nicht-funktional | Timerdaten bleiben nach Reload erhalten. | Benutzerfreundlichkeit. | Refresh des Tabs erhält Timerstatus. | UX-Tester | Soll | Implementiert & Getestet |
 | UC06-NF3 | Nicht-funktional | Alle Timeraktionen werden protokolliert. | Nachvollziehbarkeit. | Logs für Start/Pause/Stop vorhanden. | Entwicklerteam | Soll | Implementiert & Getestet |
 | UC06-NF4 | Nicht-funktional | Reaktionszeit ≤ 1 Sekunde. | Responsives UI. | Messung bestätigt Reaktionszeit ≤ 1 Sekunde. | Tester | Soll | Implementiert & Getestet |
+
+## UC07 – Noten & Module verwalten
+| **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
+|--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
+| UC07-F1 | Funktional | System ermöglicht das Eintragen neuer Noten inkl. Modul und Bewertung. | Zentrale Funktion der Notenverwaltung. | Note wird korrekt gespeichert und in Übersicht angezeigt. | Nutzer:in | Muss | Implementiert & Getestet |
+| UC07-F2 | Funktional | Eingetragene Noten können bearbeitet werden. | Korrekturmöglichkeit bei Fehleinträgen. | Geänderte Note wird korrekt aktualisiert. | Nutzer:in | Muss | Implementiert & Getestet |
+| UC07-F3 | Funktional | Eingetragene Noten können gelöscht werden. | Nutzer:innen sollen veraltete Einträge entfernen können. | Note wird entfernt und nicht mehr angezeigt. | Nutzer:in | Muss | Implementiert & Getestet |
+| UC07-F4 | Funktional | System berechnet automatisch den Notendurchschnitt. | Schnelle Übersicht über Leistungsstand. | Durchschnitt wird korrekt aus allen eingetragenen Noten berechnet. | Product Owner | Soll | Nicht implementiert (Deviation) |
+| UC07-F5 | Funktional | Notenübersicht wird nach Änderungen automatisch aktualisiert. | Konsistente Anzeige. | Änderung einer Note führt zu sofortiger Aktualisierung der Liste. | Entwicklerteam | Muss | Implementiert & Getestet |
+| UC07-NF1 | Nicht-funktional | Änderungen an Noten werden in Echtzeit angezeigt. | Benutzerfreundlichkeit. | UI aktualisiert sich ohne Neuladen der Seite. | UX-Tester | Soll | Implementiert & Getestet |
+| UC07-NF2 | Nicht-funktional | Datenkonsistenz bei gleichzeitigen Änderungen gewährleistet. | Zuverlässigkeit. | Keine Datenverluste bei schnellen Aufeinanderfolgen von Operationen. | Entwicklerteam | Muss | Implementiert & Getestet |
 
 ---
 
@@ -153,7 +164,7 @@ Michael Steer (Scrum Master)
 | UC08-F2 | Funktional | Dashboard zeigt aktuellen XP-Stand. | Nutzer:innen wollen Fortschritt erkennen. | XP-Wert entspricht gespeicherter Datenbankwert. | Entwicklerteam | Muss | Implementiert & Getestet |
 | UC08-F3 | Funktional | Dashboard zeigt Nutzerlevel. | Gamifizierungsmotivator. | Levelanzeige stimmt mit XP-Regeln überein. | Product Owner | Muss | Implementiert & Getestet |
 | UC08-F4 | Funktional | Dashboard zeigt aktive & abgeschlossene Quests. | Vollständige Übersicht. | Alle Quests korrekt aufgelistet. | Nutzer:in | Soll | Implementiert & Getestet |
-| UC08-F5 | Funktional | Dashboard zeigt Notenstatistik. | Kombinierte Lern- & Leistungsübersicht. | Anzeige Durchschnitt und Module. | Product Owner | Soll | Implementiert & Getestet |
+| UC08-F5 | Funktional | Dashboard zeigt Notenstatistik. | Kombinierte Lern- & Leistungsübersicht. | Anzeige Durchschnitt und Module. | Product Owner | Soll | Nicht implementiert (Deviation) |
 | UC08-NF1 | Nicht-funktional | Dashboard lädt vollständig ≤ 2 Sekunden. | Schnelle Reaktionszeit. | Messung zeigt Ladezeit ≤ 2 s. | UX-Tester | Muss | Implementiert & Getestet |
 | UC08-NF2 | Nicht-funktional | Dashboard funktioniert auf allen unterstützten Browsern. | Plattformunabhängigkeit. | Darstellung getestet auf Chrome, Firefox, Safari. | QA-Team | Soll | Implementiert & Getestet |
 
@@ -162,12 +173,12 @@ Michael Steer (Scrum Master)
 ## UC09 – Benachrichtigungen & Reminder verwalten
 | **ID** | **Type** | **Description** | **Rationale** | **Fit Criterion** | **Source** | **Priority** | **Status** |
 |--------|-----------|-----------------|----------------|-------------------|-------------|--------------|-------------|
-| UC09-F1 | Funktional | System ermöglicht Öffnen der Benachrichtigungseinstellungen. | Nutzerkontrolle über Hinweise. | Menüpunkt „Benachrichtigungen“ erreichbar. | Nutzer:in | Muss | Implementiert & Getestet |
-| UC09-F2 | Funktional | Nutzer:innen können Lern-Erinnerungen aktivieren/deaktivieren. | Anpassbare Motivation. | Schalter ändert Status erfolgreich. | Nutzer:in | Soll | Implementiert & Getestet |
-| UC09-F3 | Funktional | Nutzer:innen können Quest-Benachrichtigungen steuern. | Reduktion unnötiger Meldungen. | Einstellungen persistieren nach Reload. | Nutzer:in | Soll | Implementiert & Getestet |
+| UC09-F1 | Funktional | System ermöglicht Öffnen der Benachrichtigungseinstellungen. | Nutzerkontrolle über Hinweise. | Menüpunkt „Benachrichtigungen“ erreichbar. | Nutzer:in | Muss | Nicht implementiert (Deviation) |
+| UC09-F2 | Funktional | Nutzer:innen können Lern-Erinnerungen aktivieren/deaktivieren. | Anpassbare Motivation. | Schalter ändert Status erfolgreich. | Nutzer:in | Soll | Nicht implementiert (Deviation) |
+| UC09-F3 | Funktional | Nutzer:innen können Quest-Benachrichtigungen steuern. | Reduktion unnötiger Meldungen. | Einstellungen persistieren nach Reload. | Nutzer:in | Soll | Nicht implementiert (Deviation) |
 | UC09-F4 | Funktional | Änderungen werden gespeichert. | Konsistente Erfahrung. | Datenbankeintrag aktualisiert. | Entwicklerteam | Muss | Implementiert & Getestet |
 | UC09-NF1 | Nicht-funktional | Änderungen wirken sofort. | Echtzeitfeedback. | Notification-Status ohne Reload übernommen. | Entwicklerteam | Soll | Implementiert & Getestet |
-| UC09-NF2 | Nicht-funktional | Benachrichtigungen werden zuverlässig zugestellt. | Systemvertrauen. | Testmeldungen erscheinen korrekt per Push/E-Mail. | QA-Team | Muss | Implementiert & Getestet |
+| UC09-NF2 | Nicht-funktional | Benachrichtigungen werden zuverlässig zugestellt. | Systemvertrauen. | Testmeldungen erscheinen korrekt per Push/E-Mail. | QA-Team | Muss | Nicht implementiert (Deviation) |
 
 ---
 
@@ -215,8 +226,8 @@ Michael Steer (Scrum Master)
 | UC13-F6 | Funktional | Katalog aktualisiert sich nach Änderungen. | Aktuelle Ansicht. | Refresh zeigt neue Daten. | Entwicklerteam | Soll | Implementiert & Getestet |
 | UC13-NF1 | Nicht-funktional | Änderungen sichtbar ≤ 2 Sekunden. | Reaktionszeit. | UI-Update ≤ 2 s. | QA-Team | Soll | Implementiert & Getestet |
 | UC13-NF2 | Nicht-funktional | Nur eingeloggte Admins dürfen Änderungen durchführen. | Sicherheit. | Auth-Prüfung vor CRUD-Operationen. | Security Officer | Muss | Implementiert & Getestet |
-| UC13-NF3 | Nicht-funktional | Änderungen werden versioniert gespeichert. | Nachvollziehbarkeit. | Versionslog pro Änderung. | Entwicklerteam | Soll | Implementiert & Getestet |
-| UC13-NF4 | Nicht-funktional | Konflikte bei gleichzeitiger Bearbeitung werden korrekt behandelt. | Datenintegrität. | Merge-Konflikte automatisch gelöst oder gemeldet. | Entwicklerteam | Soll | Implementiert & Getestet |
+| UC13-NF3 | Nicht-funktional | Änderungen werden versioniert gespeichert. | Nachvollziehbarkeit. | Versionslog pro Änderung. | Entwicklerteam | Soll | Nicht implementiert (Deviation) |
+| UC13-NF4 | Nicht-funktional | Konflikte bei gleichzeitiger Bearbeitung werden korrekt behandelt. | Datenintegrität. | Merge-Konflikte automatisch gelöst oder gemeldet. | Entwicklerteam | Soll | Nicht implementiert (Deviation) |
 
 ---
 
@@ -229,7 +240,7 @@ Michael Steer (Scrum Master)
 | UC14-F4 | Funktional | Geänderte Regeln werden gespeichert und aktiv. | Sofortige Wirkung. | Neue Regeln gelten nach Speichern. | Entwicklerteam | Soll | Implementiert & Getestet |
 | UC14-F5 | Funktional | Änderungen gelten sofort global. | Einheitliches Verhalten. | Nutzer:innen sehen direkt neue Werte. | Entwicklerteam | Soll | Implementiert & Getestet |
 | UC14-NF1 | Nicht-funktional | Änderungen verursachen keine Dateninkonsistenz. | Systemstabilität. | Tests nach Regelupdate bestehen. | QA-Team | Muss | Implementiert & Getestet |
-| UC14-NF2 | Nicht-funktional | Regeländerungen werden protokolliert. | Nachvollziehbarkeit. | Änderungslog mit Zeitstempel. | Entwicklerteam | Soll | Implementiert & Getestet |
+| UC14-NF2 | Nicht-funktional | Regeländerungen werden protokolliert. | Nachvollziehbarkeit. | Änderungslog mit Zeitstempel. | Entwicklerteam | Soll | Nicht implementiert (Deviation) |
 | UC14-NF3 | Nicht-funktional | Speichern dauert ≤ 2 Sekunden. | Performance. | Zeitmessung ≤ 2 s. | Tester | Soll | Implementiert & Getestet |
 | UC14-NF4 | Nicht-funktional | Zugriff nur für autorisierte Admins. | Sicherheit. | Authentifizierung erfolgreich geprüft. | Security Officer | Muss | Implementiert & Getestet |
 
@@ -244,7 +255,7 @@ Michael Steer (Scrum Master)
 | UC15-F4 | Funktional | System erlaubt Löschen, Sperren, Reaktivieren von Konten. | Kontrolle über Systemzugänge. | Statusänderung wird gespeichert. | Admin | Muss | Implementiert & Getestet |
 | UC15-F5 | Funktional | System aktualisiert Kontostatus nach Änderungen. | Konsistenz. | Neue Statusanzeige korrekt im UI. | Entwicklerteam | Soll | Implementiert & Getestet |
 | UC15-NF1 | Nicht-funktional | Nur autorisierte Admins dürfen Änderungen durchführen. | Sicherheit. | Rollenprüfung vor Aktion. | Security Officer | Muss | Implementiert & Getestet |
-| UC15-NF2 | Nicht-funktional | Änderungen werden protokolliert. | Nachvollziehbarkeit. | Log-Eintrag mit Admin-ID und Aktion. | Entwicklerteam | Soll | Implementiert & Getestet |
+| UC15-NF2 | Nicht-funktional | Änderungen werden protokolliert. | Nachvollziehbarkeit. | Log-Eintrag mit Admin-ID und Aktion. | Entwicklerteam | Soll | Nicht implementiert (Deviation) |
 | UC15-NF3 | Nicht-funktional | Reaktionszeit ≤ 2 Sekunden. | Benutzerfreundlichkeit. | Änderung bestätigt in ≤ 2 s. | QA-Team | Soll | Implementiert & Getestet |
 
 ---
@@ -280,7 +291,7 @@ Michael Steer (Scrum Master)
 | **Leaderboard** | Rangierungstabelle, die Nutzer nach 4 verschiedenen Kriterien sortiert: XP, Level, abgeschlossene Quests, Streak. Das Leaderboard fördert kompetitives Lernen. | UC12. Beispiel: Top 10 nach XP, mit Medallenmarkierungen (🥇 1., 🥈 2., 🥉 3.). |
 | **Gamification** | Einsatz spieltypischer Elemente (Punkte, Levels, Badges, Rankings) zur Motivationssteigerung in nicht-Spiel-Kontexten. In StudyQuest: XP als Punkte, Level als Progression, Achievements als Abzeichen. | Projektkonzept über alle Use Cases. |
 | **Learning Session / Lernsession** | Aufzeichnung eines Quest-Abschlusses oder einer Lernzeit mit Zeitstempel, Dauer und verdientem XP. Sessions dienen als Audit-Trail und werden für Datenanalyse gespeichert. | UC05, UC06, UC08. Beispiel: "JS Basics Quest am 24.02.2026 15:30–15:45, 50+25 XP Bonus". |
-| **Timer-Bonus** | Zusätzliche XP (Standard: +25%) für das Abschließen einer Quest oder Lernzeit in unter 10 Minuten. Bonus fördert konzentriertes, effizientes Lernen. | UC06. Beispiel: Quest mit 100 XP in 8 Minuten = 100 + 25 = 125 XP. |
+| **Timer-Bonus** | Zusätzliche XP basierend auf der Lernzeit: `duration_minutes × xp_per_minute_timer` (konfigurierbar über GameRules). Je länger die fokussierte Lernsession, desto höher der Zeitbonus. Fördert konzentriertes, ausdauerndes Lernen. | UC06. Beispiel: Quest mit 100 XP in 8 Minuten = 100 + (8 × 2) = 116 XP. |
 | **Admin Panel** | Administrationsbereich, in dem nur Admins Quests erstellen/editieren, Spielregeln konfigurieren und Benutzer verwalten können. Zugang ist rollenbasiert (UC01-NF1). | UC13-UC15. Beispiel-Funktionen: "Neue Quest erstellen", "XP-Regeln ändern". |
 | **Role-Based Access Control (RBAC)** | Zugriffskontrollmechanismus basierend auf Benutzerrollen (Studierende / Admin). Bestimmte Funktionen sind nur für spezifische Rollen verfügbar. | UC01-UC03 (Studierende), UC13-UC15 (Admin). |
 | **CSV (Comma-Separated Values)** | Dateiformat für den strukturierten Im- und Export von Schlüsseldaten (hier: Schulnoten). CSV-Dateien sind plattformübergreifend lesbar (Excel, LibreOffice, Google Sheets). | UC10. Beispiel: "Modul,Note,Semester" Header mit Notenzeilen. |

@@ -37,7 +37,7 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum** | **Autor** | **Änderungsbeschreibung** |
 | --- | --- | --- | --- |
-| 1.0 | 06.02.2026 | M.Steer | Erstfassung des SQAP/SQAR |
+| 1.0 | 06.02.2026 | M.Steer | Erstfassung der Aufwandsschätzung (Initial) |
 | 1.2 | 03.03.2026 | M.Steer | Finalversion zur Abgabe vorbereitet  |
 
 ---
@@ -115,7 +115,7 @@ Michael Steer (Scrum Master)
 |----|-------------|---|---|---|---|---|
 | UC01 | Registrierung | F1-F4, NF1-2 | 4 | 10 | 5 | **19** |
 | UC02 | Passwort zurücksetzen | F1-F3, NF1-2 | 3 | 6 | 4 | **13** |
-| UC03 | Login/Logout | F1-F3, NF1-3 | 3 | 8 | 5 | **16** |
+| UC03 | Profil & Einstellungen verwalten | F1-F3, NF1-3 | 3 | 8 | 5 | **16** |
 | UC04 | Quest starten | F1-F5, NF1-4 | 5 | 15 | 8 | **28** |
 | UC05 | Quest abschließen | F1-F5, NF1-4 | 5 | 12 | 7 | **24** |
 | UC06 | Timer starten/stoppen | F1-F7, NF1-3 | 4 | 10 | 6 | **20** |
@@ -125,10 +125,10 @@ Michael Steer (Scrum Master)
 | UC10 | CSV Import/Export | F1-F3, NF1-2 | 4 | 10 | 5 | **19** |
 | UC11 | Achievements anzeigen | F1-F3, NF1-2 | 3 | 8 | 4 | **15** |
 | UC12 | Leaderboard | F1-F5, NF1-3 | 5 | 12 | 6 | **23** |
-| UC13 | Admin Panel Login | F1-F3, NF1-3 | 3 | 6 | 4 | **13** |
-| UC14 | Quest-Verwaltung (Admin) | F1-F6, NF1-3 | 5 | 15 | 7 | **27** |
-| UC15 | Regelkonfiguration | F1-F3, NF1-3 | 4 | 10 | 5 | **19** |
-| | **SUMME UC** | | **62** | **157** | **83** | **302** |
+| UC13 | Quest-Katalog verwalten | F1-F3, NF1-3 | 3 | 6 | 4 | **13** |
+| UC14 | XP- & Levelregeln konfigurieren | F1-F6, NF1-3 | 5 | 15 | 7 | **27** |
+| UC15 | Benutzerkonten administrieren | F1-F3, NF1-3 | 4 | 10 | 5 | **19** |
+| | **SUMME UC** | | **60** | **157** | **83** | **300** |
 
 ---
 
@@ -143,7 +143,7 @@ Michael Steer (Scrum Master)
 | Teamausfälle (Krankheit, andere verpflichtende Tasks) | Mittel (25%) | Hoch | Redundanter Fokus auf Dokumentation, Pair Programming | 20 |
 |
 
-**GESAMT RESERVE (15%):** 75 Stunden
+**GESAMT RESERVE (14%):** 95 Stunden
 
 ---
 
@@ -151,13 +151,13 @@ Michael Steer (Scrum Master)
 
 | Meilenstein | Datum | Deliverables | Geschätzte h |
 |-------------|-------|-------------|-------------|
-| M1 | 30.10.2025 | Projektskizze, Kick-off | 15 |
-| M2 | 06.11.2025 | SDP, Risk Register | 15 |
-| M3 | 04.12.2025 | Requirements, Use Cases, Glossar | 55 |
-| M4 | 18.12.2025 | Grobdesign, UML, Sequenzdiagramme | 50 |
-| M5 | 23.01.2026 | Prototyp (Frontend + Core-Module), SDD | 175 |
-| M6 | 15.02.2026 | Test-Plan, Verifikationsmatrix, Testdurchführung | 110 |
-| M7 | 10.03.2026 | SQAP/SQAR, Dokumentation, Abgabe | 90 |
+| M1 | 17.10.2025 | Projektskizze, Kick-off | 15 |
+| M2 | 24.10.2025 | SDP, Risk Register | 15 |
+| M3 | 21.11.2025 | Requirements, Use Cases, Glossar | 55 |
+| M4 | 05.12.2025 | Grobdesign, UML, Sequenzdiagramme | 50 |
+| M5 | 10.01.2026 | Prototyp (Frontend + Core-Module), SDD | 175 |
+| M6 | 02.02.2026 | Test-Plan, Verifikationsmatrix, Testdurchführung | 110 |
+| M7 | 25.02.2026 | SQAP/SQAR, Dokumentation, Abgabe | 90 |
 | **GESAMT** | | | **510** |
 
 ---

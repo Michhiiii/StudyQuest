@@ -37,7 +37,7 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum** | **Autor** | **Änderungsbeschreibung** |
 | --- | --- | --- | --- |
-| 1.0 | 06.02.2026 | M.Steer | Erstfassung des SQAP/SQAR |
+| 1.0 | 06.02.2026 | M.Steer | Erstfassung der Aufwandsschätzung (Final) |
 | 1.2 | 03.03.2026 | M.Steer | Finalversion zur Abgabe vorbereitet  |
 
 ---
@@ -129,7 +129,7 @@ Die tatsächliche Projektdauer war deutlich geringer als geschätzt. Der Aufwand
 |----|-------------|-----------|------------|---|--------|-----------|
 | UC01 | Registrierung | 19h | 14h | -5h | Unter | Weniger Validierung als erwartet |
 | UC02 | Passwort zurücksetzen | 13h | 0h | -13h | NICHT IMPL | Nicht prioritiert, deferred |
-| UC03 | Login/Logout | 16h | 12h | -4h | Unter | Vereinfachte Session-Management |
+| UC03 | Profil & Einstellungen verwalten | 16h | 12h | -4h | Unter | Vereinfachte Session-Management |
 | UC04 | Quest starten | 28h | 20h | -8h | Unter | Einfachere Logik als geplant |
 | UC05 | Quest abschließen | 24h | 18h | -6h | Unter | Standardisierte Completion-Logik |
 | UC06 | Timer | 20h | 8h | -12h | Unter | Timer-Pause nicht implementiert |
@@ -139,10 +139,10 @@ Die tatsächliche Projektdauer war deutlich geringer als geschätzt. Der Aufwand
 | UC10 | CSV Import/Export | 19h | 18h | -1h | Unter | Einfaches Parsing reichte |
 | UC11 | Achievements | 15h | 10h | -5h | Unter | Fewer edge cases |
 | UC12 | Leaderboard | 23h | 18h | -5h | Unter | Lokale Sortierung statt vollständig dynamisch |
-| UC13 | Admin Login | 13h | 10h | -3h | Unter | Bestandteile von UC03 wiedergenutzt |
-| UC14 | Quest-Admin | 27h | 19h | -8h | Unter | Admin-Interface vereinfacht |
-| UC15 | Regelconfig | 19h | 12h | -7h | Unter | Config-Datei-basiert statt UI-gesteuert |
-| | **SUMME** | **301h** | **206h** | **-95h** | **-32%** | Deutlich unter Budget |
+| UC13 | Quest-Katalog verwalten | 13h | 10h | -3h | Unter | Bestandteile von UC03 wiedergenutzt |
+| UC14 | XP- & Levelregeln konfigurieren | 27h | 19h | -8h | Unter | Admin-Interface vereinfacht |
+| UC15 | Benutzerkonten administrieren | 19h | 12h | -7h | Unter | Config-Datei-basiert statt UI-gesteuert |
+| | **SUMME** | **300h** | **206h** | **-94h** | **-31%** | Deutlich unter Budget |
 
 ### Erkenntnisse
 

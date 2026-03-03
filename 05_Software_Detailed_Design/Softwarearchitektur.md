@@ -39,7 +39,7 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
-| 1.0          | 17.10.2025  | M. Steer          | Erstfassung der Projektskizze erstellt      |
+| 1.0          | 17.10.2025  | M. Steer          | Erstfassung der Softwarearchitektur erstellt      |
 | 1.1          | 24.10.2025            | M. Steer          | Finalversion zur Abgabe vorbereitet           |
 
 ---
