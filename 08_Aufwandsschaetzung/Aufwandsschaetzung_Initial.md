@@ -188,43 +188,9 @@ Michael Steer (Scrum Master)
 - **Kommunikation:** Wöchentliche Planning-Meetings (2h), Daily Standups (0,5h/Tag)
 - **Tools:** VS Code, Git, GitHub (keine Einarbeitung nötig)
 - **Scope:** Client-seitiger Prototyp (kein separater Backend/Server)
-- **Testing:** Manuelle Testfälle + dokumentierte Test-Matrices (keine Automatisierung)
-- **Webstandards:** HTML5, CSS3, ES6+ JavaScript
-- **Browser:** Chrome, Firefox, Safari (Desktop)
-
 ---
 
-## 9. Abhängigkeiten & kritischer Pfad
-
-```
-Projektskizze (M1)
-    |
-    v
-SDP (M2)
-    |
-    +---> Requirements (M3) ----+
-    |                           |
-    +---> Grobdesign (M4) <-----+
-                |
-                v
-            SDD (M5-1)
-                |
-                v
-    Implementierung (M5) <------+
-        |
-        v
-    Testing & Verifikation (M6)
-        |
-        v
-    QA & Finalisierung (M7)
-```
-
-**Kritischer Pfad:** Requirements → Grobdesign → SDD → Implementierung → Testing  
-**Slack:** Design hat 5 Tage Puffer vor Implementierung
-
----
-
-## 10. Hochrechnung & Validierungsfaktoren
+## 9. Hochrechnung & Validierungsfaktoren
 
 **Basis-Stunden:** 580h (reiner Team-Aufwand ohne Puffer)  
 **Mit Risiko-Puffer (15%):** 675h (95h Reserve)
@@ -247,25 +213,16 @@ SDP (M2)
 - Function Point Industrie-Standard: 1 FP ≈ 8-10 Stunden
 - Unser Projekt: ~60 FP (geschätzt) × 10h = 600h → Unsere 675h mit Puffer ist realistisch
 
-*2. Team-Erfahrung:*
-- Michael Steer: Erfahren (mehrere SE-Projekte)
-- Luke Engehardt: Mittel (erstes Mal als PO)
-- Entwickler: Entwicklungsstart SE-Kurs, erste Großprojekt → Konservativ geschätzt
-- **Fazit:** Schätzung leicht konservativ, um Erfahrungslücken auszugleichen
-
 *3. Projektgröße & Komplexität:*
-- 15 Use Cases (nicht zu klein, nicht zu groß)
+- 15 Use Cases (relativ viel)
 - 3-Schichten-Architektur (standard, gut verstanden)
 - Keine Hardware-/Server-Komponenten (reduziert technische Komplexität)
 - Browser-basiert (LCD-Kompatibilität statt Low-Level-Optimierung)
-- **Fazit:** MEDIUM-Komplexität, Schätzung angemessen
 
 *4. Ähnliche Projekte im Studium:*
 - Vergleichbare Semester-Projekte: 500-800h für 5er-Teams
 - Unser Projekt 675h: Im erwarteten Range
 - **Faktor:** 0,85-1,0x Faktor anwendbar basierend auf Team-Produktivität
-
-**Schlussfolgerung:** Diese Schätzung gilt als **konservativ und realistisch** und berücksichtigt angemessen Risiken und Team-Kapazitäten.
 
 ---
 
@@ -288,23 +245,3 @@ Um diese Aufwandsschätzung zu validieren, werden folgende Maßnahmen durchgefü
   - Verbesserungen für nächste Projekte identifizieren
   - Team-Feedback zu Planning Poker sammeln
 
-### Qualitäts-Benchmarks für 3-Punkte-Bewertung
-Diese Initialschätzung erfüllt folgende Kriterien für maximale Punktzahl:
-- ✅ **Detaillierungsgrad:** UC-Level Breakdown mit Begründung für jeden Wert
-- ✅ **Realismus:** Konservative Schätzpraxis, empirische Validierung gegen Industriestandards
-- ✅ **Transparenz:** Methodik (FPA + Planning Poker) klar dokumentiert, Annahmen aufgeführt
-- ✅ **Nachvollziehbarkeit:** Schätzkonferenzen mit Konsensabstimmung, Abweichungen diskutiert
-
-### Erwartete Outcomes
-Diese Initialschätzung wird mit der **Finalschätzung** verglichen, um:
-1. Quality der Planning-Poker-Schätzungen zu bewerten (Core-Team vs. allg. Genauigkeit)
-2. Risiko-Reserve-Dimensionierung (15% ideal?) zu validieren
-3. Function-Point-Faktor zu kalibrieren für zukünftige Projekte (1 FP ≈ ? Stunden)
-4. Team-Produktivität pro Rolle zu quantifizieren
-5. Verbesserungspotentiale in Methodik zu identifizieren
-
----
-
-**Freigegeben durch:** Michael Steer (Scrum Master)  
-**Gültig ab:** 17.10.2025  
-**Nächste Überprüfung:** Februar 2026 (Finalbewertung)
