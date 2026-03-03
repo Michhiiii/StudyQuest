@@ -164,7 +164,6 @@ Die Audit-Strategie kombiniert mehrere Review-Ebenen, um sowohl technische als a
 | Code-Review | Intern | Qualität, Wartbarkeit, Regelkonformität | Pull Request Reviews (min. 1 Reviewer) | GitHub Pull Requests |
 | Test-Review | Intern | Abdeckung und Aussagekraft der Tests | Projektteam, nach Testentwicklung | Test-Dokumentation |
 | Dokumentations-Review | Intern | Einheitliche Aussagen in SQAP/SQAR/SVP | Scrum Master, vor Abgabe | Changelog der Dokumente |
-| Betreuer-Review | Extern | Fachliche und methodische Bewertung | Dozent (Sascha Wanninger) | Review-Feedback |
 
 ### 3.2 Detaillierte Audit-Durchführung
 
@@ -172,7 +171,7 @@ Die Audit-Strategie kombiniert mehrere Review-Ebenen, um sowohl technische als a
 
 **Ablauf:** PR erstellen → Automatische Checks (ESLint, Tests) → Peer-Review (Code-Qualität, Coding Rules, Logik, Tests) → Diskussion/Anpassung → Genehmigung/Merge
 
-**Bewertung:**  Approve | 🔄 Request Changes | 💬 Comment
+**Bewertung:**  Approve |  Request Changes |  Comment
 
 #### 3.2.2 Requirements- und Design-Review
 
