@@ -15,10 +15,10 @@ Software Engineering I – Praxis
 Wintersemester 2025 / 2026
 
 **Version:**  
-1.2
+1.3
 
 **Datum:**  
-24. Februar 2026
+2. März 2026
 
 **Author:innen:**  
 - Michael Steer (Scrum Master)  
@@ -39,6 +39,7 @@ Michael Steer (Scrum Master)
 | 1.0          | 14.11.2025  | M. Steer          | Erstfassung der Analyseklassenmodell erstellt      |
 | 1.1          | 30.01.2026  | G. Carrano        | Klassenbeschreibungen ergänzt              |
 | 1.2          | 24.02.2026  | G. Carrano        | Finalversion mit vollständigen Attributen und Methoden  |
+| 1.3          | 02.03.2026  | M. Steer          | Traceability-Matrix erweitert, Architekturübersicht ergänzt, NF-Requirements zugeordnet |
 
 ---
 
@@ -311,14 +312,58 @@ Das Analyseklassenmodell basiert auf den Anforderungen aus der Anforderungsanaly
 
 ---
 
-## 3. Klassendiagramm-Übersicht
+## 3. Architekturübersicht (3-Schichten-Modell)
+
+Das StudyQuest-System folgt einer **3-Schichten-Architektur**, die eine klare Trennung von Verantwortlichkeiten sicherstellt:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    PRÄSENTATIONSSCHICHT                         │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────────────┐   │
+│  │ AuthView │ │ Dashboard│ │QuestView │ │  AdminView       │   │
+│  │ (auth.js)│ │(ui.js)   │ │(quest.js)│ │  (admin.js)      │   │
+│  └────┬─────┘ └────┬─────┘ └────┬─────┘ └────┬─────────────┘   │
+│       │            │            │             │                 │
+├───────┴────────────┴────────────┴─────────────┴─────────────────┤
+│                    ANWENDUNGSSCHICHT                            │
+│  ┌──────┐ ┌───────┐ ┌─────────────────┐ ┌───────────┐          │
+│  │ User │ │ Quest │ │ LearningSession │ │ GameRule  │          │
+│  └──┬───┘ └──┬────┘ └───────┬─────────┘ └─────┬─────┘          │
+│     │        │              │                  │               │
+│  ┌──┴────┐ ┌─┴──────────┐ ┌┴────────────┐ ┌───┴──────────┐    │
+│  │ Grade │ │Achievement │ │Notification │ │ Leaderboard  │    │
+│  └──┬────┘ └─────┬──────┘ └──────┬──────┘ └──────┬───────┘    │
+│     │            │               │               │            │
+├─────┴────────────┴───────────────┴───────────────┴────────────┤
+│                    DATENSCHICHT                                │
+│  ┌────────────────────────────────────────────────────────┐    │
+│  │              DB (localStorage / db.js)                  │    │
+│  │  Persistierung aller Entitäten als JSON-Strukturen      │    │
+│  └────────────────────────────────────────────────────────┘    │
+└───────────────────────────────────────────────────────────────┘
+```
+
+| Schicht | Verantwortlichkeit | Komponenten |
+|---------|-------------------|-------------|
+| **Präsentation** | Benutzerinteraktion, Formularvalidierung, View-Rendering | auth.js, ui.js, quest.js, admin.js, grade.js, leaderboard.js, achievement.js, notification.js + CSS |
+| **Anwendung** | Business-Logik, XP-Berechnung, Regelvalidierung, Achievement-Prüfung | User, Quest, LearningSession, Grade, Achievement, Leaderboard, Notification, GameRule |
+| **Daten** | Persistierung (localStorage), CRUD-Operationen, Datenintegrität | DB (db.js) |
+
+**Kommunikationsfluss:**
+- Präsentation → Anwendung: Benutzeraktionen (z.B. „Quest starten") rufen Methoden der Anwendungsschicht auf.
+- Anwendung → Daten: Business-Logik-Klassen persistieren Ergebnisse über die DB-Klasse.
+- Anwendung → Präsentation: Observer-Pattern benachrichtigt UI-Komponenten über Änderungen (z.B. Level-Up, Achievement).
+
+---
+
+## 4. Klassendiagramm-Übersicht
 
 <img width="3682" height="3788" alt="mermaid-diagram-2026-02-25-152245" src="https://github.com/user-attachments/assets/c9dbd09f-310d-4f40-8b1a-36f0b4ed98e1" />
 
 
 ---
 
-## 4. Assoziationen und Kardinalitäten
+## 5. Assoziationen und Kardinalitäten
 
 | Assoziation | Kardinalität | Beschreibung |
 |-------------|-------------|------------|
@@ -333,7 +378,7 @@ Das Analyseklassenmodell basiert auf den Anforderungen aus der Anforderungsanaly
 
 ---
 
-## 5. Design-Muster und Architektur-Überlegungen
+## 6. Design-Muster und Architektur-Überlegungen
 
 ### **Observer-Pattern (UC09, UC12)**
 - **Verwendung:** Benachrichtigungssystem
@@ -380,7 +425,7 @@ Das Analyseklassenmodell basiert auf den Anforderungen aus der Anforderungsanaly
 
 ---
 
-## 7. Datenintegrität und Constraints
+## 8. Datenintegrität und Constraints
 
 | Constraint | Beschreibung | Implementierung |
 |-----------|-------------|-----------------|
