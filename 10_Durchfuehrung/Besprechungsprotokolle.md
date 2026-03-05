@@ -110,7 +110,7 @@ Michael Steer (Scrum Master)
 | K-02 | Scrum als Vorgehensmodell, Sprints à 3–4 Wochen | M. Steer |
 | K-03 | Rollen: M. Steer = Scrum Master, L. Engehardt = Product Owner, G. Carrano / P. Strasser / R. Faber = Developer | Alle |
 | K-04 | Kommunikation über Discord-Server + GitHub Repository | M. Steer |
-| K-05 | Technologieentscheidung: HTML/CSS/JS (kein Framework), localStorage | L. Engehardt |
+| K-05 | Technologieentscheidung: HTML/CSS/JS (kein Framework), localStorage | M. Steer |
 
 **Offene Punkte:** Keine.
 
