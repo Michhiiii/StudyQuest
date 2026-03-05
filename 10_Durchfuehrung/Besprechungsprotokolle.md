@@ -49,14 +49,15 @@ Michael Steer (Scrum Master)
 
 ## Distribution List
 
-| **Rolle** | **Name** | **Organisation** | **Benachrichtigung** |
-|-----------|----------|-----------------|----------------------|
-| Scrum Master | Michael Steer | DHBW Ravensburg | Bei Änderungen |
-| Product Owner | Luke Engehardt | DHBW Ravensburg | Bei Änderungen |
-| Entwickler | Giuliana Carrano | DHBW Ravensburg | Bei Änderungen |
-| Entwickler | Paul Strasser | DHBW Ravensburg | Bei Änderungen |
-| Entwickler | Roman Faber | DHBW Ravensburg | Bei Änderungen |
-| Betreuer | Sascha Wanninger | DHBW Ravensburg | Finale Version |
+| **Name**          | **Rolle**             | **Kommentar / Zuständigkeit**                 |
+|--------------------|-----------------------|-----------------------------------------------|
+| Sascha Wanninger   | Prüfer / Betreuer     | Bewertung im Rahmen des Moduls                |
+| Michael Steer      | Scrum Master          | Koordination & Freigabe                       |
+| Luke Engehardt     | Product Owner         | Anforderungen, Dokumentation & Technische Dokumentation                  |
+| Giuliana Carrano   | Developer             | Projektskizze, Dokumentation, Architektur & UML                   |
+| Paul Strasser      | Developer             |                      |
+| Roman Faber        | Developer             |                            |
+
 
 ---
 
@@ -192,7 +193,7 @@ Michael Steer (Scrum Master)
 | **Datum**      | 27.10.2025, 14:00–15:00 Uhr               |
 | **Ort**        | DHBW Ravensburg, Raum B204                 |
 | **Teilnehmer** | M. Steer, L. Engehardt, G. Carrano, P. Strasser, R. Faber |
-| **Protokoll**  | P. Strasser                                |
+| **Protokoll**  | L. Engelhardt                               |
 
 **Sprint-Ziel:** Requirements-Dokument und Use-Case-Dokument fertigstellen (M3).
 
@@ -267,7 +268,7 @@ Michael Steer (Scrum Master)
 | **Datum**      | 24.11.2025, 14:00–15:00 Uhr               |
 | **Ort**        | DHBW Ravensburg, Raum B204                 |
 | **Teilnehmer** | M. Steer, L. Engehardt, G. Carrano, P. Strasser, R. Faber |
-| **Protokoll**  | R. Faber                                   |
+| **Protokoll**  | G. Carrano                                  |
 
 **Sprint-Ziel:** Analyseklassenmodell, Sequenzdiagramme und Softwarearchitektur fertigstellen (M4).
 
@@ -307,7 +308,7 @@ Michael Steer (Scrum Master)
 - Traceability-Tabelle: Klassen → Use Cases vollständig
 
 **Feedback:**
-- R. Faber: Zusätzlich `studiengang`-Attribut für User-Klasse ergänzen (relevant für spätere Filterfunktion).
+- L. Engelhardt: Zusätzlich `studiengang`-Attribut für User-Klasse ergänzen (relevant für spätere Filterfunktion).
 - G. Carrano: Nummerierung der Abschnitte im Analyseklassenmodell prüfen (doppelte Abschnittsnummer 6).
 
 **Entscheidungen:**
@@ -343,7 +344,7 @@ Michael Steer (Scrum Master)
 | **Datum**      | 06.01.2026, 14:00–15:30 Uhr               |
 | **Ort**        | DHBW Ravensburg, Raum B204                 |
 | **Teilnehmer** | M. Steer, L. Engehardt, G. Carrano, P. Strasser, R. Faber |
-| **Protokoll**  | P. Strasser                                |
+| **Protokoll**  | L. Engelhardt                                |
 
 **Sprint-Ziel:** Lauffähiger Prototyp mit Kernfunktionen (M5) – 14 von 15 Use Cases implementieren.
 
@@ -351,8 +352,8 @@ Michael Steer (Scrum Master)
 
 | Task                                              | Verantwortlich        | Story Points |
 |:--------------------------------------------------|:----------------------|:-------------|
-| db.js – localStorage-Abstraktion                  | P. Strasser           | 3            |
-| user.js / auth.js – Registrierung, Login, Session | P. Strasser           | 5            |
+| db.js – localStorage-Abstraktion                  | L. Engelhardt           | 3            |
+| user.js / auth.js – Registrierung, Login, Session | G. Carrano           | 5            |
 | quest.js – Quest-CRUD, Start, Abschluss           | R. Faber              | 5            |
 | grade.js – Notenverwaltung                        | G. Carrano            | 3            |
 | achievement.js – Achievement-System               | L. Engehardt          | 3            |
@@ -399,7 +400,7 @@ Michael Steer (Scrum Master)
 
 **Feedback:**
 - L. Engehardt: UI-Feinschliff (Responsiveness auf mobilen Geräten) als Nice-to-have.
-- R. Faber: Unit Tests fehlen noch → Sprint 5.
+- G. Carrano: Unit Tests fehlen noch → Sprint 5.
 
 **Sprint-Ergebnis:** Sprint-Ziel erreicht. Prototyp ist funktional und demonstrierbar.
 
@@ -440,9 +441,9 @@ Michael Steer (Scrum Master)
 
 | Task                                                  | Verantwortlich       | Story Points |
 |:------------------------------------------------------|:---------------------|:-------------|
-| Test-Framework (Zero-Dependency) entwickeln           | R. Faber             | 3            |
+| Test-Framework (Zero-Dependency) entwickeln           | M. Steer             | 3            |
 | Unit Tests: db.test.js, user.test.js                  | P. Strasser          | 5            |
-| Unit Tests: quest.test.js, grade.test.js              | R. Faber             | 5            |
+| Unit Tests: quest.test.js, grade.test.js              | M. Steer             | 5            |
 | Unit Tests: achievement.test.js, leaderboard.test.js  | L. Engehardt         | 5            |
 | Unit Tests: admin.test.js, notification.test.js, ui.test.js | G. Carrano      | 5            |
 | Software Verification Plan (SVP)                      | M. Steer             | 5            |
@@ -450,8 +451,8 @@ Michael Steer (Scrum Master)
 | SQAP/SQAR Dokument                                    | G. Carrano           | 5            |
 | Software Design Document                              | L. Engehardt         | 3            |
 | Aufwandsschätzung finalisieren                        | M. Steer             | 2            |
-| Code Quality & VCS Analyse                            | R. Faber             | 2            |
-| Test Runner (HTML) erstellen                          | R. Faber             | 2            |
+| Code Quality & VCS Analyse                            | M. Steer             | 2            |
+| Test Runner (HTML) erstellen                          | M. Steer             | 2            |
 | Finale Dokumentation & README                         | Alle                 | 3            |
 
 **Beschlüsse:**
@@ -483,7 +484,7 @@ Michael Steer (Scrum Master)
 **Feedback:**
 - M. Steer: Alle Test Cases laufen stabil durch. Traceability vollständig.
 - G. Carrano: SQAP-Selbstbewertungen sollten realistisch bleiben – keine „Exzellent"-Ratings, wo „Gut" angemessener ist.
-- R. Faber: Code Quality Dokument deckt JSDoc, Coding Rules und VCS ab.
+- M. Steer: Code Quality Dokument deckt JSDoc, Coding Rules und VCS ab.
 
 **Sprint-Ergebnis:** Alle Tasks abgeschlossen. Sprint-Ziel erreicht.
 
@@ -569,4 +570,3 @@ Michael Steer (Scrum Master)
 
 ---
 
-© 2025/2026 StudyQuest Project Team – DHBW Ravensburg
