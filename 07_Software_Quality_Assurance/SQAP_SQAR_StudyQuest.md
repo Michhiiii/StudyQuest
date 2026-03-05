@@ -37,9 +37,11 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum** | **Autor** | **Änderungsbeschreibung** |
 | --- | --- | --- | --- |
-| 1.0 | 06.02.2026 | M.Steer | Erstfassung des SQAP/SQAR |
-| 1.1 | 01.03.2026 | M.Steer | Konsistenzabgleich mit SVP, Traceability-Matrix und Testartefakten |
-| 1.2 | 02.03.2026 | M.Steer | Finalversion zur Abgabe vorbereitet  |
+| 0.1 | 28.01.2026 | M. Steer | Initiale Gliederung SQAP nach ECSS-Q-ST-80C |
+| 0.2 | 03.02.2026 | G. Carrano | Coding Rules, Audit-Kriterien und Qualitätsmetriken definiert |
+| 1.0 | 06.02.2026 | M. Steer | Erstfassung des SQAP/SQAR: Plan und Report zusammengeführt |
+| 1.1 | 01.03.2026 | M. Steer | Konsistenzabgleich mit SVP, Traceability-Matrix und Testartefakten |
+| 1.2 | 02.03.2026 | M. Steer | Deviations-Tabelle finalisiert, Freigabeempfehlung formuliert |
 
 ---
 ## Distribution List

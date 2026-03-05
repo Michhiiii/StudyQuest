@@ -39,11 +39,13 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
-| 1.0          | 14.11.2025  | M. Steer          | Erstfassung der Sequenzdiagramme erstellt      |
-| 1.1          | 21.11.2025            | M. Steer          | Diagramme hinzugefügt            |
-|1.2 | 22.11.2025 | G. Carrano | Fehler in Diagramm behoben | 
-| 1.3          | 25.02.2026            | M. Steer                 | Finalversion zur Abgabe vorbereitet         |
-| 1.4          | 02.03.2026            | M. Steer                 | Szenariobeschreibungen, Übersichtstabelle und Requirement-Verweise ergänzt |
+| 0.1          | 25.10.2025  | G. Carrano        | Erstes Sequenzdiagramm (UC01 – Registrierung) erstellt |
+| 0.2          | 03.11.2025  | G. Carrano        | Diagramme für UC04–UC06 (Quest-Lifecycle) ergänzt |
+| 1.0          | 14.11.2025  | M. Steer          | Erstfassung der Sequenzdiagramme erstellt   |
+| 1.1          | 21.11.2025  | M. Steer          | Diagramme für UC09–UC15 hinzugefügt         |
+| 1.2          | 22.11.2025  | G. Carrano        | Fehler in UC05-Diagramm behoben (DB-Aufrufe korrigiert) |
+| 1.3          | 25.02.2026  | M. Steer          | Alternativszenarien ergänzt, Finalversion zur Abgabe vorbereitet |
+| 1.4          | 02.03.2026  | M. Steer          | Szenariobeschreibungen, Übersichtstabelle und Requirement-Verweise ergänzt |
 
 ---
 

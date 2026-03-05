@@ -39,8 +39,10 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
+| 0.1          | 29.10.2025  | L. Engehardt      | Erste Use Cases UC01–UC08 in Tabellenform angelegt |
+| 0.2          | 01.11.2025  | G. Carrano        | UC09–UC15 ergänzt, UML-Diagramme erstellt   |
 | 1.0          | 05.11.2025  | M. Steer          | Erstfassung der Use Cases erstellt          |
-| 1.1          | 25.02.2026            |                   | Finalversion zur Abgabe vorbereitet         |
+| 1.1          | 25.02.2026  | M. Steer          | UC02 als Deviation markiert, Finalversion zur Abgabe vorbereitet |
 
 ---
 

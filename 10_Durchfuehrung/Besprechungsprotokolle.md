@@ -1,18 +1,62 @@
-# Meeting Minutes – StudyQuest
+# Besprechungsprotokolle – StudyQuest
 
-**Projektname:** StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App  
-**Modul:** Software Engineering I – Praxis  
-**Projektzeitraum:** Wintersemester 2025 / 2026  
-**Version:** 1.0  
-**Datum:** 25. Februar 2026
+---
+
+**Titel des Dokuments:**  
+Besprechungsprotokolle – StudyQuest
+
+**Projektname:**  
+StudyQuest – Gamifizierte Lern- und Notenverwaltungs-Web-App
+
+**Modul:**  
+Software Engineering I – Praxis
+
+**Projektzeitraum:**  
+Wintersemester 2025 / 2026
+
+**Version:**  
+1.0
+
+**Datum:**  
+25. Februar 2026
+
+**Author:innen:**  
+- Michael Steer (Scrum Master)  
+- Luke Engehardt (Product Owner)  
+- Giuliana Carrano (Developer)  
+- Paul Strasser (Developer)  
+- Roman Faber (Developer)
+
+**Betreuer / Prüfer:**  
+Sascha Wanninger
+
+**Freigabe durch autorisierte Person:**  
+Michael Steer (Scrum Master)
 
 ---
 
 ## Changelog
 
-| Version | Datum       | Autor        | Änderungsbeschreibung                      |
-|--------:|-------------|--------------|---------------------------------------------|
-| 1.0     | 25.02.2026  | M. Steer     | Zusammenfassung aller Besprechungsprotokolle |
+| **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
+|--------------|-------------|-------------------|---------------------------------------------|
+| 0.1          | 17.10.2025  | M. Steer          | Erste Meeting-Protokolle (Sprint 1) angelegt |
+| 0.2          | 21.11.2025  | M. Steer          | Sprint 2 Protokolle ergänzt                 |
+| 0.3          | 19.12.2025  | M. Steer          | Sprint 3 Protokolle ergänzt                 |
+| 0.4          | 31.01.2026  | M. Steer          | Sprint 4 Protokolle ergänzt                 |
+| 1.0          | 25.02.2026  | M. Steer          | Sprint 5 + Abschluss-Meeting, Entscheidungsregister erstellt |
+
+---
+
+## Distribution List
+
+| **Rolle** | **Name** | **Organisation** | **Benachrichtigung** |
+|-----------|----------|-----------------|----------------------|
+| Scrum Master | Michael Steer | DHBW Ravensburg | Bei Änderungen |
+| Product Owner | Luke Engehardt | DHBW Ravensburg | Bei Änderungen |
+| Entwickler | Giuliana Carrano | DHBW Ravensburg | Bei Änderungen |
+| Entwickler | Paul Strasser | DHBW Ravensburg | Bei Änderungen |
+| Entwickler | Roman Faber | DHBW Ravensburg | Bei Änderungen |
+| Betreuer | Sascha Wanninger | DHBW Ravensburg | Finale Version |
 
 ---
 

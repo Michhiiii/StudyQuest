@@ -37,8 +37,11 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum** | **Autor** | **Änderungsbeschreibung** |
 | --- | --- | --- | --- |
-| 1.0 | 06.02.2026 | M.Steer | Erstfassung der Aufwandsschätzung (Initial) |
-| 1.2 | 03.03.2026 | M.Steer | Finalversion zur Abgabe vorbereitet  |
+| 0.1 | 18.10.2025 | M. Steer | Erste Grobschätzung nach Projektphasen erstellt |
+| 0.2 | 01.11.2025 | L. Engehardt | Detailaufwand pro Use Case (UC01–UC15) geschätzt |
+| 1.0 | 06.02.2026 | M. Steer | Erstfassung der Aufwandsschätzung (Initial) konsolidiert |
+| 1.1 | 20.02.2026 | M. Steer | Function-Point-Analyse und Branchenvergleich nachgetragen |
+| 1.2 | 03.03.2026 | M. Steer | Finalversion zur Abgabe vorbereitet |
 
 ---
 ## Distribution List

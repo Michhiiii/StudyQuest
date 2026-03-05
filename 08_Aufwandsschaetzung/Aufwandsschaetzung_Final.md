@@ -37,8 +37,10 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum** | **Autor** | **Änderungsbeschreibung** |
 | --- | --- | --- | --- |
-| 1.0 | 06.02.2026 | M.Steer | Erstfassung der Aufwandsschätzung (Final) |
-| 1.2 | 03.03.2026 | M.Steer | Finalversion zur Abgabe vorbereitet  |
+| 0.1 | 01.02.2026 | M. Steer | Datenerhebung: Ist-Aufwände pro Use Case aus Sprint-Logs erfasst |
+| 1.0 | 06.02.2026 | M. Steer | Erstfassung der Aufwandsschätzung (Final) mit Abweichungsanalyse |
+| 1.1 | 25.02.2026 | M. Steer | Diskussion Initial vs. Final erweitert, Hauptgründe für Abweichung dokumentiert |
+| 1.2 | 03.03.2026 | M. Steer | Finalversion zur Abgabe vorbereitet |
 
 ---
 ## Distribution List

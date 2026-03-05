@@ -39,10 +39,12 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
-| 1.0          | 05.11.2025  | M. Steer          | Erstfassung der Requirements erstellt          |
-| 1.1          | 13.01.2026            | M. Steer          | Glossar & Dependencies hinzugefügt          |
-| 1.2          | 19.02.2026 | M. Steer  | Requirement Status auf "Implementiert & Getestet" gesetzt | 
-| 1.3          | 24.02.2026            | M. Steer                  |Finalversion zur Abgabe vorbereitet         |
+| 0.1          | 28.10.2025  | L. Engehardt      | Erste funktionale Anforderungen (UC01–UC05) erfasst |
+| 0.2          | 01.11.2025  | G. Carrano        | Nicht-funktionale Anforderungen (Performance, Security) ergänzt |
+| 1.0          | 05.11.2025  | M. Steer          | Erstfassung der Requirements erstellt       |
+| 1.1          | 13.01.2026  | M. Steer          | Glossar & Dependencies hinzugefügt          |
+| 1.2          | 19.02.2026  | M. Steer          | Requirement-Status auf "Implementiert & Getestet" gesetzt |
+| 1.3          | 24.02.2026  | M. Steer          | Redundante Dependencies entfernt, Finalversion zur Abgabe vorbereitet |
 
 ---
 

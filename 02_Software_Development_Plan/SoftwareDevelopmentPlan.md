@@ -35,11 +35,12 @@ Michael Steer (Scrum Master)
 
 ## Changelog
 
-| Version | Datum     | Autor         | Änderungsbeschreibung                                         |
-|--------:|-----------|---------------|----------------------------------------------------------------|
-| 1.0     | 17.10.2025| G. Carrano    | Erstfassung des Software Development Plans erstellt           |
-| 1.1     | 17.10.2025| G. Carrano    | Technologie- und Tooling-Stack (VS Code, HTML/CSS/JS) ergänzt |
-| 1.2      | 25.02.2026 | M. Steer | Finalversion zur Abgabe vorbereitet | 
+| Version | Datum      | Autor          | Änderungsbeschreibung                                         |
+|--------:|------------|----------------|----------------------------------------------------------------|
+| 0.1     | 09.10.2025 | G. Carrano     | Initiale Gliederung und Rollenverteilung entworfen            |
+| 1.0     | 17.10.2025 | G. Carrano     | Erstfassung des Software Development Plans erstellt           |
+| 1.1     | 17.10.2025 | G. Carrano     | Technologie- und Tooling-Stack (VS Code, HTML/CSS/JS) ergänzt |
+| 1.2     | 25.02.2026 | M. Steer       | Meilensteinplan aktualisiert, Finalversion zur Abgabe vorbereitet | 
 
 ---
 

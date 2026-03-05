@@ -37,9 +37,10 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum** | **Autor** | **Änderungsbeschreibung** |
 | --- | --- | --- | --- |
-| 1.0 | 30.01.2026 | L. Engelhardt | Erstfassung |
-| 1.1 | 10.02.2026 | M. Steer  | Überarbeitung passend zu v1.0 |
-| 1.2 | 26.02.2026 | M. Steer | Finalversion zur Abgabe vorbereitet | 
+| 0.1 | 22.01.2026 | L. Engehardt | Recherche und Strukturentwurf für Observer-Pattern |
+| 1.0 | 30.01.2026 | L. Engehardt | Erstfassung mit Klassendiagramm und Code-Beispielen |
+| 1.1 | 10.02.2026 | M. Steer  | Bezug zu Notification- und Achievement-Modul hergestellt |
+| 1.2 | 26.02.2026 | M. Steer | Codebeispiel aktualisiert, Finalversion zur Abgabe vorbereitet | 
 
 ## Distribution List
 

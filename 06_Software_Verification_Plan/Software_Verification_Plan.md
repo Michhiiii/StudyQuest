@@ -39,10 +39,11 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
-| 1.0          | 17.10.2025  | M. Steer          | Erstfassung des Software Verification Plans erstellt      |
-| 1.1          | 30.10.2025            | M. Steer          | Änderungen nach Review            |
-| 1.2 | 13.01.2026 | M. Steer | Anpassung an v1.0 | 
-| 1.3          | 28.02.2026            | M. Steer                  | Finalversion zur Abgabe vorbereitet         |
+| 0.1          | 10.10.2025  | M. Steer          | Initiale Gliederung nach ECSS-Q-ST-80C erstellt |
+| 1.0          | 17.10.2025  | M. Steer          | Erstfassung des Software Verification Plans erstellt |
+| 1.1          | 30.10.2025  | M. Steer          | Entry/Exit Criteria präzisiert, Verifikationsmethoden definiert |
+| 1.2          | 13.01.2026  | M. Steer          | Testfallkatalog um UC03–UC15 erweitert, Traceability-Matrix angelegt |
+| 1.3          | 28.02.2026  | M. Steer          | Testumgebung aktualisiert, Smoke-Test ergänzt, Finalversion zur Abgabe vorbereitet |
 
 ---
 

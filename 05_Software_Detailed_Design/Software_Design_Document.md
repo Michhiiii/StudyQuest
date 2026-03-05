@@ -37,10 +37,12 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum** | **Autor** | **Änderungsbeschreibung** |
 | --- | --- | --- | --- |
+| 0.1 | 20.01.2026 | G. Carrano | Initiale Gliederung und Modulübersicht entworfen |
+| 0.2 | 25.01.2026 | G. Carrano | Datenmodell und Schnittstellen-Signaturen ergänzt |
 | 1.0 | 30.01.2026 | G. Carrano | Erstfassung des SDD, basiert auf Requirements und Architektur-Dokumenten |
-| 1.1 | 30.01.2026 | G. Carrano | Formalia ergänzt: Kopfblatt, Autoren |
-| 1.2 | 30.01.2026 | G. Carrano | Distribution List und erweitertes Changelog ergänzt |
-| 1.3 | 27.02.2026 | G. Carrano | Finalversion zur Abgabe vorbereitet | 
+| 1.1 | 30.01.2026 | G. Carrano | Formalia ergänzt: Kopfblatt, Autoren, Distribution List |
+| 1.2 | 12.02.2026 | M. Steer   | Algorithmen-Abschnitt (XP-Vergabe, Level-Up) überarbeitet |
+| 1.3 | 27.02.2026 | G. Carrano | Konsistenzprüfung mit Analyseklassenmodell, Finalversion zur Abgabe vorbereitet | 
 
 ## Distribution List
 

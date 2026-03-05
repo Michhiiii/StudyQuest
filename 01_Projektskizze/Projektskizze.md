@@ -39,9 +39,11 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
+| 0.1          | 08.10.2025  | G. Carrano        | Initiale Gliederung und Scope-Entwurf erstellt |
+| 0.2          | 12.10.2025  | L. Engehardt      | Stakeholder-Analyse und Risikobewertung ergänzt |
 | 1.0          | 17.10.2025  | M. Steer          | Erstfassung der Projektskizze erstellt      |
-| 1.1          | 24.10.2025            | M. Steer          | Änderungen nach Review            |
-| 1.2          | 25.02.2026            | M.Steer                  | Finalversion zur Abgabe vorbereitet         |
+| 1.1          | 24.10.2025  | M. Steer          | Änderungen nach Review: Randbedingungen präzisiert, Glossar erweitert |
+| 1.2          | 25.02.2026  | M. Steer          | Finalversion zur Abgabe vorbereitet         |
 
 ---
 

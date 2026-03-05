@@ -39,8 +39,10 @@ Michael Steer (Scrum Master)
 
 | **Version** | **Datum**   | **Autor**         | **Änderungsbeschreibung**                   |
 |--------------|-------------|-------------------|---------------------------------------------|
-| 1.0          | 17.10.2025  | M. Steer          | Erstfassung der Softwarearchitektur erstellt      |
-| 1.1          | 24.10.2025            | M. Steer          | Finalversion zur Abgabe vorbereitet           |
+| 0.1          | 12.10.2025  | M. Steer          | Erste 3-Schichten-Architektur skizziert     |
+| 0.2          | 15.10.2025  | L. Engehardt      | Modulübersicht und Verantwortlichkeiten definiert |
+| 1.0          | 17.10.2025  | M. Steer          | Erstfassung der Softwarearchitektur erstellt |
+| 1.1          | 24.10.2025  | M. Steer          | Sicherheitsaspekte und Observer-Pattern-Referenz ergänzt, Finalversion zur Abgabe vorbereitet |
 
 ---
 
