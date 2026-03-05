@@ -92,7 +92,7 @@ Michael Steer (Scrum Master)
 | Feld           | Wert                                       |
 |:---------------|:-------------------------------------------|
 | **Datum**      | 07.10.2025, 14:00–15:30 Uhr               |
-| **Ort**        | DHBW Ravensburg, Raum B204                 |
+| **Ort**        | DHBW Ravensburg                 |
 | **Teilnehmer** | M. Steer, L. Engehardt, G. Carrano, P. Strasser, R. Faber |
 | **Protokoll**  | M. Steer                                   |
 
@@ -121,7 +121,7 @@ Michael Steer (Scrum Master)
 | Feld           | Wert                                       |
 |:---------------|:-------------------------------------------|
 | **Datum**      | 07.10.2025, 15:45–16:30 Uhr               |
-| **Ort**        | DHBW Ravensburg, Raum B204                 |
+| **Ort**        | DHBW Ravensburg                 |
 | **Teilnehmer** | M. Steer, L. Engehardt, G. Carrano, P. Strasser, R. Faber |
 | **Protokoll**  | G. Carrano                                 |
 
@@ -191,7 +191,7 @@ Michael Steer (Scrum Master)
 | Feld           | Wert                                       |
 |:---------------|:-------------------------------------------|
 | **Datum**      | 27.10.2025, 14:00–15:00 Uhr               |
-| **Ort**        | DHBW Ravensburg, Raum B204                 |
+| **Ort**        | DHBW Ravensburg                 |
 | **Teilnehmer** | M. Steer, L. Engehardt, G. Carrano, P. Strasser, R. Faber |
 | **Protokoll**  | L. Engelhardt                               |
 
@@ -266,7 +266,7 @@ Michael Steer (Scrum Master)
 | Feld           | Wert                                       |
 |:---------------|:-------------------------------------------|
 | **Datum**      | 24.11.2025, 14:00–15:00 Uhr               |
-| **Ort**        | DHBW Ravensburg, Raum B204                 |
+| **Ort**        | DHBW Ravensburg                 |
 | **Teilnehmer** | M. Steer, L. Engehardt, G. Carrano, P. Strasser, R. Faber |
 | **Protokoll**  | G. Carrano                                  |
 
@@ -342,7 +342,7 @@ Michael Steer (Scrum Master)
 | Feld           | Wert                                       |
 |:---------------|:-------------------------------------------|
 | **Datum**      | 06.01.2026, 14:00–15:30 Uhr               |
-| **Ort**        | DHBW Ravensburg, Raum B204                 |
+| **Ort**        | DHBW Ravensburg                 |
 | **Teilnehmer** | M. Steer, L. Engehardt, G. Carrano, P. Strasser, R. Faber |
 | **Protokoll**  | L. Engelhardt                                |
 
@@ -431,7 +431,7 @@ Michael Steer (Scrum Master)
 | Feld           | Wert                                       |
 |:---------------|:-------------------------------------------|
 | **Datum**      | 03.02.2026, 14:00–15:00 Uhr               |
-| **Ort**        | DHBW Ravensburg, Raum B204                 |
+| **Ort**        | DHBW Ravensburg                 |
 | **Teilnehmer** | M. Steer, L. Engehardt, G. Carrano, P. Strasser, R. Faber |
 | **Protokoll**  | R. Faber                                   |
 
@@ -513,7 +513,7 @@ Michael Steer (Scrum Master)
 | Feld           | Wert                                       |
 |:---------------|:-------------------------------------------|
 | **Datum**      | 25.02.2026, 14:00–15:00 Uhr               |
-| **Ort**        | DHBW Ravensburg, Raum B204                 |
+| **Ort**        | DHBW Ravensburg                 |
 | **Teilnehmer** | M. Steer, L. Engehardt, G. Carrano, P. Strasser, R. Faber |
 | **Protokoll**  | M. Steer                                   |
 
