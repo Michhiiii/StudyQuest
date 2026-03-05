@@ -315,34 +315,9 @@ Das Analyseklassenmodell basiert auf den Anforderungen aus der Anforderungsanaly
 
 ## 3. Architekturübersicht (3-Schichten-Modell)
 
-Das StudyQuest-System folgt einer **3-Schichten-Architektur**, die eine klare Trennung von Verantwortlichkeiten sicherstellt:
+Das StudyQuest-System folgt einer 3-Schichten-Architektur, die eine klare Trennung von Verantwortlichkeiten sicherstellt:
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    PRÄSENTATIONSSCHICHT                         │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────────────┐   │
-│  │ AuthView │ │ Dashboard│ │QuestView │ │  AdminView       │   │
-│  │ (auth.js)│ │(ui.js)   │ │(quest.js)│ │  (admin.js)      │   │
-│  └────┬─────┘ └────┬─────┘ └────┬─────┘ └────┬─────────────┘   │
-│       │            │            │             │                 │
-├───────┴────────────┴────────────┴─────────────┴─────────────────┤
-│                    ANWENDUNGSSCHICHT                            │
-│  ┌──────┐ ┌───────┐ ┌─────────────────┐ ┌───────────┐          │
-│  │ User │ │ Quest │ │ LearningSession │ │ GameRule  │          │
-│  └──┬───┘ └──┬────┘ └───────┬─────────┘ └─────┬─────┘          │
-│     │        │              │                  │               │
-│  ┌──┴────┐ ┌─┴──────────┐ ┌┴────────────┐ ┌───┴──────────┐    │
-│  │ Grade │ │Achievement │ │Notification │ │ Leaderboard  │    │
-│  └──┬────┘ └─────┬──────┘ └──────┬──────┘ └──────┬───────┘    │
-│     │            │               │               │            │
-├─────┴────────────┴───────────────┴───────────────┴────────────┤
-│                    DATENSCHICHT                                │
-│  ┌────────────────────────────────────────────────────────┐    │
-│  │              DB (localStorage / db.js)                  │    │
-│  │  Persistierung aller Entitäten als JSON-Strukturen      │    │
-│  └────────────────────────────────────────────────────────┘    │
-└───────────────────────────────────────────────────────────────┘
-```
+<img width="4223" height="1096" alt="mermaid-diagram-2026-03-05-145350" src="https://github.com/user-attachments/assets/30473542-e3de-4abc-abc3-85e7f19856a9" />
 
 | Schicht | Verantwortlichkeit | Komponenten |
 |---------|-------------------|-------------|
