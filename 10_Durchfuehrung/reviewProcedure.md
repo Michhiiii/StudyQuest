@@ -103,4 +103,5 @@ Bis **24. November 2025**:
 - Optional: Übermittlung der finalen Kommentarliste mit Status und Entscheidungen
 
 ---
-© 2025 StudyQuest Project Team – DHBW Ravensburg
+
+#KEINE REVIEW EINER ANDEREN GRUPPE ERHALTEN
