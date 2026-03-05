@@ -217,11 +217,9 @@ Die Verifikation wurde mit dem aktuellen Code in `10_Durchfuehrung/src/` abgegli
 | TC-UC15-01 | User-Administration: Admin-Rechte, Aktiv/Deaktiv, Löschen | System | TST/INS | UC15-F1, UC15-F4, UC15-F5, UC15-F2/F3 (Deviation) |
 | TC-UC15-NF-01 | Zugriffsschutz + Reaktionszeit ≤ 2s (ohne Auditlog) | System | TST/ANL/INS | UC15-NF1, UC15-NF3, UC15-NF2 (Deviation) |
 
-### 7.2 Detaillierte Testfallbeschreibungen (Auswahl)
+### 7.2 Detaillierte Testfallbeschreibungen
 
-Hinweis: Testfälle mit Kennzeichnung **(Deviation)** werden im aktuellen Projektstand nicht als „bestanden" im Sinne einer Feature-Implementierung gewertet, sondern als dokumentierte Lücke zwischen Requirement und v1.0-Codebasis (Inspection-Nachweis). 
-
-Ausführliche Beschreibungen sind für folgende kritische Testfälle dokumentiert; übrige TCs sind in Kurzform mit Pass-Kriterium im Katalog (7.1) geführt.
+Hinweis: Testfälle mit Kennzeichnung **(Deviation)** werden im aktuellen Projektstand nicht als „bestanden" im Sinne einer Feature-Implementierung gewertet, sondern als dokumentierte Lücke zwischen Requirement und v1.0-Codebasis (Inspection-Nachweis). Alle Testfälle folgen einer einheitlichen Struktur: Testlevel, Methode, verifizierte Anforderungen, Vorbedingungen, Schritte, erwartetes Ergebnis/Pass-Kriterium.
 
 ### TC-GEN-01 – Smoke-Test: App startet & DB wird initialisiert
 
@@ -269,13 +267,39 @@ Neuer User-Datensatz wird angelegt; User ist eingeloggt; Dashboard wird angezeig
 **Erwartetes Ergebnis / Pass-Kriterium**
 Registrierung wird abgelehnt; Fehlermeldung erscheint; kein zweiter Datensatz entsteht.
 
-### TC-UC01-03 (Kurzform)
-- **Testlevel:** System | **Methode:** TST | **Anforderungen:** UC01-F3, UC01-F4
-- **Pass-Kriterium:** Login mit korrekten Daten zeigt Dashboard; falsches Passwort wird abgelehnt.
+### TC-UC01-03 – Login (gültig/ungültig) & Dashboard-Navigation
 
-### TC-UC01-NF-01 (Kurzform)
-- **Testlevel:** System | **Methode:** INS/TST | **Anforderungen:** UC01-NF1, UC01-NF2
-- **Pass-Kriterium:** Passwort nicht im Klartext gespeichert; Fehlermeldungen sind neutral.
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC01-F3, UC01-F4
+- **Vorbedingungen:** Mindestens ein registrierter User vorhanden.
+
+**Schritte**
+1) Login-Tab öffnen
+2) Korrekte E-Mail und Passwort eingeben → Absenden
+3) Prüfen, ob Dashboard angezeigt wird
+4) Logout → erneut Login-Tab öffnen
+5) Korrekte E-Mail, falsches Passwort eingeben → Absenden
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Login mit korrekten Daten zeigt Dashboard; falsches Passwort wird mit neutraler Fehlermeldung abgelehnt; kein Zugriff auf Dashboard ohne erfolgreichen Login.
+
+### TC-UC01-NF-01 – Security: Passwort-Speicherung & Fehlermeldungen
+
+- **Testlevel:** System
+- **Methode:** INS/TST
+- **Verifizierte Anforderungen:** UC01-NF1, UC01-NF2
+- **Vorbedingungen:** Mindestens ein registrierter User vorhanden.
+
+**Schritte**
+1) LocalStorage 'users' im Browser-DevTools inspizieren
+2) Prüfen, ob `password_hash`-Feld kein Klartext-Passwort enthält
+3) Login mit nicht-existierender E-Mail versuchen
+4) Login mit existierender E-Mail aber falschem Passwort versuchen
+5) Fehlermeldungen beider Fälle vergleichen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Passwort ist in `password_hash` nicht im Klartext erkennbar; Fehlermeldungen bei nicht-existierender E-Mail und falschem Passwort sind identisch/neutral (kein Hinweis auf Existenz des Accounts).
 
 ### TC-UC02-01 – Passwort-Reset Feature-Check (v1.0 Deviation) [Kurzform - Deviation Example]
 
@@ -294,26 +318,598 @@ Reset-Flow ist in v1.0 nicht vorhanden; Abweichung wird dokumentiert.
 
 ---
 
-## Übrige Testfälle (Kurzform)
+## Vollständige Testfallbeschreibungen (UC03–UC15)
 
-Die folgenden Testfälle werden in Kurzform mit Pass-Kriterium dokumentiert:
+### TC-UC03-01 – Profil anzeigen
 
-| TC-Gruppe | Testlevel | Methode | Anforderungen | Pass-Kriterium |
-|-----------|-----------|---------|---------------|----------------|
-| **UC02:** UC02-02, UC02-03 | System | INS | UC02-F2..F4 | Kein Token-Flow; v1.0 nicht implementiert (Deviation) |
-| **UC03:** Profil (01–NF-01) | System | TST | UC03-F1..F3, NF1..NF2 | Daten anzeigen/bearbeiten/persistieren; Zugriffsschutz |
-| **UC04:** Quest-Start (01–NF-01) | System | TST/ANL | UC04-F1..F5, NF1 | Start setzt Status/Zeit; nur eine aktiv; Performance ≤1s |
-| **UC05:** Quest-Abschluss (01–NF-01) | System | TST/ANL | UC05-F1..F5, NF1..NF4 | XP-Vergabe atomar; Level-Up mit Feedback; Performance ≤2s |
-| **UC06:** Timer (01–NF-01) | System | TST/ANL/INS | UC06-F1..F6, NF1..NF4 | Start/Stop korrekt; Ein-Timer-Regel; Pause n.impl (Deviation); Zeitgenauigkeit ≤1% |
-| **UC07:** Noten (01–03) | System | TST | UC07-F1..F5, NF1..NF2 | CRUD funktioniert; Durchschnitt konsistent |
-| **UC08:** Dashboard (01–NF-01) | System | TST/ANL | UC08-F1..F5, NF1..NF2 | Statistiken korrekt; 3-Browser-kompatibel; Ladezeit ≤2s |
-| **UC09:** Notifications (01–NF-01) | System | TST/INS | UC09-F1..F4, NF1..NF2 | Read-State funktioniert; Settings n.impl (Deviation); E-Mail/Push n.impl |
-| **UC10:** CSV (01–NF-01) | System | TST/ANL | UC10-F1..F3, NF1 | Import/Export funktioniert; Format korrekt; Fehlertoleranz; Performance ≤5s |
-| **UC11:** Badges (01–NF-01) | System | TST | UC11-F1..F4, NF1 | Freischalten bei Bedingungen; visuelles Feedback; auto-Check |
-| **UC12:** Leaderboard (01–NF-01) | System | TST/ANL | UC12-F1..F4, NF1 | 4 Kategorien; Streaks; persönliche Position hervorgehoben; Ladezeit ≤3s |
-| **UC13:** Admin-Quest (01–NF-01) | System | TST/ANL | UC13-F1..F6, NF1..NF2 | Quest-CRUD; Zugriff auf Admin; Änderungen ≤2s sichtbar |
-| **UC14:** Game-Rules (01–NF-01) | System | TST/ANL/INS | UC14-F1..F5, NF2..NF4 | Speicherbar/wirksam; Admin-only; Performance ≤2s; Auditlog n.impl (Deviation) |
-| **UC15:** User-Admin (01–NF-01) | System | TST/ANL/INS | UC15-F1..F5, NF1..NF3 | Rollen/Status/Löschen OK; Such/Detail n.impl (Deviation); Admin-only; Auditlog n.impl |
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC03-F1
+- **Vorbedingungen:** User ist eingeloggt; Profildaten sind gespeichert.
+
+**Schritte**
+1) Zur Profilseite navigieren
+2) Angezeigte Daten (Name, Avatar, Level, XP) mit LocalStorage-Werten vergleichen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Alle Profildaten werden korrekt aus der DB geladen und im UI angezeigt.
+
+### TC-UC03-02 – Profil ändern: Name/Avatar speichern & wieder anzeigen
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC03-F2, UC03-F3
+- **Vorbedingungen:** User ist eingeloggt.
+
+**Schritte**
+1) Zur Profilseite navigieren
+2) Name ändern (z.B. „Max Mustermann" → „Neuer Name")
+3) Avatar ändern (z.B. anderes Emoji wählen)
+4) Speichern klicken
+5) Seite neu laden und Profilseite erneut öffnen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Geänderte Daten werden gespeichert und nach Reload korrekt angezeigt; Erfolgsmeldung erscheint nach Speichern.
+
+### TC-UC03-NF-01 – Zugriffsschutz & Fehlermeldungen bei Profiländerung
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC03-NF1, UC03-NF2
+- **Vorbedingungen:** Kein User eingeloggt (Session gelöscht).
+
+**Schritte**
+1) Direkt Profilseite aufrufen (ohne Login)
+2) Prüfen, ob Redirect zum Login erfolgt
+3) Einloggen → Profilseite öffnen → leeren Namen eingeben → Speichern
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Ohne Login: Redirect zum Login-Formular. Bei ungültigen Eingaben: verständliche Fehlermeldung.
+
+### TC-UC04-01 – Quest auswählen & starten (Status + Startzeit)
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC04-F1, UC04-F2, UC04-F3
+- **Vorbedingungen:** User eingeloggt; keine aktive Quest; mindestens eine Quest verfügbar.
+
+**Schritte**
+1) Quest-Übersicht öffnen
+2) Verfügbare Quest auswählen und „Starten" klicken
+3) Quest-Status im UI und LocalStorage prüfen
+4) Startzeitpunkt im User-Datensatz (`active_quest_id`) prüfen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Quest-Status wechselt auf „aktiv"; `active_quest_id` ist gesetzt; Startzeitpunkt ist protokolliert.
+
+### TC-UC04-02 – Nur eine aktive Quest: Start einer zweiten Quest blockiert
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC04-F4, UC04-F5
+- **Vorbedingungen:** User hat bereits eine aktive Quest.
+
+**Schritte**
+1) Quest-Übersicht öffnen
+2) Andere verfügbare Quest auswählen und „Starten" versuchen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Fehlermeldung „Eine Quest ist bereits aktiv" erscheint; zweite Quest wird NICHT gestartet; `active_quest_id` bleibt unverändert.
+
+### TC-UC04-NF-01 – Performance: Statuswechsel beim Start ≤ 1s
+
+- **Testlevel:** System
+- **Methode:** ANL/TST
+- **Verifizierte Anforderungen:** UC04-NF1
+- **Vorbedingungen:** User eingeloggt; Quest verfügbar.
+
+**Schritte**
+1) DevTools Performance-Tab öffnen
+2) Quest starten und Reaktionszeit messen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+UI-Update (Quest-Status → aktiv) erfolgt in ≤ 1 Sekunde nach Klick.
+
+### TC-UC05-01 – Quest abschließen: XP-Vergabe, Endzeit, Status
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC05-F1, UC05-F2, UC05-F5, UC05-NF4
+- **Vorbedingungen:** User hat eine aktive Quest.
+
+**Schritte**
+1) XP-Stand vor Abschluss notieren
+2) „Quest abschließen" klicken
+3) XP-Stand danach prüfen (Differenz = Quest-XP)
+4) Quest-Status in LocalStorage prüfen
+5) LearningSession-Eintrag mit Endzeitpunkt prüfen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+XP werden korrekt addiert gemäß Schwierigkeit (easy=50, medium=100, hard=150); Quest-Status = „completed"; `completed_at` Timestamp gespeichert; `active_quest_id` = null.
+
+### TC-UC05-02 – Atomare XP-Vergabe: Doppelklick/Mehrfach-Submit
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC05-NF2
+- **Vorbedingungen:** User hat eine aktive Quest; XP-Stand notiert.
+
+**Schritte**
+1) „Quest abschließen"-Button schnell doppelklicken
+2) XP-Stand prüfen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+XP werden exakt einmal gutgeschrieben (keine Doppel-XP); Button wird nach erstem Klick deaktiviert oder zweiter Klick wird ignoriert.
+
+### TC-UC05-03 – Level-Up: Schwellenwert & visuelles Feedback
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC05-F3, UC05-F4
+- **Vorbedingungen:** User XP knapp unter Level-Schwellwert (z.B. 480 XP bei 500er-Schwelle); aktive Quest mit ausreichend XP.
+
+**Schritte**
+1) Quest abschließen (XP pushes über Schwellwert)
+2) Level-Anzeige prüfen
+3) Visuelles Feedback (Popup/Banner) beobachten
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Level erhöht sich um 1; visuelles Level-Up-Feedback wird angezeigt; überschüssige XP werden im neuen Level korrekt berechnet.
+
+### TC-UC05-NF-01 – Performance: Abschlussreaktion ≤ 2s
+
+- **Testlevel:** System
+- **Methode:** ANL/TST
+- **Verifizierte Anforderungen:** UC05-NF1
+- **Vorbedingungen:** User hat aktive Quest.
+
+**Schritte**
+1) DevTools Performance-Tab öffnen
+2) Quest abschließen und Gesamtreaktionszeit messen (Klick → Dashboard-Update)
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Vollständiges UI-Update (XP, Level, Quest-Status) in ≤ 2 Sekunden.
+
+### TC-UC06-01 – Timer starten: Startzeit & Persistenz
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC06-F1, UC06-F2
+- **Vorbedingungen:** User eingeloggt; aktive Quest vorhanden.
+
+**Schritte**
+1) „Timer starten" klicken
+2) Timer-Anzeige im UI beobachten (läuft der Zähler?)
+3) LocalStorage `timers`-Eintrag prüfen (started_at vorhanden?)
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Timer-UI zeigt laufende Zeit; Timer-Datensatz mit `started_at` Timestamp in DB gespeichert.
+
+### TC-UC06-02 – Ein-Timer-Regel (Pause/Fortsetzen nicht implementiert)
+
+- **Testlevel:** System
+- **Methode:** TST/INS
+- **Verifizierte Anforderungen:** UC06-F6, UC06-F3 (Deviation)
+- **Vorbedingungen:** Timer bereits aktiv.
+
+**Schritte**
+1) Erneut „Timer starten" versuchen
+2) Code-Inspektion: `quest.js` nach Pause/Resume-Logik durchsuchen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Fehlermeldung „Timer bereits aktiv"; kein zweiter Timer erstellt. Pause/Resume: nicht vorhanden → Deviation dokumentiert.
+
+### TC-UC06-03 – Timer stoppen: Dauerberechnung & optionale XP-Vergabe
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC06-F4, UC06-F5
+- **Vorbedingungen:** Timer läuft seit ≥ 2 Minuten.
+
+**Schritte**
+1) „Timer stoppen" klicken
+2) Angezeigte Dauer mit erwarteter Zeit (Stop − Start) vergleichen
+3) XP-Vergabe prüfen: XP_bonus = duration_minutes × xp_per_minute_timer
+4) LearningSession-Eintrag in LocalStorage prüfen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Korrekte Dauerberechnung; Timer-Bonus-XP werden optional vergeben; Session mit `duration_seconds` und `xp_earned` gespeichert.
+
+### TC-UC06-04 – Timer bleibt nach Reload erhalten
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC06-NF2
+- **Vorbedingungen:** Timer läuft.
+
+**Schritte**
+1) Browser-Tab neu laden (F5)
+2) Timer-Anzeige prüfen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Timer läuft nach Reload weiter; angezeigte Zeit ist konsistent (keine Zurücksetzung).
+
+### TC-UC06-NF-01 – Timer-Genauigkeit & Response-Time
+
+- **Testlevel:** System
+- **Methode:** ANL/TST
+- **Verifizierte Anforderungen:** UC06-NF1, UC06-NF4
+- **Vorbedingungen:** Timer aktiv.
+
+**Schritte**
+1) Timer 5 Minuten laufen lassen
+2) Angezeigte Zeit mit externer Stoppuhr vergleichen
+3) Start/Stop-Reaktionszeit messen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Zeitabweichung ≤ 1 Minute über 5 Minuten; UI-Reaktion auf Start/Stop ≤ 1 Sekunde.
+
+### TC-UC07-01 – Noten anlegen
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC07-F1
+- **Vorbedingungen:** User eingeloggt; Notenübersicht geöffnet.
+
+**Schritte**
+1) „Neue Note" klicken
+2) Modulname (z.B. „Analysis I"), Note (z.B. 2.3), Gewichtung eingeben
+3) Speichern klicken
+4) Notenübersicht und LocalStorage prüfen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Note erscheint in der Übersicht; Grade-Datensatz mit korrekten Werten in DB gespeichert.
+
+### TC-UC07-02 – Noten bearbeiten & löschen
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC07-F2, UC07-F3, UC07-F5, UC07-NF1
+- **Vorbedingungen:** Mindestens eine Note vorhanden.
+
+**Schritte**
+1) Note bearbeiten (Notenwert ändern) → Speichern
+2) Prüfen, ob geänderter Wert in Übersicht und DB korrekt ist
+3) Note löschen
+4) Prüfen, ob Note aus Übersicht und DB entfernt wurde
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Bearbeitete Note wird korrekt aktualisiert; gelöschte Note verschwindet; UI aktualisiert sich ohne Seitenneuladen (UC07-NF1).
+
+### TC-UC07-03 – Durchschnittsberechnung & Datenkonsistenz
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC07-F4, UC07-NF2
+- **Vorbedingungen:** Mehrere Noten mit unterschiedlichen Gewichtungen vorhanden.
+
+**Schritte**
+1) Noten eingeben: Analysis I = 2.0 (Gewicht 5), Programmieren = 1.3 (Gewicht 8)
+2) Durchschnitt anzeigen lassen
+3) Schnell hintereinander: Note bearbeiten, löschen, neu anlegen
+4) Konsistenz der Daten prüfen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Gewichteter Durchschnitt korrekt berechnet; schnelle Operationen verursachen keine Inkonsistenzen. (Hinweis: UC07-F4 ggf. Deviation wenn Durchschnittsfunktion nicht implementiert.)
+
+### TC-UC08-01 – Dashboard zeigt korrekte Statistiken
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC08-F1, UC08-F2, UC08-F3, UC08-F4, UC08-F5
+- **Vorbedingungen:** User mit abgeschlossenen Quests, XP, Level, Noten.
+
+**Schritte**
+1) Dashboard öffnen
+2) XP-Stand mit `total_xp_earned` in LocalStorage vergleichen
+3) Level mit berechneter Erwartung vergleichen (total_xp / level_threshold)
+4) Angezeigte Quests-Anzahl mit `quest_history` Array-Länge vergleichen
+5) Notenstatistik prüfen (UC08-F5: ggf. Deviation dokumentieren)
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Alle Werte (XP, Level, Quests, Badges) stimmen mit DB überein; Dashboard ist nach Login direkt sichtbar (UC08-F1).
+
+### TC-UC08-NF-01 – Dashboard Ladezeit ≤ 2s + Browser-Kompatibilität
+
+- **Testlevel:** System
+- **Methode:** ANL/TST
+- **Verifizierte Anforderungen:** UC08-NF1, UC08-NF2
+- **Vorbedingungen:** App mit ~10 Quests, ~5 Users in LocalStorage.
+
+**Schritte**
+1) Chrome: Dashboard laden, Ladezeit mit DevTools messen
+2) Firefox: Dashboard laden, Darstellung prüfen
+3) Safari (macOS): Dashboard laden, Darstellung prüfen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Ladezeit ≤ 2 Sekunden in allen Browsern; Layout korrekt; keine JS-Fehler in Console.
+
+### TC-UC09-01 – In-App Notifications: anzeigen, gelesen markieren
+
+- **Testlevel:** System
+- **Methode:** TST/INS
+- **Verifizierte Anforderungen:** UC09-F4 (teilweise), UC09-F1..F3 (Deviation)
+- **Vorbedingungen:** User eingeloggt; Benachrichtigungen existieren (z.B. nach Quest-Abschluss).
+
+**Schritte**
+1) Notification-Icon/Badge im UI prüfen
+2) Benachrichtigungsliste öffnen
+3) Einzelne Benachrichtigung als gelesen markieren
+4) „Alle gelesen" klicken
+5) Code-Inspektion: notification.js nach Settings/Reminder-Toggles durchsuchen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Ungelesene Benachrichtigungen werden angezeigt; gelesen-Markierung persistiert; alle-gelesen funktioniert. Deviation: Benachrichtigungs-Einstellungen (UC09-F1..F3) und Push/E-Mail (UC09-NF2) nicht vorhanden.
+
+### TC-UC09-NF-01 – Notification Reaktionsverhalten
+
+- **Testlevel:** System
+- **Methode:** TST/INS
+- **Verifizierte Anforderungen:** UC09-NF1 (teilweise), UC09-NF2 (Deviation)
+- **Vorbedingungen:** Benachrichtigungen vorhanden.
+
+**Schritte**
+1) Read-Status ändern → prüfen ob UI sofort aktualisiert (ohne Reload)
+2) Code-Inspektion: nach Push-/E-Mail-Zustellung suchen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Status-Änderungen wirken sofort im UI (UC09-NF1). Push/E-Mail: nicht vorhanden (Deviation).
+
+### TC-UC10-01 – CSV Export: Inhalt & Format korrekt
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC10-F2
+- **Vorbedingungen:** Mehrere Noten angelegt.
+
+**Schritte**
+1) „Noten exportieren" klicken
+2) CSV-Datei herunterladen und in Editor/Excel öffnen
+3) Spalten und Werte mit DB-Daten vergleichen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Export-Datei enthält alle Noten mit korrekten Werten; CSV-Format ist valide (Komma-Separator, Header-Zeile).
+
+### TC-UC10-02 – CSV Import: gültige Datei
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC10-F1
+- **Vorbedingungen:** Gültige CSV-Datei vorbereitet (z.B. vorher exportierte Datei).
+
+**Schritte**
+1) „Noten importieren" klicken → CSV-Datei auswählen
+2) Import bestätigen
+3) Notenübersicht auf importierte Einträge prüfen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Alle Zeilen aus CSV werden als Grade-Datensätze importiert; Werte stimmen mit CSV überein.
+
+### TC-UC10-03 – CSV Import: ungültige Datei → Fehlermeldung
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC10-F3
+- **Vorbedingungen:** Ungültige CSV-Datei (z.B. falsche Spalten, leere Datei, .txt-Datei).
+
+**Schritte**
+1) „Noten importieren" → ungültige Datei auswählen
+2) Import versuchen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Verständliche Fehlermeldung erscheint; keine Daten werden importiert; bestehende Noten bleiben unverändert.
+
+### TC-UC10-NF-01 – Performance Import/Export ≤ 5s
+
+- **Testlevel:** System
+- **Methode:** ANL/TST
+- **Verifizierte Anforderungen:** UC10-NF1
+- **Vorbedingungen:** 100 Noten-Einträge in DB oder CSV.
+
+**Schritte**
+1) Export mit 100 Einträgen durchführen → Zeit stoppen
+2) Import einer CSV mit 100 Einträgen durchführen → Zeit stoppen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Beide Operationen in ≤ 5 Sekunden abgeschlossen.
+
+### TC-UC11-01 – Badges werden bei erfüllter Bedingung freigeschaltet
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC11-F1, UC11-F2
+- **Vorbedingungen:** User hat noch keine Badges; Bedingung für mindestens ein Badge ist erfüllbar (z.B. erste Quest abschließen).
+
+**Schritte**
+1) Ausgangszustand: Badge-Übersicht zeigt Badge als „gesperrt"
+2) Bedingung erfüllen (z.B. Quest abschließen → „Quest Starter"-Badge)
+3) Badge-Übersicht erneut prüfen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Badge wechselt von „gesperrt" zu „freigeschaltet"; Achievement-Eintrag in LocalStorage vorhanden.
+
+### TC-UC11-02 – Visuelles Feedback + Badge-Übersicht
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC11-F3, UC11-F4
+- **Vorbedingungen:** Badge wird gerade freigeschaltet (siehe TC-UC11-01).
+
+**Schritte**
+1) Nach Badge-Freischaltung UI beobachten (Popup/Toast/Animation?)
+2) Badge-Übersicht öffnen
+3) Prüfen: Freigeschaltete Badges mit Icon/Titel sichtbar; gesperrte Badges ebenfalls sichtbar (ausgegraut)
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Visuelles Feedback bei Freischaltung; Übersicht zeigt alle Badges (freigeschaltet + gesperrt).
+
+### TC-UC11-NF-01 – Automatischer Badge-Check nach relevanten Aktionen
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC11-NF1
+- **Vorbedingungen:** User führt Badge-relevante Aktionen aus.
+
+**Schritte**
+1) Quest abschließen → prüfen ob Badge-Check getriggert wird
+2) Timer beenden → prüfen ob Badge-Check getriggert wird
+3) Console-Logs oder Achievement-Store auf Trigger-Einträge prüfen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Badge-Check wird automatisch nach jeder relevanten Aktion ausgeführt (nachweisbar via Logs oder Storage-Änderung).
+
+### TC-UC12-01 – Leaderboard: Ranking in 4 Kategorien + persönliche Position
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC12-F1, UC12-F4
+- **Vorbedingungen:** Mindestens 2 registrierte User mit unterschiedlichen XP/Level/Quests/Streaks.
+
+**Schritte**
+1) Leaderboard-Seite öffnen
+2) Ranking nach XP prüfen (höchste XP zuerst?)
+3) Andere Kriterien sortieren (Level, Quests, Streak)
+4) Eigene Position suchen (hervorgehoben?)
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Ranking ist korrekt sortiert in allen 4 Kategorien; eigene Position ist visuell hervorgehoben.
+
+### TC-UC12-02 – Streak-Berechnung & Aktualisierung
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC12-F2, UC12-F3
+- **Vorbedingungen:** User mit aufeinanderfolgenden Tagen aktiver Nutzung.
+
+**Schritte**
+1) `last_activity_date` und `current_streak` im LocalStorage prüfen
+2) Quest abschließen → Streak-Aktualisierung prüfen
+3) Leaderboard öffnen → Streak-Wert prüfen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Streak wird korrekt berechnet (aufeinanderfolgende Tage); Leaderboard zeigt aktuellen Streak-Wert.
+
+### TC-UC12-NF-01 – Performance: Leaderboard ≤ 3s
+
+- **Testlevel:** System
+- **Methode:** ANL/TST
+- **Verifizierte Anforderungen:** UC12-NF1
+- **Vorbedingungen:** 5+ Users in DB.
+
+**Schritte**
+1) Leaderboard-Seite öffnen, Ladezeit mit DevTools messen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Vollständige Leaderboard-Anzeige in ≤ 3 Sekunden.
+
+### TC-UC13-01 – Admin Login/Access: Admin sieht Admin Panel, Non-Admin nicht
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC13-F1, UC13-NF2
+- **Vorbedingungen:** Ein Admin-User und ein normaler User vorhanden.
+
+**Schritte**
+1) Als Admin einloggen → Admin-Panel-Link/Button prüfen
+2) Admin-Panel öffnen → Zugriff erfolgreich?
+3) Logout → als normaler User einloggen
+4) Admin-Panel erreichbar?
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Admin sieht und kann Admin-Panel nutzen; Non-Admin hat keinen Zugriff (kein Link sichtbar oder Redirect).
+
+### TC-UC13-02 – Quest CRUD im Admin Panel
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC13-F2, UC13-F3, UC13-F4, UC13-F5, UC13-F6
+- **Vorbedingungen:** Als Admin eingeloggt.
+
+**Schritte**
+1) Quest-Verwaltung öffnen → vorhandene Quests sehen
+2) Neue Quest erstellen (Titel, Beschreibung, Schwierigkeit)
+3) Erstelle Quest in Übersicht und DB prüfen
+4) Quest bearbeiten (Titel ändern) → prüfen
+5) Quest löschen → prüfen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+CRUD-Operationen funktionieren; Änderungen sofort in der Übersicht sichtbar; DB-Einträge konsistent.
+
+### TC-UC13-NF-01 – Admin Änderungen sichtbar ≤ 2s
+
+- **Testlevel:** System
+- **Methode:** ANL/TST
+- **Verifizierte Anforderungen:** UC13-NF1
+- **Vorbedingungen:** Als Admin eingeloggt; Quest-Verwaltung geöffnet.
+
+**Schritte**
+1) Quest erstellen/ändern/löschen → Zeit bis UI-Update messen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+UI-Aktualisierung in ≤ 2 Sekunden nach jeder Aktion.
+
+### TC-UC14-01 – Game Rules ändern & sofort wirksam
+
+- **Testlevel:** System
+- **Methode:** TST
+- **Verifizierte Anforderungen:** UC14-F1, UC14-F2, UC14-F3, UC14-F4, UC14-F5
+- **Vorbedingungen:** Als Admin eingeloggt.
+
+**Schritte**
+1) Regelverwaltung öffnen → aktuelle Werte notieren
+2) easy_xp von 50 auf 75 ändern → Speichern
+3) LocalStorage `game_rules` prüfen (Wert = 75?)
+4) Als normaler User Quest abschließen → prüfen ob 75 XP vergeben werden
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Geänderte Regeln werden gespeichert; neue Werte gelten sofort global für alle User.
+
+### TC-UC14-NF-01 – Sicherheit & Performance beim Speichern
+
+- **Testlevel:** System
+- **Methode:** TST/ANL/INS
+- **Verifizierte Anforderungen:** UC14-NF3, UC14-NF4, UC14-NF2 (Deviation)
+- **Vorbedingungen:** Als Admin eingeloggt.
+
+**Schritte**
+1) Regeln ändern → Speicherdauer messen (≤ 2s?)
+2) Als Non-Admin versuchen, Regeln zu ändern (Code-Inspektion: Admin-Check vorhanden?)
+3) Code-Inspektion: Nach Audit-Log für Regeländerungen suchen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Speichern ≤ 2 Sekunden; Zugriff nur für Admins; Audit-Log: nicht vorhanden (Deviation UC14-NF2).
+
+### TC-UC15-01 – User-Administration: Admin-Rechte, Aktiv/Deaktiv, Löschen
+
+- **Testlevel:** System
+- **Methode:** TST/INS
+- **Verifizierte Anforderungen:** UC15-F1, UC15-F4, UC15-F5, UC15-F2/F3 (Deviation)
+- **Vorbedingungen:** Als Admin eingeloggt; mindestens 2 User vorhanden.
+
+**Schritte**
+1) Admin-Panel öffnen → User-Liste prüfen
+2) User deaktivieren (is_active = false) → als diesem User einloggen versuchen
+3) User reaktivieren → Einloggen erneut versuchen
+4) User löschen → prüfen ob aus DB entfernt
+5) Code-Inspektion: Such-/Detailansicht vorhanden?
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Deaktivierter User kann sich nicht einloggen; Reaktivierung stellt Zugang her; Löschung entfernt Datensatz. Suche/Detailansicht: ggf. vereinfacht (Deviation UC15-F2/F3).
+
+### TC-UC15-NF-01 – Zugriffsschutz + Reaktionszeit ≤ 2s
+
+- **Testlevel:** System
+- **Methode:** TST/ANL/INS
+- **Verifizierte Anforderungen:** UC15-NF1, UC15-NF3, UC15-NF2 (Deviation)
+- **Vorbedingungen:** Admin und Non-Admin User vorhanden.
+
+**Schritte**
+1) Als Non-Admin: Admin-Panel aufrufen versuchen → Zugriff verweigert?
+2) Als Admin: User-Status ändern → Reaktionszeit messen
+3) Code-Inspektion: Nach Audit-Log bei User-Aktionen suchen
+
+**Erwartetes Ergebnis / Pass-Kriterium**
+Nur Admins können User verwalten; Statusänderung in ≤ 2 Sekunden; Audit-Log: nicht vorhanden (Deviation UC15-NF2).
 
 ---
 

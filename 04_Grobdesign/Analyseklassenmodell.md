@@ -78,6 +78,7 @@ Das Analyseklassenmodell basiert auf den Anforderungen aus der Anforderungsanaly
 | `password_hash` | String | Gehashtes Passwort (bcrypt/Argon2) |
 | `name` | String | Anzeigename des Benutzers |
 | `avatar` | String | Avatar-Emoji oder URL |
+| `studiengang` | String | Studiengang des Benutzers (z.B. "Informatik") |
 | `level` | Integer | Aktuelles Level (1-MAX) |
 | `total_xp_earned` | Integer | Akkumulierte Erfahrungspunkte |
 | `xp` | Integer | XP im aktuellen Level (0 bis Threshold) |
@@ -378,7 +379,7 @@ Das StudyQuest-System folgt einer **3-Schichten-Architektur**, die eine klare Tr
 
 ---
 
-## 6. Design-Muster und Architektur-Überlegungen
+## 7. Design-Muster und Architektur-Überlegungen
 
 ### **Observer-Pattern (UC09, UC12)**
 - **Verwendung:** Benachrichtigungssystem
@@ -403,12 +404,12 @@ Das StudyQuest-System folgt einer **3-Schichten-Architektur**, die eine klare Tr
 
 ---
 
-## 6. Anforderungsverfolgung 
+## 8. Anforderungsverfolgung 
 
 | Use Case | Beteiligte Klassen | Hauptfluss |
 |----------|------------------|-----------|
 | UC01 - Registrieren & Einloggen | User | User.register() → Email validieren |
-| UC02 - Passwort zurücksetzen | User | User.login() → Session starten |
+| UC02 - Passwort zurücksetzen | User | User: Token-generierung → Passwort-Hash aktualisieren (Deviation: nicht implementiert) |
 | UC03 - Profil | User | User.updateProfile() → Daten speichern |
 | UC04 - Quest Start | User, Quest | User.setActiveQuest(), Quest.getQuestInfo() |
 | UC05 - Quest Complete | User, Quest, LearningSession, GameRule, Achievement | User.addXP(), LearningSession.logSession(), Achievement.checkUnlock() |
@@ -425,7 +426,7 @@ Das StudyQuest-System folgt einer **3-Schichten-Architektur**, die eine klare Tr
 
 ---
 
-## 8. Datenintegrität und Constraints
+## 9. Datenintegrität und Constraints
 
 | Constraint | Beschreibung | Implementierung |
 |-----------|-------------|-----------------|

@@ -152,12 +152,12 @@ Die Coding Rules bilden das Fundament der konstruktiven Qualitätssicherung im S
 | Prettier-Konfiguration definiert |  Definiert (SDP) |
 | Einheitliche Code-Struktur |  Modular (ui.js, db.js, etc.) |
 | Namenskonventionen eingehalten |  camelCase durchgängig |
-| Kommentierung öffentlicher API |  Teilweise (ausbaufähig) |
+| Kommentierung öffentlicher API |  Vorhanden (JSDoc-Header pro Modul und Methode, Inline-Kommentare bei komplexer Logik) |
 | Git-Konventionen eingehalten |  Feature-Branches, Pull Requests |
 | Code-Review-Prozess etabliert |  Review Procedure vorhanden |
 
-**Gesamt-Bewertung:** **Gut bis Exzellent**  
-Die Coding Rules sind klar definiert und weitgehend umgesetzt. Die Verwendung von ESLint und Prettier als konstruktive QS-Maßnahmen stellt eine hohe Code-Qualität sicher.
+**Gesamt-Bewertung:** **Gut**  
+Die Coding Rules sind klar definiert und weitgehend umgesetzt. Die Verwendung von ESLint und Prettier als konstruktive QS-Maßnahmen stellt eine konsistente Code-Qualität sicher. Verbesserungspotenzial besteht bei der durchgängigen API-Dokumentation und der Integration in eine CI/CD-Pipeline.
 
 ---
 
@@ -213,10 +213,10 @@ Die folgenden Metriken werden kontinuierlich erfasst und zur Bewertung der Quali
 | Dokumentierte Audit-Ergebnisse | Review Procedure, PRs | Vollständig | Vollständig |
 
 **Bewertung der Audit-Qualität:**
--  **Audit-Planung:** Vollständig definiert
--  **Audit-Durchführung:** Konsequent umgesetzt (Code-Reviews, Requirements-Reviews)
--  **Audit-Dokumentation:** Nachvollziehbar (PR-Historie, Review Procedure, Changelogs)
--  **Automatisierung:** Teilweise (ESLint lokal, noch keine CI/CD-Pipeline)
+-  **Audit-Planung:** Vollständig definiert (5 Audit-Typen im SQAP spezifiziert)
+-  **Audit-Durchführung:** Weitgehend umgesetzt – Code-Reviews konsequent (100% PRs), Requirements- und Design-Reviews durchgeführt, Test-Reviews nach Testentwicklung
+-  **Audit-Dokumentation:** Nachvollziehbar über PR-Historie, Review Procedure und Changelogs; formale Audit-Protokolle wären für Produktivprojekte wünschenswert
+-  **Automatisierung:** Teilweise (ESLint/Prettier lokal konfiguriert; noch keine CI/CD-Pipeline – für nächste Iteration empfohlen)
 
 ---
 
@@ -515,7 +515,7 @@ Schwerpunkt-Abweichungen laut SVP:
 
 | **Metrik** | **Wert/Status** | **Bewertung** |
 | --- | --- | --- |
-| Audit-Durchführung | 5 Audit-Typen definiert und durchgeführt | Exzellent |
+| Audit-Durchführung | 5 Audit-Typen definiert und durchgeführt | Gut (Code-Reviews konsequent, formale Audit-Protokolle nicht separat archiviert) |
 | Review-Zyklen | Requirements-, Code-, Test-, Docs-Reviews | Systematisch |
 | Deviation-Dokumentation | 24 Deviationen transparent dokumentiert | Gut |
 | Changelog-Pflege | Alle Dokumente mit Changelog | Exzellent |
@@ -531,11 +531,11 @@ Schwerpunkt-Abweichungen laut SVP:
 
 | **Qualitätsmerkmal** | **Bewertung** | **Begründung** |
 | --- | --- | --- |
-| **Funktionale Eignung** |  Teilweise erfüllt | 77.6% Anforderungen verifiziert, 24 Deviationen |
+| **Funktionale Eignung** |  Teilweise erfüllt | 77.6% Anforderungen verifiziert, 24 Deviationen – Kernfunktionen (UC01, UC03-UC05, UC10-UC12) vollständig, Randfunktionen (UC02, UC09) nicht implementiert |
 | **Leistungseffizienz** |  Gut | Dashboard <2s (laut Requirements) |
 | **Kompatibilität** |  Gut | Browser-Support (Chrome, Edge, Firefox, Safari) |
 | **Benutzbarkeit** |  Gut | UI-Konzept mit Gamification |
-| **Zuverlässigkeit** |  Mittel | Unit-Tests vorhanden, aber Integration-Tests fehlen |
+| **Zuverlässigkeit** |  Mittel | 125 Unit-Tests für Business-Logik vorhanden; Integration-/E2E-Tests fehlen; manuelle Systemtests gemäß SVP durchgeführt |
 | **Sicherheit** |  Mittel | Login-Schutz vorhanden, aber clientseitig limitiert |
 | **Wartbarkeit** |  Gut | Modulare Struktur, Coding Rules, Code-Reviews |
 | **Übertragbarkeit** |  Gut | Browser-basiert, keine Plattform-Abhängigkeit |
@@ -560,10 +560,10 @@ Schwerpunkt-Abweichungen laut SVP:
 | --- | --- | --- |
 | **Konstruktive QS** |  Exzellent | Coding Rules, ESLint, Prettier, SDP, Templates |
 | **Analytische QS** |  Gut | Tests, Reviews, Audits durchgeführt |
-| **Audit-Durchführung** |  Exzellent | 5 Audit-Typen systematisch umgesetzt |
+| **Audit-Durchführung** |  Gut | 5 Audit-Typen definiert; Code-Reviews konsequent, Requirements-/Design-Reviews im Team durchgeführt; formale Audit-Protokolle nicht separat archiviert |
 | **Kontinuierliche Verbesserung** |  Gut | Lessons Learned dokumentiert |
 
-**Gesamt-Bewertung Prozess:** **Exzellent**
+**Gesamt-Bewertung Prozess:** **Gut bis Exzellent** – Konstruktive QS ist vorbildlich, analytische QS durch fehlende CI/CD und Integration-Tests leicht eingeschränkt.
 
 #### 9.2.4 Reifegrad-Bewertung
 
