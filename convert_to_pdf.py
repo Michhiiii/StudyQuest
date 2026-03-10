@@ -149,13 +149,22 @@ with sync_playwright() as p:
             html_body = embed_images(html_body)
             full_html = HTML_TEMPLATE.format(content=html_body)
 
-            page.set_content(full_html, wait_until="networkidle")
+            # Save intermediate HTML for debugging
+            html_path = dst.replace(".pdf", ".html")
+            with open(html_path, "w", encoding="utf-8") as hf:
+                hf.write(full_html)
+
+            page.goto("file:///" + html_path.replace("\\", "/"), wait_until="load")
+            page.wait_for_timeout(1000)
             page.pdf(
                 path=dst,
                 format="A4",
                 margin={"top": "15mm", "bottom": "15mm", "left": "15mm", "right": "15mm"},
                 print_background=True,
             )
+
+            # Remove HTML after successful PDF generation
+            os.remove(html_path)
 
             print("OK")
             success += 1
