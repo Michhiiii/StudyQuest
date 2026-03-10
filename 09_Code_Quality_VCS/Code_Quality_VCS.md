@@ -47,10 +47,9 @@ Die Commit-Messages folgen einem einheitlichen, englischsprachigen Format und be
 
 ## 3 Contributors
 
-Alle Teammitglieder haben aktiv zum Repository beigetragen:
 
-<!-- Screenshot: Contributors-Graph in GitHub (Insights → Contributors) -->
+<img width="1133" height="802" alt="Screenshot 2026-03-10 135939" src="https://github.com/user-attachments/assets/b39f91f1-8678-43f7-85f1-94c76e9d2ca9" />
 
-![Contributors](screenshots/contributors.png)
+
 
 ---
