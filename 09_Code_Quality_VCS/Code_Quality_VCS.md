@@ -38,13 +38,3 @@ Alle Teammitglieder haben aktiv zum Repository beigetragen:
 ![Contributors](screenshots/contributors.png)
 
 ---
-
-## 4 Screenshots
-
-> Alle referenzierten Screenshots im Ordner `screenshots/` ablegen.
-
-| # | Dateiname | Beschreibung |
-|---|---|---|
-| 1 | `branching.png` | Branch-Übersicht in GitHub |
-| 2 | `commit_history.png` | Commit-Historie (letzte ~20 Commits) |
-| 3 | `contributors.png` | Contributors-Graph aus GitHub Insights |
