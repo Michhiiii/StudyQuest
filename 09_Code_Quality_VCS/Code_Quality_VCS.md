@@ -13,7 +13,9 @@ Die Entwicklung erfolgt auf dem Branch `feature-version`, während `main` den st
 
 <!-- Screenshot: Branch-Übersicht in GitHub (Insights → Network oder Branches-Seite) -->
 
-![Branching-Strategie](screenshots/branching.png)
+
+
+<img width="345" height="129" alt="image" src="https://github.com/user-attachments/assets/4fa507d8-413f-4e46-a0ed-8e2803644d8e" />
 
 ---
 
