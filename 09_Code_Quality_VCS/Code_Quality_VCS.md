@@ -4,10 +4,6 @@
 |----------------|---------------------------------------------------|
 | **Repository** | https://github.com/Michhiiii/StudyQuest           |
 | **Branches**   | `main`, `feature-version`                          |
-| **Commits**    | 233 (Stand: 10.03.2026)                            |
-| **Autoren**    | Michhiiii, Luke, Roman-fab, Giuliana132, Paul1007C |
-
-> **Hinweis:** Modulbeschreibungen, Coding Rules und Testdokumentation befinden sich in den jeweiligen Fachkapiteln (→ Softwarearchitektur, SQAP/SQAR, TEST_DOCUMENTATION). Dieses Dokument dokumentiert ausschließlich die **Versionsverwaltung und das Repository**.
 
 ---
 
