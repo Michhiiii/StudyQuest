@@ -205,6 +205,5 @@ Jedes Dokument enthält:
 - ein Deckblatt mit Version, Autor und Datum  
 - einen Änderungsverlauf (Changelog)  
 - eine Distributionsliste  
-- Versionskontrolle über Git (Tags, Branches)
 
 
