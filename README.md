@@ -1,9 +1,6 @@
 # StudyQuest
 
 StudyQuest ist eine gamifizierte Lernplattform, die Studierende durch Quests, Achievements und Leaderboards motiviert, ihre Lernziele zu erreichen.
-
-<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/b07d8723-89d0-4a35-adc2-714afd727ec1" />
-
 ---
 
 ## Projektstruktur
