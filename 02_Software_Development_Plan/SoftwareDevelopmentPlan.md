@@ -141,8 +141,8 @@ Verbesserungsmaßnahmen werden für den nächsten Sprint festgehalten.
 ---
 
 ### Hinweise zur Anwendung im SCRUM-Kontext
-- Zwischen den Meilensteinen liegen **Sprints** von ca. 3–4 Wochen Dauer.  
-- Jeder Meilenstein steht für ein **Review-fähiges Inkrement** (z. B. Analyse, Prototyp, getestete Funktion).  
+- Zwischen den Meilensteinen liegen Sprints von ca. 3–4 Wochen Dauer.  
+- Jeder Meilenstein steht für ein Review-fähiges Inkrement (z. B. Analyse, Prototyp, getestete Funktion).  
 
 ## 6. Reviews und Retrospektiven
 
