@@ -128,8 +128,6 @@ Kontrollfluss (v1.0): UI → `app.js` (Router/Controller) → Business-Module (`
 3. `AchievementSystem.checkAndUnlock()` (prüft & triggert Achievement Notifications)
 4. `UserModel.updateStreak()`
 
-Diese direkte Sequenz erfolgt synchron, **nicht asynchron über EventBus**. (Siehe Abschnitt 3.1)
-
 ---
 
 ## 5. Wichtige Algorithmen & Regeln
