@@ -38,8 +38,8 @@ Michael Steer (Scrum Master)
 |--------------|-------------|-------------------|---------------------------------------------|
 | 1.0          | 14.11.2025  | M. Steer          | Erstfassung der Analyseklassenmodell erstellt      |
 | 1.1          | 30.01.2026  | G. Carrano        | Klassenbeschreibungen ergänzt              |
-| 1.2          | 24.02.2026  | G. Carrano        | Finalversion mit vollständigen Attributen und Methoden  |
-| 1.3          | 02.03.2026  | M. Steer          | Traceability-Matrix erweitert, Architekturübersicht ergänzt, NF-Requirements zugeordnet |
+| 1.2          | 24.02.2026  | G. Carrano        | Traceability-Matrix erweitert, Architekturübersicht ergänzt, NF-Requirements zugeordnet  |
+| 1.3          | 02.03.2026  | M. Steer          |  Finalversion zur Abgabe vorbereitet |
 
 ## Distribution List
 
