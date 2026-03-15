@@ -41,16 +41,17 @@ Michael Steer (Scrum Master)
 | 1.2          | 24.02.2026  | G. Carrano        | Finalversion mit vollständigen Attributen und Methoden  |
 | 1.3          | 02.03.2026  | M. Steer          | Traceability-Matrix erweitert, Architekturübersicht ergänzt, NF-Requirements zugeordnet |
 
----
-
 ## Distribution List
 
-| **Rolle** | **Name** | **Organisation** | **Benachrichtigung** |
-|-----------|----------|-----------------|----------------------|
-| Scrum Master | Michael Steer | DHBW Ravensburg | Bei Änderungen |
-| Product Owner | Luke Engehardt | DHBW Ravensburg | Bei Änderungen |
-| Entwickler | Giuliana Carrano | DHBW Ravensburg | Bei Änderungen |
-| Betreuer | Sascha Wanninger | DHBW Ravensburg | Finale Version |
+| **Name**          | **Rolle**             | **Kommentar / Zuständigkeit**                 |
+|--------------------|-----------------------|-----------------------------------------------|
+| Sascha Wanninger   | Prüfer / Betreuer     | Bewertung im Rahmen des Moduls                |
+| Michael Steer      | Scrum Master          | Koordination & Freigabe                       |
+| Luke Engehardt     | Product Owner         | Anforderungen, Dokumentation & Technische Dokumentation                  |
+| Giuliana Carrano   | Developer             | Projektskizze, Dokumentation, Architektur & UML                   |
+| Paul Strasser      | Developer             |                      |
+| Roman Faber        | Developer             |                            |
+---
 
 ---
 
