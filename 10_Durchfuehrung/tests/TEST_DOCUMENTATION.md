@@ -123,11 +123,6 @@ afterEach(() => {
 </script>
 ```
 
-### In Node.js (geplant)
-```bash
-npm test
-```
-
 ## Test-Ausführung
 
 Die Tests werden ausgeführt über:
@@ -137,10 +132,6 @@ Die Tests werden ausgeführt über:
    - Führe Tests aus
    - Siehe Report in der Console
 
-2. **HTML Test Runner (geplant):**
-   - Erstelle `tests/test_runner.html`
-   - Öffne im Browser
-   - Sehe visuellen Report
 
 ## Test-Ergebnisse
 
@@ -177,7 +168,7 @@ SUITE DETAILS:
 
 ### Variablen
 - Alle Variablen in **snake_case**: `test_user`, `user_id`, `is_admin`
-- Keine camelCase: ❌ `testUser`, `userId`, `isAdmin`
+- Keine camelCase:  `testUser`, `userId`, `isAdmin`
 
 ### Best Practices
 1. **Eine Assertion pro Test** - Einfacher zu debuggen
@@ -262,14 +253,14 @@ Validiert UI-Komponenten:
 
 ## Häufige Fehler beim Testen
 
-### ❌ LocalStorage existiert nicht
+### LocalStorage existiert nicht
 ```javascript
 // Fehler: ReferenceError: localStorage is not defined
 const data = localStorage.getItem('key');
 ```
 **Lösung:** Mock in beforeEach() verwenden
 
-### ❌ Async Code nicht gehandhabt
+### Async Code nicht gehandhabt
 ```javascript
 // Fehler: Test beendet vor Async-Operation
 it('sollte Daten laden', async () => {
@@ -279,7 +270,7 @@ it('sollte Daten laden', async () => {
 ```
 **Lösung:** Async/await oder Promises verwenden
 
-### ❌ State zwischen Tests erhalten
+### State zwischen Tests erhalten
 ```javascript
 // Fehler: Test 2 sieht Daten von Test 1
 describe('Tests', () => {
@@ -288,59 +279,7 @@ describe('Tests', () => {
 });
 ```
 **Lösung:** beforeEach() mit `localStorage.clear()` verwenden
-
-## Continuous Integration (CI)
-
-Geplant für GitHub Actions:
-
-```yaml
-name: Run Tests
-on: [push, pull_request]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run Tests
-        run: npm test
-      - name: Upload Coverage
-        uses: codecov/codecov-action@v2
-```
-
-## Künftige Verbesserungen
-
-- [ ] Integration Tests mit echtem Browser (Selenium/Cypress)
-- [ ] E2E Tests für alle Use Cases
-- [ ] Performance Benchmarking
-- [ ] Visual Regression Testing
-- [ ] Code Coverage Reports (nyc/Istanbul)
-- [ ] Mocking-Framework (Sinon.js)
-- [ ] Test-Parallelisierung
-
-## Problembehebung
-
-### Fehler: "DB is not defined"
-→ db.js muss vor Tests geladen sein
-
-### Fehler: "localStorage is not defined"
-→ `beforeEach()` mit Mock-Implementierung verwenden
-
-### Fehler: "User nicht erstellt"
-→ Stelle sicher dass `UserModel.create()` vor `authenticate()` aufgerufen wird
-
-### Tests laufen nicht
-1. Browser Console öffnen (F12)
-2. Auf Fehler überprüfen
-3. Script-Ladereihenfolge checken
-4. test_runner.js zuletzt laden
-
-## Kontakt & Fragen
-
-Bei Fragen zu den Tests:
-- Michael Steer (Scrum Master)
-- Projektteam StudyQuest
-- Email: support@studyquest.de
-
+uses: codecov/codecov-action@v2
 ---
 
 **Letzte Aktualisierung:** 06.02.2026
