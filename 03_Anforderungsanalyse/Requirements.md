@@ -50,8 +50,6 @@ Michael Steer (Scrum Master)
 
 ## Distribution List
 
-## Distribution List
-
 | **Name**          | **Rolle**             | **Kommentar / Zuständigkeit**                 |
 |--------------------|-----------------------|-----------------------------------------------|
 | Sascha Wanninger   | Prüfer / Betreuer     | Bewertung im Rahmen des Moduls                |
