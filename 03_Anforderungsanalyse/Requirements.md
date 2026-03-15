@@ -24,8 +24,6 @@ Wintersemester 2025 / 2026
 - Michael Steer (Scrum Master)  
 - Luke Engehardt (Product Owner)  
 - Giuliana Carrano (Developer)  
-- Paul Strasser (Developer)  
-- Roman Faber (Developer)
 
 **Betreuer / Prüfer:**  
 Sascha Wanninger
