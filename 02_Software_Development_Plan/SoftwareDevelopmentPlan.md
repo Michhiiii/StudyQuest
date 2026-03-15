@@ -84,7 +84,7 @@ Das Projekt StudyQuest wird nach dem agilen Vorgehensmodell Scrum durchgeführt.
 
 ### Sprint Planning
 Product Owner präsentiert priorisierte User Stories.  
-Team schätzt den Aufwand (Planning Poker) und plant die Umsetzung.  
+Team schätzt den Aufwand und plant die Umsetzung.  
 Scrum Master unterstützt, klärt Abhängigkeiten und erstellt das Sprint Backlog.  
 Ergebnis: definierte Sprintziele und aktionale Tasks.
 
