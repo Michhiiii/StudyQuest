@@ -50,8 +50,8 @@ Michael Steer (Scrum Master)
 | Paul Strasser      | Developer             |                      |
 | Roman Faber        | Developer             |                            |
 
-
-**Status: Architektur-Konzept für zukünftige Verbesserung (v1.0: Nicht implementiert)**
+---
+# **Status: Architektur-Konzept für zukünftige Verbesserung (v1.0: Nicht implementiert)**
 
 ## 1. Ziel
 Die Quest-Logik soll fachlich bleiben (XP berechnen, Quest abschließen). Nebenwirkungen wie Notifications, Achievements und Streaks sollen entkoppelt werden. Neue Reaktionen auf ein Ereignis (z. B. Telemetrie, zusätzliche Badges, UI-Refresh) sollen ohne Änderung am Quest-Modul möglich sein.
