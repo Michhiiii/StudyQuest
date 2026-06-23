@@ -1,0 +1,108 @@
+ID,Requirement,Method,TestCases,Status
+UC01-F1,Registrierung mit E-Mail/Passwort möglich,TST,TC-UC01-01,✓
+UC01-F2,Duplikat-E-Mail blockiert,TST,TC-UC01-02,✓
+UC01-F3,Login mit E-Mail/Passwort,TST,TC-UC01-03,✓
+UC01-F4,Dashboard nach Login angezeigt,TST,TC-UC01-03,✓
+UC01-NF1,Passwort nicht im Klartext,ANL/TST,TC-UC01-NF-01,✓
+UC01-NF2,Neutrale Fehlermeldungen,ANL/TST,TC-UC01-NF-01,✓
+UC02-F1,Passwort-Reset anfordern,INS,TC-UC02-01,Deviation
+UC02-F2,Zeitlich begrenzter Reset-Token,INS,TC-UC02-02,Deviation
+UC02-F3,Neues Passwort setzen,INS,TC-UC02-03,Deviation
+UC02-F4,Altes Passwort invalidieren,INS,TC-UC02-03,Deviation
+UC02-NF1,Neutrale Antwort bei Reset,INS,TC-UC02-01,Deviation
+UC02-NF2,Reset-Link Ablaufzeit,INS,TC-UC02-02,Deviation
+UC03-F1,Profildaten anzeigen,TST,TC-UC03-01,✓
+UC03-F2,Name/Avatar ändern speichern,TST,TC-UC03-02,✓
+UC03-F3,Änderungen persistieren,TST,TC-UC03-02,✓
+UC03-NF1,Nur eingeloggte User dürfen ändern,ANL/TST,TC-UC03-NF-01,✓
+UC03-NF2,Verständliche Fehlermeldungen,ANL/TST,TC-UC03-NF-01,✓
+UC04-F1,Quest-Auswahl möglich,TST,TC-UC04-01,✓
+UC04-F2,Quest starten funktioniert,TST,TC-UC04-01,✓
+UC04-F3,Startzeitpunkt gespeichert,TST,TC-UC04-01,✓
+UC04-F4,Nur eine aktive Quest pro User,TST,TC-UC04-02,✓
+UC04-F5,Zweite Quest-Start blockiert,TST,TC-UC04-02,✓
+UC04-NF1,Status-Wechsel ≤1s,ANL/TST,TC-UC04-NF-01,✓
+UC04-NF2,Nur authentifizierte User,ANL/TST,TC-UC04-NF-01,✓
+UC04-NF3,Quest-Start serverseitig protokolliert,INS,TC-UC04-NF-01,Deviation
+UC05-F1,Quest abschließen markieren,TST,TC-UC05-01,✓
+UC05-F2,XP automatisch vergeben,TST,TC-UC05-01,✓
+UC05-F3,Level-Up Prüfung,TST,TC-UC05-03,✓
+UC05-F4,Level-Up visuell angezeigt,TST,TC-UC05-03,✓
+UC05-F5,Endzeitpunkt & Status gespeichert,TST,TC-UC05-01,✓
+UC05-NF1,Abschluss-Reaktion ≤2s,ANL/TST,TC-UC05-NF-01,✓
+UC05-NF2,XP-Vergabe atomar,ANL/TST,TC-UC05-02,✓
+UC05-NF3,Level-Up Event protokolliert,INS,TC-UC05-NF-01,Deviation
+UC05-NF4,Nur abgeschlossene Quests zählen,ANL/TST,TC-UC05-01,✓
+UC06-F1,Lern-Timer starten,TST,TC-UC06-01,✓
+UC06-F2,Startzeit & Laufzeit speichern,TST,TC-UC06-01,✓
+UC06-F3,Timer pausieren/fortsetzen,INS,TC-UC06-02,Deviation
+UC06-F4,Gesamtdauer berechnen & speichern,TST,TC-UC06-03,✓
+UC06-F5,Optional XP nach Lernzeit,TST,TC-UC06-03,✓
+UC06-F6,Nur ein aktiver Timer pro User,TST,TC-UC06-02,✓
+UC06-F7,Pufferung bei Verbindungsabbruch,INS,TC-UC06-04,Deviation
+UC06-NF1,Zeitabweichung ≤1 Minute,ANL/TST,TC-UC06-NF-01,✓
+UC06-NF2,Timerdaten bleiben nach Reload,ANL/TST,TC-UC06-04,✓
+UC06-NF3,Timeraktionen protokolliert,INS,TC-UC06-NF-01,Deviation
+UC06-NF4,Reaktionszeit ≤1s,ANL/TST,TC-UC06-NF-01,✓
+UC07-F1,Noten eingeben,TST,TC-UC07-01,✓
+UC07-F2,Noten bearbeiten,TST,TC-UC07-02,✓
+UC07-F3,Noten löschen,TST,TC-UC07-02,✓
+UC07-F4,Durchschnitt automatisch berechnen,INS,TC-UC07-03,Deviation
+UC07-F5,Notenübersicht aktualisieren,TST,TC-UC07-01,✓
+UC07-NF1,Änderungen in Echtzeit angezeigt,ANL/TST,TC-UC07-NF-01,✓
+UC07-NF2,Datenkonsistenz gewährleistet,ANL/TST,TC-UC07-03,✓
+UC08-F1,Dashboard-Zugriff,TST,TC-UC08-01,✓
+UC08-F2,XP-Stand angezeigt,TST,TC-UC08-01,✓
+UC08-F3,Level angezeigt,TST,TC-UC08-01,✓
+UC08-F4,Aktive & abgeschlossene Quests,TST,TC-UC08-01,✓
+UC08-F5,Notenstatistik angezeigt,INS,TC-UC08-01,Deviation
+UC08-NF1,Dashboard lädt ≤2s,ANL/TST,TC-UC08-NF-01,✓
+UC08-NF2,Browser-Kompatibilität (Chrome/Firefox/Safari),ANL/TST,TC-UC08-NF-01,✓
+UC09-F1,Benachrichtigungseinstellungen öffnen,INS,TC-UC09-01,Deviation
+UC09-F2,Lern-Erinnerungen aktivieren/deaktivieren,INS,TC-UC09-01,Deviation
+UC09-F3,Quest-Benachrichtigungen steuern,INS,TC-UC09-01,Deviation
+UC09-F4,Einstellungen speichern,TST,TC-UC09-01,✓
+UC09-NF1,Änderungen wirken sofort,ANL/TST,TC-UC09-NF-01,✓
+UC09-NF2,Zuverlässige Zustellung (Push/E-Mail),INS,TC-UC09-NF-01,Deviation
+UC10-F1,CSV-Import möglich,TST,TC-UC10-02,✓
+UC10-F2,CSV-Export möglich,TST,TC-UC10-01,✓
+UC10-F3,Fehlerhafte Dateien erkannt,TST,TC-UC10-03,✓
+UC10-NF1,Import/Export ≤5s,ANL/TST,TC-UC10-NF-01,✓
+UC11-F1,Badge-Bedingungen prüfen,TST,TC-UC11-01,✓
+UC11-F2,Badge freischalten,TST,TC-UC11-01,✓
+UC11-F3,Visuelles Feedback bei Badge,TST,TC-UC11-02,✓
+UC11-F4,Badge-Übersicht verfügbar,TST,TC-UC11-02,✓
+UC11-NF1,Automatischer Badge-Check,ANL/TST,TC-UC11-NF-01,✓
+UC12-F1,Leaderboard mit Ranking,TST,TC-UC12-01,✓
+UC12-F2,Streaks berechnen & anzeigen,TST,TC-UC12-02,✓
+UC12-F3,Daten bei Aufruf aktualisieren,TST,TC-UC12-02,✓
+UC12-F4,Eigene Position hervorgehoben,TST,TC-UC12-01,✓
+UC12-NF1,Leaderboard lädt ≤3s,ANL/TST,TC-UC12-NF-01,✓
+UC12-NF2,Regelmäßige Datensynchronisation,INS,TC-UC12-NF-01,Deviation
+UC13-F1,Admin-Login,TST,TC-UC13-01,✓
+UC13-F2,Quest-Verwaltung Zugriff,TST,TC-UC13-02,✓
+UC13-F3,Neue Quest erstellen,TST,TC-UC13-02,✓
+UC13-F4,Quest bearbeiten,TST,TC-UC13-02,✓
+UC13-F5,Quest löschen,TST,TC-UC13-02,✓
+UC13-F6,Katalog nach Änderungen aktualisieren,TST,TC-UC13-02,✓
+UC13-NF1,Änderungen sichtbar ≤2s,ANL/TST,TC-UC13-NF-01,✓
+UC13-NF2,Nur Admins dürfen ändern,ANL/TST,TC-UC13-NF-01,✓
+UC13-NF3,Änderungen versioniert speichern,INS,TC-UC13-NF-01,Deviation
+UC13-NF4,Konflikte bei Simultanbearbeitung behandeln,INS,TC-UC13-NF-01,Deviation
+UC14-F1,Admin-Login erforderlich,TST,TC-UC14-01,✓
+UC14-F2,Regelverwaltungs-Zugriff,TST,TC-UC14-01,✓
+UC14-F3,XP- & Levelregeln ändern,TST,TC-UC14-01,✓
+UC14-F4,Geänderte Regeln aktiv speichern,TST,TC-UC14-01,✓
+UC14-F5,Änderungen gelten sofort global,TST,TC-UC14-01,✓
+UC14-NF1,Keine Dateninkonsistenz,ANL/TST,TC-UC14-NF-01,✓
+UC14-NF2,Regeländerungen protokollieren,INS,TC-UC14-NF-01,Deviation
+UC14-NF3,Speichern dauert ≤2s,ANL/TST,TC-UC14-NF-01,✓
+UC14-NF4,Zugriff nur für autorisierte Admins,ANL/TST,TC-UC14-NF-01,✓
+UC15-F1,Admin-Login,TST,TC-UC15-01,✓
+UC15-F2,Benutzerkonten suchen,INS,TC-UC15-01,Deviation
+UC15-F3,Kontoeinstellungen anzeigen,INS,TC-UC15-01,Deviation
+UC15-F4,Konten löschen/sperren/reaktivieren,TST,TC-UC15-01,✓
+UC15-F5,Kontostatus aktualisieren,TST,TC-UC15-01,✓
+UC15-NF1,Nur autorisierte Admins dürfen ändern,ANL/TST,TC-UC15-NF-01,✓
+UC15-NF2,Änderungen protokollieren,INS,TC-UC15-NF-01,Deviation
+UC15-NF3,Reaktionszeit ≤2s,ANL/TST,TC-UC15-NF-01,✓
